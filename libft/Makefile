@@ -6,7 +6,7 @@
 #    By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/17 10:47:24 by rficht            #+#    #+#              #
-#    Updated: 2023/07/27 17:45:18 by rficht           ###   ########.fr        #
+#    Updated: 2023/07/30 15:03:46 by rficht           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -123,7 +123,7 @@ CC = cc
 all: $(NAME)
 
 # rule for compile .c -> .o
-objects/%.o : sources/%.c
+$(OBJ_DIR)/%.o : $(SRC_DIR)/%.c
 	@printf '$(GREEN)Compiling: $(RESET)$@\n'
 	@$(CC) $(CFLAG) -o $@ -c $<
 
