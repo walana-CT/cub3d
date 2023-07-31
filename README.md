@@ -12,7 +12,7 @@ Johnny contre les nazis
  3. Vérifier que l'ouverture du fichier se passe bien.
  4. Récupérer le contenu du fichier dans une liste chainée.
  5. extraire les lignes avec identifiants et supprimer les lignes vides.
-6. vérifier que le format des identifiants est valide.
+ 6. vérifier que le format des identifiants est valide.
  7. Vérifier que les symboles présent soient valides et qu'il n'y ai qu'un seul joueur.
  8. convertir les espaces en 0;
  9. Vérifier que la map n'est pas trop grande. 
