@@ -6,16 +6,19 @@
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 15:29:24 by rficht            #+#    #+#             */
-/*   Updated: 2023/07/30 17:15:29 by rficht           ###   ########.fr       */
+/*   Updated: 2023/07/31 10:45:28 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUBE3D_H
 # define CUBE3D_H
+# define WIN_HEIGHT 600
+# define WIN_WIDTH 800
 
-# include "libft.h"
 # include <stdio.h>
 # include <fcntl.h>
+# include "libft.h"
+# include "libgraph.h"
 
 typedef struct s_texture_pack	t_texture_pack;
 typedef struct s_prog			t_prog;

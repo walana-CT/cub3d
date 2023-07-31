@@ -1,0 +1,13 @@
+a.out*
+*.json
+minishell
+main*
+.DS_Store
+*.o
+objects
+*.swp
+tags
+*.ini
+.vscode/*
+.vscode/settings.json
+*.sh

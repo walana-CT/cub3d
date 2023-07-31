@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libgraph.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
+/*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 15:18:57 by rficht            #+#    #+#             */
-/*   Updated: 2023/07/28 18:42:33 by rficht           ###   ########.fr       */
+/*   Updated: 2023/07/31 10:37:22 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "MLX42.h"
 
-typedef s_color	t_color;
+typedef struct s_color	t_color;
 
 struct s_color
 {
