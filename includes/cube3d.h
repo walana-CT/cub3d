@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
+/*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 15:29:24 by rficht            #+#    #+#             */
-/*   Updated: 2023/07/31 10:45:28 by rficht           ###   ########.fr       */
+/*   Updated: 2023/07/31 15:25:37 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ struct s_texture_pack
 	char	*o;
 };
 
-
 struct s_prog
 {
 	int				height;
@@ -42,6 +41,6 @@ struct s_prog
 	t_color			sky_color;
 };
 
-int	cube2d_parsing(int argc, char *argv[], t_prog *prog);
+int	cube3d_parsing(int argc, char *argv[], t_prog *prog);
 
 #endif

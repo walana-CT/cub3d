@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+         #
+#    By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/17 10:47:24 by rficht            #+#    #+#              #
-#    Updated: 2023/07/30 15:00:06 by rficht           ###   ########.fr        #
+#    Updated: 2023/07/31 10:54:05 by mdjemaa          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,8 +55,9 @@ INCLUDE_DIR = includes
 #---------------#
 #	Sources		#
 #---------------#
-FILES += main.c\
-		parsing.c
+FILES +=	main.c\
+			parsing.c\
+			parsing_infos.c\
 
 SOURCES = $(addprefix $(SRC_DIR)/, $(FILES))
 OBJ= $(addprefix $(OBJ_DIR)/, $(FILES:.c=.o))
