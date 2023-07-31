@@ -6,7 +6,7 @@
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 15:29:24 by rficht            #+#    #+#             */
-/*   Updated: 2023/07/29 15:49:00 by rficht           ###   ########.fr       */
+/*   Updated: 2023/07/30 17:15:29 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ struct s_texture_pack
 struct s_prog
 {
 	int				height;
-	int				lenght;
+	int				width;
 	char			**map;
 	t_texture_pack	textures;
 	t_color			ground_color;

@@ -6,7 +6,7 @@
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 11:28:09 by rficht            #+#    #+#             */
-/*   Updated: 2023/07/29 15:47:43 by rficht           ###   ########.fr       */
+/*   Updated: 2023/07/31 10:08:55 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,13 @@ int	check_info(t_prog *prog)
  * adds '\0' so it is safer to explore :
  * 
  * 
- *    111ooo
- *    101ooo
- * 111101ooo
+ *    111o
+ *    101o
+ * 111101o
  * 10000111o
  * 10000001o
  * 11111111o
+ * NULL
  * 
  * will become
  * 
@@ -59,6 +60,7 @@ int	check_info(t_prog *prog)
  * 10000001o
  * 11111111o
  * ooooooooo
+ * NULL
  * 
  * verify if the map is valid (1 player that cant go out)
  * 
