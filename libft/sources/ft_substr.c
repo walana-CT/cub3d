@@ -5,31 +5,37 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/02 16:12:04 by rficht            #+#    #+#             */
-/*   Updated: 2022/11/10 15:23:25 by rficht           ###   ########.fr       */
+/*   Created: 2022/11/04 14:53:52 by mdjemaa           #+#    #+#             */
+/*   Updated: 2023/07/31 10:33:28 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
+#include "libft.h"
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	size_t	str_len;
-	char	*ptr_str;
+	char	*subs;
+	size_t	size;
+	size_t	i;
 
-	if (!s)
+	if (!s || start >= ft_strlen(s))
+	{
+		subs = malloc(1);
+		if (!subs)
+			return (0);
+		subs[0] = 0;
+		return (subs);
+	}
+	size = ft_min(ft_strlen(s) - start, len);
+	subs = malloc(size + 1);
+	if (!subs)
 		return (0);
-	if (start >= ft_strlen(s))
-		str_len = 0;
-	else
-		str_len = (int)ft_strlen(s) - start;
-	if (str_len > len)
-		str_len = len;
-	ptr_str = malloc(str_len + 1);
-	if (!ptr_str)
-		return (0);
-	ptr_str[str_len] = '\0';
-	while (str_len--)
-		ptr_str[str_len] = s[str_len + start];
-	return (ptr_str);
+	i = 0;
+	while (i < size)
+	{
+		subs[i] = s[start + i];
+		i++;
+	}
+	subs[i] = 0;
+	return (subs);
 }

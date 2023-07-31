@@ -5,15 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/07 12:00:39 by rficht            #+#    #+#             */
-/*   Updated: 2022/11/01 16:18:34 by rficht           ###   ########.fr       */
+/*   Created: 2022/10/31 15:19:40 by mdjemaa           #+#    #+#             */
+/*   Updated: 2023/07/31 10:33:28 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
+#include "libft.h"
 
 int	ft_isalnum(int c)
 {
-	return ((c >= '0' && c <= '9') || (c >= 'A'
-			&& c <= 'Z') || (c >= 'a' && c <= 'z'));
+	return (ft_isalpha(c) || ft_isdigit(c));
 }

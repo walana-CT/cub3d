@@ -5,28 +5,25 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/08 11:56:41 by rficht            #+#    #+#             */
-/*   Updated: 2022/11/02 10:21:13 by rficht           ###   ########.fr       */
+/*   Created: 2022/11/01 09:58:11 by mdjemaa           #+#    #+#             */
+/*   Updated: 2023/07/31 10:33:28 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
+#include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+int	ft_strncmp(const char *str1, const char *str2, size_t n)
 {
-	unsigned char	*str1;
-	unsigned char	*str2;
+	size_t			i;
+	unsigned char	*s1;
+	unsigned char	*s2;
 
-	str1 = (unsigned char *) s1;
-	str2 = (unsigned char *) s2;
-	if (n == 0)
+	if (!n)
 		return (0);
-	while (*str1 && *str2 && n-- > 1)
-	{
-		if (*str1 - *str2)
-			return (*str1 - *str2);
-		str1++;
-		str2++;
-	}
-	return (*str1 - *str2);
+	i = 0;
+	s1 = (unsigned char *) str1;
+	s2 = (unsigned char *) str2;
+	while (i <= n && (s1[i] || s2[i]) && s1[i] == s2[i])
+		i++;
+	return (s1[i] - s2[i]);
 }

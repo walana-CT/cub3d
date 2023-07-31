@@ -5,21 +5,25 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/31 15:27:57 by rficht            #+#    #+#             */
-/*   Updated: 2022/11/01 16:37:31 by rficht           ###   ########.fr       */
+/*   Created: 2022/10/31 18:23:09 by mdjemaa           #+#    #+#             */
+/*   Updated: 2023/07/31 10:33:28 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
+#include "libft.h"
 
-void	*ft_memset( void *b, int c, size_t count)
+void	*ft_memset(void *b, int c, size_t len)
 {
-	unsigned int	n;
-	char			*str_b;
+	size_t	i;
+	char	*str;
 
-	str_b = (char *) b;
-	n = 0;
-	while (n < count)
-			str_b[n++] = (char) c;
+	i = 0;
+	str = (char *) b;
+	while (i < len)
+	{
+		str[i] = c;
+		i++;
+	}
+	b = str;
 	return (b);
 }

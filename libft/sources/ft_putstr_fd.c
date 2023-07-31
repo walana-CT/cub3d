@@ -5,16 +5,16 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/07 15:28:58 by rficht            #+#    #+#             */
-/*   Updated: 2022/11/07 15:40:01 by rficht           ###   ########.fr       */
+/*   Created: 2022/11/06 19:45:04 by mdjemaa           #+#    #+#             */
+/*   Updated: 2023/07/31 10:33:28 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
+#include "libft.h"
 
-void	ft_putstr_fd(char *s, int fd)
+int	ft_putstr_fd(char *s, int fd)
 {
-	if (!s)
-		return ;
-	write(fd, s, ft_strlen(s));
+	if (s)
+		return (write(fd, s, ft_strlen(s)));
+	return (-1);
 }

@@ -5,26 +5,29 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/02 15:50:31 by rficht            #+#    #+#             */
-/*   Updated: 2022/11/13 17:10:14 by rficht           ###   ########.fr       */
+/*   Created: 2022/11/04 14:14:01 by mdjemaa           #+#    #+#             */
+/*   Updated: 2023/07/31 10:33:28 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
+#include "libft.h"
 
 char	*ft_strdup(const char *s1)
 {
-	char			*dest;
-	unsigned int	n;
+	char	*dup;
+	size_t	i;
+	size_t	len;
 
-	n = 0;
-	while (s1[n])
-		n++;
-	dest = malloc(sizeof(char) * (n + 1));
-	if (dest == 0)
-		return (dest);
-	dest[n] = '\0';
-	while (n-- > 0)
-		dest[n] = s1[n];
-	return (dest);
+	i = 0;
+	len = ft_sstrlen(s1);
+	dup = malloc(len + 1);
+	if (!dup)
+		return (NULL);
+	while (i < len)
+	{
+		dup[i] = s1[i];
+		i++;
+	}
+	dup[i] = 0;
+	return (dup);
 }

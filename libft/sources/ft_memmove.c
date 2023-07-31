@@ -5,31 +5,31 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/31 16:21:31 by rficht            #+#    #+#             */
-/*   Updated: 2022/11/02 08:57:34 by rficht           ###   ########.fr       */
+/*   Created: 2022/10/31 18:34:09 by mdjemaa           #+#    #+#             */
+/*   Updated: 2023/07/31 10:33:28 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
+#include "libft.h"
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	char		*str_dst;
-	const char	*str_src;
+	char		*d;
+	const char	*s;
 
 	if (!dst && !src)
-		return (dst);
-	str_dst = dst;
-	str_src = src;
-	if (str_dst < str_src)
+		return (0);
+	d = dst;
+	s = src;
+	if (d < s)
+	{
 		while (len--)
-			*str_dst++ = *str_src++;
+			*d++ = *s++;
+	}
 	else
 	{
-		str_src = src + (len - 1);
-		str_dst = dst + (len - 1);
 		while (len--)
-			*str_dst-- = *str_src--;
+			d[len] = s[len];
 	}
 	return (dst);
 }

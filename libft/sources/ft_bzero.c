@@ -5,20 +5,24 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/31 15:39:17 by rficht            #+#    #+#             */
-/*   Updated: 2022/11/13 16:58:33 by rficht           ###   ########.fr       */
+/*   Created: 2022/10/31 18:27:44 by mdjemaa           #+#    #+#             */
+/*   Updated: 2023/07/31 10:33:28 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
+#include "libft.h"
 
-void	ft_bzero(void *s, size_t size)
+void	ft_bzero(void *s, size_t n)
 {
-	unsigned int	n;
-	char			*str;
+	size_t	i;
+	char	*str;
 
-	str = s;
-	n = 0;
-	while (n < size)
-		str[n++] = 0;
+	i = 0;
+	str = (char *) s;
+	while (i < n)
+	{
+		str[i] = 0;
+		i++;
+	}
+	s = str;
 }

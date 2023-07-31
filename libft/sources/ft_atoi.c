@@ -5,50 +5,35 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/01 12:49:24 by rficht            #+#    #+#             */
-/*   Updated: 2022/11/12 14:24:43 by rficht           ###   ########.fr       */
+/*   Created: 2022/11/03 16:46:07 by mdjemaa           #+#    #+#             */
+/*   Updated: 2023/07/31 10:33:28 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
+#include "libft.h"
+#include <stdio.h>
 
-static int	ft_get_int(const char *step)
+long long	ft_atoi(const char *str)
 {
-	unsigned int	i;
-	unsigned int	pow;
-	long int		nb;
+	int		signe;
+	size_t	nb;
 
-	i = 0;
-	pow = 1;
+	signe = 1;
 	nb = 0;
-	while (step[i] >= '0' && step[i] <= '9')
-		i++;
-	while (i > 0)
+	if (ft_strequal((char *)str, "-9223372036854775808"))
+		return (-9223372036854775807 -1);
+	while (ft_isspace(*str))
+		str++;
+	if (*str == '-' || *str == '+')
 	{
-		i--;
-		nb += pow * (step[i] - '0');
-		pow *= 10;
+		if (*str == '-')
+			signe = -signe;
+		str++;
 	}
-	return (nb);
-}
-
-int	ft_atoi(const char *str)
-{
-	short int	sign;
-
-	sign = 1;
-	while (*str)
+	while (*str >= '0' && *str <= '9')
 	{
-		if (*str == '+')
-			return (ft_get_int(str + 1));
-		else if (*str == '-' )
-			return (-ft_get_int(str + 1));
-		else if (*str >= '0' && *str <= '9')
-			return (ft_get_int(str));
-		else if ((*str >= 9 && *str <= 13) || *str == ' ')
-			str++;
-		else
-			return (0);
+		nb = nb * 10 + *str - 48;
+		str++;
 	}
-	return (0);
+	return (nb * signe);
 }

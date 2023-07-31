@@ -5,38 +5,27 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/08 17:39:19 by rficht            #+#    #+#             */
-/*   Updated: 2022/11/13 17:20:59 by rficht           ###   ########.fr       */
+/*   Created: 2022/10/31 18:47:25 by mdjemaa           #+#    #+#             */
+/*   Updated: 2023/07/31 10:33:28 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
+#include "libft.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t size)
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	char			*d;
-	const char		*s;
-	size_t			n;
-	size_t			dlen;
+	size_t	i;
+	size_t	j;
 
-	d = dst;
-	s = src;
-	n = size;
-	while (n-- && *d)
-		d++;
-	dlen = d - dst;
-	n = size - dlen;
-	if (n == 0)
-		return (dlen + ft_strlen(src));
-	while (*s != '\0')
+	if ((!dst && !src) || !dstsize)
+		return (ft_sstrlen(src) + dstsize);
+	i = ft_sstrlen(dst);
+	j = 0;
+	while (src[j] && (i + j) < dstsize - 1)
 	{
-		if (n != 1)
-		{
-			*d++ = *s;
-			n--;
-		}
-		s++;
+		dst[i + j] = src[j];
+		j++;
 	}
-	*d = '\0';
-	return (dlen + (s - src));
+	dst[i + j] = 0;
+	return (ft_sstrlen(src) + ft_min(dstsize, i));
 }

@@ -5,85 +5,126 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/03 15:56:26 by rficht            #+#    #+#             */
-/*   Updated: 2022/11/12 15:00:49 by rficht           ###   ########.fr       */
+/*   Created: 2022/09/15 15:14:34 by mdjemaa           #+#    #+#             */
+/*   Updated: 2023/07/31 10:33:28 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
+#include "libft.h"
 
-static void	ft_free_tab(char **tab)
+char	*put_word(int deb, int fin, char *str)
 {
-	unsigned int	n;
+	char	*word;
+	int		size;
+	int		j;
 
-	n = 0;
-	while (tab[n])
-		free(tab[n++]);
-	free(tab);
-}
-
-static int	ft_get_tab_size(char const *s, char c)
-{
-	unsigned int	sep_met;
-	size_t			tab_size;
-
-	tab_size = 1;
-	sep_met = 1;
-	while (*s)
+	j = 0;
+	size = fin - deb;
+	word = (char *) malloc(size + 1);
+	if (!word)
+		return (NULL);
+	while (deb + j < fin)
 	{
-		if (*s != c && sep_met)
-		{
-			tab_size++;
-			sep_met = 0;
-		}			
-		else if (*s == c)
-			sep_met = 1;
-		s++;
+		word[j] = str[deb + j];
+		j++;
 	}
-	return (tab_size);
+	word[j] = 0;
+	return (word);
 }
 
-static int	ft_fill_tab(char const *s, char c, char **tab, size_t tab_size)
+int	how_many_words(char *str, char sep)
 {
-	const char		*ptr_str;
-	unsigned int	i;
-	unsigned int	j;
+	int	i;
+	int	words;
+	int	lettre;
 
+	words = 0;
 	i = 0;
-	while (i < (tab_size - 1))
+	lettre = 0;
+	while (str[i])
 	{
-		j = 0;
-		while (*s == c && *s)
-			s++;
-		ptr_str = s;
-		while (*ptr_str != c && *ptr_str)
-			ptr_str++;
-		tab[i] = ft_calloc(ptr_str - s + 1, sizeof(char));
-		if (!tab[i])
-			return (0);
-		while (s != ptr_str)
-			tab[i][j++] = *s++;
+		if (sep == str[i])
+			lettre = 0;
+		else
+		{
+			if (!lettre)
+				words++;
+			lettre = 1;
+		}
 		i++;
 	}
-	tab[i] = 0;
-	return (1);
+	return (words);
 }
 
-char	**ft_split(char const *s, char c)
+char	**check_wa(char **wa, int *len)
 {
-	char	**tab;
-	size_t	tab_size;
+	int	i;
 
-	if (!s)
-		return (0);
-	tab_size = ft_get_tab_size(s, c);
-	tab = malloc(tab_size * sizeof(char *));
-	if (!tab)
-		return (0);
-	if (!ft_fill_tab(s, c, tab, tab_size))
+	i = 0;
+	while (wa[i] && i <= *len)
 	{
-		ft_free_tab(tab);
-		return (0);
+		if (*wa[i])
+			i++;
 	}
+	if (i == *len)
+		return (wa);
+	else
+	{
+		i = 0;
+		while (i <= *len)
+			free(wa[i++]);
+		free(wa);
+		return (NULL);
+	}
+}
+
+char	**fill_word_arr(char **wa, char *str, char sep)
+{
+	int	i;
+	int	ideb;
+	int	iword;
+
+	i = 1;
+	iword = 0;
+	if (str[0] != sep)
+		ideb = 0;
+	while (str[0] && str[i])
+	{
+		if (str[i] != sep && str[i - 1] == sep)
+			ideb = i;
+		if (str[i] == sep && str[i - 1] != sep)
+			wa[iword++] = put_word(ideb, i, str);
+		if (str[i] != sep && !str[i + 1])
+			wa[iword++] = put_word(ideb, i + 1, str);
+		i++;
+	}
+	wa[iword] = 0;
+	wa = check_wa(wa, &iword);
+	return (wa);
+}
+
+char	**ft_split(char const *str, char sep)
+{
+	int		words_number;
+	char	**tab;
+
+	if (!str)
+		return (0);
+	words_number = how_many_words((char *) str, sep);
+	tab = (char **) malloc((1 + words_number) * sizeof (tab));
+	if (!tab)
+		return (NULL);
+	if (ft_sstrlen(str) == 1)
+	{
+		if (str[0] != sep)
+		{
+			tab[0] = (char *) str;
+			tab[1] = 0;
+		}
+		else
+			tab[0] = 0;
+	}
+	else
+		tab = fill_word_arr(tab, (char *) str, sep);
 	return (tab);
 }

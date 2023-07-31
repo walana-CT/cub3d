@@ -5,25 +5,25 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/08 09:17:50 by rficht            #+#    #+#             */
-/*   Updated: 2022/11/13 17:18:14 by rficht           ###   ########.fr       */
+/*   Created: 2022/10/31 18:41:46 by mdjemaa           #+#    #+#             */
+/*   Updated: 2023/07/31 10:33:28 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
+#include "libft.h"
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	unsigned int	n;
+	size_t	i;
 
-	n = 0;
-	if (dstsize == 0)
+	if (!dst || !src || !dstsize)
 		return (ft_strlen(src));
-	while (src[n] && n < dstsize - 1)
+	i = 0;
+	while (src[i] && i < dstsize - 1)
 	{
-		dst[n] = src[n];
-		n++;
+		dst[i] = src[i];
+		i++;
 	}
-	dst[n] = '\0';
+	dst[i] = 0;
 	return (ft_strlen(src));
 }

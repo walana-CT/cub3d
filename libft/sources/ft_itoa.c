@@ -5,67 +5,62 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/04 11:25:23 by rficht            #+#    #+#             */
-/*   Updated: 2022/12/04 13:54:03 by rficht           ###   ########.fr       */
+/*   Created: 2022/11/06 17:38:43 by mdjemaa           #+#    #+#             */
+/*   Updated: 2023/07/31 10:33:28 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
+#include "libft.h"
 
-static size_t	ft_nbr_len(long int n)
+int	size(int n)
 {
-	long long int	nbr_cpy;
-	long long int	pwr;
-	size_t			str_len;
+	int	i;
 
-	str_len = 2;
-	pwr = 10;
-	nbr_cpy = n;
-	if (nbr_cpy < 0)
+	i = 0;
+	if (!n)
+		i++;
+	while (n)
 	{
-		nbr_cpy *= -1;
-		str_len++;
+		n /= 10;
+		i++;
 	}
-	while (pwr <= nbr_cpy)
-	{
-		pwr *= 10;
-		str_len++;
-	}
-	return (str_len);
+	return (i);
 }
 
-static void	fill_str(long int n, size_t str_len, char *str)
+void	fill(char *ret, long nb, int size, char signe)
 {
-	str[--str_len] = '\0';
-	if (n < 0)
+	int	i;
+
+	i = 0;
+	if (!nb)
+		ret[0] = '0';
+	while (nb)
 	{
-		while (str_len-- > 1)
-		{
-			str[str_len] = '0' - n % (10);
-			n /= (10);
-		}
-		str[str_len] = '-';
+		ret[size - 1 + signe - i] = nb % 10 + '0';
+		nb /= 10;
+		i++;
 	}
-	else
-	{
-		while (str_len-- > 1)
-		{
-			str[str_len] = '0' + n % (10);
-			n /= (10);
-		}
-		str[str_len] = '0' + n % (10);
-	}
+	if (signe)
+		ret[0] = '-';
+	ret[size + signe] = 0;
 }
 
-char	*ft_itoa(long int n)
+char	*ft_itoa(int n)
 {
-	size_t		str_len;
-	char		*str;
+	long	nb;
+	char	signe;
+	char	*ret;
 
-	str_len = ft_nbr_len(n);
-	str = malloc(str_len);
-	if (!str)
-		return (0);
-	fill_str(n, str_len, str);
-	return (str);
+	nb = n;
+	signe = 0;
+	if (nb < 0)
+	{
+		signe = 1;
+		nb = -nb;
+	}
+	ret = (char *) malloc(1 + signe + size(nb));
+	if (!ret)
+		return (NULL);
+	fill(ret, nb, size(nb), signe);
+	return (ret);
 }

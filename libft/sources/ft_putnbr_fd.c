@@ -5,28 +5,26 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/07 15:41:52 by rficht            #+#    #+#             */
-/*   Updated: 2022/11/11 11:58:04 by rficht           ###   ########.fr       */
+/*   Created: 2022/11/06 19:51:53 by mdjemaa           #+#    #+#             */
+/*   Updated: 2023/07/31 10:33:28 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
+#include "libft.h"
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	if (n == -2147483648)
+	long	nb;
+	char	c;
+
+	nb = n;
+	if (nb < 0)
 	{
-		write(fd, "-2147483648", 11);
+		write(fd, "-", 1);
+		nb = -nb;
 	}
-	else
-	{
-		if (n < 0)
-		{
-			ft_putchar_fd('-', fd);
-			n *= -1;
-		}
-		if (n > 9)
-			ft_putnbr_fd(n / 10, fd);
-		ft_putchar_fd((n % 10) + '0', fd);
-	}
+	if (nb / 10)
+		ft_putnbr_fd(nb / 10, fd);
+	c = nb % 10 + '0';
+	write(fd, &c, 1);
 }

@@ -5,33 +5,35 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/13 14:50:29 by rficht            #+#    #+#             */
-/*   Updated: 2022/11/13 16:56:16 by rficht           ###   ########.fr       */
+/*   Created: 2022/11/08 15:08:03 by mdjemaa           #+#    #+#             */
+/*   Updated: 2023/07/31 10:33:28 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
+#include "libft.h"
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list	*new_lst;
-	t_list	*add_lst;
-	void	*new_content;
+	t_list	*liste;
+	t_list	*elem;
+	void	*tmp;
 
 	if (!lst || !f || !del)
-		return (0);
-	new_lst = 0;
+		return (NULL);
+	liste = NULL;
 	while (lst)
 	{
-		new_content = f(lst -> content);
-		add_lst = ft_lstnew(new_content);
-		if (!add_lst)
+		tmp = f(lst->content);
+		elem = ft_lstnew(tmp);
+		if (!elem)
 		{
-			ft_lstclear(&new_lst, del);
-			free(new_content);
+			free(tmp);
+			ft_lstclear(&liste, del);
+			return (NULL);
 		}
-		ft_lstadd_back(&new_lst, add_lst);
-		lst = lst -> next;
+		else
+			ft_lstadd_back(&liste, elem);
+		lst = lst->next;
 	}
-	return (new_lst);
+	return (liste);
 }

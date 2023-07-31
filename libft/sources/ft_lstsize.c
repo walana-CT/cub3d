@@ -5,24 +5,22 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/08 11:56:13 by rficht            #+#    #+#             */
-/*   Updated: 2022/11/08 15:15:11 by rficht           ###   ########.fr       */
+/*   Created: 2022/11/08 09:30:36 by mdjemaa           #+#    #+#             */
+/*   Updated: 2023/07/31 10:33:28 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
+#include "libft.h"
 
 int	ft_lstsize(t_list *lst)
 {
-	int	n;
+	int	i;
 
-	if (!lst)
-		return (0);
-	n = 1;
-	while (lst -> next)
+	i = 0;
+	while (lst)
 	{
-		lst = lst -> next;
-		n++;
+		i++;
+		lst = lst->next;
 	}
-	return (n);
+	return (i);
 }

@@ -5,27 +5,24 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/07 15:22:48 by rficht            #+#    #+#             */
-/*   Updated: 2022/11/14 09:57:09 by rficht           ###   ########.fr       */
+/*   Created: 2022/11/06 19:24:04 by mdjemaa           #+#    #+#             */
+/*   Updated: 2023/07/31 10:33:28 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
+#include "libft.h"
 
 void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	unsigned int	n;
-	char			*str;
+	int	i;
 
-	str = s;
-	if (!s || !f)
-		return ;
-	n = 0;
-	while (*s)
+	i = 0;
+	if (s)
 	{
-		f(n, s);
-		n++;
-		s++;
+		while (s[i])
+		{
+			f(i, &s[i]);
+			i++;
+		}
 	}
-	s = str;
 }

@@ -5,26 +5,20 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/08 12:10:00 by rficht            #+#    #+#             */
-/*   Updated: 2022/11/08 13:48:06 by rficht           ###   ########.fr       */
+/*   Created: 2022/11/08 09:39:55 by mdjemaa           #+#    #+#             */
+/*   Updated: 2023/07/31 10:33:28 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
+#include "libft.h"
 
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	t_list	*last_lst;
-
-	if (!new || !lst)
-		return ;
-	if (!*lst)
+	if (lst)
 	{
-		*lst = new;
-		return ;
+		if (*lst)
+			ft_lstlast(*lst)->next = new;
+		else
+			*lst = new;
 	}
-	last_lst = *lst;
-	while (last_lst -> next)
-		last_lst = last_lst -> next;
-	last_lst -> next = new;
 }

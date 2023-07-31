@@ -6,7 +6,7 @@
 #    By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/17 10:47:24 by rficht            #+#    #+#              #
-#    Updated: 2023/07/30 15:03:46 by rficht           ###   ########.fr        #
+#    Updated: 2023/07/31 10:34:20 by rficht           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,21 +50,26 @@ SRC_DIR = sources
 #---------------#
 #	Sources		#
 #---------------#
-FILES =	ft_abs_int.c\
+FILES =	ft_2lst_utils.c\
+		ft_2lst_utils2.c\
+		ft_abs.c\
 		ft_atoi.c\
 		ft_bzero.c\
 		ft_calloc.c\
-		ft_get_next_line.c\
-		ft_get_next_line_utils.c\
+		ft_freenull.c\
+		ft_freestr.c\
+		ft_freetab.c\
+		ft_inc_value.c\
+		ft_is_in.c\
 		ft_isalnum.c\
 		ft_isalpha.c\
 		ft_isascii.c\
 		ft_isdigit.c\
-		ft_isnumeric.c\
+		ft_isint.c\
 		ft_isprint.c\
+		ft_isspace.c\
 		ft_itoa.c\
-		ft_itohex.c\
-		ft_itohex_ptr.c\
+		ft_lst_to_strtab.c\
 		ft_lstadd_back.c\
 		ft_lstadd_front.c\
 		ft_lstclear.c\
@@ -74,44 +79,58 @@ FILES =	ft_abs_int.c\
 		ft_lstmap.c\
 		ft_lstnew.c\
 		ft_lstsize.c\
-		ft_max_int.c\
-		ft_memccpy.c\
+		ft_max.c\
 		ft_memchr.c\
 		ft_memcmp.c\
 		ft_memcpy.c\
 		ft_memmove.c\
 		ft_memset.c\
-		ft_percent_read1.c\
-		ft_percent_read2.c\
+		ft_min.c\
 		ft_printf.c\
+		ft_printfutils.c\
+		ft_printstrtab.c\
 		ft_putchar_fd.c\
 		ft_putendl_fd.c\
+		ft_putnbr_base.c\
 		ft_putnbr_fd.c\
 		ft_putstr_fd.c\
+		ft_quotesplit.c\
+		ft_sign.c\
 		ft_split.c\
+		ft_split_by_lst.c\
+		ft_sstrlen.c\
 		ft_strchr.c\
+		ft_strcmp.c\
+		ft_strdelchar.c\
 		ft_strdup.c\
+		ft_strequal.c\
+		ft_strfjoin.c\
+		ft_strhowmany.c\
+		ft_strinsert.c\
+		ft_strisdigit.c\
 		ft_striteri.c\
 		ft_strjoin.c\
+		ft_strlastof.c\
 		ft_strlcat.c\
 		ft_strlcpy.c\
 		ft_strlen.c\
-		ft_strlst_addback.c\
-		ft_strlst_clear.c\
-		ft_strlst_del.c\
-		ft_strlst_len.c\
-		ft_strlst_merge.c\
-		ft_strlst_new.c\
-		ft_strlst_read.c\
+		ft_strmanyjoin.c\
 		ft_strmapi.c\
 		ft_strncmp.c\
-		ft_strndup.c\
 		ft_strnstr.c\
 		ft_strrchr.c\
+		ft_strresize.c\
 		ft_strtrim.c\
+		ft_strtrunc.c\
 		ft_substr.c\
 		ft_tolower.c\
-		ft_toupper.c
+		ft_toupper.c\
+		ft_uitoa.c\
+		ft_where_is.c\
+		get_next_line.c\
+		get_next_line_utils.c
+
+
 
 SOURCES = $(addprefix $(SRC_DIR)/, $(FILES))
 OBJ= $(addprefix $(OBJ_DIR)/, $(FILES:.c=.o))

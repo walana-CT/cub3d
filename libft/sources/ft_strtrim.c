@@ -5,69 +5,32 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/03 10:54:01 by rficht            #+#    #+#             */
-/*   Updated: 2022/11/14 10:04:03 by rficht           ###   ########.fr       */
+/*   Created: 2022/11/04 18:36:54 by mdjemaa           #+#    #+#             */
+/*   Updated: 2023/07/31 10:33:28 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
-
-static int	ft_isinstr(char const c, char const *set)
-{
-	unsigned int	n;
-
-	n = 0;
-	while (set[n])
-	{
-		if (c == set[n++])
-			return (1);
-	}
-	return (0);
-}
-
-static unsigned int	ft_find_start(char const *s1, char const *set)
-{
-	int	n;
-
-	n = 0;
-	while (ft_isinstr(s1[n], set))
-		n++;
-	return (n);
-}
-
-static unsigned int	ft_find_end(char const *s1, char const *set)
-{
-	int	n;
-
-	n = (int)ft_strlen(s1) - 1;
-	if (n > 0)
-	{
-		while (ft_isinstr(s1[n], set))
-			n--;
-	}
-	return (n);
-}
+#include "libft.h"
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	char			*str_trim;
-	int				trim_end;
-	int				trim_start;
-	unsigned int	n;
+	int		i;
+	int		j;
+	int		len;
+	char	*trimmed;
 
-	n = 0;
+	if (!set || !ft_strlen(set))
+		return (ft_strdup(s1));
 	if (!s1)
 		return (0);
-	trim_end = ft_find_end(s1, set);
-	trim_start = ft_find_start(s1, set);
-	if (trim_start > trim_end)
-			str_trim = malloc(sizeof(char));
-	else
-		str_trim = malloc((trim_end - trim_start + 2) * sizeof(char));
-	if (!str_trim)
-		return (0);
-	while (trim_start <= trim_end)
-		str_trim[n++] = s1[trim_start++];
-	str_trim[n] = '\0';
-	return (str_trim);
+	len = ft_strlen(s1);
+	i = 0;
+	j = 0;
+	while (s1[i] && ft_is_in(s1[i], set) != -1)
+		i++;
+	while (len > j && ft_is_in(s1[len - 1 - j], set) != -1)
+		j++;
+	len -= (i + j);
+	trimmed = ft_substr(s1, i, len);
+	return (trimmed);
 }

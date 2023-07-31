@@ -5,17 +5,18 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/07 15:31:55 by rficht            #+#    #+#             */
-/*   Updated: 2022/11/07 15:40:17 by rficht           ###   ########.fr       */
+/*   Created: 2022/11/06 19:48:22 by mdjemaa           #+#    #+#             */
+/*   Updated: 2023/07/31 10:33:28 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
+#include "libft.h"
 
 void	ft_putendl_fd(char *s, int fd)
 {
-	if (!s)
-		return ;
-	write(fd, s, ft_strlen(s));
-	write(fd, "\n", 1);
+	if (s)
+	{
+		write(fd, s, ft_strlen(s));
+		write(fd, "\n", 1);
+	}		
 }

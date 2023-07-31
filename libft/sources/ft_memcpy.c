@@ -5,23 +5,31 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/31 15:43:09 by rficht            #+#    #+#             */
-/*   Updated: 2022/11/13 17:03:41 by rficht           ###   ########.fr       */
+/*   Created: 2022/10/31 18:30:21 by mdjemaa           #+#    #+#             */
+/*   Updated: 2023/07/31 10:33:28 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
+#include "libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t size)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	char			*str_dst;
-	const char		*str_src;
+	void			*dst0;
+	size_t			i;
+	unsigned char	*tmpdst;
+	unsigned char	*tmpsrc;
 
-	if (!dst && !src)
-		return (dst);
-	str_dst = dst;
-	str_src = src;
-	while (size--)
-		*str_dst++ = *str_src++;
-	return (dst);
+	i = 0;
+	dst0 = dst;
+	if (!src && !dst && n)
+		return (dst0);
+	tmpdst = (unsigned char *) dst;
+	tmpsrc = (unsigned char *) src;
+	while (i < n)
+	{
+		tmpdst[i] = tmpsrc[i];
+		i++;
+	}
+	dst = tmpdst;
+	return (dst0);
 }

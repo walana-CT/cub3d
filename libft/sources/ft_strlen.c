@@ -5,21 +5,19 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/06 14:57:09 by rficht            #+#    #+#             */
-/*   Updated: 2022/12/12 15:45:32 by rficht           ###   ########.fr       */
+/*   Created: 2022/10/31 18:16:10 by mdjemaa           #+#    #+#             */
+/*   Updated: 2023/07/31 10:33:28 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
+#include "libft.h"
 
 size_t	ft_strlen(const char *s)
 {
-	int	n;
+	size_t	i;
 
-	if (!s)
-		return (0);
-	n = 0;
-	while (s[n])
-		n++;
-	return (n);
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
 }

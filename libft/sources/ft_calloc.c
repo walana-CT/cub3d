@@ -5,23 +5,23 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/02 15:28:07 by rficht            #+#    #+#             */
-/*   Updated: 2022/11/13 17:00:00 by rficht           ###   ########.fr       */
+/*   Created: 2022/11/03 16:55:04 by mdjemaa           #+#    #+#             */
+/*   Updated: 2023/07/31 10:33:28 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
+#include "libft.h"
 
-void	*ft_calloc(size_t count, size_t size)
+void	*ft_calloc( size_t count, size_t size )
 {
-	char		*ptr_calloc;
-	int			n;
+	unsigned char	*str;
+	size_t			t_size;
 
-	ptr_calloc = malloc(count * size);
-	if (!ptr_calloc)
+	t_size = count * size;
+	str = malloc(t_size);
+	if (!str)
 		return (0);
-	n = count * size;
-	while (n--)
-		ptr_calloc[n] = 0;
-	return ((void *)ptr_calloc);
+	while (t_size--)
+		str[t_size] = 0;
+	return (str);
 }
