@@ -6,7 +6,7 @@
 #    By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/17 10:47:24 by rficht            #+#    #+#              #
-#    Updated: 2023/07/30 15:04:08 by rficht           ###   ########.fr        #
+#    Updated: 2023/08/01 10:31:50 by rficht           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,14 +32,16 @@ SHELL = /bin/sh
 NAME = libgraph.a
 
 #--- LIBS ---#
+LIBS = -lglfw -L "/Users/rficht/.brew/opt/glfw/lib/" -lft -L libft
+LIBMLX = MLX42/build/libmlx42.a
 #--- Includes ---#
-INCLUDES = -I ../includes
+INCLUDES = -I ../MLX42/include -I ../includes
 
 # Compil flags
 FLAGS = -Wall -Wextra -Werror
 
 # General compilation flags
-CFLAG = $(FLAGS)  $(INCLUDES) #-fsanitize=address
+CFLAG = $(FLAGS) $(INCLUDES) #-fsanitize=address
  
 # Linking compilation flags
 GFLAG = -g3

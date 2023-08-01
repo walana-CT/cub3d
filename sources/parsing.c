@@ -6,11 +6,11 @@
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 11:28:09 by rficht            #+#    #+#             */
-/*   Updated: 2023/07/31 10:08:55 by rficht           ###   ########.fr       */
+/*   Updated: 2023/08/01 10:38:40 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
 
 
 
@@ -20,10 +20,10 @@
  * - If invalid indentifier -> stop + error
  * - if map or list ends -> stops
 */
-int	extract_infos(t_list **map_lst, t_prog *t_prog)
+/*int	extract_infos(t_list **map_lst, t_prog *t_prog)
 {
 	return (0);
-}
+}*/
 
 
 /**
@@ -31,10 +31,10 @@ int	extract_infos(t_list **map_lst, t_prog *t_prog)
  * try to open textures to see if theu are valid
  * 
 */
-int	check_info(t_prog *prog)
+/*int	check_info(t_prog *prog)
 {
 	return(0);
-}
+}*/
 
 
 /**
@@ -65,10 +65,10 @@ int	check_info(t_prog *prog)
  * verify if the map is valid (1 player that cant go out)
  * 
 */
-int	check_map(t_prog *prog)
+/*int	check_map(t_prog *prog)
 {
 	return(0);
-}
+}*/
 
 
 void	ft_putlst(t_list **lst)
@@ -158,27 +158,14 @@ int	cube2d_parsing(int argc, char *argv[], t_prog *prog)
 	//int extract_infos(map_lst, prog);
 
 
-
-	if (extract_map(map_lst, prog))
+	if (get_map(map_lst, prog))
 	{
 		ft_lstclear(map_lst, free);
 		return (1);
 	}
-	check_info(prog);
-	check_map(prog);
 	return (0);
 }
 
-/**
- * extract map line of list and put them in char array
- * if invalide char -> stop + error
- * if empty line or list end -> stop
- * free list.
- * if no map return error
- */
-static int	**extract_map(t_list **map_lst, t_prog *prog)
-{
-	return (0);
-}
+
 
 

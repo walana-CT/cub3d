@@ -6,7 +6,7 @@
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 12:41:35 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/07/31 10:26:58 by rficht           ###   ########.fr       */
+/*   Updated: 2023/08/01 10:35:58 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ char	*gnl_free(char **s1, char *s2)
 	return (NULL);
 }
 
-char	*get_next_line(int fd)
+char	*ft_get_next_line(int fd)
 {
 	static char	*line = NULL;
 	char		buf[BUFFER_SIZE + 1];
