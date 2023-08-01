@@ -6,7 +6,7 @@
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 15:29:24 by rficht            #+#    #+#             */
-/*   Updated: 2023/08/01 10:38:25 by rficht           ###   ########.fr       */
+/*   Updated: 2023/08/01 10:42:46 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ struct s_texture_pack
 	char	*e;
 	char	*o;
 };
-
 
 struct s_prog
 {

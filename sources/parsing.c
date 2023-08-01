@@ -6,7 +6,7 @@
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 11:28:09 by rficht            #+#    #+#             */
-/*   Updated: 2023/08/01 10:38:40 by rficht           ###   ########.fr       */
+/*   Updated: 2023/08/01 10:43:10 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@
 	return(0);
 }*/
 
-
 void	ft_putlst(t_list **lst)
 {
 	t_list	*lst_read;
@@ -86,21 +85,6 @@ void	ft_putlst(t_list **lst)
 		printf("%s\n", lst_read->content);
 		lst_read = lst_read->next;
 	}	
-}
-
-int	invalid_name(char *arg)
-{
-	int	n;
-
-	n = -1;
-	while (arg[++n])
-	{
-		if (arg[n] == '.' && arg[n + 1] == 'c'
-			&& arg[n + 2] == 'b' && arg[n + 3] == 'b'
-			&& !arg[n + 4])
-			return (TRUE);
-	}
-	return (FALSE);
 }
 
 static int	ft_file_to_lst(char *file, t_list **map_lst)
@@ -126,46 +110,47 @@ static int	ft_file_to_lst(char *file, t_list **map_lst)
 	return (0);
 }
 
-int	cube2d_parsing(int argc, char *argv[], t_prog *prog)
+int	cube3d_parsing(int argc, char *argv[], t_prog *prog)
 {
-	t_list	**map_lst;
-	(void)	prog;
+	t_list	**file_lst;
 
+	(void) prog;
 	printf("%d , %s\n", argc, *argv);
-	if (argc != 1)
+	file_lst = ft_calloc(1, sizeof(t_list *));
+	if (!file_lst)
+		return (1);
+	if (ft_file_to_lst(*argv, file_lst))
 	{
-		printf("cub2d require 1 argument (map path)\n");
-		return (1);
+		ft_lstclear(file_lst, free);
+		return (perror("cub2d: ft_file_to_lst: "), 1);
 	}
-
-	if (invalid_name(*argv))
-	{
-		printf("invalid file name (must end by .cub)\n");
-		return (1);
-	}
-
-	map_lst = ft_calloc(1, sizeof(t_list *));
-	if (!map_lst)
-		return (1);
-
-	if (ft_file_to_lst(*argv, map_lst))
-	{
-		ft_lstclear(map_lst, free);
-		perror("cub2d: ft_file_to_lst: ");
-		return (1);
-	}
+<<<<<<< HEAD
 	ft_putlst(map_lst);
 	//int extract_infos(map_lst, prog);
 
 
 	if (get_map(map_lst, prog))
+=======
+	ft_putlst(file_lst); // ca fait quoi ca ?
+	if (get_infos(file_lst, prog))
+		return (ft_lstclear(file_lst, free), 1);
+	if (extract_map(file_lst, prog))
+>>>>>>> 4abcd91885eb0436b48c6236b64d6de1856708f0
 	{
-		ft_lstclear(map_lst, free);
+		ft_lstclear(file_lst, free);
 		return (1);
 	}
+<<<<<<< HEAD
 	return (0);
 }
 
 
 
 
+=======
+	check_map(prog);
+	ft_lstclear(file_lst, free);
+	free(file_lst);
+	return (0);
+}
+>>>>>>> 4abcd91885eb0436b48c6236b64d6de1856708f0
