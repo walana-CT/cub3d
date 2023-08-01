@@ -6,13 +6,13 @@
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 15:04:26 by rficht            #+#    #+#             */
-/*   Updated: 2023/08/01 10:43:17 by rficht           ###   ########.fr       */
+/*   Updated: 2023/08/01 10:46:31 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	cube3d_init(t_prog *prog)
+int	cub3d_init(t_prog *prog)
 {
 	prog->map = NULL;
 	prog->height = WIN_HEIGHT;
@@ -49,8 +49,8 @@ int	main(int argc, char *argv[])
 	t_prog	prog;
 
 	check_invalid_args(argc, argv);
-	cube3d_init(&prog);
-	cube3d_parsing(--argc, ++argv, &prog);
+	cub3d_init(&prog);
+	cub3d_parsing(--argc, ++argv, &prog);
 	//cube3d_instanciate2d(&prog);
 	return (0);
 }

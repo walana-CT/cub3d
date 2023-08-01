@@ -6,7 +6,7 @@
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 15:29:24 by rficht            #+#    #+#             */
-/*   Updated: 2023/08/01 10:42:46 by rficht           ###   ########.fr       */
+/*   Updated: 2023/08/01 10:46:15 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ struct s_prog
 };
 
 //parsing
-int	cube2d_parsing(int argc, char *argv[], t_prog *prog);
+int	cub3d_parsing(int argc, char *argv[], t_prog *prog);
 int	**get_map(t_list **map_lst, t_prog *prog);
 
 #endif
