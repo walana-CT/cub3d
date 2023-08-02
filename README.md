@@ -34,7 +34,6 @@ Johnny contre les nazis
  2. Afficher les murs (distance = hauteur * portion de texture).
 
 
-
 ## Bonus
 
  - collisions

@@ -6,7 +6,7 @@
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 11:28:09 by rficht            #+#    #+#             */
-/*   Updated: 2023/08/01 15:07:46 by rficht           ###   ########.fr       */
+/*   Updated: 2023/08/02 10:15:18 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,16 +73,18 @@
 void	ft_putlst(t_list **lst)
 {
 	t_list	*lst_read;
+	char	*str;
 
 	if (!lst)
 	{
-		printf("lst is does not exist\n");
+		printf("lst does not exist\n");
 		return ;
 	}
 	lst_read = *lst;
 	while (lst_read)
 	{
-		printf("%s", lst_read->content);
+		str = lst_read->content;
+		printf("%s", str);
 		lst_read = lst_read->next;
 	}	
 }
@@ -99,12 +101,15 @@ static int	ft_file_to_lst(char *file, t_list **map_lst)
 	str = ft_get_next_line(fd);
 	while (str)
 	{
+		printf("fftl: %s", str);
 		new_elem = ft_lstnew((void *)str);
 		if (!new_elem)
 			return (1);
 		ft_lstadd_back(map_lst, new_elem);
+		printf("new elem: %s", new_elem->content);
 		str = ft_get_next_line(fd);
 	}
+	printf("\n");
 	if (close(fd))
 		return (1);
 	return (0);
@@ -114,21 +119,20 @@ int	cub3d_parsing(int argc, char *argv[], t_prog *prog)
 {
 	t_list	**file_lst;
 
-	(void) prog;
 	printf("%d , %s\n", argc, *argv);
 	file_lst = ft_calloc(1, sizeof(t_list *));
 	if (!file_lst)
 		return (1);
 	if (ft_file_to_lst(*argv, file_lst))
 	{
-		ft_lstclear(file_lst, free);
+		ft_lstdel(file_lst, free);
 		return (perror("cub2d: ft_file_to_lst: "), 1);
 	}
 	ft_putlst(file_lst);
 	//int extract_infos(map_lst, prog);
 	if (get_map(file_lst, prog))
 	{
-		ft_lstclear(file_lst, free);
+		ft_lstdel(file_lst, free);
 		return (1);
 	}
 	return (0);

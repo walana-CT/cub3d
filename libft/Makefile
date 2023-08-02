@@ -6,7 +6,7 @@
 #    By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/17 10:47:24 by rficht            #+#    #+#              #
-#    Updated: 2023/08/01 15:20:25 by rficht           ###   ########.fr        #
+#    Updated: 2023/08/02 09:43:52 by rficht           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,6 +73,7 @@ FILES =	ft_2lst_utils.c\
 		ft_lstadd_back.c\
 		ft_lstadd_front.c\
 		ft_lstclear.c\
+		ft_lstdel.c\
 		ft_lstdelone.c\
 		ft_lstdeltop.c\
 		ft_lstiter.c\

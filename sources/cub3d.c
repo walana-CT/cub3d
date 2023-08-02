@@ -6,7 +6,7 @@
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 15:04:26 by rficht            #+#    #+#             */
-/*   Updated: 2023/08/01 15:12:44 by rficht           ###   ########.fr       */
+/*   Updated: 2023/08/02 09:22:04 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	cub3d_init(t_prog *prog)
 	prog->map = NULL;
 	prog->height = WIN_HEIGHT;
 	prog->width = WIN_WIDTH;
+	prog->map_x = 0;
+	prog->map_y = 0;
 	return (0);
 }
 
