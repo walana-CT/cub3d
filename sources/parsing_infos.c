@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_infos.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 11:31:37 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/07/31 15:38:50 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/08/01 15:04:17 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
 
 // Map description starts when a line begins with either '1' or ' ' char
 int	is_map_desc(char *str)

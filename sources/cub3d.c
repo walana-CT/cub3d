@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 15:04:26 by rficht            #+#    #+#             */
-/*   Updated: 2023/07/31 15:40:07 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/08/01 15:12:44 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
 
-int	cube3d_init(t_prog *prog)
+int	cub3d_init(t_prog *prog)
 {
 	prog->map = NULL;
 	prog->textures.e = NULL;
@@ -41,11 +41,16 @@ int	invalid_name(char *arg)
 
 void	check_invalid_args(int argc, char *argv[])
 {
-	if (argc != 1 || invalid_name(*argv))
+	if (argc != 2)
 	{
 		ft_putstr_fd("usage : ./cub3d [map.cub]\n", 2);
 		exit(1);
 	}
+	else if (invalid_name(*argv))
+	{
+		printf("cub3d: can only read .cub files\n");
+		exit(1);	
+	}	
 }
 
 int	main(int argc, char *argv[])
@@ -53,8 +58,8 @@ int	main(int argc, char *argv[])
 	t_prog	prog;
 
 	check_invalid_args(argc, argv);
-	cube3d_init(&prog);
-	cube3d_parsing(--argc, ++argv, &prog);
+	cub3d_init(&prog);
+	cub3d_parsing(--argc, ++argv, &prog);
 	//cube3d_instanciate2d(&prog);
 	return (0);
 }

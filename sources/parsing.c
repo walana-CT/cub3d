@@ -3,14 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 11:28:09 by rficht            #+#    #+#             */
-/*   Updated: 2023/07/31 15:38:50 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/08/01 15:07:46 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
+
+
+
+/**
+ * run trough list :
+ * - If valid indentifier -> extraction
+ * - If invalid indentifier -> stop + error
+ * - if map or list ends -> stops
+*/
+/*int	extract_infos(t_list **map_lst, t_prog *t_prog)
+{
+	return (0);
+}*/
+
+
+/**
+ * check if all the needed infos are present (textures + colors)
+ * try to open textures to see if theu are valid
+ * 
+*/
+/*int	check_info(t_prog *prog)
+{
+	return(0);
+}*/
+
 
 /**
  * verify if the map size is ok (not too big)
@@ -40,10 +65,10 @@
  * verify if the map is valid (1 player that cant go out)
  * 
 */
-int	check_map(t_prog *prog)
+/*int	check_map(t_prog *prog)
 {
-	return (0);
-}
+	return(0);
+}*/
 
 void	ft_putlst(t_list **lst)
 {
@@ -57,7 +82,7 @@ void	ft_putlst(t_list **lst)
 	lst_read = *lst;
 	while (lst_read)
 	{
-		printf("%s\n", lst_read->content);
+		printf("%s", lst_read->content);
 		lst_read = lst_read->next;
 	}	
 }
@@ -85,7 +110,7 @@ static int	ft_file_to_lst(char *file, t_list **map_lst)
 	return (0);
 }
 
-int	cube3d_parsing(int argc, char *argv[], t_prog *prog)
+int	cub3d_parsing(int argc, char *argv[], t_prog *prog)
 {
 	t_list	**file_lst;
 
@@ -99,16 +124,16 @@ int	cube3d_parsing(int argc, char *argv[], t_prog *prog)
 		ft_lstclear(file_lst, free);
 		return (perror("cub2d: ft_file_to_lst: "), 1);
 	}
-	ft_putlst(file_lst); // ca fait quoi ca ?
-	if (get_infos(file_lst, prog))
-		return (ft_lstclear(file_lst, free), 1);
-	if (extract_map(file_lst, prog))
+	ft_putlst(file_lst);
+	//int extract_infos(map_lst, prog);
+	if (get_map(file_lst, prog))
 	{
 		ft_lstclear(file_lst, free);
 		return (1);
 	}
-	check_map(prog);
-	ft_lstclear(file_lst, free);
-	free(file_lst);
 	return (0);
 }
+
+
+
+

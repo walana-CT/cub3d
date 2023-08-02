@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+         #
+#    By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/17 10:47:24 by rficht            #+#    #+#              #
-#    Updated: 2023/07/31 10:54:05 by mdjemaa          ###   ########.fr        #
+#    Updated: 2023/08/01 15:28:10 by rficht           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,9 +55,10 @@ INCLUDE_DIR = includes
 #---------------#
 #	Sources		#
 #---------------#
-FILES +=	main.c\
-			parsing.c\
-			parsing_infos.c\
+FILES += cub3d.c\
+		parsing_map.c\
+		parsing.c
+
 
 SOURCES = $(addprefix $(SRC_DIR)/, $(FILES))
 OBJ= $(addprefix $(OBJ_DIR)/, $(FILES:.c=.o))
@@ -69,9 +70,7 @@ CC = cc
 # main rule called by default
 all: libs $(NAME)
 
-libs: $(LIBFT)
-
-$(LIBFT):
+libs:
 	@$(MAKE) -C ./libft
 
 # rule for compile .c -> .o

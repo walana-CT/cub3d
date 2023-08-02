@@ -6,7 +6,7 @@
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 13:56:20 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/07/31 10:32:31 by rficht           ###   ########.fr       */
+/*   Updated: 2023/08/01 15:21:17 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,11 @@
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1024
+# endif
+
+# ifndef BOOL
+#  define TRUE	1
+#  define FALSE	0
 # endif
 
 typedef struct s_list	t_list;
@@ -124,6 +129,7 @@ void		ft_lstadd_back(t_list **lst, t_list *new);
 void		ft_lstadd_front(t_list **lst, t_list *new);
 void		ft_lstclear(t_list **lst, void (*del)(void *));
 void		ft_lstdelone(t_list *lst, void (*del)(void *));
+void		ft_lstdeltop(t_list **lst, void (*del)(void *));
 void		ft_lstiter(t_list *lst, void (*f)(void *));
 t_list		*ft_lstlast(t_list *lst);
 t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
@@ -150,7 +156,7 @@ int			ft_ptoa(unsigned long n);
 int			idsize(unsigned int n);
 
 //get_next_line
-char		*get_next_line(int fd);
+char		*ft_get_next_line(int fd);
 int			where_is_nl(char *s);
 char		*gnl_cat(char **line, char *buf);
 char		*gnl_line(char **line, int lu);
