@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_max.c                                           :+:      :+:    :+:   */
+/*   ft_lstdeltop.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/04 15:32:11 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/08/01 15:29:44 by rficht           ###   ########.fr       */
+/*   Created: 2023/08/01 15:14:36 by rficht            #+#    #+#             */
+/*   Updated: 2023/08/01 15:29:23 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_max(size_t a, size_t b)
+void	ft_lstdeltop(t_list **lst, void (*del)(void *))
 {
-	if (a > b)
-		return (a);
-	else
-		return (b);
+	t_list	*temp;
+
+	if (lst && *lst)
+	{
+		temp = *lst;
+		*lst = temp->next;
+		ft_lstdelone(temp, del);
+	}
 }

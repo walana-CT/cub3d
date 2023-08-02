@@ -6,7 +6,7 @@
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 15:04:26 by rficht            #+#    #+#             */
-/*   Updated: 2023/08/01 10:46:31 by rficht           ###   ########.fr       */
+/*   Updated: 2023/08/01 15:12:44 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,16 @@ int	invalid_name(char *arg)
 
 void	check_invalid_args(int argc, char *argv[])
 {
-	if (argc != 1 || invalid_name(*argv))
+	if (argc != 2)
 	{
-		printf("usage : ./cub3d [map.cub]\n");
+		printf("cub3d: 1 argument is asked\n");
 		exit(1);
 	}
+	else if (invalid_name(*argv))
+	{
+		printf("cub3d: can only read .cub files\n");
+		exit(1);	
+	}	
 }
 
 int	main(int argc, char *argv[])

@@ -6,7 +6,7 @@
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 11:28:09 by rficht            #+#    #+#             */
-/*   Updated: 2023/08/01 10:47:27 by rficht           ###   ########.fr       */
+/*   Updated: 2023/08/01 15:07:46 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,8 +126,6 @@ int	cub3d_parsing(int argc, char *argv[], t_prog *prog)
 	}
 	ft_putlst(file_lst);
 	//int extract_infos(map_lst, prog);
-
-
 	if (get_map(file_lst, prog))
 	{
 		ft_lstclear(file_lst, free);

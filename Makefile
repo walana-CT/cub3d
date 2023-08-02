@@ -6,7 +6,7 @@
 #    By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/17 10:47:24 by rficht            #+#    #+#              #
-#    Updated: 2023/08/01 10:43:17 by rficht           ###   ########.fr        #
+#    Updated: 2023/08/01 15:28:10 by rficht           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,9 +70,7 @@ CC = cc
 # main rule called by default
 all: libs $(NAME)
 
-libs: $(LIBFT)
-
-$(LIBFT):
+libs:
 	@$(MAKE) -C ./libft
 
 # rule for compile .c -> .o
