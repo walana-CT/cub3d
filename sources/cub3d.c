@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
+/*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 15:04:26 by rficht            #+#    #+#             */
-/*   Updated: 2023/08/02 09:22:04 by rficht           ###   ########.fr       */
+/*   Updated: 2023/08/02 11:34:43 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 int	cub3d_init(t_prog *prog)
 {
 	prog->map = NULL;
+	prog->c_color.fullcolor = NULL;
+	prog->f_color.fullcolor = NULL;
 	prog->textures.e = NULL;
 	prog->textures.n = NULL;
 	prog->textures.s = NULL;
@@ -51,8 +53,8 @@ void	check_invalid_args(int argc, char *argv[])
 	else if (invalid_name(*argv))
 	{
 		printf("cub3d: can only read .cub files\n");
-		exit(1);	
-	}	
+		exit(1);
+	}
 }
 
 int	main(int argc, char *argv[])

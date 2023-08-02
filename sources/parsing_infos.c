@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_infos.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
+/*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 11:31:37 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/08/01 15:04:17 by rficht           ###   ########.fr       */
+/*   Updated: 2023/08/02 11:50:23 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@ int	get_desc(char *str, t_prog *prog)
 	if (!str || *str == "\n")
 		return (0);
 	if (ft_strnstr(str, "NO ", 3))
-		return (fill_texture(&(prog->textures.n), str + 3));
+		return (load_texture(&(prog->textures.n), str + 3));
 	if (ft_strnstr(str, "SO ", 3))
-		return (fill_texture(&(prog->textures.s), str + 3));
+		return (load_texture(&(prog->textures.s), str + 3));
 	if (ft_strnstr(str, "EA ", 3))
-		return (fill_texture(&(prog->textures.e), str + 3));
+		return (load_texture(&(prog->textures.e), str + 3));
 	if (ft_strnstr(str, "WE ", 3))
-		return (fill_texture(&(prog->textures.o), str + 3));
+		return (load_texture(&(prog->textures.o), str + 3));
 	if (ft_strnstr(str, "C ", 2))
 		return (fill_color(&(prog->c_color.fullcolor), str + 1));
 	if (ft_strnstr(str, "F ", 2))
@@ -41,27 +41,28 @@ int	get_desc(char *str, t_prog *prog)
 
 }
 
+int	load_texture(mlx_texture_t **texture, char *file)
+{
+	return (0);
+}
+
 /**
  * runs trough list :
  * - If valid indentifier -> extraction
  * - If invalid indentifier -> stop + error
  * - if map or list ends -> stops
 */
-int	get_infos(t_list **o_file, t_prog *prog)
+int	get_infos(t_list **file, t_prog *prog)
 {
-	t_list file;
-
-	file = **o_file;
-	while(file)
+	while (*file)
 	{
-		if (is_map_desc((char *) file.content))
-			break;
-		if (get_desc((char *) file.content, prog))
+		if (is_map_desc((*file)->content))
+			break ;
+		if (get_desc((*file)->content, prog))
 			return (ft_putstr_fd(EF_BADDESC, 2), 1);
-		ft_lstdelone(*o_file, free);
-		file = **o_file;
+		ft_lstdelone(file, free);
 	}
-	return (check_info(prog));
+	return (check_info(*prog));
 }
 
 /**

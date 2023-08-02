@@ -4,6 +4,7 @@ minishell
 main*
 .DS_Store
 *.o
+*.a
 objects
 *.swp
 tags

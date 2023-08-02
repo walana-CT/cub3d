@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
+/*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 15:29:24 by rficht            #+#    #+#             */
-/*   Updated: 2023/08/02 09:21:20 by rficht           ###   ########.fr       */
+/*   Updated: 2023/08/02 11:52:03 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # define EF_BADDESC "Error in file description\n"
 # define EF_MISS "Missing data\n"
 
+# define MAP_SYMBOLES "01NSEO"
+
 # include <stdio.h>
 # include <fcntl.h>
 # include "libft.h"
@@ -27,14 +29,12 @@ typedef struct s_prog			t_prog;
 typedef struct s_color			t_color;
 typedef struct s_texture_pack	t_texture_pack;
 
-# define MAP_SYMBOLES "01NSEO"
-
 struct s_texture_pack
 {
-	char	*n;
-	char	*s;
-	char	*e;
-	char	*o;
+	mlx_texture_t	*n;
+	mlx_texture_t	*s;
+	mlx_texture_t	*e;
+	mlx_texture_t	*o;
 };
 
 struct s_color
@@ -48,6 +48,7 @@ struct s_color
 
 struct s_prog
 {
+	int				err;
 	int				height;
 	int				width;
 	char			**map;
