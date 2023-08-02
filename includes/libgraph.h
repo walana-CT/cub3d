@@ -15,17 +15,4 @@
 
 //# include "MLX42.h"
 
-typedef struct s_color	t_color;
-
-struct s_color
-{
-	unsigned char	r;
-	unsigned char	g;
-	unsigned char	b;
-	unsigned char	a;
-};
-
-
-
-
 #endif

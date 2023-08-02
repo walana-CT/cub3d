@@ -15,6 +15,10 @@
 int	cub3d_init(t_prog *prog)
 {
 	prog->map = NULL;
+	prog->textures.e = NULL;
+	prog->textures.n = NULL;
+	prog->textures.s = NULL;
+	prog->textures.o = NULL;
 	prog->height = WIN_HEIGHT;
 	prog->width = WIN_WIDTH;
 	prog->map_x = 0;
@@ -41,7 +45,7 @@ void	check_invalid_args(int argc, char *argv[])
 {
 	if (argc != 2)
 	{
-		printf("cub3d: 1 argument is asked\n");
+		ft_putstr_fd("usage : ./cub3d [map.cub]\n", 2);
 		exit(1);
 	}
 	else if (invalid_name(*argv))
