@@ -11,3 +11,4 @@ tags
 .vscode/*
 .vscode/settings.json
 *.sh
+*.pdf
