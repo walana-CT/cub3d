@@ -6,7 +6,7 @@
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 15:29:24 by rficht            #+#    #+#             */
-/*   Updated: 2023/08/02 09:21:20 by rficht           ###   ########.fr       */
+/*   Updated: 2023/08/02 11:22:13 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 typedef struct s_prog			t_prog;
 typedef struct s_color			t_color;
 typedef struct s_texture_pack	t_texture_pack;
+typedef struct s_vect2d			t_vect3d;
 
 # define MAP_SYMBOLES "01NSEO"
 
@@ -58,7 +59,13 @@ struct s_prog
 	t_color			c_color;
 };
 
-int	cube3d_parsing(int argc, char *argv[], t_prog *prog);
+struct s_vect2d
+{
+	int	x;
+	int	y;
+};
+
+int	cub3d_parsing(int argc, char *argv[], t_prog *prog);
 int	get_infos(t_list **file_lst, t_prog *prog);
 int	get_map(t_list **map_lst, t_prog *prog);
 

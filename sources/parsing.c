@@ -6,7 +6,7 @@
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 11:28:09 by rficht            #+#    #+#             */
-/*   Updated: 2023/08/02 10:15:18 by rficht           ###   ########.fr       */
+/*   Updated: 2023/08/02 11:32:11 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@
 void	ft_putlst(t_list **lst)
 {
 	t_list	*lst_read;
-	char	*str;
 
 	if (!lst)
 	{
@@ -83,8 +82,7 @@ void	ft_putlst(t_list **lst)
 	lst_read = *lst;
 	while (lst_read)
 	{
-		str = lst_read->content;
-		printf("%s", str);
+		printf("%s", lst_read->content);
 		lst_read = lst_read->next;
 	}	
 }
@@ -101,15 +99,12 @@ static int	ft_file_to_lst(char *file, t_list **map_lst)
 	str = ft_get_next_line(fd);
 	while (str)
 	{
-		printf("fftl: %s", str);
 		new_elem = ft_lstnew((void *)str);
 		if (!new_elem)
 			return (1);
 		ft_lstadd_back(map_lst, new_elem);
-		printf("new elem: %s", new_elem->content);
 		str = ft_get_next_line(fd);
 	}
-	printf("\n");
 	if (close(fd))
 		return (1);
 	return (0);

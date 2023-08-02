@@ -6,7 +6,7 @@
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 10:53:40 by rficht            #+#    #+#             */
-/*   Updated: 2023/08/02 09:52:49 by rficht           ###   ########.fr       */
+/*   Updated: 2023/08/02 11:46:03 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,12 @@ int	is_map_line(char *str)
 
 int	invalid_line(char *str)
 {
+	printf("invalid line called on %s\n", str);
 	if (!str)
 		return  (FALSE);
 	while (*str)
 	{
+		printf("looping on %c\n", *str);		
 		if (*str && ft_is_in(*str, MAP_SYMBOLES) && *str != '\n' && *str != ' ')
 			return (TRUE);
 		str++;
@@ -53,8 +55,7 @@ int	invalid_line(char *str)
 	return (FALSE);
 }
 
-
-void	replace_spaces(char **map)
+void	clean_map(char **map)
 {
 	int	i;
 	int	j;
@@ -63,14 +64,18 @@ void	replace_spaces(char **map)
 	j = 0;
 	while (map[i])
 	{
-		while (map[i][j] == ' ')
-			map[i][j++] = '0';
+		while (map[i][j])
+		{
+			if (map[i][j] == '\n'|| map[i][j] == ' ')
+				map[i][j] = '0';
+			j++;
+		}
 		j = 0;
 		i++;
 	}
 }
 
-int	check_map(t_list **file_lst, t_prog *prog)
+int	read_map(t_list **file_lst, t_prog *prog)
 {
 	t_list	*cur_elem;
 
@@ -81,7 +86,7 @@ int	check_map(t_list **file_lst, t_prog *prog)
 		prog->map_x = ft_max(prog->map_x, ft_strlen(cur_elem->content));
 		cur_elem = cur_elem->next;
 	}
-	if (invalid_line(cur_elem->content))
+	if (cur_elem && invalid_line(cur_elem->content))
 		return (1);
 	return (0);
 }
@@ -120,18 +125,17 @@ int create_map(t_list **file_lst, t_prog *prog)
  */
 int	get_map(t_list **file_lst, t_prog *prog)
 {
-	t_list	*cur_elem;
-
 	if (!file_lst)
 		return (1);
-	cur_elem = *file_lst;
-	if (check_map(file_lst, prog))
+	if (read_map(file_lst, prog))
 		return (1);
 	printf("\nmap dimensions :	x : %d	y : %d\n", prog->map_x, prog->map_y);
 	if (create_map(file_lst, prog))
 		return (1);
 	ft_lstdel(file_lst, free);
-	replace_spaces(prog->map);
+	clean_map(prog->map);
 	ft_printstrtab(prog->map, "prog map");
+	if (is_map_closed(prog->map))
+		return (1);
 	return (0);
 }
