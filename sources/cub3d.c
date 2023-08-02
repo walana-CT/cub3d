@@ -6,7 +6,7 @@
 /*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 15:04:26 by rficht            #+#    #+#             */
-/*   Updated: 2023/08/02 11:52:50 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/08/02 16:26:21 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ int	cub3d_init(t_prog *prog)
 	prog->map = NULL;
 	prog->c_color.fullcolor = NULL;
 	prog->f_color.fullcolor = NULL;
-	prog->textures.e = NULL;
-	prog->textures.n = NULL;
-	prog->textures.s = NULL;
-	prog->textures.o = NULL;
+	// prog->textures.e = NULL;
+	// prog->textures.n = NULL;
+	// prog->textures.s = NULL;
+	// prog->textures.w = NULL;
 	prog->height = WIN_HEIGHT;
 	prog->width = WIN_WIDTH;
 	prog->map_x = 0;
@@ -28,31 +28,27 @@ int	cub3d_init(t_prog *prog)
 	return (0);
 }
 
-int	invalid_name(char *arg)
+int	is_valid_ext(char *file, char *ext)
 {
-	int	n;
-
-	n = -1;
-	while (arg[++n])
-	{
-		if (arg[n] == '.' && arg[n + 1] == 'c'
-			&& arg[n + 2] == 'u' && arg[n + 3] == 'b'
-			&& !arg[n + 4])
-			return (TRUE);
-	}
+	while (*file)
+		file++;
+	if (!ft_strcmp(file - ft_sstrlen(ext), ext))
+		return (TRUE);
 	return (FALSE);
+}
+
+int	err_msg(char *msg, int err)
+{
+	ft_putstr_fd(EF_ERR, 2);
+	ft_putstr_fd(msg, 2);
+	return (err);
 }
 
 void	check_invalid_args(int argc, char *argv[])
 {
-	if (argc != 2)
+	if (argc != 2 || !is_valid_ext(*(++argv), ".cub"))
 	{
 		ft_putstr_fd("usage : ./cub3d [map.cub]\n", 2);
-		exit(1);
-	}
-	else if (invalid_name(*argv))
-	{
-		printf("cub3d: can only read .cub files\n");
 		exit(1);
 	}
 }

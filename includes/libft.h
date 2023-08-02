@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
+/*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 13:56:20 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/08/02 11:21:08 by rficht           ###   ########.fr       */
+/*   Updated: 2023/08/02 16:52:09 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ int			ft_isalpha(int c);
 int			ft_isalnum(int c);
 int			ft_isdigit(int c);
 int			ft_isint(long n);
+int			ft_isuchar(long n);
 int			ft_isspace(int c);
 int			ft_isascii(int c);
 int			ft_isprint(int c);

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+         #
+#    By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/17 10:47:24 by rficht            #+#    #+#              #
-#    Updated: 2023/08/02 09:43:52 by rficht           ###   ########.fr        #
+#    Updated: 2023/08/02 16:50:44 by mdjemaa          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,6 +69,7 @@ FILES =	ft_2lst_utils.c\
 		ft_isprint.c\
 		ft_isspace.c\
 		ft_itoa.c\
+		ft_isuchar.c\
 		ft_lst_to_strtab.c\
 		ft_lstadd_back.c\
 		ft_lstadd_front.c\

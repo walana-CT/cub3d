@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
+/*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 11:28:09 by rficht            #+#    #+#             */
-/*   Updated: 2023/08/02 11:32:11 by rficht           ###   ########.fr       */
+/*   Updated: 2023/08/02 16:29:09 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,18 +121,14 @@ int	cub3d_parsing(int argc, char *argv[], t_prog *prog)
 	if (ft_file_to_lst(*argv, file_lst))
 	{
 		ft_lstdel(file_lst, free);
-		return (perror("cub2d: ft_file_to_lst: "), 1);
+		return (perror("cub3d: ft_file_to_lst: "), 1);
 	}
-	ft_putlst(file_lst);
-	//int extract_infos(map_lst, prog);
-	if (get_map(file_lst, prog))
+//	ft_putlst(file_lst);
+	if (!get_infos(file_lst, prog) && !get_map(file_lst, prog))
 	{
 		ft_lstdel(file_lst, free);
-		return (1);
+		return (0);
 	}
-	return (0);
+	ft_lstdel(file_lst, free);
+	return (1);
 }
-
-
-
-

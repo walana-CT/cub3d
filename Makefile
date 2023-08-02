@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+         #
+#    By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/17 10:47:24 by rficht            #+#    #+#              #
-#    Updated: 2023/08/01 15:28:10 by rficht           ###   ########.fr        #
+#    Updated: 2023/08/02 16:30:08 by mdjemaa          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,12 +32,12 @@ SHELL = /bin/sh
 NAME = cub3d
 
 #--- LIBS ---#
-LIBS = -lglfw -L "/Users/rficht/.brew/opt/glfw/lib/" -lft -L libft
+LIBS = -lglfw -L "/Users/mdjemaa/.brew/opt/glfw/lib/" -lft -L libft
 LIBMLX = MLX42/build/libmlx42.a
 LIBFT = libft/libft.a
 
 #--- Includes ---#
-INCLUDES = -I MLX42/include -I includes
+INCLUDES = -I MLX42/include/MLX42 -I includes
 
 # Compil flags
 FLAGS = -Wall -Wextra -Werror
@@ -55,9 +55,10 @@ INCLUDE_DIR = includes
 #---------------#
 #	Sources		#
 #---------------#
-FILES += cub3d.c\
-		parsing_map.c\
-		parsing.c
+FILES += 	cub3d.c\
+			parsing_infos.c\
+			parsing_map.c\
+			parsing.c
 
 
 SOURCES = $(addprefix $(SRC_DIR)/, $(FILES))

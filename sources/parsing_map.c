@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
+/*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 10:53:40 by rficht            #+#    #+#             */
-/*   Updated: 2023/08/02 11:46:03 by rficht           ###   ########.fr       */
+/*   Updated: 2023/08/02 11:58:12 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	is_map_line(char *str)
 
 	empty = TRUE;
 	if (!str)
-		return  (FALSE);
+		return (FALSE);
 	while (*str)
 	{
 		if (ft_is_in(*str, MAP_SYMBOLES))
@@ -44,10 +44,10 @@ int	invalid_line(char *str)
 {
 	printf("invalid line called on %s\n", str);
 	if (!str)
-		return  (FALSE);
+		return (FALSE);
 	while (*str)
 	{
-		printf("looping on %c\n", *str);		
+		printf("looping on %c\n", *str);
 		if (*str && ft_is_in(*str, MAP_SYMBOLES) && *str != '\n' && *str != ' ')
 			return (TRUE);
 		str++;
@@ -66,7 +66,7 @@ void	clean_map(char **map)
 	{
 		while (map[i][j])
 		{
-			if (map[i][j] == '\n'|| map[i][j] == ' ')
+			if (map[i][j] == '\n' || map[i][j] == ' ')
 				map[i][j] = '0';
 			j++;
 		}
@@ -91,7 +91,7 @@ int	read_map(t_list **file_lst, t_prog *prog)
 	return (0);
 }
 
-int create_map(t_list **file_lst, t_prog *prog)
+int	create_map(t_list **file_lst, t_prog *prog)
 {
 	t_list	*cur_elem;
 	int		n;
@@ -135,7 +135,7 @@ int	get_map(t_list **file_lst, t_prog *prog)
 	ft_lstdel(file_lst, free);
 	clean_map(prog->map);
 	ft_printstrtab(prog->map, "prog map");
-	if (is_map_closed(prog->map))
-		return (1);
+	// if (is_map_closed(prog->map))
+	// 	return (1);
 	return (0);
 }
