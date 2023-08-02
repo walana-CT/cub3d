@@ -6,7 +6,7 @@
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 13:56:20 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/08/02 09:42:56 by rficht           ###   ########.fr       */
+/*   Updated: 2023/08/02 11:21:08 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # define RESET "\033[0m"
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1024
+#  define BUFFER_SIZE 1000
 # endif
 
 # ifndef BOOL
