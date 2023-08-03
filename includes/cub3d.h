@@ -6,7 +6,7 @@
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 15:29:24 by rficht            #+#    #+#             */
-/*   Updated: 2023/08/02 11:22:13 by rficht           ###   ########.fr       */
+/*   Updated: 2023/08/03 14:47:16 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 typedef struct s_prog			t_prog;
 typedef struct s_color			t_color;
 typedef struct s_texture_pack	t_texture_pack;
-typedef struct s_vect2d			t_vect3d;
+typedef struct s_vect2d			t_vect2d;
 
 # define MAP_SYMBOLES "01NSEO"
 
