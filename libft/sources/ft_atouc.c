@@ -1,18 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libgraph.h                                         :+:      :+:    :+:   */
+/*   ft_atouc.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/24 15:18:57 by rficht            #+#    #+#             */
-/*   Updated: 2023/08/02 11:53:28 by mdjemaa          ###   ########.fr       */
+/*   Created: 2023/08/03 14:34:06 by mdjemaa           #+#    #+#             */
+/*   Updated: 2023/08/03 15:05:42 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBGRAPH_H
-# define LIBGRAPH_H
+#include "libft.h"
+#include <stdio.h>
 
-# include "MLX42.h"
+int	ft_atouc(const char *str)
+{
+	int	nb;
 
-#endif
+	nb = 0;
+	while (*str)
+	{
+		if (*str >= '0' && *str <= '9' && nb <= 255)
+		{
+			nb = nb * 10 + *str - 48;
+			str++;
+		}
+		else
+			return (-1);
+	}
+	return (nb);
+}

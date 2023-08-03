@@ -1,14 +1,14 @@
 a.out*
 *.json
-minishell
 main*
 .DS_Store
 *.o
+*.a
 objects
 *.swp
-tags
 *.ini
 .vscode/*
 .vscode/settings.json
 *.sh
 *.pdf
+cub3d

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+         #
+#    By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/17 10:47:24 by rficht            #+#    #+#              #
-#    Updated: 2023/08/02 09:43:52 by rficht           ###   ########.fr        #
+#    Updated: 2023/08/03 14:51:20 by mdjemaa          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,6 +54,7 @@ FILES =	ft_2lst_utils.c\
 		ft_2lst_utils2.c\
 		ft_abs.c\
 		ft_atoi.c\
+		ft_atouc.c\
 		ft_bzero.c\
 		ft_calloc.c\
 		ft_freenull.c\
@@ -69,6 +70,7 @@ FILES =	ft_2lst_utils.c\
 		ft_isprint.c\
 		ft_isspace.c\
 		ft_itoa.c\
+		ft_isuchar.c\
 		ft_lst_to_strtab.c\
 		ft_lstadd_back.c\
 		ft_lstadd_front.c\
@@ -122,6 +124,7 @@ FILES =	ft_2lst_utils.c\
 		ft_strnstr.c\
 		ft_strrchr.c\
 		ft_strresize.c\
+		ft_strshortenby.c\
 		ft_strtrim.c\
 		ft_strtrunc.c\
 		ft_substr.c\
