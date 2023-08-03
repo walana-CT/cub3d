@@ -6,7 +6,7 @@
 /*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 10:53:40 by rficht            #+#    #+#             */
-/*   Updated: 2023/08/02 11:58:12 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/08/03 15:17:25 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,7 +132,6 @@ int	get_map(t_list **file_lst, t_prog *prog)
 	printf("\nmap dimensions :	x : %d	y : %d\n", prog->map_x, prog->map_y);
 	if (create_map(file_lst, prog))
 		return (1);
-	ft_lstdel(file_lst, free);
 	clean_map(prog->map);
 	ft_printstrtab(prog->map, "prog map");
 	// if (is_map_closed(prog->map))

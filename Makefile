@@ -6,7 +6,7 @@
 #    By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/17 10:47:24 by rficht            #+#    #+#              #
-#    Updated: 2023/08/02 16:30:08 by mdjemaa          ###   ########.fr        #
+#    Updated: 2023/08/03 15:11:27 by mdjemaa          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,7 @@ INCLUDES = -I MLX42/include/MLX42 -I includes
 FLAGS = -Wall -Wextra -Werror
 
 # General compilation flags
-CFLAG = $(FLAGS)  $(INCLUDES) #-fsanitize=address
+CFLAG = $(FLAGS)  $(INCLUDES) -fsanitize=address
  
 # Linking compilation flags
 GFLAG = $(LIBMLX) -g3

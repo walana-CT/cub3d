@@ -6,7 +6,7 @@
 /*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 13:56:20 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/08/02 16:52:09 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/08/03 14:51:44 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ int			ft_strncmp(const char *s1, const char *s2, size_t n);
 char		*ft_strnstr(const char *haystack, const char *needle, size_t len);
 char		*ft_strrchr(const char *s, int c);
 int			ft_strresize(char **str_ptr, int val);
+void		ft_strshortenby(char *str, int cut);
 char		*ft_strtrim(char const *s1, char const *set);
 int			ft_strtrunc(char **str, int start, int len);
 int			ft_strinsert(char **str1, char *str2, int pos);
@@ -108,6 +109,7 @@ void		*ft_memmove(void *dst, const void *src, size_t len);
 void		*ft_memset(void *b, int c, size_t len);
 
 long long	ft_atoi(const char *str);
+int			ft_atouc(const char *str);
 char		*ft_itoa(int n);
 
 int			ft_printf(const char *base, ...);

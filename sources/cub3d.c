@@ -6,7 +6,7 @@
 /*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 15:04:26 by rficht            #+#    #+#             */
-/*   Updated: 2023/08/02 16:26:21 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/08/03 15:06:53 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,17 @@ int	cub3d_init(t_prog *prog)
 	prog->map = NULL;
 	prog->c_color.fullcolor = NULL;
 	prog->f_color.fullcolor = NULL;
-	// prog->textures.e = NULL;
-	// prog->textures.n = NULL;
-	// prog->textures.s = NULL;
-	// prog->textures.w = NULL;
+	prog->textures.e = NULL;
+	prog->textures.n = NULL;
+	prog->textures.s = NULL;
+	prog->textures.w = NULL;
 	prog->height = WIN_HEIGHT;
 	prog->width = WIN_WIDTH;
 	prog->map_x = 0;
 	prog->map_y = 0;
+	prog->mlx = mlx_init(prog->width, prog->height, "Loup Cailloux", false);
+	if (!prog->mlx)
+		ft_putstr_fd((char *)mlx_strerror(mlx_errno), 2);
 	return (0);
 }
 

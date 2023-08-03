@@ -6,7 +6,7 @@
 /*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 11:31:37 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/08/02 16:54:17 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/08/03 15:37:15 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,19 +34,26 @@ int	get_desc(char *str, t_prog *prog)
 	if (ft_strnstr(str, "WE ", 3))
 		return (load_texture(&(prog->textures.w), str + 3));
 	if (ft_strnstr(str, "C ", 2))
-		return (load_color(&(prog->c_color), str + 2));
+		return (prog->c_color.fullcolor != 0 || \
+			load_color(&(prog->c_color), str + 2));
 	if (ft_strnstr(str, "F ", 2))
-		return (load_color(&(prog->f_color), str + 2));
+		return (prog->f_color.fullcolor != 0 || \
+			load_color(&(prog->f_color), str + 2));
 	return (1);
 }
 
-int	load_texture(mlx_texture_t *texture, char *file)
+int	load_texture(mlx_texture_t **texture, char *file)
 {
-	if (texture)
+	ft_strshortenby(file, 1);
+	if (*texture)
+		return (err_msg(EF_2TEXTURE, 1));
+	*texture = mlx_load_png(file);
+	if (!*texture)
+	{
+		ft_putstr_fd((char *)mlx_strerror(mlx_errno), 2);
 		return (err_msg(EF_WTEXTURE, 1));
-	texture = mlx_load_png(file);
-	if (!texture)
-		return (err_msg(EF_WTEXTURE, 1));
+	}
+	printf("Loaded texture file : %s\n", file);
 	return (0);
 }
 
@@ -56,31 +63,37 @@ int	load_color(t_color *color, char *str)
 	int		i;
 	int		col;
 
-	if (color->fullcolor)
-		return (1);
+	ft_strshortenby(str, 1);
 	color->fullcolor = str;
 	coltab = ft_split(str, ',');
 	if (!coltab)
-		return (1);
+		return (err_msg(EF_COLOR, 1));
 	i = -1;
-	while (i < 3)
+	while (++i < 3)
 	{
-		if (coltab[++i])
+		if (coltab[i])
 		{
-			col = ft_atoi(coltab[i]);
-			if (!ft_isuchar(col))
-				return (1);
+			col = ft_atouc(coltab[i]);
+			if (col == -1 || coltab[3])
+				return (ft_freetab(coltab), err_msg(EF_COLOR, 2));
 			color->col[i] = col;
 		}
 		else
-			return (1);
+			return (ft_freetab(coltab), 1);
 	}
-	return (0);
+	color->col[3] = 255;
+	return (ft_freetab(coltab), 0);
 }
 
+/**
+ * checks if all the needed infos are present (textures + colors)
+ * try to open textures to see if they are valid
+ * try to load textures with mlx ?
+ * 
+*/
 int	check_info(t_prog prog)
 {
-	(void) prog;
+	(void)prog;
 	// if (!complete_data(prog))
 	// 	return (err_msg(EF_MISS, 2));
 	return (0);
@@ -94,20 +107,12 @@ int	check_info(t_prog prog)
 */
 int	get_infos(t_list **file, t_prog *prog)
 {
-	while (*file)
+	while (*file && !is_map_desc((*file)->content))
 	{
-		if (is_map_desc((*file)->content))
-			break ;
 		if (get_desc((*file)->content, prog))
-			return (ft_putstr_fd(EF_BADDESC, 2), 1);
+			return (err_msg(EF_BADDESC, 2));
 		ft_lstdeltop(file, free);
 	}
 	return (check_info(*prog));
 }
 
-/**
- * checks if all the needed infos are present (textures + colors)
- * try to open textures to see if they are valid
- * try to load textures with mlx ?
- * 
-*/
