@@ -6,7 +6,7 @@
 /*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 15:04:26 by rficht            #+#    #+#             */
-/*   Updated: 2023/08/03 15:06:53 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/08/04 14:19:27 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	main(int argc, char *argv[])
 
 	check_invalid_args(argc, argv);
 	cub3d_init(&prog);
-	cub3d_parsing(--argc, ++argv, &prog);
+	c3d_parsing(--argc, ++argv, &prog);
 	//cube3d_instanciate2d(&prog);
 	return (0);
 }

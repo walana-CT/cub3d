@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+         #
+#    By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/17 10:47:24 by rficht            #+#    #+#              #
-#    Updated: 2023/08/04 14:11:41 by rficht           ###   ########.fr        #
+#    Updated: 2023/08/04 14:20:40 by mdjemaa          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,10 +58,9 @@ INCLUDE_DIR = includes
 FILES += 	cub3d.c\
 			parsing_infos_0.c\
 			parsing_infos_1.c\
-			parsing_map.c\
-			parsing_00.c\
-			parsing_01.c
-
+			parsing_map_00.c\
+			parsing_map_01.c\
+			parsing.c\
 
 SOURCES = $(addprefix $(SRC_DIR)/, $(FILES))
 OBJ= $(addprefix $(OBJ_DIR)/, $(FILES:.c=.o))

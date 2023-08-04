@@ -6,7 +6,7 @@
 /*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 14:15:34 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/08/04 14:18:48 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/08/04 14:23:32 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ int			get_infos(t_list **file, t_prog *prog);
 int			load_texture(mlx_texture_t **texture, char *file);
 int			load_color(t_color *color, char *str);
 int			is_map_desc(char *str);
+int			c3d_is_map_closed(t_prog *prog);
 int			check_info(t_prog prog);
 
 #endif

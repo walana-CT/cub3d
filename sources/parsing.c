@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
+/*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 11:28:09 by rficht            #+#    #+#             */
-/*   Updated: 2023/08/04 13:09:35 by rficht           ###   ########.fr       */
+/*   Updated: 2023/08/04 15:26:14 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	c3d_parsing(int argc, char *argv[], t_prog *prog)
 		ft_lstdel(file_lst, free);
 		return (perror("cub3d: ft_file_to_lst: "), 1);
 	}
-	if (get_infos(file_lst, prog) || get_map(file_lst, prog))
+	if (get_infos(file_lst, prog) || c3d_get_map(file_lst, prog))
 		return (ft_lstdel(file_lst, free), 1);
 	return (ft_lstdel(file_lst, free), 0);
 }

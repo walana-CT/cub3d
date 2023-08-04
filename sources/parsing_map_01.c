@@ -3,14 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_map_01.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
+/*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 13:11:04 by rficht            #+#    #+#             */
-/*   Updated: 2023/08/04 13:37:30 by rficht           ###   ########.fr       */
+/*   Updated: 2023/08/04 15:25:29 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+/**
+ * clean map dependencies that tries to replace a char in a given context
+ */
+static void	clean_map_replace_empty(char **map, int i, int j, int inside)
+{
+	if (map[i][j] == '\n' || map[i][j] == ' '
+		|| map[i][j] == '0' ||!map[i][j])
+	{
+		if (inside)
+			map[i][j] = '0';
+		else
+			map[i][j] = ' ';
+	}	
+}
 
 /**
  * @param list containg file. At this point only map should remain
@@ -72,21 +87,6 @@ void	c3d_clean_map(char **map, t_prog *prog)
 }
 
 /**
- * clean map dependencies that tries to replace a char in a given context
- */
-static void	clean_map_replace_empty(char **map, int i, int j, int inside)
-{
-	if (map[i][j] == '\n' || map[i][j] == ' '
-		|| map[i][j] == '0' ||!map[i][j])
-	{
-		if (inside)
-			map[i][j] = '0';
-		else
-			map[i][j] = ' ';
-	}	
-}
-
-/**
  * @param x player pos in x
  * @param y player pos in y
  * @param ymap a map
@@ -118,15 +118,15 @@ int	rec_map_closed(int x, int y, char **map)
  * verify if the map is closed (player cant go out of boundaries)
  * @return TRUE or FALSE
  */
-int	is_map_closed(t_prog *prog)
+int	c3d_is_map_closed(t_prog *prog)
 {
 	t_vect2d	player_pos;
 	char		**map_cpy;
 	int			result;
 
-	player_pos = get_player_pos(prog->map);
+	player_pos = c3d_get_player_pos(prog->map);
 	map_cpy = c3d_map_dup(prog);
 	result = rec_map_closed(player_pos.x, player_pos.y, map_cpy);
-	free_map(map_cpy);
+	c3d_cub_free_map(map_cpy);
 	return (result);
 }
