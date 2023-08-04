@@ -6,7 +6,7 @@
 #    By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/17 10:47:24 by rficht            #+#    #+#              #
-#    Updated: 2023/08/04 13:12:36 by rficht           ###   ########.fr        #
+#    Updated: 2023/08/04 14:11:41 by rficht           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,7 +56,8 @@ INCLUDE_DIR = includes
 #	Sources		#
 #---------------#
 FILES += 	cub3d.c\
-			parsing_infos.c\
+			parsing_infos_0.c\
+			parsing_infos_1.c\
 			parsing_map.c\
 			parsing_00.c\
 			parsing_01.c

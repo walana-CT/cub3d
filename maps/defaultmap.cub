@@ -2,10 +2,9 @@ F 220,100,0
 C 225,200,0
 
 
-
 NO ./maps/textures/ratt.png
-SO ./maps/textures/ratt.png
 WE ./maps/textures/dots.png
+SO ./maps/textures/ratt.png
 EA ./maps/textures/dots.png
 
         1111111111111111111111111

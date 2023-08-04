@@ -1,22 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_infos.c                                    :+:      :+:    :+:   */
+/*   parsing_infos_0.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 11:31:37 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/08/03 15:37:15 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/08/04 13:23:05 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-// Map description starts when a line begins with either '1' or ' ' char
-int	is_map_desc(char *str)
-{
-	return (*str == '1' || *str == ' ');
-}
 
 /**
  * checks if current line is valid then fills in texture or color
@@ -83,20 +77,6 @@ int	load_color(t_color *color, char *str)
 	}
 	color->col[3] = 255;
 	return (ft_freetab(coltab), 0);
-}
-
-/**
- * checks if all the needed infos are present (textures + colors)
- * try to open textures to see if they are valid
- * try to load textures with mlx ?
- * 
-*/
-int	check_info(t_prog prog)
-{
-	(void)prog;
-	// if (!complete_data(prog))
-	// 	return (err_msg(EF_MISS, 2));
-	return (0);
 }
 
 /**
