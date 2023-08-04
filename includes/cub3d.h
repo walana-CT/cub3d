@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/11 15:29:24 by rficht            #+#    #+#             */
-/*   Updated: 2023/08/04 13:52:08 by mdjemaa          ###   ########.fr       */
+/*   Created: 2023/08/04 14:15:34 by mdjemaa           #+#    #+#             */
+/*   Updated: 2023/08/04 14:18:48 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,17 +68,29 @@ struct s_vect2d
 	int	y;
 };
 
-// Parsing
-int	cub3d_parsing(int argc, char *argv[], t_prog *prog);
-int	get_infos(t_list **file_lst, t_prog *prog);
-int	get_map(t_list **map_lst, t_prog *prog);
-int	is_valid_ext(char *file, char *ext);
-int	err_msg(char *msg, int err);
-int	get_infos(t_list **file, t_prog *prog);
-int	load_texture(mlx_texture_t **texture, char *file);
-int	load_color(t_color *color, char *str);
-int	is_map_desc(char *str);
-int	check_info(t_prog prog);
+int			load_texture(mlx_texture_t **texture, char *file);
+int			load_color(t_color *color, char *str);
 
+// Utils
+int			c3d_cub_free_map(char **map);
+void		c3d_bool_flipflop(int *val);
+int			c3d_create_map(t_list **file_lst, t_prog *prog);
+char		**c3d_map_dup(t_prog *prog);
+t_vect2d	c3d_get_player_pos(char **map);
+int			is_valid_ext(char *file, char *ext);
+int			err_msg(char *msg, int err);
+
+// Parsing
+int			c3d_parsing(int argc, char *argv[], t_prog *prog);
+int			get_infos(t_list **file_lst, t_prog *prog);
+int			c3d_get_map(t_list **map_lst, t_prog *prog);
+void		c3d_clean_map(char **map, t_prog *prog);
+int			is_valid_ext(char *file, char *ext);
+int			err_msg(char *msg, int err);
+int			get_infos(t_list **file, t_prog *prog);
+int			load_texture(mlx_texture_t **texture, char *file);
+int			load_color(t_color *color, char *str);
+int			is_map_desc(char *str);
+int			check_info(t_prog prog);
 
 #endif
