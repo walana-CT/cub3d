@@ -6,7 +6,7 @@
 #    By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/17 10:47:24 by rficht            #+#    #+#              #
-#    Updated: 2023/08/03 15:11:27 by mdjemaa          ###   ########.fr        #
+#    Updated: 2023/08/04 13:23:32 by mdjemaa          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,7 +56,8 @@ INCLUDE_DIR = includes
 #	Sources		#
 #---------------#
 FILES += 	cub3d.c\
-			parsing_infos.c\
+			parsing_infos_0.c\
+			parsing_infos_1.c\
 			parsing_map.c\
 			parsing.c
 

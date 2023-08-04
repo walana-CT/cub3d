@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
+/*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 15:29:24 by rficht            #+#    #+#             */
-/*   Updated: 2023/08/03 16:39:20 by rficht           ###   ########.fr       */
+/*   Updated: 2023/08/04 13:26:18 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # define EF_BADDESC "Bad file description\n"
 # define EF_MISS "Missing data\n"
 # define EF_WTEXTURE "Couldn't load texture\n"
-# define EF_2TEXTURE "Texture allready loaded\n"
+# define EF_2TEXTURE "Texture already loaded\n"
 # define EF_COLOR "Wrong color code. Format is 0~255,0~255,0~255\n"
 
 # define MAP_SYMBOLES "01NSEW"
@@ -68,6 +68,7 @@ struct s_vect2d
 	int	y;
 };
 
+// Parsing
 int	cub3d_parsing(int argc, char *argv[], t_prog *prog);
 int	get_infos(t_list **file_lst, t_prog *prog);
 int	get_map(t_list **map_lst, t_prog *prog);
@@ -76,5 +77,8 @@ int	err_msg(char *msg, int err);
 int	get_infos(t_list **file, t_prog *prog);
 int	load_texture(mlx_texture_t **texture, char *file);
 int	load_color(t_color *color, char *str);
+int	is_map_desc(char *str);
+int	check_info(t_prog prog);
+
 
 #endif
