@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_infos_1.c                                  :+:      :+:    :+:   */
+/*   parsing_infos_01.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 13:08:39 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/08/04 13:23:05 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/08/04 15:54:54 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ int	check_info(t_prog prog)
 {
 	if (!color_ok(prog.c_color) || !color_ok(prog.f_color))
 		return (err_msg(EF_MISS, 2));
+	ft_printf("Loaded floor color \t%s\n", prog.f_color.fullcolor);
+	ft_printf("Loaded ceiling color \t%s\n", prog.c_color.fullcolor);
 	if (!prog.textures.n || !prog.textures.s || \
 		!prog.textures.e ||!prog.textures.w)
 		return (err_msg(EF_MISS, 2));

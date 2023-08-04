@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_infos_0.c                                  :+:      :+:    :+:   */
+/*   parsing_infos_00.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 11:31:37 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/08/04 14:14:18 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/08/04 15:54:53 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,15 @@ int	load_texture(mlx_texture_t **texture, char *file)
 		ft_putstr_fd((char *)mlx_strerror(mlx_errno), 2);
 		return (err_msg(EF_WTEXTURE, 1));
 	}
-	printf("Loaded texture file : %s\n", file);
+	printf("Loaded texture file\t%s\n", file);
 	return (0);
+}
+
+void	null_str_if_empty(char **str)
+{
+	ft_strshortenby(*str, 1);
+	if (!ft_strcmp(*str, ""))
+		*str = NULL;
 }
 
 int	load_color(t_color *color, char *str)
@@ -57,24 +64,17 @@ int	load_color(t_color *color, char *str)
 	int		i;
 	int		col;
 
-//	printf("fc _%s_\n", str);
-	ft_strshortenby(str, 2);
-//	printf("fc _%s_\n", str);
-	color->fullcolor = str;
-//	printf("fc _%s_\n", color->fullcolor);
+	null_str_if_empty(&str);
+	color->fullcolor = ft_strdup(str);
 	coltab = ft_split(str, ',');
 	if (!coltab)
 		return (err_msg(EF_COLOR, 1));
-//	ft_printstrtab(coltab, "coltab");
 	i = -1;
 	while (++i < 3)
 	{
 		col = ft_atouc(coltab[i]);
 		if (col == -1)
-		{
-//			puts("pouet");
 			return (ft_freetab(coltab), err_msg(EF_COLOR, 2));
-		}
 		color->col[i] = col;
 	}
 	if (coltab[3])

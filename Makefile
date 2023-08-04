@@ -6,7 +6,7 @@
 #    By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/17 10:47:24 by rficht            #+#    #+#              #
-#    Updated: 2023/08/04 14:20:40 by mdjemaa          ###   ########.fr        #
+#    Updated: 2023/08/04 15:36:43 by mdjemaa          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,11 +56,12 @@ INCLUDE_DIR = includes
 #	Sources		#
 #---------------#
 FILES += 	cub3d.c\
-			parsing_infos_0.c\
-			parsing_infos_1.c\
+			parsing_infos_00.c\
+			parsing_infos_01.c\
 			parsing_map_00.c\
 			parsing_map_01.c\
 			parsing.c\
+			utils_00.c\
 
 SOURCES = $(addprefix $(SRC_DIR)/, $(FILES))
 OBJ= $(addprefix $(OBJ_DIR)/, $(FILES:.c=.o))
