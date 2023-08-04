@@ -1,11 +1,15 @@
-F 220,100,0
-C 225,200,0
-
-
+F 100,200,255
 NO ./maps/textures/ratt.png
+
+
+
+
 WE ./maps/textures/dots.png
 SO ./maps/textures/ratt.png
 EA ./maps/textures/dots.png
+
+C 100,200,255
+
 
         1111111111111111111111111
         1000000000110000000000001
@@ -21,3 +25,4 @@ EA ./maps/textures/dots.png
 11000001110101011111011110N0111
 11110111 1110101 101111010001
 11111111 1111111 111111111111
+

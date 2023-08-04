@@ -6,7 +6,7 @@
 /*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 11:31:37 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/08/04 13:23:05 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/08/04 14:14:18 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,24 +57,28 @@ int	load_color(t_color *color, char *str)
 	int		i;
 	int		col;
 
-	ft_strshortenby(str, 1);
+//	printf("fc _%s_\n", str);
+	ft_strshortenby(str, 2);
+//	printf("fc _%s_\n", str);
 	color->fullcolor = str;
+//	printf("fc _%s_\n", color->fullcolor);
 	coltab = ft_split(str, ',');
 	if (!coltab)
 		return (err_msg(EF_COLOR, 1));
+//	ft_printstrtab(coltab, "coltab");
 	i = -1;
 	while (++i < 3)
 	{
-		if (coltab[i])
+		col = ft_atouc(coltab[i]);
+		if (col == -1)
 		{
-			col = ft_atouc(coltab[i]);
-			if (col == -1 || coltab[3])
-				return (ft_freetab(coltab), err_msg(EF_COLOR, 2));
-			color->col[i] = col;
+//			puts("pouet");
+			return (ft_freetab(coltab), err_msg(EF_COLOR, 2));
 		}
-		else
-			return (ft_freetab(coltab), 1);
+		color->col[i] = col;
 	}
+	if (coltab[3])
+		return (ft_freetab(coltab), 1);
 	color->col[3] = 255;
 	return (ft_freetab(coltab), 0);
 }
@@ -95,4 +99,3 @@ int	get_infos(t_list **file, t_prog *prog)
 	}
 	return (check_info(*prog));
 }
-

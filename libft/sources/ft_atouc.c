@@ -6,12 +6,11 @@
 /*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 14:34:06 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/08/03 15:05:42 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/08/04 13:50:35 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 int	ft_atouc(const char *str)
 {

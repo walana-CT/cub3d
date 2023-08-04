@@ -6,7 +6,7 @@
 /*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 15:29:24 by rficht            #+#    #+#             */
-/*   Updated: 2023/08/04 13:26:18 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/08/04 13:52:08 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # define EF_MISS "Missing data\n"
 # define EF_WTEXTURE "Couldn't load texture\n"
 # define EF_2TEXTURE "Texture already loaded\n"
-# define EF_COLOR "Wrong color code. Format is 0~255,0~255,0~255\n"
+# define EF_COLOR "Wrong color code. Format is [0-255],[0-255],[0-255]\n"
 
 # define MAP_SYMBOLES "01NSEW"
 
