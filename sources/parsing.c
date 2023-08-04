@@ -6,7 +6,7 @@
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 11:28:09 by rficht            #+#    #+#             */
-/*   Updated: 2023/08/03 16:39:20 by rficht           ###   ########.fr       */
+/*   Updated: 2023/08/04 13:09:35 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static int	ft_file_to_lst(char *file, t_list **map_lst)
 	return (0);
 }
 
-int	cub3d_parsing(int argc, char *argv[], t_prog *prog)
+int	c3d_parsing(int argc, char *argv[], t_prog *prog)
 {
 	t_list	**file_lst;
 

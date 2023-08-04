@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+         #
+#    By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/17 10:47:24 by rficht            #+#    #+#              #
-#    Updated: 2023/08/03 15:11:27 by mdjemaa          ###   ########.fr        #
+#    Updated: 2023/08/04 13:12:36 by rficht           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ SHELL = /bin/sh
 NAME = cub3d
 
 #--- LIBS ---#
-LIBS = -lglfw -L "/Users/mdjemaa/.brew/opt/glfw/lib/" -lft -L libft
+LIBS = -lglfw -L "/Users/$(USER)/.brew/opt/glfw/lib/" -lft -L libft
 LIBMLX = MLX42/build/libmlx42.a
 LIBFT = libft/libft.a
 
@@ -58,7 +58,8 @@ INCLUDE_DIR = includes
 FILES += 	cub3d.c\
 			parsing_infos.c\
 			parsing_map.c\
-			parsing.c
+			parsing_00.c\
+			parsing_01.c
 
 
 SOURCES = $(addprefix $(SRC_DIR)/, $(FILES))

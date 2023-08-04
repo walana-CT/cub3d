@@ -6,7 +6,7 @@
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 15:29:24 by rficht            #+#    #+#             */
-/*   Updated: 2023/08/03 16:39:20 by rficht           ###   ########.fr       */
+/*   Updated: 2023/08/04 14:11:04 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,13 +68,22 @@ struct s_vect2d
 	int	y;
 };
 
-int	cub3d_parsing(int argc, char *argv[], t_prog *prog);
-int	get_infos(t_list **file_lst, t_prog *prog);
-int	get_map(t_list **map_lst, t_prog *prog);
-int	is_valid_ext(char *file, char *ext);
-int	err_msg(char *msg, int err);
-int	get_infos(t_list **file, t_prog *prog);
-int	load_texture(mlx_texture_t **texture, char *file);
-int	load_color(t_color *color, char *str);
+int			is_valid_ext(char *file, char *ext);
+int			err_msg(char *msg, int err);
+int			get_infos(t_list **file, t_prog *prog);
+int			load_texture(mlx_texture_t **texture, char *file);
+int			load_color(t_color *color, char *str);
+
+//utils
+int			c3d_cub_free_map(char **map);
+void		c3d_bool_flipflop(int *val);
+int			c3d_create_map(t_list **file_lst, t_prog *prog);
+char		**c3d_map_dup(t_prog *prog);
+t_vect2d	c3d_get_player_pos(char **map);
+//parsing
+int			c3d_parsing(int argc, char *argv[], t_prog *prog);
+int			get_infos(t_list **file_lst, t_prog *prog);
+int			c3d_get_map(t_list **map_lst, t_prog *prog);
+void		c3d_clean_map(char **map, t_prog *prog)
 
 #endif
