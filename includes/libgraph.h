@@ -6,7 +6,7 @@
 /*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 15:18:57 by rficht            #+#    #+#             */
-/*   Updated: 2023/08/07 11:45:05 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/08/07 11:53:19 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 
 # include "MLX42.h"
 
-typedef struct s_line
+typedef struct s_line	t_line;
+
+struct s_line
 {
 	int	x0;
 	int	x1;
@@ -27,7 +29,7 @@ typedef struct s_line
 	int	incy;
 	int	err;
 	int	e2;
-}	t_line;
+};
 
 
 #endif
