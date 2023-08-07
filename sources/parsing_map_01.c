@@ -6,7 +6,7 @@
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 13:11:04 by rficht            #+#    #+#             */
-/*   Updated: 2023/08/07 11:41:55 by rficht           ###   ########.fr       */
+/*   Updated: 2023/08/07 11:52:51 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ int	c3d_is_map_closed(t_prog *prog)
 	prog->player.pos = c3d_get_player_pos(prog->map);
 	map_cpy = c3d_map_dup(prog);
 	result = rec_map_closed(prog->player.pos.x, prog->player.pos.y, map_cpy);
+	//ft_printstrtab(map_cpy, "map_cpy");
 	c3d_cub_free_map(map_cpy);
 	return (result);
 }
