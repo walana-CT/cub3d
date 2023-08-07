@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_map_00.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
+/*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 10:53:40 by rficht            #+#    #+#             */
-/*   Updated: 2023/08/07 11:49:06 by rficht           ###   ########.fr       */
+/*   Updated: 2023/08/07 11:58:53 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static int	invalid_line(char *str)
 	while (*str)
 	{
 		printf("looping on %c\n", *str);
-		if (*str && ft_is_in(*str, MAP_SYMBOLES) && *str != '\n' && *str != ' ')
+		if (*str && !ft_is_in(*str, MAP_SYMBOLS) && *str != '\n' && *str != ' ')
 			return (TRUE);
 		str++;
 	}
@@ -68,7 +68,7 @@ static int	is_map_line(char *str)
 		return (FALSE);
 	while (*str)
 	{
-		if (ft_is_in(*str, MAP_SYMBOLES))
+		if (ft_is_in(*str, MAP_SYMBOLS))
 			empty = FALSE;
 		else if (*str != '\n' && *str != ' ')
 			return (FALSE);

@@ -6,7 +6,7 @@
 /*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 13:08:39 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/08/04 15:54:54 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/08/07 18:43:42 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,3 @@ int	check_info(t_prog prog)
 		return (err_msg(EF_MISS, 2));
 	return (0);
 }
-
