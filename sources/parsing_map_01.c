@@ -3,29 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_map_01.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 13:11:04 by rficht            #+#    #+#             */
-/*   Updated: 2023/08/04 15:25:29 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/08/07 11:41:55 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-/**
- * clean map dependencies that tries to replace a char in a given context
- */
-static void	clean_map_replace_empty(char **map, int i, int j, int inside)
-{
-	if (map[i][j] == '\n' || map[i][j] == ' '
-		|| map[i][j] == '0' ||!map[i][j])
-	{
-		if (inside)
-			map[i][j] = '0';
-		else
-			map[i][j] = ' ';
-	}	
-}
 
 /**
  * @param list containg file. At this point only map should remain
@@ -66,19 +51,15 @@ void	c3d_clean_map(char **map, t_prog *prog)
 {
 	int	i;
 	int	j;
-	int	inside;
 
-	inside = FALSE;
 	i = 0;
 	j = 0;
 	while (map[i])
 	{
 		while (j < prog->map_x)
 		{
-			if (map[i][j] == '1' &&
-				(map[i][j + 1] == '0' || map[i][j + 1] == ' '))
-				c3d_bool_flipflop(&inside);
-			clean_map_replace_empty(map, i, j, inside);
+			if (map[i][j] == '\n' || !map[i][j])
+				map[i][j] = ' ';
 			j++;
 		}
 		j = 0;
@@ -120,13 +101,12 @@ int	rec_map_closed(int x, int y, char **map)
  */
 int	c3d_is_map_closed(t_prog *prog)
 {
-	t_vect2d	player_pos;
 	char		**map_cpy;
 	int			result;
 
-	player_pos = c3d_get_player_pos(prog->map);
+	prog->player.pos = c3d_get_player_pos(prog->map);
 	map_cpy = c3d_map_dup(prog);
-	result = rec_map_closed(player_pos.x, player_pos.y, map_cpy);
+	result = rec_map_closed(prog->player.pos.x, prog->player.pos.y, map_cpy);
 	c3d_cub_free_map(map_cpy);
 	return (result);
 }
