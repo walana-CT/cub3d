@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 14:15:34 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/08/04 14:23:32 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/08/07 11:33:40 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,23 @@
 # include "libft.h"
 # include "libgraph.h"
 
+typedef struct s_player			t_player;
 typedef struct s_prog			t_prog;
 typedef struct s_color			t_color;
 typedef struct s_texture_pack	t_texture_pack;
 typedef struct s_vect2d			t_vect2d;
+
+struct s_vect2d
+{
+	int	x;
+	int	y;
+};
+
+struct s_player
+{
+	t_vect2d	pos;
+	float		direction;
+};
 
 struct s_texture_pack
 {
@@ -60,12 +73,7 @@ struct s_prog
 	t_texture_pack	textures;
 	t_color			f_color;
 	t_color			c_color;
-};
-
-struct s_vect2d
-{
-	int	x;
-	int	y;
+	t_player		player;
 };
 
 int			load_texture(mlx_texture_t **texture, char *file);
