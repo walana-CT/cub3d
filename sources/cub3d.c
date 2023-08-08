@@ -6,7 +6,7 @@
 /*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 15:04:26 by rficht            #+#    #+#             */
-/*   Updated: 2023/08/07 20:44:56 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/08/08 19:06:58 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,9 @@ void	c3d_run(t_prog *prog)
 {
 	prog->map_h = SCALE * prog->map_y;
 	prog->map_w = SCALE * prog->map_x;
-	prog->img = mlx_new_image(prog->mlx, prog->map_w, prog->map_h);
+	prog->map_img = mlx_new_image(prog->mlx, prog->map_w, prog->map_h);
 	c3d_map(prog);
-	mlx_image_to_window(prog->mlx, prog->img, 0, 0);
+	mlx_image_to_window(prog->mlx, prog->map_img, 0, 0);
 	// mlx_key_hook(prog->mlx, &c3d_keyhook, prog);
 	mlx_loop(prog->mlx);
 	mlx_terminate(prog->mlx);
@@ -69,7 +69,7 @@ int	main(int argc, char *argv[])
 	check_invalid_args(argc, argv);
 	cub3d_init(&prog);
 	if (c3d_parsing(--argc, ++argv, &prog))
-		return (system("leaks cub3d"), 1);
+		return (/*system("leaks cub3d"), */1);
 	c3d_run(&prog);
 	// system("leaks cub3d");
 	return (0);

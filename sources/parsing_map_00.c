@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_map_00.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
+/*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 10:53:40 by rficht            #+#    #+#             */
-/*   Updated: 2023/08/08 14:15:01 by rficht           ###   ########.fr       */
+/*   Updated: 2023/08/08 18:55:46 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,16 +117,13 @@ int	c3d_get_map(t_list **file_lst, t_prog *prog)
 	if (!file_lst)
 		return (1);
 	if (read_map(file_lst, prog))
-		return (1);
+		return (err_msg(EF_WMAP, 1));
 	printf("\nmap dimensions :	x : %d	y : %d\n", prog->map_x, prog->map_y);
 	if (c3d_create_map(file_lst, prog))
-		return (1);
+		return (err_msg(EF_WMAP, 1));
 	c3d_clean_map(prog->map, prog);
 	if (!c3d_is_map_closed(prog))
-	{
-		printf("map is not closed\n");
-		return (1);
-	}
+		return (err_msg(EF_MOPEN, 1));
 	prog->map[prog->player.pos.y][prog->player.pos.x] = '0';
 	ft_printstrtab(prog->map, "prog map");
 	return (0);

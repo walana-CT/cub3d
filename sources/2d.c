@@ -6,7 +6,7 @@
 /*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 10:32:00 by rficht            #+#    #+#             */
-/*   Updated: 2023/08/07 21:04:03 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/08/08 18:50:33 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ void	c3d_map(t_prog *prog)
 		x = -1;
 		while (++x < prog->map_x)
 		{
-			// printf("x  : %d\t| y : %d\t| value : %c\n", x, y, prog->map[y][x]);
 			if (prog->map[y][x] == '1')
 				c3d_drawsquare(*prog, x * SCALE, y * SCALE, WALL);
 			else if (prog->map[y][x] == '0')
