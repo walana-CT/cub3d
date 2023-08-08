@@ -6,7 +6,7 @@
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 10:53:40 by rficht            #+#    #+#             */
-/*   Updated: 2023/08/07 11:49:06 by rficht           ###   ########.fr       */
+/*   Updated: 2023/08/08 11:48:39 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,13 @@ static int	count_player_line(char *str)
  */
 static int	invalid_line(char *str)
 {
-	printf("invalid line called on %s\n", str);
+	//printf("invalid line called on %s\n", str);
 	if (!str)
 		return (FALSE);
 	while (*str)
 	{
-		printf("looping on %c\n", *str);
-		if (*str && ft_is_in(*str, MAP_SYMBOLES) && *str != '\n' && *str != ' ')
+		//printf("looping on %c\n", *str);
+		if (*str && !ft_is_in(*str, MAP_SYMBOLS) && *str != '\n' && *str != ' ')
 			return (TRUE);
 		str++;
 	}
@@ -68,7 +68,7 @@ static int	is_map_line(char *str)
 		return (FALSE);
 	while (*str)
 	{
-		if (ft_is_in(*str, MAP_SYMBOLES))
+		if (ft_is_in(*str, MAP_SYMBOLS))
 			empty = FALSE;
 		else if (*str != '\n' && *str != ' ')
 			return (FALSE);
@@ -131,4 +131,3 @@ int	c3d_get_map(t_list **file_lst, t_prog *prog)
 	ft_printstrtab(prog->map, "prog map");
 	return (0);
 }
-

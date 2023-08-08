@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_infos_01.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 13:08:39 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/08/04 15:54:54 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/08/08 11:49:14 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,3 @@ int	check_info(t_prog prog)
 		return (err_msg(EF_MISS, 2));
 	return (0);
 }
-

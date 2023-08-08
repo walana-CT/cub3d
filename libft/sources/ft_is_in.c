@@ -6,7 +6,7 @@
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 20:26:47 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/07/31 10:33:28 by rficht           ###   ########.fr       */
+/*   Updated: 2023/08/08 11:46:00 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_is_in(const char c, const char *s)
 	size_t	i;
 
 	if (!s || !c)
-		return (-1);
+		return (0);
 	i = 0;
 	while (s[i])
 	{
@@ -25,5 +25,5 @@ int	ft_is_in(const char c, const char *s)
 			return (1);
 		i++;
 	}
-	return (-1);
+	return (0);
 }

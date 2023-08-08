@@ -6,7 +6,7 @@
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 14:15:34 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/08/07 11:33:40 by rficht           ###   ########.fr       */
+/*   Updated: 2023/08/08 11:48:11 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # define EF_2TEXTURE "Texture already loaded\n"
 # define EF_COLOR "Wrong color code. Format is [0-255],[0-255],[0-255]\n"
 
-# define MAP_SYMBOLES "01NSEW"
+# define MAP_SYMBOLS "01NSEW"
 
 # include <stdio.h>
 # include <fcntl.h>
