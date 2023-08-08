@@ -6,7 +6,7 @@
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 14:15:34 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/08/08 11:48:11 by rficht           ###   ########.fr       */
+/*   Updated: 2023/08/08 14:15:19 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 # define CUB3D_H
 # define WIN_HEIGHT 600
 # define WIN_WIDTH 800
+# define SCALE 20
+# define WALL 0xFF0000FF
+# define VOID 0x00FF00FF
+# define WALK 0x0000FFFF
 
 # define EF_ERR "Error\n"
 # define EF_BADDESC "Bad file description\n"
@@ -27,6 +31,7 @@
 # include <stdio.h>
 # include <fcntl.h>
 # include "libft.h"
+# include "MLX42.h"
 # include "libgraph.h"
 
 typedef struct s_player			t_player;
@@ -34,6 +39,21 @@ typedef struct s_prog			t_prog;
 typedef struct s_color			t_color;
 typedef struct s_texture_pack	t_texture_pack;
 typedef struct s_vect2d			t_vect2d;
+typedef struct s_line			t_line;
+
+struct s_line
+{
+	int	x0;
+	int	x1;
+	int	y0;
+	int	y1;
+	int	dx;
+	int	dy;
+	int	incx;
+	int	incy;
+	int	err;
+	int	e2;
+};
 
 struct s_vect2d
 {
@@ -64,12 +84,15 @@ struct s_color
 struct s_prog
 {
 	int				err;
-	int				height;
-	int				width;
+	int				w_height;
+	int				w_width;
 	char			**map;
-	int				map_y;
-	int				map_x;
+	int				map_h;
+	int				map_w;
+	int				map_y; // max ?
+	int				map_x; // max ?
 	mlx_t			*mlx;
+	mlx_image_t		*img;
 	t_texture_pack	textures;
 	t_color			f_color;
 	t_color			c_color;
@@ -101,5 +124,13 @@ int			load_color(t_color *color, char *str);
 int			is_map_desc(char *str);
 int			c3d_is_map_closed(t_prog *prog);
 int			check_info(t_prog prog);
+
+// drawing
+t_line		c3d_create_line(int a, int b, int c, int d);
+void		c3d_draw_line(mlx_image_t *img, t_line line, uint32_t col);
+void		c3d_drawsquare(t_prog prog, int x, int y, uint32_t col);
+
+// main funcs
+void		c3d_map(t_prog *prog);
 
 #endif

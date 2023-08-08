@@ -6,7 +6,7 @@
 /*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 10:55:17 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/08/07 10:56:40 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/08/07 20:52:07 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,25 +38,26 @@ int	c3d_pixelok(mlx_image_t img, t_line line)
 	return (1);
 }
 
-int	c3d_lineok(t_fdf fdf, t_line line)
+int	c3d_lineok(t_prog prog, t_line line)
 {
 	if (line.x0 < 0 && line.x1 < 0)
 		return (0);
-	if (line.x0 > fdf.img_width && line.x1 > fdf.img_width)
+	if (line.x0 > prog.map_w && line.x1 > prog.map_w)
 		return (0);
 	if (line.y0 < 0 && line.y1 < 0)
 		return (0);
-	if (line.y0 > fdf.img_height && line.y1 > fdf.img_height)
+	if (line.y0 > prog.map_y && line.y1 > prog.map_y)
 		return (0);
 	return (1);
 }
 
-void	c3d_draw_line(mlx_image_t *img, t_line line)
+//appeler apres test de lineok
+void	c3d_draw_line(mlx_image_t *img, t_line line, uint32_t col)
 {
 	while (1)
 	{
-		if (fdf_pixelok(*img, line))
-			mlx_put_pixel(img, line.x0, line.y0, 0xFFFFFFFF);
+		// if (c3d_pixelok(*img, line))
+			mlx_put_pixel(img, line.x0, line.y0, col);
 		if (line.x0 == line.x1 && line.y0 == line.y1)
 			break ;
 		line.e2 = 2 * line.err;
@@ -70,5 +71,19 @@ void	c3d_draw_line(mlx_image_t *img, t_line line)
 			line.err += line.dx;
 			line.y0 += line.incy;
 		}
+	}
+}
+
+void	c3d_drawsquare(t_prog prog, int x, int y, uint32_t col)
+{
+	int		i;
+	t_line	line;
+
+	i = -1;
+	while (++i < SCALE)
+	{
+		line = c3d_create_line(x, y + i, x + SCALE, y + i);
+		// if (c3d_lineok(prog, line))
+			c3d_draw_line(prog.img, line, col);
 	}
 }

@@ -1,17 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libgraph.h                                         :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/24 15:18:57 by rficht            #+#    #+#             */
-/*   Updated: 2023/08/07 20:07:06 by mdjemaa          ###   ########.fr       */
+/*   Created: 2023/08/07 18:59:20 by mdjemaa           #+#    #+#             */
+/*   Updated: 2023/08/07 18:59:41 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBGRAPH_H
-# define LIBGRAPH_H
-# include "cub3d.h"
+#include "cub3d.h"
 
-#endif
+int	err_msg(char *msg, int err)
+{
+	ft_putstr_fd(EF_ERR, 2);
+	ft_putstr_fd(msg, 2);
+	return (err);
+}
