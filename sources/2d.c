@@ -6,7 +6,7 @@
 /*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 10:32:00 by rficht            #+#    #+#             */
-/*   Updated: 2023/08/09 16:45:57 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/08/09 17:02:10 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,8 @@ void	c3d_dispmap(t_prog *prog)
 				c3d_drawsquare(*prog, x * SCALE, y * SCALE, WALL);
 			else if (ft_is_in(prog->map[y][x], MAP_WALKABLE_SYMBOL))
 				c3d_drawsquare(*prog, x * SCALE, y * SCALE, WALK);
-			else
-				c3d_drawsquare(*prog, x * SCALE, y * SCALE, VOID);
+			//else
+			//	c3d_drawsquare(*prog, x * SCALE, y * SCALE, VOID);
 		}
 	}
 }

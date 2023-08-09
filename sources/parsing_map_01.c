@@ -6,7 +6,7 @@
 /*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 13:11:04 by rficht            #+#    #+#             */
-/*   Updated: 2023/08/09 13:24:26 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/08/09 17:02:10 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,16 +79,16 @@ int	rec_map_closed(int x, int y, char **map)
 	map[y][x] = '1';
 	if (x == 0 || y == 0 || !map[y + 1][x] || !map[y + 1][x])
 		return (FALSE);
-	if (map[y + 1][x] == '0')
+	if (map[y + 1][x] != '1')
 		if (!rec_map_closed(x, y + 1, map))
 			return (FALSE);
-	if (map[y - 1][x] == '0')
+	if (map[y - 1][x] != '1')
 		if (!rec_map_closed(x, y - 1, map))
 			return (FALSE);
-	if (map[y][x + 1] == '0')
+	if (map[y][x + 1] != '1')
 		if (!rec_map_closed(x + 1, y, map))
 			return (FALSE);
-	if (map[y][x - 1] == '0')
+	if (map[y][x - 1] != '1')
 		if (!rec_map_closed(x - 1, y, map))
 			return (FALSE);
 	return (TRUE);

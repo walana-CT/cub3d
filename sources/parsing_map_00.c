@@ -6,7 +6,7 @@
 /*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 10:53:40 by rficht            #+#    #+#             */
-/*   Updated: 2023/08/09 13:25:19 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/08/09 17:02:10 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,7 @@ static int	read_map(t_list **file_lst, t_prog *prog)
  */
 int	c3d_get_map(t_list **file_lst, t_prog *prog)
 {
+
 	if (!file_lst)
 		return (1);
 	if (read_map(file_lst, prog))
@@ -122,6 +123,7 @@ int	c3d_get_map(t_list **file_lst, t_prog *prog)
 	if (c3d_create_map(file_lst, prog))
 		return (err_msg(EF_WMAP, 1));
 	c3d_clean_map(prog->map, prog);
+
 	if (!c3d_is_map_closed(prog))
 		return (err_msg(EF_MOPEN, 1));
 //	prog->map[prog->player.y][prog->player.x] = '0';
