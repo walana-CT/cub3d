@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   2d.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 10:32:00 by rficht            #+#    #+#             */
-/*   Updated: 2023/08/08 18:50:33 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/08/09 10:46:38 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ void	c3d_map(t_prog *prog)
 				c3d_drawsquare(*prog, x * SCALE, y * SCALE, WALL);
 			else if (prog->map[y][x] == '0')
 				c3d_drawsquare(*prog, x * SCALE, y * SCALE, WALK);
-			else
-				c3d_drawsquare(*prog, x * SCALE, y * SCALE, VOID);
+			//else
+			//	c3d_drawsquare(*prog, x * SCALE, y * SCALE, VOID);
 		}
 	}
 }
