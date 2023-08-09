@@ -6,7 +6,7 @@
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 14:15:34 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/08/08 14:15:19 by rficht           ###   ########.fr       */
+/*   Updated: 2023/08/08 14:22:58 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 # define WIN_HEIGHT 600
 # define WIN_WIDTH 800
 # define SCALE 20
-# define WALL 0xFF0000FF
-# define VOID 0x00FF00FF
-# define WALK 0x0000FFFF
+# define WALL 0x366b6aFF
+# define VOID 0x77a8a710
+# define WALK 0x78e3e1FF
 
 # define EF_ERR "Error\n"
 # define EF_BADDESC "Bad file description\n"
