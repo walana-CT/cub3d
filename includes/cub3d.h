@@ -6,7 +6,7 @@
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 14:15:34 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/08/08 14:22:58 by rficht           ###   ########.fr       */
+/*   Updated: 2023/08/09 10:38:48 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@
 # define EF_WTEXTURE "Couldn't load texture\n"
 # define EF_2TEXTURE "Texture already loaded\n"
 # define EF_COLOR "Wrong color code. Format is [0-255],[0-255],[0-255]\n"
+# define EF_WMAP "Map not valid\n"
+# define EF_MOPEN "Map not closed\n"
 
 # define MAP_SYMBOLS "01NSEW"
 
@@ -92,7 +94,7 @@ struct s_prog
 	int				map_y; // max ?
 	int				map_x; // max ?
 	mlx_t			*mlx;
-	mlx_image_t		*img;
+	mlx_image_t		*map_img;
 	t_texture_pack	textures;
 	t_color			f_color;
 	t_color			c_color;
@@ -127,7 +129,7 @@ int			check_info(t_prog prog);
 
 // drawing
 t_line		c3d_create_line(int a, int b, int c, int d);
-void		c3d_draw_line(mlx_image_t *img, t_line line, uint32_t col);
+void		c3d_draw_line(mlx_image_t *map_img, t_line line, uint32_t col);
 void		c3d_drawsquare(t_prog prog, int x, int y, uint32_t col);
 
 // main funcs
