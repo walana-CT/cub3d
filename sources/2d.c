@@ -6,7 +6,7 @@
 /*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 10:32:00 by rficht            #+#    #+#             */
-/*   Updated: 2023/08/08 18:50:33 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/08/09 16:45:57 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,50 @@
  * 
 */
 
+void	c3d_drawplayer(t_prog prog, float x, float y, uint32_t col)
+{
+	int		i;
+	t_line	line;
+	int		sx;
+	int		sy;
+
+	sx = SCALE * x;
+	sy = SCALE * y;
+	i = -prog.player.hb -1;
+	while (++i < prog.player.hb + 1)
+	{
+		line = c3d_create_line(sx - prog.player.hb, sy + i, \
+			sx + prog.player.hb, sy + i);
+		// if (c3d_lineok(prog, line))
+		c3d_draw_line(prog.map_img, line, col);
+	}
+}
+
+void	c3d_dispplayer(t_prog prog, t_player p)
+{
+	c3d_drawplayer(prog, p.x, p.y, PLAYER);
+	//c3d_drawfov(*prog);
+}
+
 /**
  * Draws a square of side SCALE at coords (x,y)
  * Color to define
 */
-void	c3d_map(t_prog *prog)
+void	c3d_drawsquare(t_prog prog, int x, int y, uint32_t col)
+{
+	int		i;
+	t_line	line;
+
+	i = -1;
+	while (++i < SCALE)
+	{
+		line = c3d_create_line(x, y + i, x + SCALE, y + i);
+		// if (c3d_lineok(prog, line))
+		c3d_draw_line(prog.map_img, line, col);
+	}
+}
+
+void	c3d_dispmap(t_prog *prog)
 {
 	int	x;
 	int	y;
@@ -47,7 +86,7 @@ void	c3d_map(t_prog *prog)
 		{
 			if (prog->map[y][x] == '1')
 				c3d_drawsquare(*prog, x * SCALE, y * SCALE, WALL);
-			else if (prog->map[y][x] == '0')
+			else if (ft_is_in(prog->map[y][x], MAP_WALKABLE_SYMBOL))
 				c3d_drawsquare(*prog, x * SCALE, y * SCALE, WALK);
 			else
 				c3d_drawsquare(*prog, x * SCALE, y * SCALE, VOID);

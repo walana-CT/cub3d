@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_map_01.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
+/*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 13:11:04 by rficht            #+#    #+#             */
-/*   Updated: 2023/08/08 11:52:44 by rficht           ###   ########.fr       */
+/*   Updated: 2023/08/09 13:24:26 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,11 +103,14 @@ int	c3d_is_map_closed(t_prog *prog)
 {
 	char		**map_cpy;
 	int			result;
+	t_vect2d	tempvect;
 
-	prog->player.pos = c3d_get_player_pos(prog->map);
+	tempvect = c3d_get_player_pos(prog->map);
 	map_cpy = c3d_map_dup(prog);
-	result = rec_map_closed(prog->player.pos.x, prog->player.pos.y, map_cpy);
+	result = rec_map_closed(tempvect.x, tempvect.y, map_cpy);
 	//ft_printstrtab(map_cpy, "map_cpy");
 	c3d_cub_free_map(map_cpy);
+	prog->player.x = tempvect.x + 0.5;
+	prog->player.y = tempvect.y + 0.5;
 	return (result);
 }

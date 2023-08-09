@@ -6,7 +6,7 @@
 #    By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/17 10:47:24 by rficht            #+#    #+#              #
-#    Updated: 2023/08/07 20:22:41 by mdjemaa          ###   ########.fr        #
+#    Updated: 2023/08/09 15:18:22 by mdjemaa          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,7 +58,9 @@ INCLUDE_DIR = includes
 FILES +=	2d.c\
 		 	cub3d.c\
 			error.c\
+			hooks.c\
 			line.c\
+			move.c\
 			parsing_infos_00.c\
 			parsing_infos_01.c\
 			parsing_map_00.c\

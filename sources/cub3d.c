@@ -6,7 +6,7 @@
 /*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 15:04:26 by rficht            #+#    #+#             */
-/*   Updated: 2023/08/08 19:06:58 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/08/09 16:53:41 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	cub3d_init(t_prog *prog)
 	prog->textures.w = NULL;
 	prog->map_x = 0;
 	prog->map_y = 0;
+	prog->player.hb = SCALE / 5.0;
 	prog->mlx = mlx_init(prog->w_width, prog->w_height, "Loup Cailloux", true);
 	if (!prog->mlx)
 		ft_putstr_fd((char *)mlx_strerror(mlx_errno), 2);
@@ -54,9 +55,11 @@ void	c3d_run(t_prog *prog)
 	prog->map_h = SCALE * prog->map_y;
 	prog->map_w = SCALE * prog->map_x;
 	prog->map_img = mlx_new_image(prog->mlx, prog->map_w, prog->map_h);
-	c3d_map(prog);
+//	c3d_dispmap(prog);
+	c3d_dispplayer(*prog, prog->player);
 	mlx_image_to_window(prog->mlx, prog->map_img, 0, 0);
-	// mlx_key_hook(prog->mlx, &c3d_keyhook, prog);
+	mlx_loop_hook(prog->mlx, &c3d_mainhook, prog);
+	mlx_key_hook(prog->mlx, &c3d_keyhook, prog);
 	mlx_loop(prog->mlx);
 	mlx_terminate(prog->mlx);
 	ft_printf("See you");

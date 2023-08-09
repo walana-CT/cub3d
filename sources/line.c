@@ -6,7 +6,7 @@
 /*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 10:55:17 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/08/08 19:12:57 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/08/09 13:36:09 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,19 +71,5 @@ void	c3d_draw_line(mlx_image_t *map_img, t_line line, uint32_t col)
 			line.err += line.dx;
 			line.y0 += line.incy;
 		}
-	}
-}
-
-void	c3d_drawsquare(t_prog prog, int x, int y, uint32_t col)
-{
-	int		i;
-	t_line	line;
-
-	i = -1;
-	while (++i < SCALE)
-	{
-		line = c3d_create_line(x, y + i, x + SCALE, y + i);
-		// if (c3d_lineok(prog, line))
-			c3d_draw_line(prog.map_img, line, col);
 	}
 }
