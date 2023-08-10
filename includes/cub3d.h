@@ -6,7 +6,7 @@
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 14:15:34 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/08/10 14:37:20 by rficht           ###   ########.fr       */
+/*   Updated: 2023/08/10 15:35:26 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@
 # include <fcntl.h>
 # include "libft.h"
 # include "MLX42.h"
+# include "math.h"
 # include "libgraph.h"
 
 typedef struct s_player			t_player;
@@ -142,7 +143,7 @@ void		c3d_drawsquare(t_prog prog, int x, int y, uint32_t col);
 void		c3d_drawplayer(t_prog prog, float x, float y, uint32_t col);
 
 // moving
-void		c3d_moveplayer(t_prog *prog);
+void		c3d_moveplayer(float dir_y, float dir_x, t_prog *prog);
 
 // hook
 void		c3d_keyhook(mlx_key_data_t keydata, void *param);

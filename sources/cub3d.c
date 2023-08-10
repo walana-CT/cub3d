@@ -6,7 +6,7 @@
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 15:04:26 by rficht            #+#    #+#             */
-/*   Updated: 2023/08/10 13:25:19 by rficht           ###   ########.fr       */
+/*   Updated: 2023/08/10 15:20:55 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ int	c3d_refresh_image(t_prog *prog)
 
 void	c3d_run(t_prog *prog)
 {
-	//mlx_loop_hook(prog->mlx, &c3d_mainhook, prog);
+	mlx_loop_hook(prog->mlx, &c3d_mainhook, prog);
 	mlx_key_hook(prog->mlx, &c3d_keyhook, prog);
 	c3d_refresh_image(prog);
 	mlx_loop(prog->mlx);

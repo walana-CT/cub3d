@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 13:50:36 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/08/09 14:57:01 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/08/10 15:35:22 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,18 @@ void	c3d_keyhook(mlx_key_data_t keydata, void *param)
 void	c3d_mainhook(void *param)
 {
 	t_prog	*prog;
+	int		fast;
 
 	prog = (t_prog *) param;
-	c3d_moveplayer(prog);
+	fast = 1;
+	if (mlx_is_key_down(prog->mlx, MLX_KEY_LEFT_SHIFT))
+		fast = 2;
+	if (mlx_is_key_down(prog->mlx, MLX_KEY_D))
+		c3d_moveplayer(0, SPD * fast, prog);
+	if (mlx_is_key_down(prog->mlx, MLX_KEY_A))
+		c3d_moveplayer(0, -SPD * fast, prog);
+	if (mlx_is_key_down(prog->mlx, MLX_KEY_W))
+		c3d_moveplayer(-SPD * fast, 0, prog);
+	if (mlx_is_key_down(prog->mlx, MLX_KEY_S))
+		c3d_moveplayer(SPD * fast, 0, prog);
 }
