@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   2d.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 10:32:00 by rficht            #+#    #+#             */
-/*   Updated: 2023/08/09 17:02:10 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/08/10 11:02:15 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	c3d_drawplayer(t_prog prog, float x, float y, uint32_t col)
 		line = c3d_create_line(sx - prog.player.hb, sy + i, \
 			sx + prog.player.hb, sy + i);
 		// if (c3d_lineok(prog, line))
-		c3d_draw_line(prog.map_img, line, col);
+		c3d_draw_line(prog.minimap_img, line, col);
 	}
 }
 
@@ -69,7 +69,7 @@ void	c3d_drawsquare(t_prog prog, int x, int y, uint32_t col)
 	{
 		line = c3d_create_line(x, y + i, x + SCALE, y + i);
 		// if (c3d_lineok(prog, line))
-		c3d_draw_line(prog.map_img, line, col);
+		c3d_draw_line(prog.minimap_img, line, col);
 	}
 }
 

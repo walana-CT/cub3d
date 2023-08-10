@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 14:15:34 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/08/09 17:02:10 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/08/10 14:37:20 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 # define CUB3D_H
 # define WIN_HEIGHT 600
 # define WIN_WIDTH 800
-# define SCALE 10
+# define MINIMAP_Y 512
+# define MINIMAP_X 512
+# define SCALE 16
 # define SPD 0.05
 # define WALL 0x888888FF
 # define VOID 0xDDDDDDFF
@@ -94,12 +96,11 @@ struct s_prog
 	int				w_height;
 	int				w_width;
 	char			**map;
-	int				map_h;
-	int				map_w;
 	int				map_y; // max ?
 	int				map_x; // max ?
+	t_vect2d		center;
 	mlx_t			*mlx;
-	mlx_image_t		*map_img;
+	mlx_image_t		*minimap_img;
 	t_texture_pack	textures;
 	t_color			f_color;
 	t_color			c_color;
@@ -148,5 +149,8 @@ void		c3d_keyhook(mlx_key_data_t keydata, void *param);
 void		c3d_mainhook(void *param);
 
 // main funcs
+
+//minimap_centered
+void		c3d_draw_minimap_centered(t_prog *prog);
 
 #endif

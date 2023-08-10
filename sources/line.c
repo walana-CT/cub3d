@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   line.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 10:55:17 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/08/09 13:36:09 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/08/10 13:27:52 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	c3d_lineok(t_prog prog, t_line line)
 {
 	if (line.x0 < 0 && line.x1 < 0)
 		return (0);
-	if (line.x0 > prog.map_w && line.x1 > prog.map_w)
+	if (line.x0 > MINIMAP_Y && line.x1 > MINIMAP_Y)
 		return (0);
 	if (line.y0 < 0 && line.y1 < 0)
 		return (0);
