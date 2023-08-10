@@ -6,7 +6,7 @@
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 14:54:21 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/08/10 15:38:47 by rficht           ###   ########.fr       */
+/*   Updated: 2023/08/10 15:41:09 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,5 @@ void	c3d_moveplayer(float dir_y, float dir_x, t_prog *prog)
 	}
 	prog->player.y = targ_y;
 	prog->player.x = targ_x;
-	c3d_draw_minimap_centered(prog);
+	c3d_refresh_image(prog);
 }

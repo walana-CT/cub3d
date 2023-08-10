@@ -6,7 +6,7 @@
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 14:15:34 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/08/10 15:35:26 by rficht           ###   ########.fr       */
+/*   Updated: 2023/08/10 15:41:52 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,6 +150,8 @@ void		c3d_keyhook(mlx_key_data_t keydata, void *param);
 void		c3d_mainhook(void *param);
 
 // main funcs
+int			c3d_refresh_image(t_prog *prog);
+
 
 //minimap_centered
 void		c3d_draw_minimap_centered(t_prog *prog);
