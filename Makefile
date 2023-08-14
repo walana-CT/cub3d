@@ -6,7 +6,7 @@
 #    By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/17 10:47:24 by rficht            #+#    #+#              #
-#    Updated: 2023/08/10 11:26:44 by rficht           ###   ########.fr        #
+#    Updated: 2023/08/14 10:05:02 by rficht           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,12 +61,14 @@ FILES +=	2d.c\
 			hooks.c\
 			line.c\
 			minimap_centered.c\
+			minimap_static.c\
 			move.c\
 			parsing_infos_00.c\
 			parsing_infos_01.c\
 			parsing_map_00.c\
 			parsing_map_01.c\
 			parsing.c\
+			player.c\
 			utils_00.c\
 
 SOURCES = $(addprefix $(SRC_DIR)/, $(FILES))

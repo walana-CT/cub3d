@@ -6,7 +6,7 @@
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 15:04:26 by rficht            #+#    #+#             */
-/*   Updated: 2023/08/10 15:20:55 by rficht           ###   ########.fr       */
+/*   Updated: 2023/08/14 10:07:34 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int	cub3d_init(t_prog *prog)
 	prog->textures.w = NULL;
 	prog->map_x = 0;
 	prog->map_y = 0;
+	prog->minimap_img = NULL;
+	prog->player_img = NULL;
 	prog->player.hb = SCALE / 5.0;
 	prog->center.x = MINIMAP_X / 2;
 	prog->center.y = MINIMAP_Y / 2;
@@ -67,7 +69,7 @@ void	check_invalid_args(int argc, char *argv[])
 	ft_printf("See you");
 }*/
 
-int	c3d_refresh_minimap(t_prog *prog)
+/*int	c3d_refresh_minimap(t_prog *prog)
 {
 	if (prog->minimap_img)
 	{
@@ -80,13 +82,13 @@ int	c3d_refresh_minimap(t_prog *prog)
 		return (1);
 	mlx_image_to_window(prog->mlx, prog->minimap_img, 0, 0);
 	return (0);
-}
+}*/
 
 
 int	c3d_refresh_image(t_prog *prog)
 {
-	if (c3d_refresh_minimap(prog))
-		return (1);
+	(void) prog;
+
 	return (0);
 }
 
@@ -96,7 +98,9 @@ void	c3d_run(t_prog *prog)
 {
 	mlx_loop_hook(prog->mlx, &c3d_mainhook, prog);
 	mlx_key_hook(prog->mlx, &c3d_keyhook, prog);
-	c3d_refresh_image(prog);
+	c3d_create_minimap(prog);
+	c3d_create_player(prog);
+	//c3d_refresh_image(prog);
 	mlx_loop(prog->mlx);
 	mlx_terminate(prog->mlx);
 	ft_printf("See you");

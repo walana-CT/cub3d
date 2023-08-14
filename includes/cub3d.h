@@ -6,16 +6,16 @@
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 14:15:34 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/08/10 15:41:52 by rficht           ###   ########.fr       */
+/*   Updated: 2023/08/14 10:14:30 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
-# define WIN_HEIGHT 600
-# define WIN_WIDTH 800
-# define MINIMAP_Y 512
-# define MINIMAP_X 512
+# define WIN_WIDTH 1920
+# define WIN_HEIGHT 1080
+# define MINIMAP_Y 800
+# define MINIMAP_X 800
 # define SCALE 16
 # define SPD 0.05
 # define WALL 0x888888FF
@@ -74,6 +74,8 @@ struct s_player
 	float	x;
 	float	y;
 	float	hb;
+	float	size;
+	int		size_int;
 	float	direction;
 };
 
@@ -102,6 +104,7 @@ struct s_prog
 	t_vect2d		center;
 	mlx_t			*mlx;
 	mlx_image_t		*minimap_img;
+	mlx_image_t		*player_img;
 	t_texture_pack	textures;
 	t_color			f_color;
 	t_color			c_color;
@@ -136,11 +139,11 @@ int			check_info(t_prog prog);
 
 // drawing
 t_line		c3d_create_line(int a, int b, int c, int d);
-void		c3d_dispmap(t_prog *prog);
+void		c3d_create_minimap(t_prog *prog);
+int			c3d_create_player(t_prog *prog);
 void		c3d_dispplayer(t_prog prog, t_player p);
 void		c3d_draw_line(mlx_image_t *map_img, t_line line, uint32_t col);
 void		c3d_drawsquare(t_prog prog, int x, int y, uint32_t col);
-void		c3d_drawplayer(t_prog prog, float x, float y, uint32_t col);
 
 // moving
 void		c3d_moveplayer(float dir_y, float dir_x, t_prog *prog);
@@ -151,6 +154,7 @@ void		c3d_mainhook(void *param);
 
 // main funcs
 int			c3d_refresh_image(t_prog *prog);
+int			c3d_refresh_player(t_prog *prog);
 
 
 //minimap_centered
