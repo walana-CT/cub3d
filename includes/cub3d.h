@@ -6,7 +6,7 @@
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 14:15:34 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/08/14 16:42:33 by rficht           ###   ########.fr       */
+/*   Updated: 2023/08/14 17:09:48 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 # define WIN_HEIGHT 1080
 # define MINIMAP_Y 800
 # define MINIMAP_X 800
-# define SCALE 50
+# define SCALE 16
+# define PLAYER_SCALE 0.25
 # define SPD 0.05
 # define WALL 0x888888FF
 # define VOID 0xDDDDDDFF

@@ -6,7 +6,7 @@
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 09:31:45 by rficht            #+#    #+#             */
-/*   Updated: 2023/08/14 16:48:50 by rficht           ###   ########.fr       */
+/*   Updated: 2023/08/14 17:11:11 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,6 @@ void	c3d_create_minimap(t_prog *prog)
 			//	c3d_drawsquare(*prog, x * SCALE, y * SCALE, VOID);
 		}
 	}
-	mlx_image_to_window(prog->mlx, prog->minimap_img, 10, 10);
-	mlx_set_instance_depth(prog->minimap_img->instances, 1);
+	mlx_image_to_window(prog->mlx, prog->minimap_img, 0, 0);
+	mlx_set_instance_depth(prog->minimap_img->instances, 0);
 }

@@ -6,7 +6,7 @@
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 09:41:00 by rficht            #+#    #+#             */
-/*   Updated: 2023/08/14 16:48:46 by rficht           ###   ########.fr       */
+/*   Updated: 2023/08/14 17:11:05 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	c3d_create_player(t_prog *prog)
 {
 	int	size_int;
 
-	prog->player.size = SCALE * 0.25;
+	prog->player.size = SCALE * PLAYER_SCALE;
 	size_int = (int) prog->player.size;
 	if (prog->player_img)
 	{
@@ -51,8 +51,8 @@ int	c3d_create_player(t_prog *prog)
 	mlx_image_to_window(prog->mlx, prog->player_img,
 		10 + prog->player.x * SCALE - (size_int / 2),
 		10 + prog->player.y * SCALE - (size_int / 2));
-	printf("player first pos %f , %f\n", 10 + prog->player.x * SCALE - (size_int / 2), 10 + prog->player.y * SCALE - (size_int / 2));
-	mlx_set_instance_depth(prog->player_img->instances, 0);
+	printf("player first pos %f , %f\n", prog->player.x * SCALE - (size_int / 2), prog->player.y * SCALE - (size_int / 2));
+	mlx_set_instance_depth(prog->player_img->instances, 1);
 	prog->player.size_int = size_int;
 	return (0);
 }
