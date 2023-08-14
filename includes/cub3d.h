@@ -6,7 +6,7 @@
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 14:15:34 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/08/14 10:14:30 by rficht           ###   ########.fr       */
+/*   Updated: 2023/08/14 16:42:33 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # define WIN_HEIGHT 1080
 # define MINIMAP_Y 800
 # define MINIMAP_X 800
-# define SCALE 16
+# define SCALE 50
 # define SPD 0.05
 # define WALL 0x888888FF
 # define VOID 0xDDDDDDFF
@@ -155,7 +155,6 @@ void		c3d_mainhook(void *param);
 // main funcs
 int			c3d_refresh_image(t_prog *prog);
 int			c3d_refresh_player(t_prog *prog);
-
 
 //minimap_centered
 void		c3d_draw_minimap_centered(t_prog *prog);

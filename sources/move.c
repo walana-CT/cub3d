@@ -6,62 +6,18 @@
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 14:54:21 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/08/10 15:41:09 by rficht           ###   ########.fr       */
+/*   Updated: 2023/08/14 16:55:42 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-/*void	c3d_trytomove_right(t_prog *prog, float speed)
-{
-	int	x;
-	int	y;
-
-	x = (int)(prog->player.x + prog->player.hb + speed);
-	y = (int)prog->player.y;
-	if (prog->map[y][x] == '1')
-		prog->player.x = x - prog->player.hb;
-	if (ft_is_in(prog->map[y][x], MAP_WALKABLE_SYMBOL))
-		prog->player.x += speed;
-}
-
-void	c3d_trytomove_left(t_prog *prog, float speed)
-{
-	int	x;
-	int	y;
-
-	x = (int)(prog->player.x - speed);
-	y = (int)prog->player.y;
-	if (ft_is_in(prog->map[y][x], MAP_WALKABLE_SYMBOL))
-		prog->player.x -= speed;
-}
-
-void	c3d_trytomove_up(t_prog *prog, float speed)
-{
-	int	x;
-	int	y;
-
-	x = (int)prog->player.x;
-	y = (int)(prog->player.y - speed);
-	if (ft_is_in(prog->map[y][x], MAP_WALKABLE_SYMBOL))
-		prog->player.y -= speed;
-}
-
-void	c3d_trytomove_down(t_prog *prog, float speed)
-{
-	int	x;
-	int	y;
-
-	x = (int)prog->player.x;
-	y = (int)(prog->player.y + speed);
-	if (ft_is_in(prog->map[y][x], MAP_WALKABLE_SYMBOL))
-		prog->player.y += speed;
-}*/
 
 void	c3d_moveplayer(float dir_y, float dir_x, t_prog *prog)
 {
 	float	targ_y;
 	float	targ_x;
+
 
 	targ_y = prog->player.y + dir_y;
 	targ_x = prog->player.x + dir_x;
@@ -74,5 +30,10 @@ void	c3d_moveplayer(float dir_y, float dir_x, t_prog *prog)
 	}
 	prog->player.y = targ_y;
 	prog->player.x = targ_x;
-	c3d_refresh_image(prog);
+	printf("dir_x : %f    dir_y : %f\n", targ_x, targ_y);
+	prog->player_img->instances[0].x = 10 + prog->player.x * SCALE - (prog->player.size_int/ 2);
+	prog->player_img->instances[0].y = 10 + prog->player.y * SCALE - (prog->player.size_int/ 2);
+	printf("player update pos %d , %d\n", prog->player_img->instances[0].x, prog->player_img->instances[0].y);
+	/*prog->player_img->instances[0].x += dir_x;
+	prog->player_img->instances[0].y += dir_y;*/
 }
