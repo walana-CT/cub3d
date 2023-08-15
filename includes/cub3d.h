@@ -6,7 +6,7 @@
 /*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 14:15:34 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/08/15 13:33:56 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/08/15 13:51:30 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,6 +149,7 @@ void		c3d_drawsquare(t_prog prog, int x, int y, uint32_t col);
 
 // moving
 //void		c3d_moveplayer(float dir_y, float dir_x, t_prog *prog);
+int			is_pos_ok(float x, float y, t_prog *prog);
 void		c3d_moveplayer(float spd, t_prog *prog);
 void		c3d_rotateplayer(float inc, t_prog *prog);
 
