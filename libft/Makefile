@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+         #
+#    By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/17 10:47:24 by rficht            #+#    #+#              #
-#    Updated: 2023/08/08 14:23:38 by rficht           ###   ########.fr        #
+#    Updated: 2023/08/15 12:59:30 by mdjemaa          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,6 +57,7 @@ FILES =	ft_2lst_utils.c\
 		ft_atouc.c\
 		ft_bzero.c\
 		ft_calloc.c\
+		ft_fabsmax.c\
 		ft_freenull.c\
 		ft_freestr.c\
 		ft_freetab.c\
