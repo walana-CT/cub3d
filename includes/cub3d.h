@@ -6,7 +6,7 @@
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 14:15:34 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/08/14 17:09:48 by rficht           ###   ########.fr       */
+/*   Updated: 2023/08/15 10:11:21 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,10 @@ typedef struct s_color			t_color;
 typedef struct s_texture_pack	t_texture_pack;
 typedef struct s_vect2d			t_vect2d;
 typedef struct s_line			t_line;
+typedef struct s_ray			t_ray;
+
+
+
 
 struct s_line
 {
@@ -63,6 +67,18 @@ struct s_line
 	int	err;
 	int	e2;
 };
+
+struct s_ray
+{
+	float	dir;
+	float	ax;
+	float	ay;
+	float	bx;
+	float	by;
+
+
+};
+
 
 struct s_vect2d
 {
@@ -156,8 +172,12 @@ void		c3d_mainhook(void *param);
 // main funcs
 int			c3d_refresh_image(t_prog *prog);
 int			c3d_refresh_player(t_prog *prog);
+int			c3d_refresh(t_prog *prog);
 
 //minimap_centered
 void		c3d_draw_minimap_centered(t_prog *prog);
+
+//raycasting
+void		c3d_raycasting(t_prog *prog);
 
 #endif

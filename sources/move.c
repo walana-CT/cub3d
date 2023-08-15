@@ -6,7 +6,7 @@
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 14:54:21 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/08/15 09:51:23 by rficht           ###   ########.fr       */
+/*   Updated: 2023/08/15 10:10:09 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,8 @@ void	c3d_moveplayer(float dir_y, float dir_x, t_prog *prog)
 	prog->player.y = targ_y;
 	prog->player.x = targ_x;
 	printf("dir_x : %f    dir_y : %f\n", targ_x, targ_y);
-	prog->player_img->instances[0].x = prog->player.x * SCALE - (prog->player.size_int/ 2);
-	prog->player_img->instances[0].y = prog->player.y * SCALE - (prog->player.size_int/ 2);
+	c3d_refresh(prog);
+
 	printf("player update pos %d , %d\n", prog->player_img->instances[0].x, prog->player_img->instances[0].y);
 	/*prog->player_img->instances[0].x += dir_x;
 	prog->player_img->instances[0].y += dir_y;*/

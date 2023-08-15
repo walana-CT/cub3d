@@ -6,7 +6,7 @@
 #    By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/17 10:47:24 by rficht            #+#    #+#              #
-#    Updated: 2023/08/14 10:05:02 by rficht           ###   ########.fr        #
+#    Updated: 2023/08/15 10:10:51 by rficht           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,6 +69,7 @@ FILES +=	2d.c\
 			parsing_map_01.c\
 			parsing.c\
 			player.c\
+			raycasting.c\
 			utils_00.c\
 
 SOURCES = $(addprefix $(SRC_DIR)/, $(FILES))
