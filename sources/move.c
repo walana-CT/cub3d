@@ -6,7 +6,7 @@
 /*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 14:54:21 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/08/15 13:42:09 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/08/15 13:43:01 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,49 @@ void	c3d_moveplayer(float spd, t_prog *prog)
 	prog->player.x += spd * cos(prog->player.dir);
 	prog->player.y += spd * sin(prog->player.dir);
 	c3d_refresh_player
+int	check_br(float targ_x, float targ_y, t_prog *prog)
+{
+	if (prog->map[(int)(targ_y + PLAYER_SCALE / 2)]
+		[(int)(targ_x + PLAYER_SCALE / 2)] == '1')
+		return (1);
+	return (0);
+}
+
+int	check_bl(float targ_x, float targ_y, t_prog *prog)
+{
+	if (prog->map[(int)(targ_y + PLAYER_SCALE / 2)]
+		[(int)(targ_x - PLAYER_SCALE / 2)] == '1')
+		return (1);
+	return (0);
+}
+
+int	check_tr(float targ_x, float targ_y, t_prog *prog)
+{
+	if (prog->map[(int)(targ_y - PLAYER_SCALE / 2)]
+		[(int)(targ_x + PLAYER_SCALE / 2)] == '1')
+		return (1);
+	return (0);
+}
+
+int	check_tl(float targ_x, float targ_y, t_prog *prog)
+{
+	if (prog->map[(int)(targ_y - PLAYER_SCALE / 2)]
+		[(int)(targ_x - PLAYER_SCALE / 2)] == '1')
+		return (1);
+	return (0);
+}
+
+int	is_pos_ok(float x, float y, t_prog *prog)
+{
+	if (check_tl(x, y, prog))
+		return (FALSE);
+	else if (check_tr(x, y, prog))
+		return (FALSE);
+	else if (check_bl(x, y, prog))
+		return (FALSE);
+	else if (check_br(x, y, prog))
+		return (FALSE);
+	return (TRUE);
 }
 
 /*
@@ -33,16 +76,10 @@ void	c3d_moveplayer(float dir_y, float dir_x, t_prog *prog)
 	float	targ_y;
 	float	targ_x;
 
-
 	targ_y = prog->player.y + dir_y;
 	targ_x = prog->player.x + dir_x;
-	if (prog->map[(int) targ_y][(int) targ_x] == '1')
-	{
-		if (dir_y)
-			targ_y = trunc(targ_y);
-		else
-			targ_x = trunc(targ_x);
-	}
+	if (!is_pos_ok(targ_x, targ_y, prog))
+		return ;
 	prog->player.y = targ_y;
 	prog->player.x = targ_x;
 	printf("dir_x : %f    dir_y : %f\n", targ_x, targ_y);
