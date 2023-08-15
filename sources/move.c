@@ -6,12 +6,25 @@
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 14:54:21 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/08/15 10:10:09 by rficht           ###   ########.fr       */
+/*   Updated: 2023/08/15 13:45:22 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+void	c3d_rotateplayer(float inc, t_prog *prog)
+{
+	prog->player.dir += inc;
+	if (prog->player.dir >= M_PI)
+		prog->player.dir -= M_PI;
+	printf("Angle %f\n", prog->player.dir);
+}
+
+void	c3d_moveplayer(float spd, t_prog *prog)
+{
+	prog->player.x += spd * cos(prog->player.dir);
+	prog->player.y += spd * sin(prog->player.dir);
+	c3d_refresh_player
 int	check_br(float targ_x, float targ_y, t_prog *prog)
 {
 	if (prog->map[(int)(targ_y + PLAYER_SCALE / 2)]
@@ -57,6 +70,7 @@ int	is_pos_ok(float x, float y, t_prog *prog)
 	return (TRUE);
 }
 
+/*
 void	c3d_moveplayer(float dir_y, float dir_x, t_prog *prog)
 {
 	float	targ_y;
@@ -72,6 +86,7 @@ void	c3d_moveplayer(float dir_y, float dir_x, t_prog *prog)
 	c3d_refresh(prog);
 
 	printf("player update pos %d , %d\n", prog->player_img->instances[0].x, prog->player_img->instances[0].y);
-	/*prog->player_img->instances[0].x += dir_x;
-	prog->player_img->instances[0].y += dir_y;*/
+	// prog->player_img->instances[0].x += dir_x;
+	// prog->player_img->instances[0].y += dir_y;
 }
+*/

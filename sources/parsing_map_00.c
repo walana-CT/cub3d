@@ -3,20 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_map_00.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
+/*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 10:53:40 by rficht            #+#    #+#             */
-/*   Updated: 2023/08/10 14:42:27 by rficht           ###   ########.fr       */
+/*   Updated: 2023/08/14 17:49:45 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 /**
+ * Sets the player direction depending on the startinf char given by the map
+*/
+static void	set_player_dir(char c, t_prog *prog)
+{
+	if (c == 'E')
+		prog->player.direction = 0;
+	if (c == 'S')
+		prog->player.direction = -M_PI_2;
+	if (c == 'W')
+		prog->player.direction = M_PI;
+	if (c == 'N')
+		prog->player.direction = M_PI_2;
+}
+
+/**
  * @param str A line from the map
  * @return Number of char represing player in the line 
  */
-static int	count_player_line(char *str)
+static int	count_player_line(char *str, t_prog *prog)
 {
 	int	result;
 
@@ -24,8 +39,11 @@ static int	count_player_line(char *str)
 	while (*str)
 	{
 		if (*str == 'N' || *str == 'S'
-			|| *str == 'E' || *str == 'O')
+			|| *str == 'E' || *str == 'W')
+		{
+			set_player_dir(*str, prog);
 			result++;
+		}
 		str++;
 	}
 	return (result);
@@ -94,7 +112,7 @@ static int	read_map(t_list **file_lst, t_prog *prog)
 	cur_elem = *file_lst;
 	while (cur_elem && is_map_line(cur_elem->content))
 	{
-		player_nbr += count_player_line(cur_elem->content);
+		player_nbr += count_player_line(cur_elem->content, prog);
 		prog->map_y++;
 		prog->map_x = ft_max(prog->map_x, ft_strlen(cur_elem->content));
 		cur_elem = cur_elem->next;

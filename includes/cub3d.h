@@ -6,7 +6,7 @@
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 14:15:34 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/08/15 10:11:21 by rficht           ###   ########.fr       */
+/*   Updated: 2023/08/15 13:45:22 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # define SCALE 16
 # define PLAYER_SCALE 0.25
 # define SPD 0.05
+# define TSPD 0.1
 # define WALL 0x888888FF
 # define VOID 0xDDDDDDFF
 # define WALK 0xBBBBBBFF
@@ -93,7 +94,7 @@ struct s_player
 	float	hb;
 	float	size;
 	int		size_int;
-	float	direction;
+	float	dir;
 };
 
 struct s_texture_pack
@@ -163,7 +164,9 @@ void		c3d_draw_line(mlx_image_t *map_img, t_line line, uint32_t col);
 void		c3d_drawsquare(t_prog prog, int x, int y, uint32_t col);
 
 // moving
-void		c3d_moveplayer(float dir_y, float dir_x, t_prog *prog);
+//void		c3d_moveplayer(float dir_y, float dir_x, t_prog *prog);
+void		c3d_moveplayer(float spd, t_prog *prog);
+void		c3d_rotateplayer(float inc, t_prog *prog);
 
 // hook
 void		c3d_keyhook(mlx_key_data_t keydata, void *param);

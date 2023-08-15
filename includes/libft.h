@@ -6,7 +6,7 @@
 /*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 13:56:20 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/08/03 14:51:44 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/08/15 12:58:53 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,7 @@ int			ft_putstr_fd(char *s, int fd);
 void		ft_putnbr_fd(int n, int fd);
 
 int			ft_abs(int a);
+float		ft_fabsmax(float a, float b);
 int			ft_inc_value(int a, int b);
 size_t		ft_max(size_t a, size_t b);
 size_t		ft_min(size_t a, size_t b);
