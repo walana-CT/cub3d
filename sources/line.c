@@ -3,15 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   line.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
+/*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 10:55:17 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/08/15 10:18:48 by rficht           ###   ########.fr       */
+/*   Updated: 2023/08/15 18:36:29 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+/**
+ * Draws a line from (a,b) to (c,d)
+*/
 t_line	c3d_create_line(int a, int b, int c, int d)
 {
 	t_line	line;

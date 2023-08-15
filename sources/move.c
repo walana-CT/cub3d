@@ -6,24 +6,35 @@
 /*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 14:54:21 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/08/15 13:52:14 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/08/15 18:43:12 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	c3d_rotateplayer(float inc, t_prog *prog)
+void	c3d_rotateplayer(float inc, int32_t mouse_x, t_prog *prog)
 {
 	prog->player.dir += inc;
-	if (prog->player.dir >= M_PI)
-		prog->player.dir -= M_PI;
-	printf("Angle %f\n", prog->player.dir);
+	prog->mouse_x = mouse_x;
+	// printf("x : %d\n", mouse_x);
+	c3d_refresh(prog);
+	// if (prog->player.dir >= M_PI)
+	// 	prog->player.dir -= M_PI;
+	// printf("Angle %f\n", prog->player.dir);
 }
 
 void	c3d_moveplayer(float spd, t_prog *prog)
 {
-	prog->player.x += spd * cos(prog->player.dir);
-	prog->player.y += spd * sin(prog->player.dir);
+	float	x;
+	float	y;
+
+	x = prog->player.x + spd * cos(prog->player.dir);
+	y = prog->player.y + spd * sin(prog->player.dir);
+	if (!is_pos_ok(x, y, prog))
+		return ;
+	prog->player.x = x;
+	prog->player.y = y;
+	c3d_refresh(prog);
 }
 
 /*

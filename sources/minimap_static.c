@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap_static.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
+/*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 09:31:45 by rficht            #+#    #+#             */
-/*   Updated: 2023/08/14 17:11:11 by rficht           ###   ########.fr       */
+/*   Updated: 2023/08/15 16:29:48 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,16 @@ void	c3d_drawsquare(t_prog prog, int x, int y, uint32_t col)
 	}
 }
 
-void	c3d_create_minimap(t_prog *prog)
+int	c3d_create_minimap(t_prog *prog)
 {
 	int	x;
 	int	y;
 
-
 	if (prog->minimap_img)
-	{
-		//printf("last image deleted\n");
 		mlx_delete_image(prog->mlx, prog->minimap_img);
-	}
 	prog->minimap_img = mlx_new_image(prog->mlx, MINIMAP_X, MINIMAP_Y);
+	if (!prog->minimap_img)
+		return (1);
 	y = -1;
 	while (++y < prog->map_y)
 	{
@@ -48,10 +46,9 @@ void	c3d_create_minimap(t_prog *prog)
 				c3d_drawsquare(*prog, x * SCALE, y * SCALE, WALL);
 			else if (ft_is_in(prog->map[y][x], MAP_WALKABLE_SYMBOL))
 				c3d_drawsquare(*prog, x * SCALE, y * SCALE, WALK);
-			//else
-			//	c3d_drawsquare(*prog, x * SCALE, y * SCALE, VOID);
 		}
 	}
 	mlx_image_to_window(prog->mlx, prog->minimap_img, 0, 0);
 	mlx_set_instance_depth(prog->minimap_img->instances, 0);
+	return (0);
 }

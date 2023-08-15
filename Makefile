@@ -6,7 +6,7 @@
 #    By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/17 10:47:24 by rficht            #+#    #+#              #
-#    Updated: 2023/08/15 13:52:00 by mdjemaa          ###   ########.fr        #
+#    Updated: 2023/08/15 14:05:41 by mdjemaa          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,6 +61,7 @@ FILES +=	2d.c\
 			error.c\
 			hooks.c\
 			line.c\
+			mapcast.c\
 			minimap_centered.c\
 			minimap_static.c\
 			move.c\

@@ -6,7 +6,7 @@
 /*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 14:15:34 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/08/15 13:52:08 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/08/15 18:32:35 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,14 +114,16 @@ struct s_color
 struct s_prog
 {
 	int				err;
-	int				w_height;
-	int				w_width;
+	int				w_height;	// window_height
+	int				w_width;	// window_width
 	char			**map;
-	int				map_y; // max ?
-	int				map_x; // max ?
+	int				map_y;		// max ?
+	int				map_x;		// max ?
+	int32_t			mouse_x;
 	t_vect2d		center;
 	mlx_t			*mlx;
 	mlx_image_t		*minimap_img;
+	mlx_image_t		*fov_img;
 	mlx_image_t		*player_img;
 	t_texture_pack	textures;
 	t_color			f_color;
@@ -157,17 +159,20 @@ int			check_info(t_prog prog);
 
 // drawing
 t_line		c3d_create_line(int a, int b, int c, int d);
-void		c3d_create_minimap(t_prog *prog);
+int			c3d_create_fov(t_prog *prog);
+int			c3d_create_minimap(t_prog *prog);
 int			c3d_create_player(t_prog *prog);
 void		c3d_dispplayer(t_prog prog, t_player p);
 void		c3d_draw_line(mlx_image_t *map_img, t_line line, uint32_t col);
 void		c3d_drawsquare(t_prog prog, int x, int y, uint32_t col);
+void		c3d_raycast(t_prog *prog);
+
 
 // moving
 //void		c3d_moveplayer(float dir_y, float dir_x, t_prog *prog);
 int			is_pos_ok(float x, float y, t_prog *prog);
 void		c3d_moveplayer(float spd, t_prog *prog);
-void		c3d_rotateplayer(float inc, t_prog *prog);
+void		c3d_rotateplayer(float inc, int32_t mouse_x, t_prog *prog);
 
 // hook
 void		c3d_keyhook(mlx_key_data_t keydata, void *param);
