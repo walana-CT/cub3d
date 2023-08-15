@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 15:04:26 by rficht            #+#    #+#             */
-/*   Updated: 2023/08/15 13:04:16 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/08/15 13:45:22 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,9 +85,14 @@ void	check_invalid_args(int argc, char *argv[])
 }*/
 
 
-int	c3d_refresh_image(t_prog *prog)
+int	c3d_refresh(t_prog *prog)
 {
-	(void) prog;
+
+	prog->player_img->instances[0].x
+		= prog->player.x * SCALE - (prog->player.size_int / 2);
+	prog->player_img->instances[0].y
+		= prog->player.y * SCALE - (prog->player.size_int / 2);
+	c3d_raycast(prog);
 
 	return (0);
 }
