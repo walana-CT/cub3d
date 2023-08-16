@@ -6,7 +6,7 @@
 /*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 14:54:21 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/08/16 10:30:09 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/08/16 12:34:42 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,21 @@ void	c3d_moveplayer(float spd, t_prog *prog)
 
 	x = prog->player.x + spd * cos(prog->player.dir);
 	y = prog->player.y + spd * sin(prog->player.dir);
-	if (!is_pos_ok(x, y, prog))
-		return ;
-	prog->player.x = x;
-	prog->player.y = y;
+	if (is_pos_ok(x, y, prog) == 1)
+	{
+		prog->player.x = x;
+		prog->player.y = y;
+	}
+	else if (is_pos_ok(prog->player.x, y, prog) == -1)
+	{
+		prog->player.y = y;
+		prog->player.x = x - PLAYER_SCALE *0.5;
+	}
+	else if (is_pos_ok(x, prog->player.y, prog))
+	{
+		prog->player.x = x;
+		prog->player.y = y - PLAYER_SCALE *0.5;
+	}
 	c3d_refresh(prog);
 }
 

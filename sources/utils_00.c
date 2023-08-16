@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_00.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
+/*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 12:52:03 by rficht            #+#    #+#             */
-/*   Updated: 2023/08/04 13:29:57 by rficht           ###   ########.fr       */
+/*   Updated: 2023/08/16 11:36:33 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ t_vect2d	c3d_get_player_pos(char **map)
 			result.x = j;
 			result.y = i;
 			if (map[i][j] == 'N' || map[i][j] == 'S'
-				|| map[i][j] == 'E' || map[i][j] == 'O')
+				|| map[i][j] == 'E' || map[i][j] == 'W')
 				return (result);
 			j++;
 		}
