@@ -6,21 +6,23 @@
 /*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 14:54:21 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/08/15 18:43:12 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/08/16 10:16:33 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	c3d_rotateplayer(float inc, int32_t mouse_x, t_prog *prog)
+void	c3d_rotateplayer(int32_t mouse_x, t_prog *prog)
 {
-	prog->player.dir += inc;
+	prog->player.dir += SENSIVITY * (mouse_x - prog->mouse_x);
+	if (prog->player.dir >= M_PI * 2 || prog->player.dir <= -M_PI * 2)
+		prog->player.dir = 0;
 	prog->mouse_x = mouse_x;
 	// printf("x : %d\n", mouse_x);
 	c3d_refresh(prog);
 	// if (prog->player.dir >= M_PI)
 	// 	prog->player.dir -= M_PI;
-	// printf("Angle %f\n", prog->player.dir);
+	printf("Angle %f\n", prog->player.dir);
 }
 
 void	c3d_moveplayer(float spd, t_prog *prog)

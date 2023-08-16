@@ -6,7 +6,7 @@
 /*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 14:15:34 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/08/15 18:32:35 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/08/16 10:16:36 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # define SCALE 16
 # define PLAYER_SCALE 0.25
 # define SPD 0.05
-# define TSPD 0.1
+# define SENSIVITY 0.01
 # define WALL 0x888888FF
 # define VOID 0xDDDDDDFF
 # define WALK 0xBBBBBBFF
@@ -172,7 +172,7 @@ void		c3d_raycast(t_prog *prog);
 //void		c3d_moveplayer(float dir_y, float dir_x, t_prog *prog);
 int			is_pos_ok(float x, float y, t_prog *prog);
 void		c3d_moveplayer(float spd, t_prog *prog);
-void		c3d_rotateplayer(float inc, int32_t mouse_x, t_prog *prog);
+void		c3d_rotateplayer(int32_t mouse_x, t_prog *prog);
 
 // hook
 void		c3d_keyhook(mlx_key_data_t keydata, void *param);

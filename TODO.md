@@ -5,5 +5,5 @@
 * position d'affichage du layer player != coordonnées réelles ?
 
 FEATURES
-* rotation a la souris
-* zoom (FOV ?) a la molette
+* rotation à la souris
+* changement de FOV à la molette
