@@ -6,7 +6,7 @@
 /*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 14:54:21 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/08/16 10:16:33 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/08/16 10:30:09 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,7 @@ void	c3d_rotateplayer(int32_t mouse_x, t_prog *prog)
 	if (prog->player.dir >= M_PI * 2 || prog->player.dir <= -M_PI * 2)
 		prog->player.dir = 0;
 	prog->mouse_x = mouse_x;
-	// printf("x : %d\n", mouse_x);
 	c3d_refresh(prog);
-	// if (prog->player.dir >= M_PI)
-	// 	prog->player.dir -= M_PI;
-	printf("Angle %f\n", prog->player.dir);
 }
 
 void	c3d_moveplayer(float spd, t_prog *prog)
