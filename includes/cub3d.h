@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 14:15:34 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/08/16 10:16:36 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/08/16 10:18:39 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,6 @@ typedef struct s_texture_pack	t_texture_pack;
 typedef struct s_vect2d			t_vect2d;
 typedef struct s_line			t_line;
 typedef struct s_ray			t_ray;
-
-
-
 
 struct s_line
 {
