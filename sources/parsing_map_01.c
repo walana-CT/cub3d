@@ -6,7 +6,7 @@
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 13:11:04 by rficht            #+#    #+#             */
-/*   Updated: 2023/08/10 14:46:32 by rficht           ###   ########.fr       */
+/*   Updated: 2023/08/16 10:40:01 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ int	c3d_is_map_closed(t_prog *prog)
 {
 	char		**map_cpy;
 	int			result;
-	t_vect2d	tempvect;
+	t_coord	tempvect;
 
 	tempvect = c3d_get_player_pos(prog->map);
 	map_cpy = c3d_map_dup(prog);

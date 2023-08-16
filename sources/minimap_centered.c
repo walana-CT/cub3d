@@ -6,15 +6,15 @@
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 10:54:38 by rficht            #+#    #+#             */
-/*   Updated: 2023/08/10 14:49:57 by rficht           ###   ########.fr       */
+/*   Updated: 2023/08/16 10:40:01 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
-t_vect2d	get_map_pos(int y, int x, t_prog *prog)
+t_coord	get_map_pos(int y, int x, t_prog *prog)
 {
-	t_vect2d	map_pos;
+	t_coord	map_pos;
 	float		f_pos_x;
 	float		f_pos_y;
 
@@ -41,7 +41,7 @@ int	is_in_map(int x, int y, t_prog *prog)
 
 void	put_pixel_map(int y, int x, t_prog *prog)
 {
-	t_vect2d	map_pos;
+	t_coord	map_pos;
 
 	//printf("put_pixel_map x:%d y:%d\n", x, y);
 	map_pos = get_map_pos(y, x, prog);
@@ -56,7 +56,7 @@ void	put_pixel_map(int y, int x, t_prog *prog)
 	}
 }
 
-void	draw_square_center(t_vect2d center, int size, t_prog *prog)
+void	draw_square_center(t_coord center, int size, t_prog *prog)
 {
 	int	y;
 	int	x;
@@ -80,7 +80,7 @@ void	draw_square_center(t_vect2d center, int size, t_prog *prog)
 
 void	draw_player_center(t_prog *prog)
 {
-	t_vect2d	center;
+	t_coord	center;
 
 	center.x = MINIMAP_X / 2;
 	center.y = MINIMAP_Y / 2;

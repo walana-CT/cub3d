@@ -6,7 +6,7 @@
 /*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 14:15:34 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/08/16 12:01:51 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/08/16 12:37:14 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ typedef struct s_player			t_player;
 typedef struct s_prog			t_prog;
 typedef struct s_color			t_color;
 typedef struct s_texture_pack	t_texture_pack;
-typedef struct s_vect2d			t_vect2d;
+typedef struct s_coord			t_coord;
+typedef struct s_vect2D			t_vect2D;
 typedef struct s_line			t_line;
 typedef struct s_ray			t_ray;
 
@@ -68,17 +69,19 @@ struct s_line
 
 struct s_ray
 {
-	float	dir;
-	float	ax;
-	float	ay;
-	float	bx;
-	float	by;
-
-
+	t_vect2D	start;
+	t_vect2D	end;
+	float		dir;
 };
 
 
-struct s_vect2d
+struct s_coord
+{
+	int	x;
+	int	y;
+};
+
+struct s_vect2D
 {
 	int	x;
 	int	y;
@@ -117,7 +120,7 @@ struct s_prog
 	int				map_y;		// max ?
 	int				map_x;		// max ?
 	int32_t			mouse_x;
-	t_vect2d		center;
+	t_coord		center;
 	mlx_t			*mlx;
 	mlx_image_t		*minimap_img;
 	mlx_image_t		*fov_img;
@@ -136,7 +139,7 @@ int			c3d_cub_free_map(char **map);
 void		c3d_bool_flipflop(int *val);
 int			c3d_create_map(t_list **file_lst, t_prog *prog);
 char		**c3d_map_dup(t_prog *prog);
-t_vect2d	c3d_get_player_pos(char **map);
+t_coord	c3d_get_player_pos(char **map);
 int			is_valid_ext(char *file, char *ext);
 int			err_msg(char *msg, int err);
 
