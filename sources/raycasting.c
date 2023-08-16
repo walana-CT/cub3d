@@ -6,7 +6,7 @@
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 10:04:42 by rficht            #+#    #+#             */
-/*   Updated: 2023/08/15 10:19:57 by rficht           ###   ########.fr       */
+/*   Updated: 2023/08/16 10:17:42 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ void	c3d_raycasting(t_prog *prog)
 {
 	t_ray	ray;
 	
-
 	ray.ax = prog->player.x;
 	ray.ay = prog->player.y;
 	
-	
+
+
 }
