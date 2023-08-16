@@ -6,7 +6,7 @@
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 12:52:03 by rficht            #+#    #+#             */
-/*   Updated: 2023/08/04 13:29:57 by rficht           ###   ########.fr       */
+/*   Updated: 2023/08/16 10:40:01 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,11 +72,11 @@ char	**c3d_map_dup(t_prog *prog)
  * @param A map
  * @return player pos in map
  */
-t_vect2d	c3d_get_player_pos(char **map)
+t_coord	c3d_get_player_pos(char **map)
 {
 	int			i;
 	int			j;
-	t_vect2d	result;
+	t_coord	result;
 
 	i = 0;
 	j = 0;
