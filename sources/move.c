@@ -3,71 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
+/*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 14:54:21 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/08/15 13:45:22 by rficht           ###   ########.fr       */
+/*   Updated: 2023/08/16 10:16:33 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	c3d_rotateplayer(float inc, t_prog *prog)
+void	c3d_rotateplayer(int32_t mouse_x, t_prog *prog)
 {
-	prog->player.dir += inc;
-	if (prog->player.dir >= M_PI)
-		prog->player.dir -= M_PI;
+	prog->player.dir += SENSIVITY * (mouse_x - prog->mouse_x);
+	if (prog->player.dir >= M_PI * 2 || prog->player.dir <= -M_PI * 2)
+		prog->player.dir = 0;
+	prog->mouse_x = mouse_x;
+	// printf("x : %d\n", mouse_x);
+	c3d_refresh(prog);
+	// if (prog->player.dir >= M_PI)
+	// 	prog->player.dir -= M_PI;
 	printf("Angle %f\n", prog->player.dir);
 }
 
 void	c3d_moveplayer(float spd, t_prog *prog)
 {
-	prog->player.x += spd * cos(prog->player.dir);
-	prog->player.y += spd * sin(prog->player.dir);
-	c3d_refresh_player
-int	check_br(float targ_x, float targ_y, t_prog *prog)
-{
-	if (prog->map[(int)(targ_y + PLAYER_SCALE / 2)]
-		[(int)(targ_x + PLAYER_SCALE / 2)] == '1')
-		return (1);
-	return (0);
-}
+	float	x;
+	float	y;
 
-int	check_bl(float targ_x, float targ_y, t_prog *prog)
-{
-	if (prog->map[(int)(targ_y + PLAYER_SCALE / 2)]
-		[(int)(targ_x - PLAYER_SCALE / 2)] == '1')
-		return (1);
-	return (0);
-}
-
-int	check_tr(float targ_x, float targ_y, t_prog *prog)
-{
-	if (prog->map[(int)(targ_y - PLAYER_SCALE / 2)]
-		[(int)(targ_x + PLAYER_SCALE / 2)] == '1')
-		return (1);
-	return (0);
-}
-
-int	check_tl(float targ_x, float targ_y, t_prog *prog)
-{
-	if (prog->map[(int)(targ_y - PLAYER_SCALE / 2)]
-		[(int)(targ_x - PLAYER_SCALE / 2)] == '1')
-		return (1);
-	return (0);
-}
-
-int	is_pos_ok(float x, float y, t_prog *prog)
-{
-	if (check_tl(x, y, prog))
-		return (FALSE);
-	else if (check_tr(x, y, prog))
-		return (FALSE);
-	else if (check_bl(x, y, prog))
-		return (FALSE);
-	else if (check_br(x, y, prog))
-		return (FALSE);
-	return (TRUE);
+	x = prog->player.x + spd * cos(prog->player.dir);
+	y = prog->player.y + spd * sin(prog->player.dir);
+	if (!is_pos_ok(x, y, prog))
+		return ;
+	prog->player.x = x;
+	prog->player.y = y;
+	c3d_refresh(prog);
 }
 
 /*

@@ -2,7 +2,8 @@
 * la map peut ne pas etre fermee si le joueur n'a pas acces a cet endroit(a discuter)
 * il y a une rangee de VOID (des espaces quoi) qui apparait sur la minimap alors qu'elle n'est pas dans le .cub
 * est-ce qu'on pourrait remplacer le start du joueur par un 0 dès qu'on a la position ?
+* position d'affichage du layer player != coordonnées réelles ?
 
 FEATURES
-* rotation a la souris
-* zoom (FOV ?) a la molette
+* rotation à la souris
+* changement de FOV à la molette

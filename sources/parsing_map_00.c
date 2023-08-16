@@ -6,7 +6,7 @@
 /*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 10:53:40 by rficht            #+#    #+#             */
-/*   Updated: 2023/08/14 17:49:45 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/08/15 14:13:11 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@
 static void	set_player_dir(char c, t_prog *prog)
 {
 	if (c == 'E')
-		prog->player.direction = 0;
+		prog->player.dir = 0;
 	if (c == 'S')
-		prog->player.direction = -M_PI_2;
+		prog->player.dir = -M_PI_2;
 	if (c == 'W')
-		prog->player.direction = M_PI;
+		prog->player.dir = M_PI;
 	if (c == 'N')
-		prog->player.direction = M_PI_2;
+		prog->player.dir = M_PI_2;
 }
 
 /**

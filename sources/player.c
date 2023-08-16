@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
+/*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 09:41:00 by rficht            #+#    #+#             */
-/*   Updated: 2023/08/14 17:11:05 by rficht           ###   ########.fr       */
+/*   Updated: 2023/08/15 18:36:40 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,14 @@ static void	c3d_draw_player(t_prog *prog, int size_int)
 	int	j;
 
 	i = -1;
-	j = -1;
 	while (++i <= size_int)
 	{
-		while (++j <= size_int)
-		{
-			printf("trying to print %d %d\n", i, j);
-			mlx_put_pixel(prog->player_img, i, j, PLAYER);
-		}
 		j = -1;
+		while (++j <= size_int)
+			mlx_put_pixel(prog->player_img, i, j, PLAYER);
 	}
 
 }
-
 
 int	c3d_create_player(t_prog *prog)
 {

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+         #
+#    By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/17 10:47:24 by rficht            #+#    #+#              #
-#    Updated: 2023/08/15 10:10:51 by rficht           ###   ########.fr        #
+#    Updated: 2023/08/15 14:05:41 by mdjemaa          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,10 +56,12 @@ INCLUDE_DIR = includes
 #	Sources		#
 #---------------#
 FILES +=	2d.c\
+			collisions.c\
 		 	cub3d.c\
 			error.c\
 			hooks.c\
 			line.c\
+			mapcast.c\
 			minimap_centered.c\
 			minimap_static.c\
 			move.c\
