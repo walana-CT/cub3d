@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
+/*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 14:15:34 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/08/16 10:18:39 by rficht           ###   ########.fr       */
+/*   Updated: 2023/08/18 15:48:36 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 # define CUB3D_H
 # define WIN_WIDTH 1920
 # define WIN_HEIGHT 1080
-# define MINIMAP_Y 800
-# define MINIMAP_X 800
-# define SCALE 16
+# define MINIMAP_Y 1920
+# define MINIMAP_X 1080
+# define SCALE 20
 # define PLAYER_SCALE 0.25
 # define SPD 0.05
 # define SENSIVITY 0.01
@@ -73,10 +73,7 @@ struct s_ray
 	float	ay;
 	float	bx;
 	float	by;
-
-
 };
-
 
 struct s_vect2d
 {
@@ -164,12 +161,12 @@ void		c3d_draw_line(mlx_image_t *map_img, t_line line, uint32_t col);
 void		c3d_drawsquare(t_prog prog, int x, int y, uint32_t col);
 void		c3d_raycast(t_prog *prog);
 
-
 // moving
 //void		c3d_moveplayer(float dir_y, float dir_x, t_prog *prog);
 int			is_pos_ok(float x, float y, t_prog *prog);
-void		c3d_moveplayer(float spd, t_prog *prog);
-void		c3d_rotateplayer(int32_t mouse_x, t_prog *prog);
+int			correct_pos(float x, float y, float spd, t_prog *prog);
+int			c3d_moveplayer(float spd, t_prog *prog);
+int			c3d_rotateplayer(int32_t mouse_x, t_prog *prog);
 
 // hook
 void		c3d_keyhook(mlx_key_data_t keydata, void *param);

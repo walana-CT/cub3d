@@ -6,7 +6,7 @@
 /*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 13:50:36 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/08/16 10:33:07 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/08/18 12:11:53 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	c3d_mainhook(void *param)
 {
 	t_prog	*prog;
 	int		fast;
+	int		refresh;
 	int32_t	mouse_x;
 	int32_t	mouse_y;
 
@@ -39,11 +40,13 @@ void	c3d_mainhook(void *param)
 	if (mlx_is_key_down(prog->mlx, MLX_KEY_LEFT_SHIFT))
 		fast = 2;
 	if (mouse_x != prog->mouse_x)
-		c3d_rotateplayer(mouse_x, prog);
+		refresh = c3d_rotateplayer(mouse_x, prog);
 	if (mlx_is_key_down(prog->mlx, MLX_KEY_W))
-		c3d_moveplayer(-SPD * fast, prog);
+		refresh = c3d_moveplayer(SPD * fast, prog);
 	if (mlx_is_key_down(prog->mlx, MLX_KEY_S))
-		c3d_moveplayer(SPD * fast, prog);
+		refresh = c3d_moveplayer(-SPD * fast, prog);
+	if (refresh)
+		refresh = c3d_refresh(prog);
 }
 
 /*
