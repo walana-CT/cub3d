@@ -6,17 +6,17 @@
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 14:15:34 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/08/20 10:22:16 by rficht           ###   ########.fr       */
+/*   Updated: 2023/08/20 14:52:31 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
-# define WIN_WIDTH 1920
-# define WIN_HEIGHT 1080
-# define MINIMAP_Y 800
-# define MINIMAP_X 800
-# define SCALE 16
+# define WIN_WIDTH 800
+# define WIN_HEIGHT 600
+# define MINIMAP_Y 400
+# define MINIMAP_X 400
+# define SCALE 8
 # define PLAYER_SCALE 0.25
 # define SPD 0.05
 # define SENSIVITY 0.01
@@ -24,6 +24,7 @@
 # define VOID 0xDDDDDDFF
 # define WALK 0xBBBBBBFF
 # define PLAYER 0xF455EAFF
+# define RAYNUMBER 10
 
 # define ERR "Error\n"
 # define EF_BADDESC "Bad file description\n"
@@ -53,6 +54,7 @@ typedef struct s_vect2d			t_vect2d;
 typedef struct s_line			t_line;
 typedef struct s_ray			t_ray;
 
+
 struct s_line
 {
 	int	x0;
@@ -79,12 +81,6 @@ struct s_vect2d
 	float	y;
 };
 
-struct s_ray
-{
-	t_vect2d	start;
-	t_vect2d	end;
-	float		dir;
-};
 
 struct s_player
 {
@@ -128,6 +124,18 @@ struct s_prog
 	t_color			f_color;
 	t_color			c_color;
 	t_player		player;
+};
+
+struct s_ray
+{
+	t_vect2d	start;
+	t_vect2d	d_step;
+	t_vect2d	intersection;
+	t_vect2d	lenght;
+	t_coord		map_check;
+	t_coord		step;
+	float		distance;
+	int			has_collide;
 };
 
 int			load_texture(mlx_texture_t **texture, char *file);
@@ -181,11 +189,12 @@ void		c3d_mainhook(void *param);
 int			c3d_refresh_image(t_prog *prog);
 int			c3d_refresh_player(t_prog *prog);
 int			c3d_refresh(t_prog *prog);
+int			c3d_refresh_fov(t_prog *prog);
 
 //minimap_centered
 void		c3d_draw_minimap_centered(t_prog *prog);
 
 //raycasting
-void		c3d_raycasting(t_prog *prog);
+void		c3d_cast_one(t_prog *prog, float dx, float dy);
 
 #endif

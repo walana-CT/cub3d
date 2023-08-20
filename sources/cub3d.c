@@ -6,7 +6,7 @@
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 15:04:26 by rficht            #+#    #+#             */
-/*   Updated: 2023/08/20 10:13:02 by rficht           ###   ########.fr       */
+/*   Updated: 2023/08/20 14:49:06 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ void	c3d_run(t_prog *prog)
 		exit(1);
 	if (c3d_create_player(prog))
 		exit(1);
-	if (c3d_create_fov(prog))
+	if (c3d_refresh_fov(prog))
 		exit(1);
 	//c3d_refresh_image(prog);
 	mlx_loop(prog->mlx);

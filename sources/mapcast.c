@@ -6,13 +6,13 @@
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 14:04:25 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/08/20 12:28:34 by rficht           ###   ########.fr       */
+/*   Updated: 2023/08/20 14:58:11 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	c3d_create_fov(t_prog *prog)
+int	c3d_refresh_fov(t_prog *prog)
 {
 	if (prog->fov_img)
 		mlx_delete_image(prog->mlx, prog->fov_img);
@@ -26,13 +26,17 @@ int	c3d_create_fov(t_prog *prog)
 
 void	c3d_raycast(t_prog *prog)
 {
-	t_line	line;
-
-	c3d_create_fov(prog);
-	line = c3d_create_line(prog->player.x * SCALE, \
-		prog->player.y * SCALE, \
-		prog->player.x * SCALE + 10 * cos(prog->player.dir), \
-		prog->player.y * SCALE + 10 * sin(prog->player.dir));
-	c3d_draw_line(prog->fov_img, line, PLAYER);
-	c3d_raycasting(prog);
+	int		x = 0;
+ 	double planeX = 0.0, planeY = 0.66;
+	c3d_refresh_fov(prog);
+	while (x < WIN_WIDTH)
+	{
+		double cameraX = 2 * x / (double) WIN_WIDTH - 1; //x-coordinate in camera space
+		double rayDirX = cos(prog->player.dir) + planeX * cameraX;
+		double rayDirY = sin(prog->player.dir) + planeY * cameraX;
+		printf("calling cast one zith %f %f \n",rayDirX, rayDirY);
+		c3d_cast_one(prog, rayDirX, rayDirY);
+		x++;
+	}
+	//c3d_cast_one(prog, cos(prog->player.dir), sin(prog->player.dir));
 }

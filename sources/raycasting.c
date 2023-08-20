@@ -6,104 +6,87 @@
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 10:04:42 by rficht            #+#    #+#             */
-/*   Updated: 2023/08/20 12:46:14 by rficht           ###   ########.fr       */
+/*   Updated: 2023/08/20 14:55:08 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 # define VERT 0x3568A6FF
-# define HORI 0xc91616FF
 
-void	c3d_raycasting(t_prog *prog)
+static void	cast_init(t_ray *ray, float dx, float dy)
 {
-	t_line		line;
-	t_vect2d	ray_start;
-	
-	float		dx;
-	float		dy;
-	
-	t_vect2d	ray_unit_step_size;
-
-	t_vect2d	step;
-	t_coord		map_check;
-	t_vect2d	raylenght;
-
-	float		distance = 0;
-	float		maxdist = 500.0;
-	int			has_collide = FALSE;
-
-	t_vect2d	intersection;
-
-	ray_start.x = prog->player.x;
-	ray_start.y = prog->player.y;
-	map_check.x = ray_start.x;
-	map_check.y = ray_start.y;
-	raylenght.x = 0;
-	raylenght.y = 0;
-	dx = cos(prog->player.dir);
-	dy = sin(prog->player.dir);
-	ray_unit_step_size.x = sqrt(1 + pow((dy / dx), 2));
-	ray_unit_step_size.y = sqrt(1 + pow((dx / dy), 2));
-
-
-	printf("raycasting pos %f %f direction %f\n", prog->player.x, prog->player.y, prog->player.dir);
-	printf("ray unit step size x\n", ray_unit_step_size.x);
-	printf("ray unit step size y\n", ray_unit_step_size.y);	
 	if (dx < 0)
 	{
-		step.x = -1;
-		raylenght.x = (ray_start.x - map_check.x) * ray_unit_step_size.x;
-		printf("offset x found : %f\n", (ray_start.x - map_check.x));		
+		ray->step.x = -1;
+		ray->lenght.x = (ray->start.x - ray->map_check.x) * ray->d_step.x;
 	}
 	else
 	{
-		step.x = 1;
-		raylenght.x = ( map_check.x + 1 - ray_start.x) * ray_unit_step_size.x;
-		printf("offset x found : %f\n", (ray_start.x - map_check.x));	
+		ray->step.x = 1;
+		ray->lenght.x = (ray->map_check.x + 1 - ray->start.x) * ray->d_step.x;
 	}
 	if (dy < 0)
 	{
-		step.y = -1;
-		raylenght.y = (ray_start.y - map_check.y) * ray_unit_step_size.y;
-		printf("offset x found : %f\n", (ray_start.x - map_check.x));		
+		ray->step.y = -1;
+		ray->lenght.y = (ray->start.y - ray->map_check.y) * ray->d_step.y;	
 	}
 	else
 	{
-		step.y = 1;
-		raylenght.y = (map_check.y + 1 - ray_start.y) * ray_unit_step_size.y;
-		printf("offset x found : %f\n", (ray_start.x - map_check.x));	
+		ray->step.y = 1;
+		ray->lenght.y = (ray->map_check.y + 1 - ray->start.y) * ray->d_step.y;
 	}
+}
 
-	while (!has_collide && distance < maxdist)
+static void	casting(t_ray *ray, float dx, float dy, t_prog *prog)
+{
+	t_line		line;
+
+	while (!ray->has_collide)
 	{
-		if (raylenght.x < raylenght.y)
+		if (ray->lenght.x < ray->lenght.y)
 		{
-			map_check.x += step.x;
-			distance = raylenght.x;
-			raylenght.x += ray_unit_step_size.x;
+			ray->map_check.x += ray->step.x;
+			ray->distance = ray->lenght.x;
+			ray->lenght.x += ray->d_step.x;
 		}
 		else
 		{
-			map_check.y += step.y;
-			distance = raylenght.y;
-			raylenght.y += ray_unit_step_size.y;			
+			ray->map_check.y += ray->step.y;
+			ray->distance = ray->lenght.y;
+			ray->lenght.y += ray->d_step.y;
 		}
-		if (map_check.x > 0 && map_check.x < prog->map_x && map_check.y > 0 && map_check.y < prog->map_y)
-			if (prog->map[map_check.y][map_check.x])
-				has_collide = TRUE;
+		if (ray->map_check.x >= 0 && ray->map_check.x < prog->map_x
+			&& ray->map_check.y >= 0 && ray->map_check.y < prog->map_y)
+			if (prog->map[ray->map_check.y][ray->map_check.x] == '1')
+				ray->has_collide = TRUE;
 	}
-	if (has_collide)
+	if (ray->has_collide)
 	{
-		intersection.x = ray_start.x + dx * distance;
-		intersection.y = ray_start.y + dy * distance;
+		ray->intersection.x = ray->start.x + dx * ray->distance;
+		ray->intersection.y = ray->start.y + dy * ray->distance;
 		line = c3d_create_line(prog->player.x * SCALE, \
 			prog->player.y * SCALE, \
-			intersection.x * SCALE, \
-			intersection.y * SCALE);
+			ray->intersection.x * SCALE, \
+			ray->intersection.y * SCALE);
 		c3d_draw_line(prog->fov_img, line, VERT);
 	}
+}
 
 
+void	c3d_cast_one(t_prog *prog, float dx, float dy)
+{
+	t_ray		ray;
 
+	ray.has_collide = FALSE;
+	ray.start.x = prog->player.x;
+	ray.start.y = prog->player.y;
+	ray.map_check.x = ray.start.x;
+	ray.map_check.y = ray.start.y;
+	ray.lenght.x = 0;
+	ray.lenght.y = 0;
+	ray.d_step.x = sqrt(1 + pow((dy / dx), 2));
+	ray.d_step.y = sqrt(1 + pow((dx / dy), 2));
 
+	cast_init(&ray, dx, dy);
+	casting(&ray, dx, dy, prog);
 }
