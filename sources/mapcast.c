@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mapcast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 14:04:25 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/08/15 18:42:51 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/08/20 12:28:34 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,11 @@ void	c3d_raycast(t_prog *prog)
 {
 	t_line	line;
 
+	c3d_create_fov(prog);
 	line = c3d_create_line(prog->player.x * SCALE, \
 		prog->player.y * SCALE, \
 		prog->player.x * SCALE + 10 * cos(prog->player.dir), \
 		prog->player.y * SCALE + 10 * sin(prog->player.dir));
-	c3d_create_fov(prog);
 	c3d_draw_line(prog->fov_img, line, PLAYER);
+	c3d_raycasting(prog);
 }

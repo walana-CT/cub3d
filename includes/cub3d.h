@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 14:15:34 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/08/16 12:37:14 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/08/20 10:22:16 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ typedef struct s_prog			t_prog;
 typedef struct s_color			t_color;
 typedef struct s_texture_pack	t_texture_pack;
 typedef struct s_coord			t_coord;
-typedef struct s_vect2D			t_vect2D;
+typedef struct s_vect2d			t_vect2d;
 typedef struct s_line			t_line;
 typedef struct s_ray			t_ray;
 
@@ -67,24 +67,23 @@ struct s_line
 	int	e2;
 };
 
-struct s_ray
-{
-	t_vect2D	start;
-	t_vect2D	end;
-	float		dir;
-};
-
-
 struct s_coord
 {
 	int	x;
 	int	y;
 };
 
-struct s_vect2D
+struct s_vect2d
 {
-	int	x;
-	int	y;
+	float	x;
+	float	y;
+};
+
+struct s_ray
+{
+	t_vect2d	start;
+	t_vect2d	end;
+	float		dir;
 };
 
 struct s_player
@@ -120,7 +119,7 @@ struct s_prog
 	int				map_y;		// max ?
 	int				map_x;		// max ?
 	int32_t			mouse_x;
-	t_coord		center;
+	t_coord			center;
 	mlx_t			*mlx;
 	mlx_image_t		*minimap_img;
 	mlx_image_t		*fov_img;
