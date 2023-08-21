@@ -6,7 +6,7 @@
 /*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 14:54:21 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/08/18 16:13:58 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/08/21 16:56:17 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,19 +36,34 @@ int	c3d_moveplayer(float spd, t_prog *prog)
 	y = prog->player.y + spd * sin(prog->player.dir);
 	if (correct_pos(x, y, spd, prog))
 	{
+		puts("Correct pos");
 		prog->player.x = x;
 		prog->player.y = y;
 		return (1);
 	}
-	if (correct_pos(x, prog->player.y, spd, prog)) // y est bloque et on slide sur x
+	if (correct_pos(x, prog->player.y, spd, prog)) // on teste avec l'ancien y
 	{
+		if (spd * sin(prog->player.dir) < 0) // si on essaie de monter
+		{
+			puts("Je veux aller en haut");
+			prog->player.y = (int) prog->player.y + PLAYER_SCALE * 0.5; //on colle le perso sous le mur du haut
+		}
+		else // si on essaie de descendre
+		{
+			puts("Je veux aller en bas");
+			prog->player.y = (int) prog->player.y + 1 - PLAYER_SCALE * 0.5; // on colle le perso au dessus du mur du bas
+		}
 		prog->player.x = x; // slide sur x
-		if (spd * sin(prog->player.dir) <= 0) // si on essaie de monter, on colle le perso au mur du haut
-			prog->player.y = (int) prog->player.y + PLAYER_SCALE * 0.5;
-		else // si on essaie de descendre, on colle le perso au mur du haut
-			prog->player.y = (int) prog->player.y + 1 - PLAYER_SCALE * 0.5;
+		return (1);
 	}
-	if (correct_pos(prog->player.x, y, spd, prog))
-		prog->player.y = y;
+	if (correct_pos(prog->player.x, y, spd, prog)) // on teste avec l'ancien x
+	{
+		if (spd * cos(prog->player.dir) < 0) // si on essaie d'aller a gauche
+			prog->player.x = (int) prog->player.x + PLAYER_SCALE * 0.5; // on colle le perso apres le mur de gauche
+		else // si on essaie d'aller a droite
+			prog->player.x = (int) prog->player.x + 1 - PLAYER_SCALE * 0.5; // on colle le perso avant le mur de droite
+		prog->player.y = y; // slide sur y
+		return (1);
+	}
 	return (1);
 }

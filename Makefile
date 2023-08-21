@@ -6,7 +6,7 @@
 #    By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/17 10:47:24 by rficht            #+#    #+#              #
-#    Updated: 2023/08/15 14:05:41 by mdjemaa          ###   ########.fr        #
+#    Updated: 2023/08/21 16:56:50 by mdjemaa          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,8 +32,8 @@ SHELL = /bin/sh
 NAME = cub3d
 
 #--- LIBS ---#
-LIBS = -lglfw -L "/Users/$(USER)/.brew/opt/glfw/lib/" -lft -L libft
-LIBMLX = MLX42/build/libmlx42.a
+LIBS = $(LIBMLX) $(LIBFT)
+LIBMLX = MLX42/build/libmlx42.a -ldl -lglfw -pthread -lm
 LIBFT = libft/libft.a
 
 #--- Includes ---#
@@ -43,10 +43,10 @@ INCLUDES = -I MLX42/include/MLX42 -I includes
 FLAGS = -Wall -Wextra -Werror
 
 # General compilation flags
-CFLAG = $(FLAGS)  $(INCLUDES) -fsanitize=address
+CFLAG = $(FLAGS) $(INCLUDES) #-fsanitize=address
  
 # Linking compilation flags
-GFLAG = $(LIBMLX) -g3
+#GFLAG = $(LIBMLX) -g3
 
 OBJ_DIR = objects
 SRC_DIR = sources
