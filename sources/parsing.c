@@ -6,7 +6,7 @@
 /*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 11:28:09 by rficht            #+#    #+#             */
-/*   Updated: 2023/08/04 15:37:37 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/08/21 15:45:16 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_putlst(t_list **lst)
 	lst_read = *lst;
 	while (lst_read)
 	{
-		printf("%s", lst_read->content);
+		printf("%s", (char *)lst_read->content);
 		lst_read = lst_read->next;
 	}	
 }
