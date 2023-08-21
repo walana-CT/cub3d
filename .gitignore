@@ -2,9 +2,7 @@ a.out*
 *.json
 main*
 .DS_Store
-*.o
 *.a
-objects
 *.swp
 *.ini
 .vscode/*
@@ -12,3 +10,4 @@ objects
 *.sh
 *.pdf
 cub3d
+**/*.o
