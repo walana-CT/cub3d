@@ -18,7 +18,5 @@ void	c3d_raycasting(t_prog *prog)
 	
 	ray.ax = prog->player.x;
 	ray.ay = prog->player.y;
-	
-
-
+	prog->player.x = ray.ax;
 }

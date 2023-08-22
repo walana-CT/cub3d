@@ -43,7 +43,7 @@ INCLUDES = -I MLX42/include/MLX42 -I includes
 FLAGS = -Wall -Wextra -Werror
 
 # General compilation flags
-CFLAG = $(FLAGS) $(INCLUDES) #-fsanitize=address
+CFLAG = $(FLAGS) $(INCLUDES) -fsanitize=address
  
 # Linking compilation flags
 #GFLAG = $(LIBMLX) -g3
@@ -55,8 +55,7 @@ INCLUDE_DIR = includes
 #---------------#
 #	Sources		#
 #---------------#
-FILES +=	2d.c\
-			collisions.c\
+FILES +=	collisions.c\
 		 	cub3d.c\
 			error.c\
 			hooks.c\

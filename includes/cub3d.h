@@ -164,7 +164,7 @@ void		c3d_raycast(t_prog *prog);
 // moving
 //void		c3d_moveplayer(float dir_y, float dir_x, t_prog *prog);
 int			is_pos_ok(float x, float y, t_prog *prog);
-int			correct_pos(float x, float y, float spd, t_prog *prog);
+int			correct_pos(float x, float y, t_prog *prog);
 int			c3d_moveplayer(float spd, t_prog *prog);
 int			c3d_rotateplayer(int32_t mouse_x, t_prog *prog);
 

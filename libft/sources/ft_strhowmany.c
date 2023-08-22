@@ -15,10 +15,8 @@
 // move index to the next occurence of c in str. Returns 0 if c was not in str
 int	ft_strjumpto(char *str, int *j, char c)
 {
-	int	bool;
 	int	i;
 
-	bool = 0;
 	i = *j;
 	if (!str[i + 1])
 		return (0);

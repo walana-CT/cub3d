@@ -1,7 +1,7 @@
-/nfs/homes/mdjemaa/Desktop/projets/cub3d/MLX42/build/CMakeFiles/mlx42.dir
-/nfs/homes/mdjemaa/Desktop/projets/cub3d/MLX42/build/CMakeFiles/edit_cache.dir
-/nfs/homes/mdjemaa/Desktop/projets/cub3d/MLX42/build/CMakeFiles/rebuild_cache.dir
-/nfs/homes/mdjemaa/Desktop/projets/cub3d/MLX42/build/CMakeFiles/list_install_components.dir
-/nfs/homes/mdjemaa/Desktop/projets/cub3d/MLX42/build/CMakeFiles/install.dir
-/nfs/homes/mdjemaa/Desktop/projets/cub3d/MLX42/build/CMakeFiles/install/local.dir
-/nfs/homes/mdjemaa/Desktop/projets/cub3d/MLX42/build/CMakeFiles/install/strip.dir
+/home/mamat/Docs/42/cub3d/MLX42/build/CMakeFiles/mlx42.dir
+/home/mamat/Docs/42/cub3d/MLX42/build/CMakeFiles/edit_cache.dir
+/home/mamat/Docs/42/cub3d/MLX42/build/CMakeFiles/rebuild_cache.dir
+/home/mamat/Docs/42/cub3d/MLX42/build/CMakeFiles/list_install_components.dir
+/home/mamat/Docs/42/cub3d/MLX42/build/CMakeFiles/install.dir
+/home/mamat/Docs/42/cub3d/MLX42/build/CMakeFiles/install/local.dir
+/home/mamat/Docs/42/cub3d/MLX42/build/CMakeFiles/install/strip.dir

@@ -27,6 +27,30 @@ int	c3d_rotateplayer(int32_t mouse_x, t_prog *prog)
 	return (ret);
 }
 
+void	update_coords(float x, float y, t_prog *prog)
+{
+	prog->player.x = x;
+	prog->player.y = y;
+}
+
+void	slide_on_x(float dir, float x, t_prog *prog)
+{
+	if (dir < 0)
+		prog->player.y = (int) prog->player.y + PLAYER_SCALE * 0.5;
+	else
+		prog->player.y = (int) prog->player.y + 0.99 - PLAYER_SCALE * 0.5;
+	prog->player.x = x;
+}
+
+void	slide_on_y(float dir, float y, t_prog *prog)
+{
+	if (dir < 0)
+		prog->player.x = (int) prog->player.x + PLAYER_SCALE * 0.5;
+	else
+		prog->player.x = (int) prog->player.x + 0.99 - PLAYER_SCALE * 0.5;
+	prog->player.y = y;
+}
+
 int	c3d_moveplayer(float spd, t_prog *prog)
 {
 	float	x;
@@ -34,36 +58,11 @@ int	c3d_moveplayer(float spd, t_prog *prog)
 
 	x = prog->player.x + spd * cos(prog->player.dir);
 	y = prog->player.y + spd * sin(prog->player.dir);
-	if (correct_pos(x, y, spd, prog))
-	{
-		puts("Correct pos");
-		prog->player.x = x;
-		prog->player.y = y;
-		return (1);
-	}
-	if (correct_pos(x, prog->player.y, spd, prog)) // on teste avec l'ancien y
-	{
-		if (spd * sin(prog->player.dir) < 0) // si on essaie de monter
-		{
-			puts("Je veux aller en haut");
-			prog->player.y = (int) prog->player.y + PLAYER_SCALE * 0.5; //on colle le perso sous le mur du haut
-		}
-		else // si on essaie de descendre
-		{
-			puts("Je veux aller en bas");
-			prog->player.y = (int) prog->player.y + 1 - PLAYER_SCALE * 0.5; // on colle le perso au dessus du mur du bas
-		}
-		prog->player.x = x; // slide sur x
-		return (1);
-	}
-	if (correct_pos(prog->player.x, y, spd, prog)) // on teste avec l'ancien x
-	{
-		if (spd * cos(prog->player.dir) < 0) // si on essaie d'aller a gauche
-			prog->player.x = (int) prog->player.x + PLAYER_SCALE * 0.5; // on colle le perso apres le mur de gauche
-		else // si on essaie d'aller a droite
-			prog->player.x = (int) prog->player.x + 1 - PLAYER_SCALE * 0.5; // on colle le perso avant le mur de droite
-		prog->player.y = y; // slide sur y
-		return (1);
-	}
+	if (correct_pos(x, y, prog))
+		return (update_coords(x, y, prog), 1);
+	if (correct_pos(x, prog->player.y, prog))
+		slide_on_x(spd * sin(prog->player.dir), x, prog);
+	if (correct_pos(prog->player.x, y, prog))
+		slide_on_y(spd * cos(prog->player.dir), y, prog);
 	return (1);
 }
