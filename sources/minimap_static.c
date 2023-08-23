@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap_static.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 09:31:45 by rficht            #+#    #+#             */
-/*   Updated: 2023/08/16 10:34:17 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/08/23 11:27:00 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,6 @@ int	c3d_create_minimap(t_prog *prog)
 		}
 	}
 	mlx_image_to_window(prog->mlx, prog->minimap_img, 0, 0);
-	mlx_set_instance_depth(prog->minimap_img->instances, 0);
+	mlx_set_instance_depth(prog->minimap_img->instances, 1);
 	return (0);
 }

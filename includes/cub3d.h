@@ -6,7 +6,7 @@
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 14:15:34 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/08/23 10:10:32 by rficht           ###   ########.fr       */
+/*   Updated: 2023/08/23 11:20:42 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,14 @@
 # define PLAYER 0xF455EAFF
 # define RAYNUMBER 10
 # define FOV 90
+
+
+# define SKY 0x526FD2FF
+# define GROUND 0xC8b4A4FF
+# define NORTH_C 0xFB9902FF
+# define SOUTH_C 0x347C98FF
+# define EAST_C 0xC21460FF
+# define WEST_C 0xFCCC1AFF
 
 # define ERR "Error\n"
 # define EF_BADDESC "Bad file description\n"
@@ -121,6 +129,7 @@ struct s_prog
 	mlx_image_t		*minimap_img;
 	mlx_image_t		*fov_img;
 	mlx_image_t		*player_img;
+	mlx_image_t		*view_img;
 	t_texture_pack	textures;
 	t_color			f_color;
 	t_color			c_color;
@@ -136,6 +145,8 @@ struct s_ray
 	t_coord		map_check;
 	t_coord		step;
 	float		distance;
+	float		dx;
+	float		dy;
 	int			has_collide;
 };
 
@@ -196,6 +207,5 @@ int			c3d_refresh_fov(t_prog *prog);
 void		c3d_draw_minimap_centered(t_prog *prog);
 
 //raycasting
-void		c3d_cast_one(t_prog *prog, float dx, float dy);
-
+void		c3d_cast_one(t_prog *prog, float dir, int x_pos);
 #endif

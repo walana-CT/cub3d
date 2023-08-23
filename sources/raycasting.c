@@ -6,16 +6,56 @@
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 10:04:42 by rficht            #+#    #+#             */
-/*   Updated: 2023/08/20 14:55:08 by rficht           ###   ########.fr       */
+/*   Updated: 2023/08/23 11:27:21 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 # define VERT 0x3568A6FF
 
-static void	cast_init(t_ray *ray, float dx, float dy)
+
+void	disp_band(t_prog *prog, t_ray *ray, int x_pos)
 {
-	if (dx < 0)
+	int	n;
+	int	wall_start;
+	int	wall_end;
+
+	n = -1;
+	wall_start = -ray->distance / 2 + WIN_HEIGHT / 2;
+	if (wall_start < 0)
+		wall_start = 0;
+	wall_end = ray->distance / 2 + WIN_HEIGHT / 2;
+	if (wall_end >= WIN_HEIGHT)
+		wall_end = WIN_HEIGHT;
+	while (++n < wall_start)
+		mlx_put_pixel(prog->view_img, x_pos, n, SKY);
+	while (++n <= wall_end)
+	{
+		if (ray->lenght.x < ray->lenght.y)
+		{
+			if (ray->dx > 0)
+				mlx_put_pixel(prog->view_img, x_pos, n, EAST_C);
+			else
+				mlx_put_pixel(prog->view_img, x_pos, n, WEST_C);
+		}
+		else
+		{
+			if (ray->dy > 0)
+				mlx_put_pixel(prog->view_img, x_pos, n, NORTH_C);
+			else
+				mlx_put_pixel(prog->view_img, x_pos, n, SOUTH_C);
+		}
+	}
+		while (++n < WIN_HEIGHT)
+	{
+		mlx_put_pixel(prog->view_img, x_pos, n, GROUND);
+	}
+}
+
+
+static void	cast_init(t_ray *ray)
+{
+	if (ray->dx < 0)
 	{
 		ray->step.x = -1;
 		ray->lenght.x = (ray->start.x - ray->map_check.x) * ray->d_step.x;
@@ -25,7 +65,7 @@ static void	cast_init(t_ray *ray, float dx, float dy)
 		ray->step.x = 1;
 		ray->lenght.x = (ray->map_check.x + 1 - ray->start.x) * ray->d_step.x;
 	}
-	if (dy < 0)
+	if (ray->dy < 0)
 	{
 		ray->step.y = -1;
 		ray->lenght.y = (ray->start.y - ray->map_check.y) * ray->d_step.y;	
@@ -37,7 +77,7 @@ static void	cast_init(t_ray *ray, float dx, float dy)
 	}
 }
 
-static void	casting(t_ray *ray, float dx, float dy, t_prog *prog)
+static void	casting(t_ray *ray, t_prog *prog)
 {
 	t_line		line;
 
@@ -62,8 +102,8 @@ static void	casting(t_ray *ray, float dx, float dy, t_prog *prog)
 	}
 	if (ray->has_collide)
 	{
-		ray->intersection.x = ray->start.x + dx * ray->distance;
-		ray->intersection.y = ray->start.y + dy * ray->distance;
+		ray->intersection.x = ray->start.x + ray->dx * ray->distance;
+		ray->intersection.y = ray->start.y + ray->dy * ray->distance;
 		line = c3d_create_line(prog->player.x * SCALE, \
 			prog->player.y * SCALE, \
 			ray->intersection.x * SCALE, \
@@ -73,20 +113,23 @@ static void	casting(t_ray *ray, float dx, float dy, t_prog *prog)
 }
 
 
-void	c3d_cast_one(t_prog *prog, float dx, float dy)
+void	c3d_cast_one(t_prog *prog, float dir, int x_pos)
 {
 	t_ray		ray;
 
 	ray.has_collide = FALSE;
+	ray.dx = cos(dir);
+	ray.dy = sin(dir);
 	ray.start.x = prog->player.x;
 	ray.start.y = prog->player.y;
 	ray.map_check.x = ray.start.x;
 	ray.map_check.y = ray.start.y;
 	ray.lenght.x = 0;
 	ray.lenght.y = 0;
-	ray.d_step.x = sqrt(1 + pow((dy / dx), 2));
-	ray.d_step.y = sqrt(1 + pow((dx / dy), 2));
+	ray.d_step.x = sqrt(1 + pow((ray.dy / ray.dx), 2));
+	ray.d_step.y = sqrt(1 + pow((ray.dx / ray.dy), 2));
 
-	cast_init(&ray, dx, dy);
-	casting(&ray, dx, dy, prog);
+	cast_init(&ray);
+	casting(&ray, prog);
+	disp_band(prog, &ray, x_pos);
 }

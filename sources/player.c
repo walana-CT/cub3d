@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 09:41:00 by rficht            #+#    #+#             */
-/*   Updated: 2023/08/16 10:30:21 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/08/23 11:27:12 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	c3d_create_player(t_prog *prog)
 		prog->player.x * SCALE - (size_int / 2),
 		prog->player.y * SCALE - (size_int / 2));
 	printf("player first pos %f , %f\n", prog->player.x * SCALE - (size_int / 2), prog->player.y * SCALE - (size_int / 2));
-	mlx_set_instance_depth(prog->player_img->instances, 1);
+	mlx_set_instance_depth(prog->player_img->instances, 3);
 	prog->player.size_int = size_int;
 	return (0);
 }
