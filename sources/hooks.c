@@ -48,24 +48,3 @@ void	c3d_mainhook(void *param)
 	if (refresh)
 		refresh = c3d_refresh(prog);
 }
-
-/*
-void	c3d_mainhook(void *param)
-{
-	t_prog	*prog;
-	int		fast;
-
-	prog = (t_prog *) param;
-	fast = 1;
-	if (mlx_is_key_down(prog->mlx, MLX_KEY_LEFT_SHIFT))
-		fast = 2;
-	if (mlx_is_key_down(prog->mlx, MLX_KEY_D))
-		c3d_moveplayer(0, SPD * fast, prog);
-	if (mlx_is_key_down(prog->mlx, MLX_KEY_A))
-		c3d_moveplayer(0, -SPD * fast, prog);
-	if (mlx_is_key_down(prog->mlx, MLX_KEY_W))
-		c3d_moveplayer(-SPD * fast, 0, prog);
-	if (mlx_is_key_down(prog->mlx, MLX_KEY_S))
-		c3d_moveplayer(SPD * fast, 0, prog);
-}
-*/

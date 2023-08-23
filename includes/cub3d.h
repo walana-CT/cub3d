@@ -14,9 +14,9 @@
 # define CUB3D_H
 # define WIN_WIDTH 1920
 # define WIN_HEIGHT 1080
-# define MINIMAP_Y 1920
-# define MINIMAP_X 1080
-# define SCALE 20
+# define MINIMAP_HEIGHT 1920
+# define MINIMAP_WIDTH 1080
+# define SCALE 16
 # define PLAYER_SCALE 0.25
 # define SPD 0.05
 # define SENSIVITY 0.01
@@ -132,6 +132,7 @@ int			load_color(t_color *color, char *str);
 int			c3d_cub_free_map(char **map);
 void		c3d_bool_flipflop(int *val);
 int			c3d_create_map(t_list **file_lst, t_prog *prog);
+void		c3d_final_free(t_prog *prog);
 char		**c3d_map_dup(t_prog *prog);
 t_vect2d	c3d_get_player_pos(char **map);
 int			is_valid_ext(char *file, char *ext);
@@ -152,6 +153,7 @@ int			c3d_is_map_closed(t_prog *prog);
 int			check_info(t_prog prog);
 
 // drawing
+
 t_line		c3d_create_line(int a, int b, int c, int d);
 int			c3d_create_fov(t_prog *prog);
 int			c3d_create_minimap(t_prog *prog);

@@ -39,7 +39,7 @@ INCLUDES = -I ../includes
 FLAGS = -Wall -Wextra -Werror
 
 # General compilation flags
-CFLAG = $(FLAGS)  $(INCLUDES) -fsanitize=address
+CFLAG = $(FLAGS)  $(INCLUDES) -g3 -fsanitize=address
  
 # Linking compilation flags
 GFLAG = -g3

@@ -45,7 +45,7 @@ int	c3d_lineok(t_prog prog, t_line line)
 {
 	if (line.x0 < 0 && line.x1 < 0)
 		return (0);
-	if (line.x0 > MINIMAP_Y && line.x1 > MINIMAP_Y)
+	if (line.x0 > MINIMAP_HEIGHT && line.x1 > MINIMAP_HEIGHT)
 		return (0);
 	if (line.y0 < 0 && line.y1 < 0)
 		return (0);

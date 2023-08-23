@@ -33,7 +33,7 @@ int	c3d_create_minimap(t_prog *prog)
 
 	if (prog->minimap_img)
 		mlx_delete_image(prog->mlx, prog->minimap_img);
-	prog->minimap_img = mlx_new_image(prog->mlx, MINIMAP_X, MINIMAP_Y);
+	prog->minimap_img = mlx_new_image(prog->mlx, MINIMAP_WIDTH, MINIMAP_HEIGHT);
 	if (!prog->minimap_img)
 		return (1);
 	y = -1;

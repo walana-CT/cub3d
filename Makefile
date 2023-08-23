@@ -43,7 +43,7 @@ INCLUDES = -I MLX42/include/MLX42 -I includes
 FLAGS = -Wall -Wextra -Werror
 
 # General compilation flags
-CFLAG = $(FLAGS) $(INCLUDES) -fsanitize=address
+CFLAG = $(FLAGS) $(INCLUDES) -g3 -fsanitize=address
  
 # Linking compilation flags
 #GFLAG = $(LIBMLX) -g3

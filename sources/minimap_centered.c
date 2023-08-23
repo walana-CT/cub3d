@@ -82,8 +82,8 @@ void	draw_player_center(t_prog *prog)
 {
 	t_vect2d	center;
 
-	center.x = MINIMAP_X / 2;
-	center.y = MINIMAP_Y / 2;
+	center.x = MINIMAP_WIDTH / 2;
+	center.y = MINIMAP_HEIGHT / 2;
 	draw_square_center(center, SCALE / 4, prog);
 }
 
@@ -97,9 +97,9 @@ void	c3d_draw_minimap_centered(t_prog *prog)
 	//mlx_put_pixel(prog->minimap_img, 4, 4, PLAYER);
 	printf("map_size %d, %d\n", prog->map_x, prog->map_y);
 
-	while (++y < MINIMAP_Y)
+	while (++y < MINIMAP_HEIGHT)
 	{
-		while (++x < MINIMAP_X)
+		while (++x < MINIMAP_WIDTH)
 			put_pixel_map(y, x, prog);
 		x = -1;
 	}
