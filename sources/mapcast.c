@@ -6,7 +6,7 @@
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 14:04:25 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/08/20 14:58:11 by rficht           ###   ########.fr       */
+/*   Updated: 2023/08/23 10:30:04 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,20 @@ int	c3d_refresh_fov(t_prog *prog)
 
 void	c3d_raycast(t_prog *prog)
 {
-	int		x = 0;
- 	double planeX = 0.0, planeY = 0.66;
+	float	camera_x;
+	float	camera_step;
+	int		n;
+
+	n = -1;
+	camera_x = tan(FOV / 2);
+	camera_step = camera_x * 2 / WIN_WIDTH;
+	camera_x *= -1;
 	c3d_refresh_fov(prog);
-	while (x < WIN_WIDTH)
+	while (++n <= WIN_WIDTH)
 	{
-		double cameraX = 2 * x / (double) WIN_WIDTH - 1; //x-coordinate in camera space
-		double rayDirX = cos(prog->player.dir) + planeX * cameraX;
-		double rayDirY = sin(prog->player.dir) + planeY * cameraX;
-		printf("calling cast one zith %f %f \n",rayDirX, rayDirY);
-		c3d_cast_one(prog, rayDirX, rayDirY);
-		x++;
+		c3d_cast_one(prog, cos(prog->player.dir + atan(camera_x)),
+			sin(prog->player.dir + atan(camera_x)));
+		camera_x += camera_step;
 	}
-	//c3d_cast_one(prog, cos(prog->player.dir), sin(prog->player.dir));
+	c3d_cast_one(prog, cos(prog->player.dir), sin(prog->player.dir));
 }

@@ -6,7 +6,7 @@
 #    By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/17 10:47:24 by rficht            #+#    #+#              #
-#    Updated: 2023/08/08 14:23:40 by rficht           ###   ########.fr        #
+#    Updated: 2023/08/22 13:22:55 by rficht           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,7 @@ INCLUDES = -I ../MLX42/include -I ../includes
 FLAGS = -Wall -Wextra -Werror
 
 # General compilation flags
-CFLAG = $(FLAGS) $(INCLUDES) -fsanitize=address
+CFLAG = $(FLAGS) $(INCLUDES) #-fsanitize=address
  
 # Linking compilation flags
 GFLAG = -g3

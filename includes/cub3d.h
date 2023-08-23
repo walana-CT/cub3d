@@ -6,17 +6,17 @@
 /*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 14:15:34 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/08/20 14:52:31 by rficht           ###   ########.fr       */
+/*   Updated: 2023/08/23 10:10:32 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
-# define WIN_WIDTH 800
-# define WIN_HEIGHT 600
-# define MINIMAP_Y 400
-# define MINIMAP_X 400
-# define SCALE 8
+# define WIN_WIDTH 1920
+# define WIN_HEIGHT 1080
+# define MINIMAP_Y 800
+# define MINIMAP_X 800
+# define SCALE 20
 # define PLAYER_SCALE 0.25
 # define SPD 0.05
 # define SENSIVITY 0.01
@@ -25,6 +25,7 @@
 # define WALK 0xBBBBBBFF
 # define PLAYER 0xF455EAFF
 # define RAYNUMBER 10
+# define FOV 90
 
 # define ERR "Error\n"
 # define EF_BADDESC "Bad file description\n"
