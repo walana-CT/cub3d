@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap_centered.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
+/*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 10:54:38 by rficht            #+#    #+#             */
-/*   Updated: 2023/08/10 14:49:57 by rficht           ###   ########.fr       */
+/*   Updated: 2023/08/25 17:14:34 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ t_vect2d	get_map_pos(int y, int x, t_prog *prog)
 	float		f_pos_x;
 	float		f_pos_y;
 
-	f_pos_y = (y - prog->center.y) / SCALE;
-	f_pos_x = (x - prog->center.x) / SCALE;
+	f_pos_y = (y - prog->center.y) / prog->size.mapscale;
+	f_pos_x = (x - prog->center.x) / prog->size.mapscale;
 	f_pos_y += prog->player.y;
 	f_pos_x += prog->player.x;
 
@@ -32,9 +32,9 @@ t_vect2d	get_map_pos(int y, int x, t_prog *prog)
 
 int	is_in_map(int x, int y, t_prog *prog)
 {
-	if (x < 0 || x > prog->map_x)
+	if (x < 0 || x > prog->map_width)
 		return (FALSE);
-	if (y < 0 || y > prog->map_y)
+	if (y < 0 || y > prog->map_height)
 		return (FALSE);
 	return (TRUE);
 }
@@ -82,9 +82,9 @@ void	draw_player_center(t_prog *prog)
 {
 	t_vect2d	center;
 
-	center.x = MINIMAP_WIDTH / 2;
-	center.y = MINIMAP_HEIGHT / 2;
-	draw_square_center(center, SCALE / 4, prog);
+	center.x = prog->size.minimap_width / 2;
+	center.y = prog->size.minimap_height / 2;
+	draw_square_center(center, prog->size.mapscale / 4, prog);
 }
 
 void	c3d_draw_minimap_centered(t_prog *prog)
@@ -95,11 +95,11 @@ void	c3d_draw_minimap_centered(t_prog *prog)
 	y = -1;
 	x = -1;
 	//mlx_put_pixel(prog->minimap_img, 4, 4, PLAYER);
-	printf("map_size %d, %d\n", prog->map_x, prog->map_y);
+	printf("map_size %d, %d\n", prog->map_width, prog->map_height);
 
-	while (++y < MINIMAP_HEIGHT)
+	while (++y < prog->size.minimap_height)
 	{
-		while (++x < MINIMAP_WIDTH)
+		while (++x < prog->size.minimap_width)
 			put_pixel_map(y, x, prog);
 		x = -1;
 	}

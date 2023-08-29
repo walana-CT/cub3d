@@ -6,7 +6,7 @@
 #    By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/17 10:47:24 by rficht            #+#    #+#              #
-#    Updated: 2023/08/21 16:56:50 by mdjemaa          ###   ########.fr        #
+#    Updated: 2023/08/25 16:42:06 by mdjemaa          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,6 +59,7 @@ FILES +=	collisions.c\
 		 	cub3d.c\
 			error.c\
 			hooks.c\
+			init.c\
 			line.c\
 			mapcast.c\
 			minimap_centered.c\

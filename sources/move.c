@@ -6,7 +6,7 @@
 /*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 14:54:21 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/08/21 16:56:17 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/08/25 17:14:57 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,18 +36,18 @@ void	update_coords(float x, float y, t_prog *prog)
 void	slide_on_x(float dir, float x, t_prog *prog)
 {
 	if (dir < 0)
-		prog->player.y = (int) prog->player.y + PLAYER_SCALE * 0.5;
+		prog->player.y = (int) prog->player.y + prog->size.pl_scale * 0.5;
 	else
-		prog->player.y = (int) prog->player.y + 0.99 - PLAYER_SCALE * 0.5;
+		prog->player.y = (int) prog->player.y + 0.99 - prog->size.pl_scale * 0.5;
 	prog->player.x = x;
 }
 
 void	slide_on_y(float dir, float y, t_prog *prog)
 {
 	if (dir < 0)
-		prog->player.x = (int) prog->player.x + PLAYER_SCALE * 0.5;
+		prog->player.x = (int) prog->player.x + prog->size.pl_scale * 0.5;
 	else
-		prog->player.x = (int) prog->player.x + 0.99 - PLAYER_SCALE * 0.5;
+		prog->player.x = (int) prog->player.x + 0.99 - prog->size.pl_scale * 0.5;
 	prog->player.y = y;
 }
 

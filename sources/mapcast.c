@@ -6,7 +6,7 @@
 /*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 14:04:25 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/08/15 18:42:51 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/08/25 17:14:34 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ void	c3d_raycast(t_prog *prog)
 {
 	t_line	line;
 
-	line = c3d_create_line(prog->player.x * SCALE, \
-		prog->player.y * SCALE, \
-		prog->player.x * SCALE + 10 * cos(prog->player.dir), \
-		prog->player.y * SCALE + 10 * sin(prog->player.dir));
+	line = c3d_create_line(prog->player.x * prog->size.mapscale, \
+		prog->player.y * prog->size.mapscale, \
+		prog->player.x * prog->size.mapscale + 10 * cos(prog->player.dir), \
+		prog->player.y * prog->size.mapscale + 10 * sin(prog->player.dir));
 	c3d_create_fov(prog);
 	c3d_draw_line(prog->fov_img, line, PLAYER);
 }

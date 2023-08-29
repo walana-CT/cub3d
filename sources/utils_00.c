@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_00.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
+/*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 12:52:03 by rficht            #+#    #+#             */
-/*   Updated: 2023/08/04 13:29:57 by rficht           ###   ########.fr       */
+/*   Updated: 2023/08/25 16:50:11 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,17 +52,17 @@ char	**c3d_map_dup(t_prog *prog)
 	char	**map_cpy;
 
 	n = 0;
-	map_cpy = ft_calloc(prog->map_y + 2, sizeof(char *));
+	map_cpy = ft_calloc(prog->map_height + 2, sizeof(char *));
 	if (!map_cpy)
 		return (NULL);
-	while (n < prog->map_y)
+	while (n < prog->map_height)
 	{
 		map_cpy[n] = ft_strdup(prog->map[n]);
 		if (!prog->map[n])
 			return (NULL);
 		n++;
 	}
-	map_cpy[n] = ft_calloc(prog->map_x + 1, sizeof(char));
+	map_cpy[n] = ft_calloc(prog->map_width + 1, sizeof(char));
 	if (!prog->map[n])
 		return (NULL);
 	return (map_cpy);

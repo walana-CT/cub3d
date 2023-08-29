@@ -6,7 +6,7 @@
 /*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 10:55:17 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/08/15 18:36:29 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/08/25 17:16:59 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,12 @@ int	c3d_lineok(t_prog prog, t_line line)
 {
 	if (line.x0 < 0 && line.x1 < 0)
 		return (0);
-	if (line.x0 > MINIMAP_HEIGHT && line.x1 > MINIMAP_HEIGHT)
+	if (line.x0 > prog.size.minimap_height && \
+		line.x1 > prog.size.minimap_height)
 		return (0);
 	if (line.y0 < 0 && line.y1 < 0)
 		return (0);
-	if (line.y0 > prog.map_y && line.y1 > prog.map_y)
+	if (line.y0 > prog.map_height && line.y1 > prog.map_height)
 		return (0);
 	return (1);
 }

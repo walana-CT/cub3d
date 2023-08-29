@@ -6,7 +6,7 @@
 /*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 13:44:51 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/08/18 15:55:04 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/08/25 17:14:57 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 int	correct_pos(float x, float y, t_prog *prog)
 {
-	return (prog->map[(int)(y + PLAYER_SCALE * 0.5)]
-			[(int)(x + PLAYER_SCALE * 0.5)] == '0' &&
-			prog->map[(int)(y + PLAYER_SCALE * 0.5)]
-			[(int)(x - PLAYER_SCALE * 0.5)] == '0' &&
-			prog->map[(int)(y - PLAYER_SCALE * 0.5)]
-			[(int)(x + PLAYER_SCALE * 0.5)] == '0' &&
-			prog->map[(int)(y - PLAYER_SCALE * 0.5)]
-			[(int)(x - PLAYER_SCALE * 0.5)] == '0');
+	return (prog->map[(int)(y + prog->size.pl_scale * 0.5)]
+			[(int)(x + prog->size.pl_scale * 0.5)] == '0' &&
+			prog->map[(int)(y + prog->size.pl_scale * 0.5)]
+			[(int)(x - prog->size.pl_scale * 0.5)] == '0' &&
+			prog->map[(int)(y - prog->size.pl_scale * 0.5)]
+			[(int)(x + prog->size.pl_scale * 0.5)] == '0' &&
+			prog->map[(int)(y - prog->size.pl_scale * 0.5)]
+			[(int)(x - prog->size.pl_scale * 0.5)] == '0');
 }

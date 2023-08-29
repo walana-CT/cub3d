@@ -6,37 +6,11 @@
 /*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 15:04:26 by rficht            #+#    #+#             */
-/*   Updated: 2023/08/15 18:16:30 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/08/25 17:14:34 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-int	cub3d_init(t_prog *prog)
-{
-	prog->map = NULL;
-	prog->c_color.fullcolor = NULL;
-	prog->f_color.fullcolor = NULL;
-	prog->w_height = WIN_HEIGHT;
-	prog->w_width = WIN_WIDTH;
-	prog->textures.e = NULL;
-	prog->textures.n = NULL;
-	prog->textures.s = NULL;
-	prog->textures.w = NULL;
-	prog->map_x = 0;
-	prog->map_y = 0;
-	prog->minimap_img = NULL;
-	prog->player_img = NULL;
-	prog->fov_img = NULL;
-	prog->mouse_x = 0;
-	//prog->player.hb = SCALE / 5.0;
-	prog->center.x = MINIMAP_WIDTH / 2;
-	prog->center.y = MINIMAP_HEIGHT / 2;
-	prog->mlx = mlx_init(prog->w_width, prog->w_height, "Loup Cailloux", true);
-	if (!prog->mlx)
-		ft_putstr_fd((char *)mlx_strerror(mlx_errno), 2);
-	return (0);
-}
 
 int	is_valid_ext(char *file, char *ext)
 {
@@ -60,9 +34,9 @@ int	c3d_refresh(t_prog *prog)
 {
 
 	prog->player_img->instances[0].x
-		= prog->player.x * SCALE - (prog->player.size_int / 2);
+		= prog->player.x * prog->size.mapscale - (prog->player.size_int / 2);
 	prog->player_img->instances[0].y
-		= prog->player.y * SCALE - (prog->player.size_int / 2);
+		= prog->player.y * prog->size.mapscale - (prog->player.size_int / 2);
 	c3d_raycast(prog);
 	return (0);
 }
@@ -89,8 +63,9 @@ int	main(int argc, char *argv[])
 	check_invalid_args(argc, argv);
 	cub3d_init(&prog);
 	if (c3d_parsing(--argc, ++argv, &prog))
-		return (1);
-	c3d_run(&prog);
+		return (c3d_final_free(&prog), 1);
+	if (graph_init(&prog) == 0)
+		c3d_run(&prog);
 	c3d_final_free(&prog);
 	puts("CYA");
 	return (0);

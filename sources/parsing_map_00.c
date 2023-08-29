@@ -6,7 +6,7 @@
 /*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 10:53:40 by rficht            #+#    #+#             */
-/*   Updated: 2023/08/15 14:13:11 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/08/25 16:50:11 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,8 +113,8 @@ static int	read_map(t_list **file_lst, t_prog *prog)
 	while (cur_elem && is_map_line(cur_elem->content))
 	{
 		player_nbr += count_player_line(cur_elem->content, prog);
-		prog->map_y++;
-		prog->map_x = ft_max(prog->map_x, ft_strlen(cur_elem->content));
+		prog->map_height++;
+		prog->map_width = ft_max(prog->map_width, ft_strlen(cur_elem->content));
 		cur_elem = cur_elem->next;
 	}
 	if (cur_elem && invalid_line(cur_elem->content))
@@ -137,7 +137,7 @@ int	c3d_get_map(t_list **file_lst, t_prog *prog)
 		return (1);
 	if (read_map(file_lst, prog))
 		return (err_msg(EF_WMAP, 1));
-	printf("\nmap dimensions :	x : %d	y : %d\n", prog->map_x, prog->map_y);
+	printf("\nmap dimensions :	x : %d	y : %d\n", prog->map_width, prog->map_height);
 	if (c3d_create_map(file_lst, prog))
 		return (err_msg(EF_WMAP, 1));
 	c3d_clean_map(prog->map, prog);
