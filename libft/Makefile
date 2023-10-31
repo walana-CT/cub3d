@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+         #
+#    By: rficht <rficht@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/17 10:47:24 by rficht            #+#    #+#              #
-#    Updated: 2023/08/22 13:23:06 by rficht           ###   ########.fr        #
+#    Updated: 2023/10/30 11:07:29 by rficht           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ INCLUDES = -I ../includes
 FLAGS = -Wall -Wextra -Werror
 
 # General compilation flags
-CFLAG = $(FLAGS)  $(INCLUDES) #-fsanitize=address
+CFLAG = $(FLAGS)  $(INCLUDES) -fsanitize=address
  
 # Linking compilation flags
 GFLAG = -g3
@@ -158,7 +158,7 @@ $(NAME): $(OBJ)
 	@printf '$(MAGENTA)Creating archive: $(RESET)$@\n'
 	@ar rc $@ $^
 
-mkdir: $(SRC_DIR) $(OBJ_DIR)
+dir: $(SRC_DIR) $(OBJ_DIR)
 $(SRC_DIR):
 	mkdir $(SRC_DIR)
 $(OBJ_DIR):
@@ -166,7 +166,7 @@ $(OBJ_DIR):
 
 # remove .o corresponding to sources	
 clean:
-	@printf ' -- cleaning objects libft -- '
+	@printf ' -- cleaning objects libft -- \n'
 	@rm -f $(OBJ)
 
 # remove .o and .a corresponding to sources

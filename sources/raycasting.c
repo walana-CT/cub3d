@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
+/*   By: rficht <rficht@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 10:04:42 by rficht            #+#    #+#             */
-/*   Updated: 2023/08/23 11:27:21 by rficht           ###   ########.fr       */
+/*   Updated: 2023/10/30 11:52:30 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,21 @@ void	disp_band(t_prog *prog, t_ray *ray, int x_pos)
 	int	n;
 	int	wall_start;
 	int	wall_end;
+	int	h;
+
 
 	n = -1;
-	wall_start = -ray->distance / 2 + WIN_HEIGHT / 2;
+	h = (WIN_HEIGHT / ray->distance);
+	wall_start = -h / 2 + WIN_HEIGHT / 2;
 	if (wall_start < 0)
 		wall_start = 0;
-	wall_end = ray->distance / 2 + WIN_HEIGHT / 2;
+	wall_end = h / 2 + WIN_HEIGHT / 2;
+	if (x_pos == 1000)
+	{
+		printf("disp band: distance: %f\n", ray->distance);
+		printf("wall strat: %d, wall end: %d\n", wall_start, wall_end);
+	}
+
 	if (wall_end >= WIN_HEIGHT)
 		wall_end = WIN_HEIGHT;
 	while (++n < wall_start)
@@ -46,7 +55,7 @@ void	disp_band(t_prog *prog, t_ray *ray, int x_pos)
 				mlx_put_pixel(prog->view_img, x_pos, n, SOUTH_C);
 		}
 	}
-		while (++n < WIN_HEIGHT)
+	while (++n < WIN_HEIGHT)
 	{
 		mlx_put_pixel(prog->view_img, x_pos, n, GROUND);
 	}

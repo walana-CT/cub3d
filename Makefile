@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+         #
+#    By: rficht <rficht@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/17 10:47:24 by rficht            #+#    #+#              #
-#    Updated: 2023/08/22 13:18:34 by rficht           ###   ########.fr        #
+#    Updated: 2023/10/30 11:05:39 by rficht           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,7 @@ INCLUDES = -I MLX42/include/MLX42 -I includes
 FLAGS = -Wall -Wextra -Werror
 
 # General compilation flags
-CFLAG = $(FLAGS) $(INCLUDES) #-fsanitize=address
+CFLAG = $(FLAGS) $(INCLUDES) -fsanitize=address
  
 # Linking compilation flags
 #GFLAG = $(LIBMLX) -g3
@@ -100,7 +100,7 @@ $(NAME): $(OBJ)
 	
 # remove .o corresponding to sources	
 clean:
-	@printf ' -- cleaning objects of $(NAME) -- '
+	@printf ' -- cleaning objects of $(NAME) -- \n'
 	@rm -f $(OBJ)
 
 # remove .o and .a corresponding to sources
@@ -112,7 +112,7 @@ fclean: clean
 re: fclean all
 
 #create the default directories
-mkdir: $(SRC_DIR) $(OBJ_DIR) $(INCLUDE_DIR)
+dir: $(SRC_DIR) $(OBJ_DIR) $(INCLUDE_DIR)
 $(SRC_DIR):
 	mkdir $(SRC_DIR)
 $(OBJ_DIR):
