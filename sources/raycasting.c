@@ -6,7 +6,7 @@
 /*   By: rficht <rficht@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 10:04:42 by rficht            #+#    #+#             */
-/*   Updated: 2023/10/30 11:52:30 by rficht           ###   ########.fr       */
+/*   Updated: 2023/11/02 14:33:16 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,11 @@ void	disp_band(t_prog *prog, t_ray *ray, int x_pos)
 	if (wall_start < 0)
 		wall_start = 0;
 	wall_end = h / 2 + WIN_HEIGHT / 2;
-	if (x_pos == 1000)
-	{
-		printf("disp band: distance: %f\n", ray->distance);
-		printf("wall strat: %d, wall end: %d\n", wall_start, wall_end);
-	}
-
 	if (wall_end >= WIN_HEIGHT)
 		wall_end = WIN_HEIGHT;
 	while (++n < wall_start)
 		mlx_put_pixel(prog->view_img, x_pos, n, SKY);
-	while (++n <= wall_end)
+	while (++n < wall_end)
 	{
 		if (ray->lenght.x < ray->lenght.y)
 		{
