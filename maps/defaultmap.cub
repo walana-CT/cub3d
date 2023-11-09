@@ -1,9 +1,9 @@
 F 100,200,255
 NO ./textures/ratt.png
 
-WE ./textures/dots.png
-SO ./telxtures/ratt.png
-EA ./textures/dots.png
+WE ./textures/mossy.png
+SO ./textures/barrel.png
+EA ./textures/colorstone.png
 
 C 100,200,255
 

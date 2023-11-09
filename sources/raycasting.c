@@ -6,7 +6,7 @@
 /*   By: rficht <rficht@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 10:04:42 by rficht            #+#    #+#             */
-/*   Updated: 2023/11/09 15:37:45 by rficht           ###   ########.fr       */
+/*   Updated: 2023/11/09 16:26:53 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,8 +98,8 @@ static void	casting(t_ray *ray, t_prog *prog)
 			ray->distance = ray->lenght.y;
 			ray->lenght.y += ray->d_step.y;
 		}
-		if (ray->map_check.x >= 0 && ray->map_check.x < prog->map_x
-			&& ray->map_check.y >= 0 && ray->map_check.y < prog->map_y)
+		if (ray->map_check.x >= 0 && ray->map_check.x < prog->map_width
+			&& ray->map_check.y >= 0 && ray->map_check.y < prog->map_height)
 			if (prog->map[ray->map_check.y][ray->map_check.x] == '1')
 				ray->has_collide = TRUE;
 	}
@@ -107,10 +107,10 @@ static void	casting(t_ray *ray, t_prog *prog)
 	{
 		ray->intersection.x = ray->start.x + ray->dx * ray->distance;
 		ray->intersection.y = ray->start.y + ray->dy * ray->distance;
-		line = c3d_create_line(prog->player.x * SCALE, \
-			prog->player.y * SCALE, \
-			ray->intersection.x * SCALE, \
-			ray->intersection.y * SCALE);
+		line = c3d_create_line(prog->player.x * prog->size.mapscale, \
+			prog->player.y * prog->size.mapscale, \
+			ray->intersection.x * prog->size.mapscale, \
+			ray->intersection.y * prog->size.mapscale);
 		c3d_draw_line(prog->fov_img, line, VERT);
 	}
 }

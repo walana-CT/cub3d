@@ -6,7 +6,7 @@
 /*   By: rficht <rficht@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 14:15:34 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/11/09 15:33:32 by rficht           ###   ########.fr       */
+/*   Updated: 2023/11/09 16:25:48 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,12 @@
 # define CUB3D_H
 # define WIN_WIDTH 1920
 # define WIN_HEIGHT 1080
-# define MINIMAP_Y 800
-# define MINIMAP_X 800
-# define SCALE 20
-# define PLAYER_SCALE 0.25
 # define SPD 0.05
 # define SENSIVITY 0.01
 # define WALL 0x888888FF
 # define VOID 0xDDDDDDFF
 # define WALK 0xBBBBBBFF
 # define PLAYER 0xF455EAFF
-# define RAYNUMBER 10
 # define FOV 90
 
 
@@ -62,7 +57,17 @@ typedef struct s_coord			t_coord;
 typedef struct s_vect2d			t_vect2d;
 typedef struct s_line			t_line;
 typedef struct s_ray			t_ray;
+typedef struct s_size			t_size;
 
+
+struct s_size
+{
+	int		minimap_height;
+	int		minimap_width;
+	int		mapscale;
+	float	pl_scale;
+	float	pl_hb;
+};
 
 struct s_line
 {
@@ -121,8 +126,8 @@ struct s_prog
 	int				w_height;	// window_height
 	int				w_width;	// window_width
 	char			**map;
-	int				map_y;		// max ?
-	int				map_x;		// max ?
+	int				map_height;		// max ?
+	int				map_width;		// max ?
 	int32_t			mouse_x;
 	t_coord			center;
 	mlx_t			*mlx;
@@ -134,6 +139,7 @@ struct s_prog
 	t_color			f_color;
 	t_color			c_color;
 	t_player		player;
+	t_size			size;
 };
 
 struct s_ray
@@ -150,16 +156,11 @@ struct s_ray
 	int			has_collide;
 };
 
-int			load_texture(mlx_texture_t **texture, char *file);
-int			load_color(t_color *color, char *str);
-
 // Utils
 int			c3d_cub_free_map(char **map);
 void		c3d_bool_flipflop(int *val);
 int			c3d_create_map(t_list **file_lst, t_prog *prog);
 char		**c3d_map_dup(t_prog *prog);
-t_coord	c3d_get_player_pos(char **map);
-int			is_valid_ext(char *file, char *ext);
 int			err_msg(char *msg, int err);
 
 // Parsing
@@ -168,8 +169,6 @@ int			get_infos(t_list **file_lst, t_prog *prog);
 int			c3d_get_map(t_list **map_lst, t_prog *prog);
 void		c3d_clean_map(char **map, t_prog *prog);
 int			is_valid_ext(char *file, char *ext);
-int			err_msg(char *msg, int err);
-int			get_infos(t_list **file, t_prog *prog);
 int			load_texture(mlx_texture_t **texture, char *file);
 int			load_color(t_color *color, char *str);
 int			is_map_desc(char *str);
@@ -188,10 +187,9 @@ void		c3d_raycast(t_prog *prog);
 
 
 // moving
-//void		c3d_moveplayer(float dir_y, float dir_x, t_prog *prog);
-int			is_pos_ok(float x, float y, t_prog *prog);
-void		c3d_moveplayer(float spd, t_prog *prog);
-void		c3d_rotateplayer(int32_t mouse_x, t_prog *prog);
+int			c3d_moveplayer(float spd, t_prog *prog);
+int			correct_pos(float x, float y, t_prog *prog);
+int			c3d_rotateplayer(int32_t mouse_x, t_prog *prog);
 
 // hook
 void		c3d_keyhook(mlx_key_data_t keydata, void *param);
@@ -208,7 +206,12 @@ void		c3d_draw_minimap_centered(t_prog *prog);
 
 //raycasting
 void		c3d_cast_one(t_prog *prog, float dir, int x_pos);
-# include "define.h"
-# include "protos.h"
+
+
+// Utils
+void		cub3d_init(t_prog *prog);
+int			graph_init(t_prog *prog);
+void		c3d_final_free(t_prog *prog);
+t_coord		c3d_get_player_pos(char **map);
 
 #endif
