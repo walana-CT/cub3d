@@ -12,5 +12,5 @@ objects
 *.sh
 *.pdf
 cub3d
-MLX42
+MLX42/
 objects/
