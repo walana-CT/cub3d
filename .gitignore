@@ -2,7 +2,6 @@ a.out*
 *.json
 main*
 .DS_Store
-*.o
 *.a
 objects
 *.swp
@@ -14,3 +13,4 @@ objects
 cub3d
 MLX42/
 objects/
+libft/objects/
