@@ -7,7 +7,7 @@ main*
 objects
 *.swp
 *.ini
-.vscode/*
+.vscode/
 .vscode/settings.json
 *.sh
 *.pdf
