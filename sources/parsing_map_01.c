@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_map_01.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
+/*   By: rficht <rficht@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 13:11:04 by rficht            #+#    #+#             */
-/*   Updated: 2023/08/16 10:40:01 by rficht           ###   ########.fr       */
+/*   Updated: 2023/11/09 15:36:30 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,19 @@ int	c3d_create_map(t_list **file_lst, t_prog *prog)
 
 	n = 0;
 	cur_elem = *file_lst;
-	prog->map = ft_calloc(prog->map_y + 2, sizeof(char *));
+	prog->map = ft_calloc(prog->map_height + 2, sizeof(char *));
 	if (!prog->map)
 		return (1);
-	while (n < prog->map_y && cur_elem)
+	while (n < prog->map_height && cur_elem)
 	{
-		prog->map[n] = ft_calloc(prog->map_x + 1, sizeof(char));
+		prog->map[n] = ft_calloc(prog->map_width + 1, sizeof(char));
 		if (!prog->map[n])
 			return (1);
-		ft_strlcpy(prog->map[n], cur_elem->content, prog->map_x + 1);
+		ft_strlcpy(prog->map[n], cur_elem->content, prog->map_width + 1);
 		cur_elem = cur_elem->next;
 		n++;
 	}
-	prog->map[n] = ft_calloc(prog->map_x + 1, sizeof(char));
+	prog->map[n] = ft_calloc(prog->map_width + 1, sizeof(char));
 	if (!prog->map[n])
 		return (1);
 	return (0);
@@ -56,7 +56,7 @@ void	c3d_clean_map(char **map, t_prog *prog)
 	j = 0;
 	while (map[i])
 	{
-		while (j < prog->map_x)
+		while (j < prog->map_width)
 		{
 			if (map[i][j] == '\n' || !map[i][j])
 				map[i][j] = ' ';

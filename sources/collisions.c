@@ -3,54 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   collisions.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rficht <rficht@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 13:44:51 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/08/16 11:58:22 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/11/09 15:34:52 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	check_br(float targ_x, float targ_y, t_prog *prog)
+int	correct_pos(float x, float y, t_prog *prog)
 {
-	return (prog->map[(int)(targ_y + PLAYER_SCALE * 0.5)]
-		[(int)(targ_x + PLAYER_SCALE * 0.5)] == '1');
-}
-
-int	check_bl(float targ_x, float targ_y, t_prog *prog)
-{
-	if (prog->map[(int)(targ_y + PLAYER_SCALE * 0.5)]
-		[(int)(targ_x - PLAYER_SCALE * 0.5)] == '1')
-		return (1);
-	return (0);
-}
-
-int	check_tr(float targ_x, float targ_y, t_prog *prog)
-{
-	if (prog->map[(int)(targ_y - PLAYER_SCALE * 0.5)]
-		[(int)(targ_x + PLAYER_SCALE * 0.5)] == '1')
-		return (1);
-	return (0);
-}
-
-int	check_tl(float targ_x, float targ_y, t_prog *prog)
-{
-	if (prog->map[(int)(targ_y - PLAYER_SCALE * 0.5)]
-		[(int)(targ_x - PLAYER_SCALE * 0.5)] == '1')
-		return (1);
-	return (0);
-}
-
-int	is_pos_ok(float x, float y, t_prog *prog)
-{
-	if (check_tl(x, y, prog))
-		return (FALSE);
-	else if (check_tr(x, y, prog))
-		return (FALSE);
-	else if (check_bl(x, y, prog))
-		return (FALSE);
-	else if (check_br(x, y, prog))
-		return (FALSE);
-	return (TRUE);
+	return (prog->map[(int)(y + prog->size.pl_scale * 0.5)]
+			[(int)(x + prog->size.pl_scale * 0.5)] == '0' &&
+			prog->map[(int)(y + prog->size.pl_scale * 0.5)]
+			[(int)(x - prog->size.pl_scale * 0.5)] == '0' &&
+			prog->map[(int)(y - prog->size.pl_scale * 0.5)]
+			[(int)(x + prog->size.pl_scale * 0.5)] == '0' &&
+			prog->map[(int)(y - prog->size.pl_scale * 0.5)]
+			[(int)(x - prog->size.pl_scale * 0.5)] == '0');
 }

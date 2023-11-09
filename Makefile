@@ -6,7 +6,7 @@
 #    By: rficht <rficht@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/17 10:47:24 by rficht            #+#    #+#              #
-#    Updated: 2023/10/30 11:05:39 by rficht           ###   ########.fr        #
+#    Updated: 2023/11/09 15:33:41 by rficht           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,7 @@ INCLUDES = -I MLX42/include/MLX42 -I includes
 FLAGS = -Wall -Wextra -Werror
 
 # General compilation flags
-CFLAG = $(FLAGS) $(INCLUDES) -fsanitize=address
+CFLAG = $(FLAGS) $(INCLUDES) -g3 -fsanitize=address
  
 # Linking compilation flags
 #GFLAG = $(LIBMLX) -g3
@@ -55,11 +55,11 @@ INCLUDE_DIR = includes
 #---------------#
 #	Sources		#
 #---------------#
-FILES +=	2d.c\
-			collisions.c\
+FILES +=	collisions.c\
 		 	cub3d.c\
 			error.c\
 			hooks.c\
+			init.c\
 			line.c\
 			mapcast.c\
 			minimap_centered.c\

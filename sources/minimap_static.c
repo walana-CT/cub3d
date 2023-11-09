@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap_static.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
+/*   By: rficht <rficht@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 09:31:45 by rficht            #+#    #+#             */
-/*   Updated: 2023/08/23 11:27:00 by rficht           ###   ########.fr       */
+/*   Updated: 2023/11/09 15:36:00 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ void	c3d_drawsquare(t_prog prog, int x, int y, uint32_t col)
 	t_line	line;
 
 	i = -1;
-	while (++i < SCALE)
+	while (++i < prog.size.mapscale)
 	{
-		line = c3d_create_line(x, y + i, x + SCALE, y + i);
+		line = c3d_create_line(x, y + i, x + prog.size.mapscale, y + i);
 		// if (c3d_lineok(prog, line))
 		c3d_draw_line(prog.minimap_img, line, col);
 	}
@@ -33,19 +33,19 @@ int	c3d_create_minimap(t_prog *prog)
 
 	if (prog->minimap_img)
 		mlx_delete_image(prog->mlx, prog->minimap_img);
-	prog->minimap_img = mlx_new_image(prog->mlx, MINIMAP_X, MINIMAP_Y);
+	prog->minimap_img = mlx_new_image(prog->mlx, prog->size.minimap_width, prog->size.minimap_height);
 	if (!prog->minimap_img)
 		return (1);
 	y = -1;
-	while (++y < prog->map_y)
+	while (++y < prog->map_height)
 	{
 		x = -1;
-		while (++x < prog->map_x)
+		while (++x < prog->map_width)
 		{
 			if (prog->map[y][x] == '1')
-				c3d_drawsquare(*prog, x * SCALE, y * SCALE, WALL);
+				c3d_drawsquare(*prog, x * prog->size.mapscale, y * prog->size.mapscale, WALL);
 			else if (prog->map[y][x] == '0')
-				c3d_drawsquare(*prog, x * SCALE, y * SCALE, WALK);
+				c3d_drawsquare(*prog, x * prog->size.mapscale, y * prog->size.mapscale, WALK);
 		}
 	}
 	mlx_image_to_window(prog->mlx, prog->minimap_img, 0, 0);

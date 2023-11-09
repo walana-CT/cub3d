@@ -3,7 +3,6 @@ a.out*
 main*
 .DS_Store
 *.a
-objects
 *.swp
 *.ini
 .vscode/
@@ -14,3 +13,4 @@ cub3d
 MLX42/
 objects/
 libft/objects/
+**/*.o

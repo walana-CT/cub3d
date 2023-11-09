@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rficht <robin.ficht@free.fr>               +#+  +:+       +#+        */
+/*   By: rficht <rficht@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 14:15:34 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/08/23 11:20:42 by rficht           ###   ########.fr       */
+/*   Updated: 2023/11/09 15:33:32 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -208,4 +208,7 @@ void		c3d_draw_minimap_centered(t_prog *prog);
 
 //raycasting
 void		c3d_cast_one(t_prog *prog, float dir, int x_pos);
+# include "define.h"
+# include "protos.h"
+
 #endif
