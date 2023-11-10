@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rficht <rficht@student.42.fr>              +#+  +:+       +#+         #
+#    By: mamat <mamat@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/17 10:47:24 by rficht            #+#    #+#              #
-#    Updated: 2023/11/09 15:33:41 by rficht           ###   ########.fr        #
+#    Updated: 2023/11/10 22:54:09 by mamat            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -82,7 +82,7 @@ OBJ= $(addprefix $(OBJ_DIR)/, $(FILES:.c=.o))
 CC = cc
 
 # main rule called by default
-all: libs $(NAME)
+all: dir libs $(NAME)
 
 libs:
 	@$(MAKE) -C ./libft
@@ -114,11 +114,11 @@ re: fclean all
 #create the default directories
 dir: $(SRC_DIR) $(OBJ_DIR) $(INCLUDE_DIR)
 $(SRC_DIR):
-	mkdir $(SRC_DIR)
+	@mkdir -p $(SRC_DIR)
 $(OBJ_DIR):
-	mkdir $(OBJ_DIR)
+	@mkdir -p $(OBJ_DIR)
 $(INCLUDE_DIR):
-	mkdir $(INCLUDE_DIR)
+	@mkdir -p $(INCLUDE_DIR)
 
 #help:
 #	@echo 'Sources:'

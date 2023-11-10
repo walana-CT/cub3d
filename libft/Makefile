@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rficht <rficht@student.42.fr>              +#+  +:+       +#+         #
+#    By: mamat <mamat@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/17 10:47:24 by rficht            #+#    #+#              #
-#    Updated: 2023/10/30 11:07:29 by rficht           ###   ########.fr        #
+#    Updated: 2023/11/10 22:53:11 by mamat            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -145,7 +145,7 @@ OBJ= $(addprefix $(OBJ_DIR)/, $(FILES:.c=.o))
 CC = cc
 
 # main rule called by default
-all: $(NAME)
+all: dir $(NAME)
 
 # rule for compile .c -> .o
 $(OBJ_DIR)/%.o : $(SRC_DIR)/%.c
@@ -160,9 +160,9 @@ $(NAME): $(OBJ)
 
 dir: $(SRC_DIR) $(OBJ_DIR)
 $(SRC_DIR):
-	mkdir $(SRC_DIR)
+	@mkdir -p $(SRC_DIR)
 $(OBJ_DIR):
-	mkdir $(OBJ_DIR)
+	@mkdir -p $(OBJ_DIR)
 
 # remove .o corresponding to sources	
 clean:
