@@ -128,6 +128,7 @@ struct s_prog
 	char			**map;
 	int				map_height;		// max ?
 	int				map_width;		// max ?
+	int				disp_minimap;	// bool
 	int32_t			mouse_x;
 	t_coord			center;
 	mlx_t			*mlx;
@@ -188,6 +189,7 @@ void		c3d_raycast(t_prog *prog);
 
 // moving
 int			c3d_moveplayer(float spd, t_prog *prog);
+int			c3d_strafeplayer(float spd, t_prog *prog);
 int			correct_pos(float x, float y, t_prog *prog);
 int			c3d_rotateplayer(int32_t mouse_x, t_prog *prog);
 

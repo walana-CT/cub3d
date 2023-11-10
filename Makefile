@@ -82,7 +82,7 @@ OBJ= $(addprefix $(OBJ_DIR)/, $(FILES:.c=.o))
 CC = cc
 
 # main rule called by default
-all: libs $(NAME)
+all: dir libs $(NAME)
 
 libs:
 	@$(MAKE) -C ./libft
@@ -114,11 +114,11 @@ re: fclean all
 #create the default directories
 dir: $(SRC_DIR) $(OBJ_DIR) $(INCLUDE_DIR)
 $(SRC_DIR):
-	mkdir $(SRC_DIR)
+	mkdir -p $(SRC_DIR)
 $(OBJ_DIR):
-	mkdir $(OBJ_DIR)
+	mkdir -p $(OBJ_DIR)
 $(INCLUDE_DIR):
-	mkdir $(INCLUDE_DIR)
+	mkdir -p $(INCLUDE_DIR)
 
 #help:
 #	@echo 'Sources:'

@@ -22,6 +22,10 @@ void	c3d_keyhook(mlx_key_data_t keydata, void *param)
 		mlx_close_window(prog->mlx);
 		return ;
 	}
+	if (keydata.key == MLX_KEY_TAB && keydata.action == MLX_PRESS) {
+		prog->disp_minimap = ((prog->disp_minimap + 1) % 2);
+		ft_printf("new disp minimap %i\n", prog->disp_minimap);
+	}
 }
 
 void	c3d_mainhook(void *param)
@@ -45,6 +49,10 @@ void	c3d_mainhook(void *param)
 		refresh = c3d_moveplayer(SPD * fast, prog);
 	if (mlx_is_key_down(prog->mlx, MLX_KEY_S))
 		refresh = c3d_moveplayer(-SPD * fast, prog);
+	if (mlx_is_key_down(prog->mlx, MLX_KEY_A))
+		refresh = c3d_strafeplayer(-SPD * fast, prog);
+	if (mlx_is_key_down(prog->mlx, MLX_KEY_D))
+		refresh = c3d_strafeplayer(SPD * fast, prog);
 	if (refresh)
 		refresh = c3d_refresh(prog);
 }

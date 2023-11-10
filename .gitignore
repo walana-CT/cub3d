@@ -13,4 +13,4 @@ cub3d
 MLX42/
 objects/
 libft/objects/
-**/*.o
+*.o

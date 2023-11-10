@@ -21,7 +21,6 @@ void	disp_band(t_prog *prog, t_ray *ray, int x_pos)
 	int	wall_end;
 	int	h;
 
-
 	n = -1;
 	h = (WIN_HEIGHT / ray->distance);
 	wall_start = -h / 2 + WIN_HEIGHT / 2;

@@ -24,6 +24,7 @@ int	graph_init(t_prog *prog)
 	prog->player_img = NULL;
 	prog->fov_img = NULL;
 	prog->mouse_x = 0;
+	prog->disp_minimap = 0;
 	prog->size.minimap_width = 400;
 	prog->size.minimap_height = 400 * prog->map_height / prog->map_width;
 	prog->size.mapscale = ft_min(400 / prog->map_height, 400 / prog->map_width);

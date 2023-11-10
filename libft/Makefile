@@ -145,7 +145,7 @@ OBJ= $(addprefix $(OBJ_DIR)/, $(FILES:.c=.o))
 CC = cc
 
 # main rule called by default
-all: $(NAME)
+all: dir $(NAME)
 
 # rule for compile .c -> .o
 $(OBJ_DIR)/%.o : $(SRC_DIR)/%.c
@@ -160,9 +160,9 @@ $(NAME): $(OBJ)
 
 dir: $(SRC_DIR) $(OBJ_DIR)
 $(SRC_DIR):
-	mkdir $(SRC_DIR)
+	@mkdir -p $(SRC_DIR)
 $(OBJ_DIR):
-	mkdir $(OBJ_DIR)
+	@mkdir -p $(OBJ_DIR)
 
 # remove .o corresponding to sources	
 clean:
