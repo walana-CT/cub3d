@@ -6,7 +6,7 @@
 /*   By: rficht <rficht@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 10:04:42 by rficht            #+#    #+#             */
-/*   Updated: 2023/11/09 16:26:53 by rficht           ###   ########.fr       */
+/*   Updated: 2023/11/11 16:42:50 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	disp_band(t_prog *prog, t_ray *ray, int x_pos)
 
 
 	n = -1;
-	h = (WIN_HEIGHT / ray->distance);
+	h = (WIN_HEIGHT / ray->screen_dist);
 	wall_start = -h / 2 + WIN_HEIGHT / 2;
 	if (wall_start < 0)
 		wall_start = 0;
@@ -34,7 +34,7 @@ void	disp_band(t_prog *prog, t_ray *ray, int x_pos)
 		mlx_put_pixel(prog->view_img, x_pos, n, SKY);
 	while (++n < wall_end)
 	{
-		if (ray->lenght.x < ray->lenght.y)
+		if (ray->side == 0)
 		{
 			if (ray->dx > 0)
 				mlx_put_pixel(prog->view_img, x_pos, n, EAST_C);
@@ -71,7 +71,7 @@ static void	cast_init(t_ray *ray)
 	if (ray->dy < 0)
 	{
 		ray->step.y = -1;
-		ray->lenght.y = (ray->start.y - ray->map_check.y) * ray->d_step.y;	
+		ray->lenght.y = (ray->start.y - ray->map_check.y) * ray->d_step.y;
 	}
 	else
 	{
@@ -91,12 +91,14 @@ static void	casting(t_ray *ray, t_prog *prog)
 			ray->map_check.x += ray->step.x;
 			ray->distance = ray->lenght.x;
 			ray->lenght.x += ray->d_step.x;
+			ray->side = 0;
 		}
 		else
 		{
 			ray->map_check.y += ray->step.y;
 			ray->distance = ray->lenght.y;
 			ray->lenght.y += ray->d_step.y;
+			ray->side = 1;
 		}
 		if (ray->map_check.x >= 0 && ray->map_check.x < prog->map_width
 			&& ray->map_check.y >= 0 && ray->map_check.y < prog->map_height)
@@ -105,6 +107,10 @@ static void	casting(t_ray *ray, t_prog *prog)
 	}
 	if (ray->has_collide)
 	{
+		if (ray->side == 0)
+			ray->screen_dist = ray->lenght.x - ray->d_step.x;
+		else
+			ray->screen_dist = ray->lenght.y - ray->d_step.y;
 		ray->intersection.x = ray->start.x + ray->dx * ray->distance;
 		ray->intersection.y = ray->start.y + ray->dy * ray->distance;
 		line = c3d_create_line(prog->player.x * prog->size.mapscale, \
@@ -135,4 +141,24 @@ void	c3d_cast_one(t_prog *prog, float dir, int x_pos)
 	cast_init(&ray);
 	casting(&ray, prog);
 	disp_band(prog, &ray, x_pos);
+}
+
+void	c3d_raycast(t_prog *prog)
+{
+	float	camera_x;
+	float	camera_step;
+	int		n;
+
+	n = -1;
+	camera_x = tan(FOV / 2);
+	camera_step = camera_x * 2 / WIN_WIDTH;
+	camera_x *= -1;
+	c3d_refresh_fov(prog);
+	c3d_refresh_view(prog);
+	while (++n <= WIN_WIDTH)
+	{
+		c3d_cast_one(prog, prog->player.dir + atan(camera_x), n);
+		camera_x += camera_step;
+	}
+	//c3d_cast_one(prog, cos(prog->player.dir), sin(prog->player.dir));
 }

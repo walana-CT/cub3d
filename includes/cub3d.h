@@ -6,7 +6,7 @@
 /*   By: rficht <rficht@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 14:15:34 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/11/09 16:25:48 by rficht           ###   ########.fr       */
+/*   Updated: 2023/11/11 16:52:01 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,9 +151,11 @@ struct s_ray
 	t_coord		map_check;
 	t_coord		step;
 	float		distance;
+	float		screen_dist;
 	float		dx;
 	float		dy;
 	int			has_collide;
+	int			side;
 };
 
 // Utils
