@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mamat <mamat@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 16:35:41 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/08/29 10:40:39 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/11/11 22:18:09 by mamat            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,7 @@ int	graph_init(t_prog *prog)
 {
 	prog->mlx = mlx_init(prog->w_width, prog->w_height, "Loup Cailloux", true);
 	if (!prog->mlx)
-	{
-		ft_putstr_fd((char *)mlx_strerror(mlx_errno), 2);
-		return (1);
-	}
+		return(err_msg((char *)mlx_strerror(mlx_errno), 1));
 	prog->minimap_img = NULL;
 	prog->player_img = NULL;
 	prog->fov_img = NULL;
@@ -34,7 +31,6 @@ int	graph_init(t_prog *prog)
 	prog->player.size_int = (int) prog->player.size;
 	if (!prog->player.size_int)
 		prog->player.size_int = 1;
-	printf("size %.2f intsize %d\n", prog->player.size, prog->player.size_int);
 	mlx_set_cursor_mode(prog->mlx, MLX_MOUSE_DISABLED);
 	return (0);
 }

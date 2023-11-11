@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rficht <rficht@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mamat <mamat@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 14:15:34 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/11/09 16:25:48 by rficht           ###   ########.fr       */
+/*   Updated: 2023/11/11 09:45:24 by mamat            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
-# define WIN_WIDTH 1920
-# define WIN_HEIGHT 1080
+# define WIN_WIDTH 800
+# define WIN_HEIGHT 600
 # define SPD 0.05
 # define SENSIVITY 0.01
 # define WALL 0x888888FF
@@ -59,7 +59,6 @@ typedef struct s_line			t_line;
 typedef struct s_ray			t_ray;
 typedef struct s_size			t_size;
 
-
 struct s_size
 {
 	int		minimap_height;
@@ -94,7 +93,6 @@ struct s_vect2d
 	float	x;
 	float	y;
 };
-
 
 struct s_player
 {
@@ -186,7 +184,6 @@ void		c3d_draw_line(mlx_image_t *map_img, t_line line, uint32_t col);
 void		c3d_drawsquare(t_prog prog, int x, int y, uint32_t col);
 void		c3d_raycast(t_prog *prog);
 
-
 // moving
 int			c3d_moveplayer(float spd, t_prog *prog);
 int			c3d_strafeplayer(float spd, t_prog *prog);
@@ -208,7 +205,6 @@ void		c3d_draw_minimap_centered(t_prog *prog);
 
 //raycasting
 void		c3d_cast_one(t_prog *prog, float dir, int x_pos);
-
 
 // Utils
 void		cub3d_init(t_prog *prog);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mamat <mamat@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 18:59:20 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/08/09 14:53:29 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/11/11 16:50:23 by mamat            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ int	err_msg(char *msg, int err)
 
 void	free_infos(t_prog *prog)
 {
-	free(prog->textures.e);
-	free(prog->textures.w);
-	free(prog->textures.n);
-	free(prog->textures.s);
+	mlx_delete_texture(prog->textures.e);
+	mlx_delete_texture(prog->textures.w);
+	mlx_delete_texture(prog->textures.n);
+	mlx_delete_texture(prog->textures.s);
 	free(prog->c_color.fullcolor);
 	free(prog->f_color.fullcolor);
 }

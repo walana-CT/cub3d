@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rficht <rficht@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mamat <mamat@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 13:50:36 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/11/09 15:35:10 by rficht           ###   ########.fr       */
+/*   Updated: 2023/11/11 16:45:39 by mamat            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,18 @@ void	c3d_keyhook(mlx_key_data_t keydata, void *param)
 	}
 	if (keydata.key == MLX_KEY_TAB && keydata.action == MLX_PRESS) {
 		prog->disp_minimap = ((prog->disp_minimap + 1) % 2);
-		ft_printf("new disp minimap %i\n", prog->disp_minimap);
+		if (prog->disp_minimap)
+		{
+			prog->player_img->enabled = false;
+			prog->minimap_img->enabled = false;
+			prog->view_img->enabled = false;
+		}
+		else{
+			prog->player_img->enabled = true;
+			prog->minimap_img->enabled = true;
+			prog->view_img->enabled = true;
+		}
+
 	}
 }
 
