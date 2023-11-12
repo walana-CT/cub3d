@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rficht <rficht@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mamat <mamat@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 10:04:42 by rficht            #+#    #+#             */
-/*   Updated: 2023/11/09 16:26:53 by rficht           ###   ########.fr       */
+/*   Updated: 2023/11/12 11:17:45 by mamat            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,11 +106,15 @@ static void	casting(t_ray *ray, t_prog *prog)
 	{
 		ray->intersection.x = ray->start.x + ray->dx * ray->distance;
 		ray->intersection.y = ray->start.y + ray->dy * ray->distance;
-		line = c3d_create_line(prog->player.x * prog->size.mapscale, \
-			prog->player.y * prog->size.mapscale, \
-			ray->intersection.x * prog->size.mapscale, \
-			ray->intersection.y * prog->size.mapscale);
-		c3d_draw_line(prog->fov_img, line, VERT);
+
+		if (prog->disp_minimap)
+		{
+			line = c3d_create_line(prog->player.x * prog->size.mapscale, \
+				prog->player.y * prog->size.mapscale, \
+				ray->intersection.x * prog->size.mapscale, \
+				ray->intersection.y * prog->size.mapscale);
+			c3d_draw_line(prog->fov_img, line, VERT);
+		}
 	}
 }
 

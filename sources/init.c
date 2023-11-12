@@ -6,7 +6,7 @@
 /*   By: mamat <mamat@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 16:35:41 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/11/11 22:18:09 by mamat            ###   ########.fr       */
+/*   Updated: 2023/11/12 11:14:47 by mamat            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	graph_init(t_prog *prog)
 	prog->player_img = NULL;
 	prog->fov_img = NULL;
 	prog->mouse_x = 0;
-	prog->disp_minimap = 0;
+	prog->disp_minimap = 1;
 	prog->size.minimap_width = 400;
 	prog->size.minimap_height = 400 * prog->map_height / prog->map_width;
 	prog->size.mapscale = ft_min(400 / prog->map_height, 400 / prog->map_width);
