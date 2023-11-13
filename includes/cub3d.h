@@ -6,7 +6,7 @@
 /*   By: mamat <mamat@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 14:15:34 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/11/13 14:35:47 by mamat            ###   ########.fr       */
+/*   Updated: 2023/11/13 16:51:46 by mamat            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,6 +129,7 @@ struct s_prog
 	int				map_height;		// max ?
 	int				map_width;		// max ?
 	int				disp_minimap;	// bool
+	int				binoculars; // bool
 	int32_t			mouse_x;
 	t_coord			center;
 	mlx_t			*mlx;
@@ -136,6 +137,7 @@ struct s_prog
 	mlx_image_t		*fov_img;
 	mlx_image_t		*player_img;
 	mlx_image_t		*view_img;
+	mlx_image_t		*binoculars_img;
 	t_texture_pack	textures;
 	t_color			f_color;
 	t_color			c_color;
@@ -177,6 +179,8 @@ int			c3d_is_map_closed(t_prog *prog);
 int			check_info(t_prog prog);
 
 // drawing
+int			c3d_binoculars(t_prog *prog);
+int			c3d_binoculars_anim(t_prog *prog);
 t_line		c3d_create_line(int a, int b, int c, int d);
 int			c3d_create_fov(t_prog *prog);
 int			c3d_create_minimap(t_prog *prog);

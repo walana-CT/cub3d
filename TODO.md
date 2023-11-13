@@ -10,5 +10,5 @@ DISCUSS
 
 FEATURES
 * changement de FOV à la molette
-* portes
 * animation ? (HUD ?)
+* zoom (jumelles)

@@ -6,7 +6,7 @@
 #    By: mamat <mamat@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/17 10:47:24 by rficht            #+#    #+#              #
-#    Updated: 2023/11/13 12:44:20 by mamat            ###   ########.fr        #
+#    Updated: 2023/11/13 15:31:40 by mamat            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,7 +55,8 @@ INCLUDE_DIR = includes
 #---------------#
 #	Sources		#
 #---------------#
-FILES +=	collisions.c\
+FILES +=	binoculars.c\
+			collisions.c\
 		 	cub3d.c\
 			doors.c\
 			error.c\
