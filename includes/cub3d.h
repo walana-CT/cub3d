@@ -6,7 +6,7 @@
 /*   By: mamat <mamat@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 14:15:34 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/11/13 14:12:16 by mamat            ###   ########.fr       */
+/*   Updated: 2023/11/13 14:35:47 by mamat            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -198,6 +198,8 @@ int			c3d_rotateplayer(int32_t mouse_x, t_prog *prog);
 // hook
 void		c3d_keyhook(mlx_key_data_t keydata, void *param);
 void		c3d_mainhook(void *param);
+void 		c3d_mousehook(mouse_key_t button, action_t action, modifier_key_t mods, void *param);
+
 
 // main funcs
 int			c3d_refresh_image(t_prog *prog);

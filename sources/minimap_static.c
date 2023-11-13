@@ -6,7 +6,7 @@
 /*   By: mamat <mamat@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 09:31:45 by rficht            #+#    #+#             */
-/*   Updated: 2023/11/13 13:20:11 by mamat            ###   ########.fr       */
+/*   Updated: 2023/11/13 14:27:36 by mamat            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,10 @@ void draw_mapsquare(t_prog *prog, int x, int y)
 		c3d_drawsquare(*prog, x * prog->size.mapscale, y * prog->size.mapscale, WALL);
 	else if (prog->map[y][x] == '0')
 		c3d_drawsquare(*prog, x * prog->size.mapscale, y * prog->size.mapscale, WALK);
-	else if (prog->map[y][x] == 'D')
+	else if (prog->map[y][x] == 'C')
 		c3d_drawsquare(*prog, x * prog->size.mapscale, y * prog->size.mapscale, DOOR);
 	else if (prog->map[y][x] == 'O')
 		c3d_drawsquare(*prog, x * prog->size.mapscale, y * prog->size.mapscale, OP_DOOR);
-
 }
 
 int	c3d_create_minimap(t_prog *prog)

@@ -6,7 +6,7 @@
 /*   By: mamat <mamat@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 15:04:26 by rficht            #+#    #+#             */
-/*   Updated: 2023/11/11 16:44:48 by mamat            ###   ########.fr       */
+/*   Updated: 2023/11/13 14:35:23 by mamat            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	c3d_run(t_prog *prog)
 {
 	mlx_loop_hook(prog->mlx, &c3d_mainhook, prog);
 	mlx_key_hook(prog->mlx, &c3d_keyhook, prog);
+	mlx_mouse_hook(prog->mlx, &c3d_mousehook, prog);
 	if (c3d_create_minimap(prog))
 		exit(1);
 	if (c3d_create_player(prog))

@@ -6,7 +6,7 @@
 /*   By: mamat <mamat@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 13:50:36 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/11/13 13:26:44 by mamat            ###   ########.fr       */
+/*   Updated: 2023/11/13 14:37:52 by mamat            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,16 @@ void	c3d_keyhook(mlx_key_data_t keydata, void *param)
 	}
 	if (keydata.key == MLX_KEY_SPACE && keydata.action == MLX_PRESS)
 		c3d_door_interact(prog);
+}
+
+void c3d_mousehook(mouse_key_t button, action_t action, modifier_key_t mods, void *param)
+{
+	t_prog	*prog;
+
+	(void) mods;
+	prog = (t_prog *) param;
+	if (button == MLX_MOUSE_BUTTON_LEFT && action == MLX_PRESS)
+		printf("Now facing : %c\n", c3d_get_front_tile(prog));
 }
 
 void	c3d_mainhook(void *param)

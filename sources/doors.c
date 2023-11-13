@@ -55,11 +55,13 @@ void	c3d_door_interact(t_prog *prog)
 	if (c3d_get_front_tile(prog) == 'C')
 	{
 		c3d_set_front_tile(prog, 'O');
-		c3d_refresh(prog);
+		printf("Opening door\n");
+		c3d_create_minimap(prog);
 	}
 	else if (c3d_get_front_tile(prog) == 'O')
 	{
 		c3d_set_front_tile(prog, 'C');
-		c3d_refresh(prog);
+		printf("Closing door\n");
+		c3d_create_minimap(prog);
 	}
 }
