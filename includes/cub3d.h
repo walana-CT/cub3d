@@ -6,7 +6,7 @@
 /*   By: mamat <mamat@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 14:15:34 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/11/11 09:45:24 by mamat            ###   ########.fr       */
+/*   Updated: 2023/11/13 14:12:16 by mamat            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # define WALL 0x888888FF
 # define VOID 0xDDDDDDFF
 # define WALK 0xBBBBBBFF
+# define DOOR 0xFF0000FF
+# define OP_DOOR 0x00FF00FF
 # define PLAYER 0xF455EAFF
 # define FOV 90
 
@@ -39,8 +41,8 @@
 # define EF_WMAP "Map not valid\n"
 # define EF_MOPEN "Map not closed\n"
 
-# define MAP_SYMBOLS "01NSEW"
-# define MAP_WALKABLE_SYMBOL "0NSEW"
+# define MAP_SYMBOLS "01NSEWCO" // C = door, O = open door
+# define MAP_WALKABLE_SYMBOL "0NSEWO"
 
 # include <stdio.h>
 # include <fcntl.h>
@@ -185,7 +187,10 @@ void		c3d_drawsquare(t_prog prog, int x, int y, uint32_t col);
 void		c3d_raycast(t_prog *prog);
 
 // moving
+char		c3d_get_front_tile(t_prog *prog);
+void		c3d_door_interact(t_prog *prog);
 int			c3d_moveplayer(float spd, t_prog *prog);
+char		c3d_player_facing(float dir);
 int			c3d_strafeplayer(float spd, t_prog *prog);
 int			correct_pos(float x, float y, t_prog *prog);
 int			c3d_rotateplayer(int32_t mouse_x, t_prog *prog);

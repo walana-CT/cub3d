@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rficht <rficht@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mamat <mamat@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 14:54:21 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/11/09 15:36:12 by rficht           ###   ########.fr       */
+/*   Updated: 2023/11/13 13:06:46 by mamat            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ int	c3d_rotateplayer(int32_t mouse_x, t_prog *prog)
 	{
 		ret = 1;
 		prog->mouse_x = mouse_x;
-		c3d_refresh(prog);
 	}
 	return (ret);
 }

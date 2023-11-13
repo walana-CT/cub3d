@@ -6,7 +6,7 @@
 /*   By: mamat <mamat@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 13:50:36 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/11/12 11:20:18 by mamat            ###   ########.fr       */
+/*   Updated: 2023/11/13 13:26:44 by mamat            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,15 @@ void	c3d_keyhook(mlx_key_data_t keydata, void *param)
 	prog = (t_prog *) param;
 	if (keydata.key == MLX_KEY_ESCAPE)
 	{
-		mlx_close_window(prog->mlx);
-		return ;
+		return (mlx_close_window(prog->mlx));
 	}
 	if (keydata.key == MLX_KEY_TAB && keydata.action == MLX_PRESS)
 	{
 		prog->disp_minimap = ((prog->disp_minimap + 1) % 2);
 		set_images_enabled(prog);
 	}
+	if (keydata.key == MLX_KEY_SPACE && keydata.action == MLX_PRESS)
+		c3d_door_interact(prog);
 }
 
 void	c3d_mainhook(void *param)
