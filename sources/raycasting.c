@@ -6,7 +6,7 @@
 /*   By: mamat <mamat@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 10:04:42 by rficht            #+#    #+#             */
-/*   Updated: 2023/11/12 11:17:45 by mamat            ###   ########.fr       */
+/*   Updated: 2023/11/13 16:33:59 by mamat            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ static void	casting(t_ray *ray, t_prog *prog)
 		ray->intersection.x = ray->start.x + ray->dx * ray->distance;
 		ray->intersection.y = ray->start.y + ray->dy * ray->distance;
 
-		if (prog->disp_minimap)
+		if (prog->disp_minimap && !prog->binoculars)
 		{
 			line = c3d_create_line(prog->player.x * prog->size.mapscale, \
 				prog->player.y * prog->size.mapscale, \

@@ -6,7 +6,7 @@
 /*   By: mamat <mamat@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 09:31:45 by rficht            #+#    #+#             */
-/*   Updated: 2023/11/11 17:00:26 by mamat            ###   ########.fr       */
+/*   Updated: 2023/11/13 16:33:27 by mamat            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,18 @@ void	c3d_drawsquare(t_prog prog, int x, int y, uint32_t col)
 	}
 }
 
+void draw_mapsquare(t_prog *prog, int x, int y)
+{
+	if (prog->map[y][x] == '1')
+		c3d_drawsquare(*prog, x * prog->size.mapscale, y * prog->size.mapscale, WALL);
+	else if (prog->map[y][x] == '0')
+		c3d_drawsquare(*prog, x * prog->size.mapscale, y * prog->size.mapscale, WALK);
+	else if (prog->map[y][x] == 'C')
+		c3d_drawsquare(*prog, x * prog->size.mapscale, y * prog->size.mapscale, DOOR);
+	else if (prog->map[y][x] == 'O')
+		c3d_drawsquare(*prog, x * prog->size.mapscale, y * prog->size.mapscale, OP_DOOR);
+}
+
 int	c3d_create_minimap(t_prog *prog)
 {
 	int	x;
@@ -41,13 +53,10 @@ int	c3d_create_minimap(t_prog *prog)
 	{
 		x = -1;
 		while (++x < prog->map_width)
-		{
-			if (prog->map[y][x] == '1')
-				c3d_drawsquare(*prog, x * prog->size.mapscale, y * prog->size.mapscale, WALL);
-			else if (prog->map[y][x] == '0')
-				c3d_drawsquare(*prog, x * prog->size.mapscale, y * prog->size.mapscale, WALK);
-		}
+			draw_mapsquare(prog, x, y);
 	}
+	if (prog->binoculars)
+		prog->minimap_img->enabled = 0;
 	mlx_image_to_window(prog->mlx, prog->minimap_img, 0, 0);
 	mlx_set_instance_depth(prog->minimap_img->instances, 1);
 	return (0);

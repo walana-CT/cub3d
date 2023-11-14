@@ -6,7 +6,7 @@
 /*   By: mamat <mamat@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 18:59:20 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/11/11 16:50:23 by mamat            ###   ########.fr       */
+/*   Updated: 2023/11/13 15:32:54 by mamat            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,14 @@ int	err_msg(char *msg, int err)
 
 void	free_infos(t_prog *prog)
 {
-	mlx_delete_texture(prog->textures.e);
-	mlx_delete_texture(prog->textures.w);
-	mlx_delete_texture(prog->textures.n);
-	mlx_delete_texture(prog->textures.s);
+	if (prog->textures.e)
+		mlx_delete_texture(prog->textures.e);
+	if (prog->textures.w)
+		mlx_delete_texture(prog->textures.w);
+	if (prog->textures.n)
+		mlx_delete_texture(prog->textures.n);
+	if (prog->textures.s)
+		mlx_delete_texture(prog->textures.s);
 	free(prog->c_color.fullcolor);
 	free(prog->f_color.fullcolor);
 }
