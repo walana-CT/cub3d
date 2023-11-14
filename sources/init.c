@@ -6,7 +6,7 @@
 /*   By: mamat <mamat@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 16:35:41 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/11/13 16:20:25 by mamat            ###   ########.fr       */
+/*   Updated: 2023/11/14 13:10:20 by mamat            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	graph_init(t_prog *prog)
 	prog->fov_img = NULL;
 	prog->binoculars_img = NULL;
 	prog->binoculars = 0;
+	prog->last_time = mlx_get_time();
 	prog->mouse_x = 0;
 	prog->disp_minimap = 1;
 	prog->size.minimap_width = 400;

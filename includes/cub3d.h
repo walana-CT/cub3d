@@ -6,7 +6,7 @@
 /*   By: mamat <mamat@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 14:15:34 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/11/13 16:51:46 by mamat            ###   ########.fr       */
+/*   Updated: 2023/11/14 13:10:20 by mamat            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,6 +130,7 @@ struct s_prog
 	int				map_width;		// max ?
 	int				disp_minimap;	// bool
 	int				binoculars; // bool
+	double			last_time;
 	int32_t			mouse_x;
 	t_coord			center;
 	mlx_t			*mlx;
