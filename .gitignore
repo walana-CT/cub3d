@@ -6,11 +6,7 @@ main*
 *.swp
 *.ini
 .vscode/
-.vscode/settings.json
 *.sh
 *.pdf
 cub3d
-MLX42/
-objects/
-libft/objects/
 *.o
