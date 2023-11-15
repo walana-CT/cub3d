@@ -6,7 +6,7 @@
 /*   By: rficht <rficht@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 14:15:34 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/11/11 16:52:01 by rficht           ###   ########.fr       */
+/*   Updated: 2023/11/15 11:24:57 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,7 +186,8 @@ void		c3d_dispplayer(t_prog prog, t_player p);
 void		c3d_draw_line(mlx_image_t *map_img, t_line line, uint32_t col);
 void		c3d_drawsquare(t_prog prog, int x, int y, uint32_t col);
 void		c3d_raycast(t_prog *prog);
-
+int			c3d_refresh_fov(t_prog *prog);
+int			c3d_refresh_view(t_prog *prog);
 
 // moving
 int			c3d_moveplayer(float spd, t_prog *prog);

@@ -6,7 +6,7 @@
 /*   By: rficht <rficht@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 10:04:42 by rficht            #+#    #+#             */
-/*   Updated: 2023/11/11 16:42:50 by rficht           ###   ########.fr       */
+/*   Updated: 2023/11/15 11:21:06 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,8 +153,6 @@ void	c3d_raycast(t_prog *prog)
 	camera_x = tan(FOV / 2);
 	camera_step = camera_x * 2 / WIN_WIDTH;
 	camera_x *= -1;
-	c3d_refresh_fov(prog);
-	c3d_refresh_view(prog);
 	while (++n <= WIN_WIDTH)
 	{
 		c3d_cast_one(prog, prog->player.dir + atan(camera_x), n);
