@@ -6,7 +6,7 @@
 /*   By: rficht <rficht@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 14:15:34 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/11/15 11:24:57 by rficht           ###   ########.fr       */
+/*   Updated: 2023/11/19 16:34:48 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,6 +154,7 @@ struct s_ray
 	float		screen_dist;
 	float		dx;
 	float		dy;
+	float		wall_x;
 	int			has_collide;
 	int			side;
 };
@@ -208,8 +209,7 @@ int			c3d_refresh_fov(t_prog *prog);
 void		c3d_draw_minimap_centered(t_prog *prog);
 
 //raycasting
-void		c3d_cast_one(t_prog *prog, float dir, int x_pos);
-
+void	c3d_cast_one(t_prog *prog, float p_dir, float r_dir, int x_pos);
 
 // Utils
 void		cub3d_init(t_prog *prog);

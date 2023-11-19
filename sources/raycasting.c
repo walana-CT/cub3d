@@ -6,7 +6,7 @@
 /*   By: rficht <rficht@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 10:04:42 by rficht            #+#    #+#             */
-/*   Updated: 2023/11/15 11:21:06 by rficht           ###   ########.fr       */
+/*   Updated: 2023/11/19 16:54:27 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,26 @@
 # define VERT 0x3568A6FF
 
 
+
+uint32_t get_pixel_color(mlx_texture_t texture, float coeff_x, float coeff_y)
+{
+	int	pixel_x;
+	int	pixel_y;
+
+	pixel_x =  1 - coeff_x * texture.width;
+	pixel_y = (1 - coeff_x) * texture.height;
+	return (texture.pixels[pixel_x][pixel_y]);
+}
+
+
 void	disp_band(t_prog *prog, t_ray *ray, int x_pos)
 {
-	int	n;
-	int	wall_start;
-	int	wall_end;
-	int	h;
-
+	int		n;
+	int		wall_start;
+	int		wall_end;
+	int		h;
+	float	img_x;
+	float	img_y;
 
 	n = -1;
 	h = (WIN_HEIGHT / ray->screen_dist);
@@ -34,8 +47,10 @@ void	disp_band(t_prog *prog, t_ray *ray, int x_pos)
 		mlx_put_pixel(prog->view_img, x_pos, n, SKY);
 	while (++n < wall_end)
 	{
+		img_x = (n - wall_start) / h;
 		if (ray->side == 0)
 		{
+			img_x = ray->intersection.x - (int) ray->intersection.x;
 			if (ray->dx > 0)
 				mlx_put_pixel(prog->view_img, x_pos, n, EAST_C);
 			else
@@ -43,6 +58,7 @@ void	disp_band(t_prog *prog, t_ray *ray, int x_pos)
 		}
 		else
 		{
+			img_x = ray->intersection.y - (int) ray->intersection.y;
 			if (ray->dy > 0)
 				mlx_put_pixel(prog->view_img, x_pos, n, NORTH_C);
 			else
@@ -50,9 +66,7 @@ void	disp_band(t_prog *prog, t_ray *ray, int x_pos)
 		}
 	}
 	while (++n < WIN_HEIGHT)
-	{
 		mlx_put_pixel(prog->view_img, x_pos, n, GROUND);
-	}
 }
 
 
@@ -80,7 +94,7 @@ static void	cast_init(t_ray *ray)
 	}
 }
 
-static void	casting(t_ray *ray, t_prog *prog)
+static void	casting(t_ray *ray, t_prog *prog, float r_dir)
 {
 	t_line		line;
 
@@ -108,9 +122,9 @@ static void	casting(t_ray *ray, t_prog *prog)
 	if (ray->has_collide)
 	{
 		if (ray->side == 0)
-			ray->screen_dist = ray->lenght.x - ray->d_step.x;
+			ray->screen_dist = (ray->lenght.x - ray->d_step.x) * cos(r_dir);
 		else
-			ray->screen_dist = ray->lenght.y - ray->d_step.y;
+			ray->screen_dist = (ray->lenght.y - ray->d_step.y) * cos(r_dir);
 		ray->intersection.x = ray->start.x + ray->dx * ray->distance;
 		ray->intersection.y = ray->start.y + ray->dy * ray->distance;
 		line = c3d_create_line(prog->player.x * prog->size.mapscale, \
@@ -122,13 +136,13 @@ static void	casting(t_ray *ray, t_prog *prog)
 }
 
 
-void	c3d_cast_one(t_prog *prog, float dir, int x_pos)
+void	c3d_cast_one(t_prog *prog, float p_dir, float r_dir, int x_pos)
 {
 	t_ray		ray;
 
 	ray.has_collide = FALSE;
-	ray.dx = cos(dir);
-	ray.dy = sin(dir);
+	ray.dx = cos(p_dir + r_dir);
+	ray.dy = sin(p_dir + r_dir);
 	ray.start.x = prog->player.x;
 	ray.start.y = prog->player.y;
 	ray.map_check.x = ray.start.x;
@@ -139,7 +153,7 @@ void	c3d_cast_one(t_prog *prog, float dir, int x_pos)
 	ray.d_step.y = sqrt(1 + pow((ray.dx / ray.dy), 2));
 
 	cast_init(&ray);
-	casting(&ray, prog);
+	casting(&ray, prog, r_dir);
 	disp_band(prog, &ray, x_pos);
 }
 
@@ -155,8 +169,7 @@ void	c3d_raycast(t_prog *prog)
 	camera_x *= -1;
 	while (++n <= WIN_WIDTH)
 	{
-		c3d_cast_one(prog, prog->player.dir + atan(camera_x), n);
+		c3d_cast_one(prog, prog->player.dir, atan(camera_x), n);
 		camera_x += camera_step;
 	}
-	//c3d_cast_one(prog, cos(prog->player.dir), sin(prog->player.dir));
 }
