@@ -1,15 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: mamat <mamat@student.42.fr>                +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/09/17 10:47:24 by rficht            #+#    #+#              #
-#    Updated: 2023/11/13 15:31:40 by mamat            ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 BOLD	:= \033[1m
 BLACK	:= \033[30;1m
 RED		:= \033[31;1m
@@ -43,7 +31,7 @@ INCLUDES = -I MLX42/include/MLX42 -I includes
 FLAGS = -Wall -Wextra -Werror
 
 # General compilation flags
-CFLAG = $(FLAGS) $(INCLUDES) -g3 -fsanitize=address
+CFLAG = $(FLAGS) $(INCLUDES) -g3
  
 # Linking compilation flags
 #GFLAG = $(LIBMLX) -g3
