@@ -6,7 +6,7 @@
 /*   By: mamat <mamat@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 14:15:34 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/11/14 13:10:20 by mamat            ###   ########.fr       */
+/*   Updated: 2023/11/19 16:34:48 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,9 +155,12 @@ struct s_ray
 	t_coord		map_check;
 	t_coord		step;
 	float		distance;
+	float		screen_dist;
 	float		dx;
 	float		dy;
+	float		wall_x;
 	int			has_collide;
+	int			side;
 };
 
 // Utils
@@ -190,6 +193,8 @@ void		c3d_dispplayer(t_prog prog, t_player p);
 void		c3d_draw_line(mlx_image_t *map_img, t_line line, uint32_t col);
 void		c3d_drawsquare(t_prog prog, int x, int y, uint32_t col);
 void		c3d_raycast(t_prog *prog);
+int			c3d_refresh_fov(t_prog *prog);
+int			c3d_refresh_view(t_prog *prog);
 
 // moving
 char		c3d_get_front_tile(t_prog *prog);
@@ -216,7 +221,7 @@ int			c3d_refresh_fov(t_prog *prog);
 void		c3d_draw_minimap_centered(t_prog *prog);
 
 //raycasting
-void		c3d_cast_one(t_prog *prog, float dir, int x_pos);
+void		c3d_cast_one(t_prog *prog, float p_dir, float r_dir, int x_pos);
 
 // Utils
 void		cub3d_init(t_prog *prog);

@@ -6,7 +6,7 @@
 /*   By: mamat <mamat@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 15:04:26 by rficht            #+#    #+#             */
-/*   Updated: 2023/11/13 14:35:23 by mamat            ###   ########.fr       */
+/*   Updated: 2023/11/15 11:21:24 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ int	c3d_refresh(t_prog *prog)
 		= prog->player.x * prog->size.mapscale - (prog->player.size_int / 2);
 	prog->player_img->instances[0].y
 		= prog->player.y * prog->size.mapscale - (prog->player.size_int / 2);
+	c3d_refresh_fov(prog);
+	c3d_refresh_view(prog);
 	c3d_raycast(prog);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: mamat <mamat@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 14:04:25 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/11/12 10:05:07 by mamat            ###   ########.fr       */
+/*   Updated: 2023/11/11 16:42:42 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,23 +37,3 @@ int	c3d_refresh_view(t_prog *prog)
 }
 
 
-
-void	c3d_raycast(t_prog *prog)
-{
-	float	camera_x;
-	float	camera_step;
-	int		n;
-
-	n = -1;
-	camera_x = tan(FOV / 2);
-	camera_step = camera_x * 2 / WIN_WIDTH;
-	camera_x *= -1;
-	c3d_refresh_fov(prog);
-	c3d_refresh_view(prog);
-	while (++n <= WIN_WIDTH)
-	{
-		c3d_cast_one(prog, prog->player.dir + atan(camera_x), n);
-		camera_x += camera_step;
-	}
-	//c3d_cast_one(prog, cos(prog->player.dir), sin(prog->player.dir));
-}
