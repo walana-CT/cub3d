@@ -50,17 +50,15 @@ int	binoculars_on(t_prog *prog)
 	if (!prog->binoculars_img)
 		return (1);	 
 	mlx_image_to_window(prog->mlx, prog->binoculars_img, 0, 0);
-	prog->player_img->enabled = 0;
+	// prog->player_img->enabled = 0;
 	prog->minimap_img->enabled = 0;
 	prog->binoculars_img->enabled = 1;
 	return (0);
 }
 
-
-
 int	binoculars_off(t_prog *prog)
 {
-	prog->player_img->enabled = 1;
+	// prog->player_img->enabled = 1;
 	prog->minimap_img->enabled = 1;
 	prog->binoculars_img->enabled = 0;
 	return (0);

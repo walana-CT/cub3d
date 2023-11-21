@@ -1,7 +1,7 @@
 #ifndef CUB3D_H
 # define CUB3D_H
-# define WIN_WIDTH 800
-# define WIN_HEIGHT 600
+# define WIN_WIDTH 1024
+# define WIN_HEIGHT 768
 # define SPD 0.05
 # define SENSIVITY 0.01
 # define WALL 0x888888FF
@@ -119,6 +119,8 @@ struct s_prog
 	int				binoculars; // bool
 	double			last_time;
 	int32_t			mouse_x;
+	int32_t			mouse_y;
+	int32_t			new_mouse_x;
 	t_coord			center;
 	mlx_t			*mlx;
 	mlx_image_t		*minimap_img;

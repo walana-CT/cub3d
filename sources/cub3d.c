@@ -20,10 +20,10 @@ void	check_invalid_args(int argc, char *argv[])
 
 int	c3d_refresh(t_prog *prog)
 {
-	prog->player_img->instances[0].x
-		= prog->player.x * prog->size.mapscale - (prog->player.size_int / 2);
-	prog->player_img->instances[0].y
-		= prog->player.y * prog->size.mapscale - (prog->player.size_int / 2);
+	// prog->player_img->instances[0].x
+	// 	= prog->player.x * prog->size.mapscale - (prog->player.size_int / 2);
+	// prog->player_img->instances[0].y
+	// 	= prog->player.y * prog->size.mapscale - (prog->player.size_int / 2);
 	c3d_refresh_fov(prog);
 	c3d_refresh_view(prog);
 	c3d_raycast(prog);
@@ -37,8 +37,8 @@ void	c3d_run(t_prog *prog)
 	mlx_mouse_hook(prog->mlx, &c3d_mousehook, prog);
 	if (c3d_create_minimap(prog))
 		exit(1);
-	if (c3d_create_player(prog))
-		exit(1);
+	// if (c3d_create_player(prog))
+	// 	exit(1);
 	if (c3d_refresh_fov(prog))
 		exit(1);
 	mlx_loop(prog->mlx);

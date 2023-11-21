@@ -8,12 +8,12 @@ int	is_map_desc(char *str)
 
 int	color_ok(t_color color)
 {
-	if (!color.fullcolor)
+	if (!color.fullcolor || !color.col[0] || !color.col[1] || !color.col[2] || !color.col[3])
 		return (0);
-	if (!ft_isuchar(color.col[0]) || !ft_isuchar(color.col[1]) || \
-		!ft_isuchar(color.col[2]) || !ft_isuchar(color.col[3]))
-		return (0);
-	return (1);
+	if (ft_isuchar(color.col[0]) && ft_isuchar(color.col[1]) && \
+		ft_isuchar(color.col[2]) && ft_isuchar(color.col[3]))
+		return (1);
+	return (0);
 }
 
 /**

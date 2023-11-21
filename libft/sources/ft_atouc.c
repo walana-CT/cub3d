@@ -17,15 +17,15 @@ int	ft_atouc(const char *str)
 	int	nb;
 
 	nb = 0;
-	while (*str)
+	while (nb <= 255 && *str)
 	{
-		if (*str >= '0' && *str <= '9' && nb <= 255)
-		{
+		if (*str >= '0' && *str <= '9')
 			nb = nb * 10 + *str - 48;
-			str++;
-		}
 		else
 			return (-1);
+		str++;
 	}
-	return (nb);
+	if (nb >= 0 && nb <= 255)
+		return (nb);
+	return (-1);
 }

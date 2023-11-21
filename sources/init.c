@@ -12,6 +12,8 @@ int	graph_init(t_prog *prog)
 	prog->binoculars = 0;
 	prog->last_time = mlx_get_time();
 	prog->mouse_x = 0;
+	prog->mouse_y = 0;
+	prog->new_mouse_x = 0;
 	prog->disp_minimap = 1;
 	prog->size.minimap_width = 400;
 	prog->size.minimap_height = 400 * prog->map_height / prog->map_width;
