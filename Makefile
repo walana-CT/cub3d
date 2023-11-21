@@ -64,7 +64,6 @@ FILES +=	binoculars.c\
 			init.c\
 			line.c\
 			mapcast.c\
-			minimap_centered.c\
 			minimap_static.c\
 			move.c\
 			parsing_infos_00.c\
