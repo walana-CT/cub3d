@@ -6,25 +6,23 @@
 /*   By: rficht <rficht@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 10:04:42 by rficht            #+#    #+#             */
-/*   Updated: 2023/11/19 16:54:27 by rficht           ###   ########.fr       */
+/*   Updated: 2023/11/21 11:23:38 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 # define VERT 0x3568A6FF
 
-
-
-uint32_t get_pixel_color(mlx_texture_t texture, float coeff_x, float coeff_y)
+/*uint32_t	get_pixel_color(mlx_texture_t *texture, float coeff_x, float coeff_y)
 {
 	int	pixel_x;
 	int	pixel_y;
 
-	pixel_x =  1 - coeff_x * texture.width;
-	pixel_y = (1 - coeff_x) * texture.height;
-	return (texture.pixels[pixel_x][pixel_y]);
-}
-
+	pixel_x = coeff_x * texture->width;
+	pixel_y = coeff_y * texture->height;
+	//printf("color : %d\n", texture->pixels[pixel_x + (pixel_y * texture->height)]);	
+	return (texture->pixels[pixel_x + (pixel_y * texture->height)]);
+}*/
 
 void	disp_band(t_prog *prog, t_ray *ray, int x_pos)
 {
@@ -32,8 +30,6 @@ void	disp_band(t_prog *prog, t_ray *ray, int x_pos)
 	int		wall_start;
 	int		wall_end;
 	int		h;
-	float	img_x;
-	float	img_y;
 
 	n = -1;
 	h = (WIN_HEIGHT / ray->screen_dist);
@@ -47,28 +43,24 @@ void	disp_band(t_prog *prog, t_ray *ray, int x_pos)
 		mlx_put_pixel(prog->view_img, x_pos, n, SKY);
 	while (++n < wall_end)
 	{
-		img_x = (n - wall_start) / h;
 		if (ray->side == 0)
 		{
-			img_x = ray->intersection.x - (int) ray->intersection.x;
 			if (ray->dx > 0)
-				mlx_put_pixel(prog->view_img, x_pos, n, EAST_C);
-			else
-				mlx_put_pixel(prog->view_img, x_pos, n, WEST_C);
-		}
-		else
-		{
-			img_x = ray->intersection.y - (int) ray->intersection.y;
-			if (ray->dy > 0)
 				mlx_put_pixel(prog->view_img, x_pos, n, NORTH_C);
 			else
 				mlx_put_pixel(prog->view_img, x_pos, n, SOUTH_C);
+		}
+		else
+		{
+			if (ray->dy > 0)
+				mlx_put_pixel(prog->view_img, x_pos, n, WEST_C);
+			else
+				mlx_put_pixel(prog->view_img, x_pos, n, EAST_C);
 		}
 	}
 	while (++n < WIN_HEIGHT)
 		mlx_put_pixel(prog->view_img, x_pos, n, GROUND);
 }
-
 
 static void	cast_init(t_ray *ray)
 {
@@ -151,7 +143,6 @@ void	c3d_cast_one(t_prog *prog, float p_dir, float r_dir, int x_pos)
 	ray.lenght.y = 0;
 	ray.d_step.x = sqrt(1 + pow((ray.dy / ray.dx), 2));
 	ray.d_step.y = sqrt(1 + pow((ray.dx / ray.dy), 2));
-
 	cast_init(&ray);
 	casting(&ray, prog, r_dir);
 	disp_band(prog, &ray, x_pos);
