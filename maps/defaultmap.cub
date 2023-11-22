@@ -1,4 +1,4 @@
-F 100,200,255
+F 100,255,255
 NO ./textures/ratt.png
 
 WE ./textures/mossy.png
