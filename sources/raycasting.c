@@ -26,27 +26,30 @@ void	disp_band(t_prog *prog, t_ray *ray, int x_pos)
 	wall_end = h / 2 + WIN_HEIGHT / 2;
 	if (wall_end >= WIN_HEIGHT)
 		wall_end = WIN_HEIGHT;
-	while (++n < wall_start)
-		mlx_put_pixel(prog->view_img, x_pos, n, SKY);
-	while (++n < wall_end)
+	while (++n < WIN_HEIGHT)
 	{
-		if (ray->side == 0)
+		if (n < wall_start)
+			mlx_put_pixel(prog->view_img, x_pos, n, SKY);
+		else if (n < wall_end)
 		{
-			if (ray->dx > 0)
-				mlx_put_pixel(prog->view_img, x_pos, n, NORTH_C);
+			if (ray->side == 0)
+			{
+				if (ray->dx > 0)
+					mlx_put_pixel(prog->view_img, x_pos, n, NORTH_C);
+				else
+					mlx_put_pixel(prog->view_img, x_pos, n, SOUTH_C);
+			}
 			else
-				mlx_put_pixel(prog->view_img, x_pos, n, SOUTH_C);
+			{
+				if (ray->dy > 0)
+					mlx_put_pixel(prog->view_img, x_pos, n, WEST_C);
+				else
+					mlx_put_pixel(prog->view_img, x_pos, n, EAST_C);
+			}
 		}
 		else
-		{
-			if (ray->dy > 0)
-				mlx_put_pixel(prog->view_img, x_pos, n, WEST_C);
-			else
-				mlx_put_pixel(prog->view_img, x_pos, n, EAST_C);
-		}
+			mlx_put_pixel(prog->view_img, x_pos, n, GROUND);
 	}
-	while (++n < WIN_HEIGHT)
-		mlx_put_pixel(prog->view_img, x_pos, n, GROUND);
 }
 
 static void	cast_init(t_ray *ray)
