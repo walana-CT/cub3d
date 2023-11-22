@@ -8,3 +8,4 @@ main*
 *.pdf
 cub3d
 *.o
+*.a

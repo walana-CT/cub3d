@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: rficht <rficht@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/04 14:15:34 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/11/21 11:42:49 by rficht           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef CUB3D_H
 # define CUB3D_H
 # define WIN_WIDTH 1280
@@ -24,7 +12,7 @@
 # define PLAYER 0xF455EAFF
 # define FOV 90
 
-
+# define VERT 0x3568A688
 # define SKY 0x526FD2FF
 # define GROUND 0xC8b4A4FF
 # define NORTH_C 0xFB9902FF
@@ -49,7 +37,6 @@
 # include "libft.h"
 # include "MLX42.h"
 # include "math.h"
-# include "libgraph.h"
 
 typedef struct s_player			t_player;
 typedef struct s_prog			t_prog;
