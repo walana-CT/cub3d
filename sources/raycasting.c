@@ -107,14 +107,14 @@ static void	casting(t_ray *ray, t_prog *prog, float r_dir)
 		ray->intersection.x = ray->start.x + ray->dx * ray->distance;
 		ray->intersection.y = ray->start.y + ray->dy * ray->distance;
 
-		if (prog->disp_minimap && !prog->binoculars)
-		{
+		// if (prog->disp_minimap && !prog->binoculars)
+		// {
 			line = c3d_create_line(prog->player.x * prog->size.mapscale, \
 				prog->player.y * prog->size.mapscale, \
 				ray->intersection.x * prog->size.mapscale, \
 				ray->intersection.y * prog->size.mapscale);
 			c3d_draw_line(prog->fov_img, line, VERT);
-		}
+		// }
 	}
 }
 

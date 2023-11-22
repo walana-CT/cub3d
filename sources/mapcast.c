@@ -8,6 +8,7 @@ int	c3d_refresh_fov(t_prog *prog)
 	// if (!prog->player_img)
 	// 	return (1);
 	mlx_image_to_window(prog->mlx, prog->fov_img, 0, 0);
+	prog->fov_img->enabled = prog->disp_minimap;
 	mlx_set_instance_depth(prog->fov_img->instances, 2);
 	return (0);
 }
@@ -23,5 +24,3 @@ int	c3d_refresh_view(t_prog *prog)
 	mlx_set_instance_depth(prog->view_img->instances, 0);
 	return (0);
 }
-
-

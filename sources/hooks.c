@@ -1,9 +1,10 @@
 #include "cub3d.h"
 
-void	set_images_enabled(t_prog *prog)
+void	toggle_minimap(t_prog *prog)
 {
-	// prog->player_img->enabled = prog->disp_minimap;
+	prog->disp_minimap = ((prog->disp_minimap + 1) % 2);
 	prog->minimap_img->enabled = prog->disp_minimap;
+	prog->fov_img->enabled = prog->disp_minimap;
 }
 
 void	c3d_keyhook(mlx_key_data_t keydata, void *param)
@@ -16,10 +17,7 @@ void	c3d_keyhook(mlx_key_data_t keydata, void *param)
 		return (mlx_close_window(prog->mlx));
 	}
 	if (keydata.key == MLX_KEY_TAB && keydata.action == MLX_PRESS && !prog->binoculars)
-	{
-		prog->disp_minimap = ((prog->disp_minimap + 1) % 2);
-		set_images_enabled(prog);
-	}
+		toggle_minimap(prog);
 	if (keydata.key == MLX_KEY_SPACE && keydata.action == MLX_PRESS)
 		c3d_door_interact(prog);
 }

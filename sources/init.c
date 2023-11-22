@@ -8,6 +8,7 @@ int	graph_init(t_prog *prog)
 	prog->minimap_img = NULL;
 	prog->player_img = NULL;
 	prog->fov_img = NULL;
+	prog->view_img = NULL;
 	prog->binoculars_img = NULL;
 	prog->binoculars = 0;
 	prog->last_time = mlx_get_time();

@@ -1,7 +1,7 @@
 #ifndef CUB3D_H
 # define CUB3D_H
-# define WIN_WIDTH 1024
-# define WIN_HEIGHT 768
+# define WIN_WIDTH 800
+# define WIN_HEIGHT 600
 # define SPD 0.05
 # define SENSIVITY 0.01
 # define WALL 0x888888FF
@@ -201,8 +201,8 @@ void 		c3d_mousehook(mouse_key_t button, action_t action, modifier_key_t mods, v
 
 
 // main funcs
-int			c3d_refresh_image(t_prog *prog);
-int			c3d_refresh_player(t_prog *prog);
+// int			c3d_refresh_image(t_prog *prog);
+// int			c3d_refresh_player(t_prog *prog);
 int			c3d_refresh(t_prog *prog);
 int			c3d_refresh_fov(t_prog *prog);
 
