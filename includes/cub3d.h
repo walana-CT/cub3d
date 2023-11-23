@@ -147,6 +147,7 @@ struct s_ray
 	float		screen_dist;
 	float		dx;
 	float		dy;
+	float		texture_x;
 	float		wall_x;
 	int			has_collide;
 	int			side;

@@ -13,10 +13,11 @@
 
 void	disp_band(t_prog *prog, t_ray *ray, int x_pos)
 {
-	int		n;
-	int		wall_start;
-	int		wall_end;
-	int		h;
+	int			n;
+	int			wall_start;
+	int			wall_end;
+	int			h;
+	uint32_t	pixel_color;
 
 	n = -1;
 	h = (WIN_HEIGHT / ray->screen_dist);
@@ -103,12 +104,25 @@ static void	casting(t_ray *ray, t_prog *prog, float r_dir)
 	}
 	if (ray->has_collide)
 	{
-		if (ray->side == 0)
-			ray->screen_dist = (ray->lenght.x - ray->d_step.x) * cos(r_dir);
-		else
-			ray->screen_dist = (ray->lenght.y - ray->d_step.y) * cos(r_dir);
 		ray->intersection.x = ray->start.x + ray->dx * ray->distance;
 		ray->intersection.y = ray->start.y + ray->dy * ray->distance;
+		if (ray->side == 0)
+		{
+			ray->screen_dist = (ray->lenght.x - ray->d_step.x) * cos(r_dir);
+			if (ray->dx < 0)
+				ray->texture_x = (int)ray->intersection.x - ray->intersection.x;
+			else
+				ray->texture_x = ray->intersection.x - (int)ray->intersection.x;				
+		}
+
+		else
+		{
+			ray->screen_dist = (ray->lenght.y - ray->d_step.y) * cos(r_dir);
+			if (ray->dx < 0)
+				ray->texture_x = (int)ray->intersection.y - ray->intersection.y;
+			else
+				ray->texture_x = ray->intersection.y - (int)ray->intersection.y;
+		}
 
 		// if (prog->disp_minimap && !prog->binoculars)
 		// {
