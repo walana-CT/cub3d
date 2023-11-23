@@ -1,15 +1,23 @@
 #include <cub3d.h>
 
-/*uint32_t	get_pixel_color(mlx_texture_t *texture, float coeff_x, float coeff_y)
+uint32_t	get_pixel_color(mlx_texture_t *texture, float coeff_x, float coeff_y)
 {
-	int	pixel_x;
-	int	pixel_y;
+	int	x;
+	int	y;
+	uint8_t r;
+	uint8_t g;
+	uint8_t b;
+	uint8_t a;
 
-	pixel_x = coeff_x * texture->width;
-	pixel_y = coeff_y * texture->height;
-	//printf("color : %d\n", texture->pixels[pixel_x + (pixel_y * texture->height)]);	
-	return (texture->pixels[pixel_x + (pixel_y * texture->height)]);
-}*/
+	x = coeff_x * texture->width;
+	y = coeff_y * texture->height;
+	r = texture->pixels[((x + (y * texture->width)) * 4) + 0];
+	g = texture->pixels[((x + (y * texture->width)) * 4) + 1];
+	b = texture->pixels[((x + (y * texture->width)) * 4) + 2];
+	a = texture->pixels[((x + (y * texture->width)) * 4) + 3];
+	return (r << 24 | g << 16 | b << 8 | a);
+
+}
 
 void	disp_band(t_prog *prog, t_ray *ray, int x_pos)
 {
@@ -17,6 +25,7 @@ void	disp_band(t_prog *prog, t_ray *ray, int x_pos)
 	int			wall_start;
 	int			wall_end;
 	int			h;
+	float		texture_y;
 	uint32_t	pixel_color;
 
 	n = -1;
@@ -33,20 +42,22 @@ void	disp_band(t_prog *prog, t_ray *ray, int x_pos)
 			mlx_put_pixel(prog->view_img, x_pos, n, SKY);
 		else if (n < wall_end)
 		{
+			texture_y = (float)(n - wall_start) / (float)h;
 			if (ray->side == 0)
 			{
 				if (ray->dx > 0)
-					mlx_put_pixel(prog->view_img, x_pos, n, NORTH_C);
+					pixel_color = get_pixel_color(prog->textures.n, ray->texture_x, texture_y);					
 				else
-					mlx_put_pixel(prog->view_img, x_pos, n, SOUTH_C);
+					pixel_color = get_pixel_color(prog->textures.s, ray->texture_x, texture_y);				
 			}
 			else
 			{
 				if (ray->dy > 0)
-					mlx_put_pixel(prog->view_img, x_pos, n, WEST_C);
+					pixel_color = get_pixel_color(prog->textures.w, ray->texture_x, texture_y);
 				else
-					mlx_put_pixel(prog->view_img, x_pos, n, EAST_C);
+					pixel_color = get_pixel_color(prog->textures.e, ray->texture_x, texture_y);
 			}
+			mlx_put_pixel(prog->view_img, x_pos, n, pixel_color);
 		}
 		else
 			mlx_put_pixel(prog->view_img, x_pos, n, GROUND);
@@ -110,18 +121,18 @@ static void	casting(t_ray *ray, t_prog *prog, float r_dir)
 		{
 			ray->screen_dist = (ray->lenght.x - ray->d_step.x) * cos(r_dir);
 			if (ray->dx < 0)
-				ray->texture_x = (int)ray->intersection.x - ray->intersection.x;
+				ray->texture_x = fabs((int)ray->intersection.y - ray->intersection.y);
 			else
-				ray->texture_x = ray->intersection.x - (int)ray->intersection.x;				
+				ray->texture_x = fabs(ray->intersection.y - (int)ray->intersection.y);				
 		}
 
 		else
 		{
 			ray->screen_dist = (ray->lenght.y - ray->d_step.y) * cos(r_dir);
 			if (ray->dx < 0)
-				ray->texture_x = (int)ray->intersection.y - ray->intersection.y;
+				ray->texture_x = fabs((int)ray->intersection.x - ray->intersection.x);
 			else
-				ray->texture_x = ray->intersection.y - (int)ray->intersection.y;
+				ray->texture_x = fabs(ray->intersection.x - (int)ray->intersection.x);
 		}
 
 		// if (prog->disp_minimap && !prog->binoculars)
