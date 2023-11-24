@@ -6,6 +6,17 @@ int	is_map_desc(char *str)
 	return (*str == '1' || *str == ' ');
 }
 
+int	commascheck(char *str)
+{
+	int	i;
+
+	i = 0;
+	while(*str)
+		if (*str++ == ',')
+			++i;
+	return (!(i == 2));
+}
+
 int	color_ok(t_color color)
 {
 	if (!color.fullcolor || !color.col[0] || !color.col[1] || !color.col[2] || !color.col[3])

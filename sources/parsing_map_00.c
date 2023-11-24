@@ -109,6 +109,8 @@ static int	read_map(t_list **file_lst, t_prog *prog)
 		return (1);
 	if (player_nbr != 1)
 		return (1);
+	if (cur_elem)
+		return (err_msg("Map data not at the end of file\n", 1));
 	return (0);
 }
 

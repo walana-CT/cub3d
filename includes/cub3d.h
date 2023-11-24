@@ -160,6 +160,7 @@ char		**c3d_map_dup(t_prog *prog);
 int			err_msg(char *msg, int err);
 
 // Parsing
+int			commascheck(char *str);
 int			c3d_parsing(int argc, char *argv[], t_prog *prog);
 int			get_infos(t_list **file_lst, t_prog *prog);
 int			c3d_get_map(t_list **map_lst, t_prog *prog);

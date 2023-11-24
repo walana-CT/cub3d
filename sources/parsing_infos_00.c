@@ -53,6 +53,8 @@ int	load_color(t_color *color, char *str)
 	int		col;
 
 	null_str_if_empty(&str);
+	if (commascheck(str))
+		exit(err_msg(EF_COLOR, 1));
 	color->fullcolor = ft_strdup(str);
 	coltab = ft_split(str, ',');
 	if (!coltab)
