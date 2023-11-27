@@ -1,6 +1,15 @@
 #include "cub3d.h"
 
-int	c3d_rotateplayer(int32_t mouse_x, t_prog *prog)
+int	c3d_rotateplayer(float spd, t_prog *prog)
+{
+	prog->player.dir += spd;
+	if (prog->player.dir >= M_PI * 2 || prog->player.dir <= -M_PI * 2)
+		prog->player.dir = 0;
+	return (1);
+}
+
+
+int	c3d_mouse_rotate(int32_t mouse_x, t_prog *prog)
 {
 	prog->player.dir += SENSIVITY * (mouse_x - prog->new_mouse_x);
 	if (prog->player.dir >= M_PI * 2 || prog->player.dir <= -M_PI * 2)
@@ -36,6 +45,7 @@ int	c3d_moveplayer(float spd, t_prog *prog)
 	float	x;
 	float	y;
 
+	spd *= prog->run;
 	x = prog->player.x + spd * cos(prog->player.dir);
 	y = prog->player.y + spd * sin(prog->player.dir);
 	if (correct_pos(x, y, prog))
@@ -56,6 +66,7 @@ int	c3d_strafeplayer(float spd, t_prog *prog)
 	float	x;
 	float	y;
 
+	spd *= prog->run;
 	x = prog->player.x + spd * cos(prog->player.dir + M_PI_2);
 	y = prog->player.y + spd * sin(prog->player.dir + M_PI_2);
 	if (correct_pos(x, y, prog))

@@ -6,11 +6,11 @@ int	graph_init(t_prog *prog)
 	if (!prog->mlx)
 		return(err_msg((char *)mlx_strerror(mlx_errno), 1));
 	prog->minimap_img = NULL;
-	prog->player_img = NULL;
 	prog->fov_img = NULL;
 	prog->view_img = NULL;
 	prog->binoculars_img = NULL;
 	prog->binoculars = 0;
+	prog->run = 1;
 	prog->last_time = mlx_get_time();
 	prog->mouse_x = 0;
 	prog->mouse_y = 0;
