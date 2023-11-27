@@ -19,12 +19,18 @@ int	commascheck(char *str)
 
 int	color_ok(t_color color)
 {
-	if (!color.fullcolor || !color.col[0] || !color.col[1] || !color.col[2] || !color.col[3])
-		return (0);
 	if (ft_isuchar(color.col[0]) && ft_isuchar(color.col[1]) && \
 		ft_isuchar(color.col[2]) && ft_isuchar(color.col[3]))
 		return (1);
 	return (0);
+}
+
+void	convert_colors(t_prog *prog)
+{
+	prog->c_color.color = (prog->c_color.col[0] << 16) | (prog->c_color.col[1] << 8) | prog->c_color.col[2];
+	prog->c_color.color = (prog->f_color.col[0] << 16) | (prog->f_color.col[1] << 8) | prog->f_color.col[2];
+    printf("La valeur C hexadécimale est : %d\n", prog->c_color.color);
+    printf("La valeur F hexadécimale est : %d\n", prog->f_color.color);
 }
 
 /**
@@ -42,5 +48,6 @@ int	check_info(t_prog prog)
 	if (!prog.textures.n || !prog.textures.s || \
 		!prog.textures.e ||!prog.textures.w)
 		return (err_msg(EF_MISS, 2));
+	convert_colors(&prog);
 	return (0);
 }

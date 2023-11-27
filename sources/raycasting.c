@@ -29,7 +29,7 @@ void	disp_band(t_prog *prog, t_ray *ray, int x_pos)
 	while (++n < WIN_HEIGHT)
 	{
 		if (n < wall_start)
-			mlx_put_pixel(prog->view_img, x_pos, n, SKY);
+			mlx_put_pixel(prog->view_img, x_pos, n, prog->c_color.color);
 		else if (n < wall_end)
 		{
 			if (ray->side == 0)
@@ -48,7 +48,7 @@ void	disp_band(t_prog *prog, t_ray *ray, int x_pos)
 			}
 		}
 		else
-			mlx_put_pixel(prog->view_img, x_pos, n, GROUND);
+			mlx_put_pixel(prog->view_img, x_pos, n, prog->f_color.color);
 	}
 }
 

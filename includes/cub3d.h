@@ -105,6 +105,7 @@ struct s_color
 {
 	char			*fullcolor;
 	unsigned char	col[4];
+	uint32_t		color;
 };
 
 struct s_prog
