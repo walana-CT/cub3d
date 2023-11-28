@@ -42,16 +42,16 @@ void	disp_band(t_prog *prog, t_ray *ray, int x_pos)
 			if (ray->side == 0)
 			{
 				if (ray->dx > 0)
-					pixel_color = get_pixel_color(prog->textures.n, ray->texture_x, texture_y);
+					pixel_color = get_pixel_color(prog->textures.w, ray->texture_x, texture_y);
 				else
-					pixel_color = get_pixel_color(prog->textures.s, ray->texture_x, texture_y);
+					pixel_color = get_pixel_color(prog->textures.e, ray->texture_x, texture_y);
 			}
 			else
 			{
 				if (ray->dy > 0)
-					pixel_color = get_pixel_color(prog->textures.w, ray->texture_x, texture_y);
+					pixel_color = get_pixel_color(prog->textures.s, ray->texture_x, texture_y);
 				else
-					pixel_color = get_pixel_color(prog->textures.e, ray->texture_x, texture_y);
+					pixel_color = get_pixel_color(prog->textures.n, ray->texture_x, texture_y);
 			}
 			mlx_put_pixel(prog->view_img, x_pos, n, pixel_color);
 		}
