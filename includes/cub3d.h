@@ -1,7 +1,7 @@
 #ifndef CUB3D_H
 # define CUB3D_H
-# define WIN_WIDTH 1280
-# define WIN_HEIGHT 1050
+# define WIN_WIDTH 800
+# define WIN_HEIGHT 600
 # define SPD 0.05
 # define SENSIVITY 0.01
 # define WALL 0x888888FF
@@ -105,6 +105,7 @@ struct s_color
 {
 	char			*fullcolor;
 	unsigned char	col[4];
+	uint32_t		color;
 };
 
 struct s_prog
@@ -117,6 +118,7 @@ struct s_prog
 	int				map_width;		// max ?
 	int				disp_minimap;	// bool
 	int				binoculars; // bool
+	int				run; // 1 ou 2
 	double			last_time;
 	int32_t			mouse_x;
 	int32_t			mouse_y;
@@ -125,7 +127,6 @@ struct s_prog
 	mlx_t			*mlx;
 	mlx_image_t		*minimap_img;
 	mlx_image_t		*fov_img;
-	mlx_image_t		*player_img;
 	mlx_image_t		*view_img;
 	mlx_image_t		*binoculars_img;
 	t_texture_pack	textures;
@@ -161,6 +162,8 @@ char		**c3d_map_dup(t_prog *prog);
 int			err_msg(char *msg, int err);
 
 // Parsing
+int			commascheck(char *str);
+int			c3d_convert_colors(t_prog *prog);
 int			c3d_parsing(int argc, char *argv[], t_prog *prog);
 int			get_infos(t_list **file_lst, t_prog *prog);
 int			c3d_get_map(t_list **map_lst, t_prog *prog);
@@ -193,7 +196,8 @@ int			c3d_moveplayer(float spd, t_prog *prog);
 char		c3d_player_facing(float dir);
 int			c3d_strafeplayer(float spd, t_prog *prog);
 int			correct_pos(float x, float y, t_prog *prog);
-int			c3d_rotateplayer(int32_t mouse_x, t_prog *prog);
+int			c3d_rotateplayer(float spd, t_prog *prog);
+int			c3d_mouse_rotate(int32_t mouse_x, t_prog *prog);
 
 // hook
 void		c3d_keyhook(mlx_key_data_t keydata, void *param);
