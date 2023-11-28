@@ -32,7 +32,7 @@ FLAGS = -Wall -Wextra -Werror
 
 # General compilation flags
 CFLAG = $(FLAGS) $(INCLUDES) -g3
- 
+
 # Linking compilation flags
 #GFLAG = $(LIBMLX) -g3
 
@@ -81,7 +81,6 @@ $(OBJ_DIR)/%.o : $(SRC_DIR)/%.c
 	@printf '$(GREEN)Compiling: $(RESET)$@\n'
 	@$(CC) $(CFLAG) -o $@ -c $<
 
-
 # create the program
 $(NAME): $(OBJ)
 	@printf '$(RED)Linking: $(RESET)$@\n'
@@ -99,6 +98,10 @@ fclean: clean
 
 # force to recompile everything
 re: fclean all
+
+debug: $(OBJ)
+	@printf '$(RED)Linking: $(RESET)$@\n'
+	@$(CC) $(CFLAG) -fsanitize=address $(GFLAG) -o $(NAME) $(OBJ) $(LIBS);
 
 #create the default directories
 dir: $(SRC_DIR) $(OBJ_DIR) $(INCLUDE_DIR)

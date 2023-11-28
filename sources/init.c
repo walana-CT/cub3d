@@ -6,11 +6,11 @@ int	graph_init(t_prog *prog)
 	if (!prog->mlx)
 		return(err_msg((char *)mlx_strerror(mlx_errno), 1));
 	prog->minimap_img = NULL;
-	prog->player_img = NULL;
 	prog->fov_img = NULL;
 	prog->view_img = NULL;
 	prog->binoculars_img = NULL;
 	prog->binoculars = 0;
+	prog->run = 1;
 	prog->last_time = mlx_get_time();
 	prog->mouse_x = 0;
 	prog->mouse_y = 0;
@@ -33,7 +33,9 @@ void	cub3d_init(t_prog *prog)
 {
 	prog->map = NULL;
 	prog->c_color.fullcolor = NULL;
+	prog->c_color.color = 0;
 	prog->f_color.fullcolor = NULL;
+	prog->f_color.color = 0;
 	prog->w_height = WIN_HEIGHT;
 	prog->w_width = WIN_WIDTH;
 	prog->textures.e = NULL;

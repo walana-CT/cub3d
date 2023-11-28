@@ -6,13 +6,29 @@ int	is_map_desc(char *str)
 	return (*str == '1' || *str == ' ');
 }
 
+int	commascheck(char *str)
+{
+	int	i;
+
+	i = 0;
+	while(*str)
+		if (*str++ == ',')
+			++i;
+	return (!(i == 2));
+}
+
 int	color_ok(t_color color)
 {
-	if (!color.fullcolor || !color.col[0] || !color.col[1] || !color.col[2] || !color.col[3])
-		return (0);
 	if (ft_isuchar(color.col[0]) && ft_isuchar(color.col[1]) && \
 		ft_isuchar(color.col[2]) && ft_isuchar(color.col[3]))
 		return (1);
+	return (0);
+}
+
+int	c3d_convert_colors(t_prog *prog)
+{
+	prog->c_color.color = (prog->c_color.col[0] << 24) | (prog->c_color.col[1] << 16) | (prog->c_color.col[2] << 8) | 255;
+	prog->f_color.color = (prog->f_color.col[0] << 24) | (prog->f_color.col[1] << 16) | (prog->f_color.col[2] << 8) | 255;
 	return (0);
 }
 

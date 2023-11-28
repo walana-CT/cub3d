@@ -53,6 +53,8 @@ int	load_color(t_color *color, char *str)
 	int		col;
 
 	null_str_if_empty(&str);
+	if (commascheck(str))
+		exit(err_msg(EF_COLOR, 1));
 	color->fullcolor = ft_strdup(str);
 	coltab = ft_split(str, ',');
 	if (!coltab)
@@ -87,4 +89,8 @@ int	get_infos(t_list **file, t_prog *prog)
 	}
 	prog->textures.d = mlx_load_png("textures/door.png");
 	return (check_info(*prog));
+	if (!check_info(*prog))
+		return (c3d_convert_colors(prog));
+	else
+		return (1);
 }
