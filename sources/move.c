@@ -66,7 +66,7 @@ int	c3d_strafeplayer(float spd, t_prog *prog)
 	}
 	if (correct_pos(x, prog->player.y, prog))
 		slide_on_x(spd * sin(prog->player.dir + M_PI_2), x, prog);
-	if (correct_pos(prog->player.x, y, prog ))
+	if (correct_pos(prog->player.x, y, prog))
 		slide_on_y(spd * cos(prog->player.dir + M_PI_2), y, prog);
 	return (1);
 }
