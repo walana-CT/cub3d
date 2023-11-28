@@ -1,7 +1,7 @@
-#ifndef CUB3D_H
+#ifndef	CUB3D_H
 # define CUB3D_H
 # define WIN_WIDTH 1280
-# define WIN_HEIGHT 1050
+# define WIN_HEIGHT 720
 # define SPD 0.05
 # define SENSIVITY 0.01
 # define WALL 0x888888FF
@@ -10,7 +10,7 @@
 # define DOOR 0xFF0000FF
 # define OP_DOOR 0x00FF00FF
 # define PLAYER 0xF455EAFF
-# define FOV 90
+# define FOV 102
 
 # define VERT 0x3568A688
 # define SKY 0x526FD2FF
@@ -99,6 +99,7 @@ struct s_texture_pack
 	mlx_texture_t	*s;
 	mlx_texture_t	*e;
 	mlx_texture_t	*w;
+	mlx_texture_t	*d;
 };
 
 struct s_color
@@ -151,6 +152,7 @@ struct s_ray
 	float		wall_x;
 	int			has_collide;
 	int			side;
+	int			is_door;
 };
 
 // Utils

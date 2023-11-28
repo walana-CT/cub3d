@@ -39,7 +39,9 @@ void	disp_band(t_prog *prog, t_ray *ray, int x_pos)
 		else if (n < wall_end)
 		{
 			texture_y = (float)(n - wall_start) / (float)h;
-			if (ray->side == 0)
+			if (ray->is_door)
+				pixel_color = get_pixel_color(prog->textures.d, ray->texture_x, texture_y);
+			else if (ray->side == 0)
 			{
 				if (ray->dx > 0)
 					pixel_color = get_pixel_color(prog->textures.w, ray->texture_x, texture_y);
@@ -106,8 +108,15 @@ static void	casting(t_ray *ray, t_prog *prog, float r_dir)
 		}
 		if (ray->map_check.x >= 0 && ray->map_check.x < prog->map_width
 			&& ray->map_check.y >= 0 && ray->map_check.y < prog->map_height)
-			if (prog->map[ray->map_check.y][ray->map_check.x] == '1')
+		{
+			if (prog->map[ray->map_check.y][ray->map_check.x] == '1' || prog->map[ray->map_check.y][ray->map_check.x] == 'C')
 				ray->has_collide = TRUE;
+			if (prog->map[ray->map_check.y][ray->map_check.x] == 'C')
+				ray->is_door = TRUE;
+			else
+				ray->is_door = FALSE;
+		}
+
 	}
 	if (ray->has_collide)
 	{
@@ -168,9 +177,11 @@ void	c3d_raycast(t_prog *prog)
 	float	camera_x;
 	float	camera_step;
 	int		n;
+	float	fov_deg;
 
+	fov_deg = FOV * (M_PI / 180);
 	n = -1;
-	camera_x = tan(FOV / 2);
+	camera_x = tan(fov_deg / 2);
 	camera_step = camera_x * 2 / WIN_WIDTH;
 	camera_x *= -1;
 	while (++n <= WIN_WIDTH)

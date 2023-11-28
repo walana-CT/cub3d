@@ -85,5 +85,6 @@ int	get_infos(t_list **file, t_prog *prog)
 			return (err_msg(EF_BADDESC, 2));
 		ft_lstdeltop(file, free);
 	}
+	prog->textures.d = mlx_load_png("textures/door.png");
 	return (check_info(*prog));
 }
