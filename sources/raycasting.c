@@ -2,12 +2,12 @@
 
 uint32_t	get_pixel_color(mlx_texture_t *texture, float coeff_x, float coeff_y)
 {
-	int	x;
-	int	y;
-	uint8_t r;
-	uint8_t g;
-	uint8_t b;
-	uint8_t a;
+	int		x;
+	int		y;
+	uint8_t	r;
+	uint8_t	g;
+	uint8_t	b;
+	uint8_t	a;
 
 	x = coeff_x * texture->width;
 	y = coeff_y * texture->height;
@@ -31,11 +31,7 @@ void	disp_band(t_prog *prog, t_ray *ray, int x_pos)
 	n = -1;
 	h = (WIN_HEIGHT / ray->screen_dist);
 	wall_start = -h / 2 + WIN_HEIGHT / 2;
-	if (wall_start < 0)
-		wall_start = 0;
 	wall_end = h / 2 + WIN_HEIGHT / 2;
-	if (wall_end >= WIN_HEIGHT)
-		wall_end = WIN_HEIGHT;
 	while (++n < WIN_HEIGHT)
 	{
 		if (n < wall_start)
@@ -46,9 +42,9 @@ void	disp_band(t_prog *prog, t_ray *ray, int x_pos)
 			if (ray->side == 0)
 			{
 				if (ray->dx > 0)
-					pixel_color = get_pixel_color(prog->textures.n, ray->texture_x, texture_y);					
+					pixel_color = get_pixel_color(prog->textures.n, ray->texture_x, texture_y);
 				else
-					pixel_color = get_pixel_color(prog->textures.s, ray->texture_x, texture_y);				
+					pixel_color = get_pixel_color(prog->textures.s, ray->texture_x, texture_y);
 			}
 			else
 			{
