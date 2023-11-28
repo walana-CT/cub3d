@@ -48,27 +48,25 @@ void c3d_mousehook(mouse_key_t button, action_t action, modifier_key_t mods, voi
 void	c3d_mainhook(void *param)
 {
 	t_prog	*prog;
-	int		refresh;
 
 	prog = (t_prog *) param;
-	refresh = 0;
 	if (prog->binoculars)
 		c3d_binoculars_anim(prog);
 	mlx_get_mouse_pos(prog->mlx, &prog->mouse_x, &prog->mouse_y);
 	if (mlx_is_key_down(prog->mlx, MLX_KEY_W))
-		refresh += c3d_moveplayer(SPD, prog);
+		c3d_moveplayer(SPD, prog);
 	if (mlx_is_key_down(prog->mlx, MLX_KEY_S))
-		refresh += c3d_moveplayer(-SPD, prog);
+		c3d_moveplayer(-SPD, prog);
 	if (mlx_is_key_down(prog->mlx, MLX_KEY_A))
-		refresh += c3d_strafeplayer(-SPD, prog);
+		c3d_strafeplayer(-SPD, prog);
 	if (mlx_is_key_down(prog->mlx, MLX_KEY_D))
-		refresh += c3d_strafeplayer(SPD, prog);
+		c3d_strafeplayer(SPD, prog);
 	if (mlx_is_key_down(prog->mlx, MLX_KEY_LEFT))
-		refresh += c3d_rotateplayer(-SPD, prog);
+		c3d_rotateplayer(-SPD, prog);
 	if (mlx_is_key_down(prog->mlx, MLX_KEY_RIGHT))
-		refresh += c3d_rotateplayer(SPD, prog);
+		c3d_rotateplayer(SPD, prog);
 	if (prog->mouse_x != prog->new_mouse_x)
-		refresh += c3d_mouse_rotate(prog->mouse_x, prog);
-	if (refresh && c3d_refresh(prog))
+		c3d_mouse_rotate(prog->mouse_x, prog);
+	if (c3d_refresh(prog))
 		mlx_terminate(prog->mlx);
 }

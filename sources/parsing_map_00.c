@@ -8,11 +8,11 @@ static void	set_player_dir(char c, t_prog *prog)
 	if (c == 'E')
 		prog->player.dir = 0;
 	if (c == 'S')
-		prog->player.dir = -M_PI_2;
+		prog->player.dir = M_PI_2;
 	if (c == 'W')
 		prog->player.dir = M_PI;
 	if (c == 'N')
-		prog->player.dir = M_PI_2;
+		prog->player.dir = -M_PI_2;
 }
 
 /**
