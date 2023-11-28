@@ -81,7 +81,6 @@ $(OBJ_DIR)/%.o : $(SRC_DIR)/%.c
 	@printf '$(GREEN)Compiling: $(RESET)$@\n'
 	@$(CC) $(CFLAG) -o $@ -c $<
 
-
 # create the program
 $(NAME): $(OBJ)
 	@printf '$(RED)Linking: $(RESET)$@\n'

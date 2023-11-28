@@ -33,7 +33,9 @@ void	cub3d_init(t_prog *prog)
 {
 	prog->map = NULL;
 	prog->c_color.fullcolor = NULL;
+	prog->c_color.color = 0;
 	prog->f_color.fullcolor = NULL;
+	prog->f_color.color = 0;
 	prog->w_height = WIN_HEIGHT;
 	prog->w_width = WIN_WIDTH;
 	prog->textures.e = NULL;

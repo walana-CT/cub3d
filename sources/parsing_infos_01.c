@@ -25,12 +25,11 @@ int	color_ok(t_color color)
 	return (0);
 }
 
-void	convert_colors(t_prog *prog)
+int	c3d_convert_colors(t_prog *prog)
 {
-	prog->c_color.color = (prog->c_color.col[0] << 16) | (prog->c_color.col[1] << 8) | prog->c_color.col[2];
-	prog->c_color.color = (prog->f_color.col[0] << 16) | (prog->f_color.col[1] << 8) | prog->f_color.col[2];
-    printf("La valeur C hexadécimale est : %d\n", prog->c_color.color);
-    printf("La valeur F hexadécimale est : %d\n", prog->f_color.color);
+	prog->c_color.color = (prog->c_color.col[0] << 24) | (prog->c_color.col[1] << 16) | (prog->c_color.col[2] << 8) | 255;
+	prog->f_color.color = (prog->f_color.col[0] << 24) | (prog->f_color.col[1] << 16) | (prog->f_color.col[2] << 8) | 255;
+	return (0);
 }
 
 /**
@@ -48,6 +47,5 @@ int	check_info(t_prog prog)
 	if (!prog.textures.n || !prog.textures.s || \
 		!prog.textures.e ||!prog.textures.w)
 		return (err_msg(EF_MISS, 2));
-	convert_colors(&prog);
 	return (0);
 }

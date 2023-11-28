@@ -87,5 +87,8 @@ int	get_infos(t_list **file, t_prog *prog)
 			return (err_msg(EF_BADDESC, 2));
 		ft_lstdeltop(file, free);
 	}
-	return (check_info(*prog));
+	if (!check_info(*prog))
+		return (c3d_convert_colors(prog));
+	else
+		return (1);
 }

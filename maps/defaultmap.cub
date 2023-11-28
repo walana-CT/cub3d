@@ -1,11 +1,10 @@
-F 255,0,0
-NO ./textures/ratt.png
+C 150,150,0
+F 0,150,150
 
+NO ./textures/ratt.png
 WE ./textures/mossy.png
 SO ./textures/barrel.png
 EA ./textures/colorstone.png
-
-C 0,255,0
 
 
         1111111111111111111111111
