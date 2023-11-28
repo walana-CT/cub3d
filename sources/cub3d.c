@@ -52,11 +52,26 @@ int	main(int argc, char *argv[])
 
 	check_invalid_args(argc, argv);
 	cub3d_init(&prog);
-	if (c3d_parsing(--argc, ++argv, &prog))
-		return (c3d_final_free(&prog), 1);
-	if (graph_init(&prog) == 0)
-		c3d_run(&prog);
-	c3d_final_free(&prog);
+	c3d_parsing(--argc, ++argv, &prog);
+	graph_init(&prog);
+	c3d_run(&prog);
 	puts("CYA");
-	return (0);
+	exit(0);
+	// return (0);
 }
+
+
+// int	main(int argc, char *argv[])
+// {
+// 	t_prog	prog;
+
+// 	check_invalid_args(argc, argv);
+// 	cub3d_init(&prog);
+// 	if (c3d_parsing(--argc, ++argv, &prog))
+// 		return (c3d_final_free(&prog), 1);
+// 	if (graph_init(&prog) == 0)
+// 		c3d_run(&prog);
+// 	c3d_final_free(&prog);
+// 	puts("CYA");
+// 	return (0);
+// }

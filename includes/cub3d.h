@@ -1,8 +1,8 @@
 #ifndef CUB3D_H
 # define CUB3D_H
-# define WIN_WIDTH 1000
-# define WIN_HEIGHT 1000
-# define SPD 0.05
+# define WIN_WIDTH 1280
+# define WIN_HEIGHT 720
+# define SPD 0.025
 # define SENSIVITY 0.01
 # define WALL 0x888888FF
 # define VOID 0xDDDDDDFF
@@ -10,7 +10,7 @@
 # define DOOR 0xFF0000FF
 # define OP_DOOR 0x00FF00FF
 # define PLAYER 0xF455EAFF
-# define FOV 90
+# define FOV 1.571
 
 # define VERT 0x3568A688
 # define SKY 0x526FD2FF
@@ -21,6 +21,7 @@
 # define WEST_C 0xFCCC1AFF
 
 # define ERR "Error\n"
+# define EF_FAT "Fatal error\n"
 # define EF_BADDESC "Bad file description\n"
 # define EF_MISS "Missing data\n"
 # define EF_WTEXTURE "Couldn't load texture\n"
@@ -54,7 +55,6 @@ struct s_size
 	int		minimap_width;
 	int		mapscale;
 	float	pl_scale;
-	float	pl_hb;
 };
 
 struct s_line
@@ -87,8 +87,6 @@ struct s_player
 {
 	float	x;
 	float	y;
-	float	hb;
-	float	size;
 	int		size_int;
 	float	dir;
 };
@@ -162,18 +160,18 @@ char		**c3d_map_dup(t_prog *prog);
 int			err_msg(char *msg, int err);
 
 // Parsing
-int			commascheck(char *str);
-int			c3d_convert_colors(t_prog *prog);
-int			c3d_parsing(int argc, char *argv[], t_prog *prog);
-int			get_infos(t_list **file_lst, t_prog *prog);
+void		commascheck(char *str);
+void		c3d_convert_colors(t_prog *prog);
+void		c3d_parsing(int argc, char *argv[], t_prog *prog);
+void		get_infos(t_list **file_lst, t_prog *prog);
 int			c3d_get_map(t_list **map_lst, t_prog *prog);
 void		c3d_clean_map(char **map, t_prog *prog);
 int			is_valid_ext(char *file, char *ext);
-int			load_texture(mlx_texture_t **texture, char *file);
-int			load_color(t_color *color, char *str);
+void		load_texture(mlx_texture_t **texture, char *file);
+void		load_color(t_color *color, char *str);
 int			is_map_desc(char *str);
 int			c3d_is_map_closed(t_prog *prog);
-int			check_info(t_prog prog);
+void		check_info(t_prog prog);
 
 // drawing
 int			c3d_binoculars(t_prog *prog);
@@ -211,15 +209,12 @@ void 		c3d_mousehook(mouse_key_t button, action_t action, modifier_key_t mods, v
 int			c3d_refresh(t_prog *prog);
 int			c3d_refresh_fov(t_prog *prog);
 
-//minimap_centered
-void		c3d_draw_minimap_centered(t_prog *prog);
-
 //raycasting
 void		c3d_cast_one(t_prog *prog, float p_dir, float r_dir, int x_pos);
 
 // Utils
 void		cub3d_init(t_prog *prog);
-int			graph_init(t_prog *prog);
+void		graph_init(t_prog *prog);
 void		c3d_final_free(t_prog *prog);
 t_coord		c3d_get_player_pos(char **map);
 

@@ -11,6 +11,8 @@ void	toggle_run(t_prog *prog)
 {
 	if (prog->run == 1)
 		prog->run = 2;
+	else if (prog->run == 2)
+		prog->run = 4;
 	else
 		prog->run = 1;
 }

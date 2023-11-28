@@ -1,9 +1,9 @@
 F 100,200,255
 NO ./textures/ratt.png
 
-WE ./textures/dots.png
+WE ./textures/ratt.png
 SO ./textures/ratt.png
-EA ./textures/dots.png
+EA ./textures/ratt.png
 
 C 100,200,255
 
