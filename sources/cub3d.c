@@ -30,6 +30,7 @@ void	c3d_run(t_prog *prog)
 	mlx_loop_hook(prog->mlx, &c3d_mainhook, prog);
 	mlx_key_hook(prog->mlx, &c3d_keyhook, prog);
 	mlx_mouse_hook(prog->mlx, &c3d_mousehook, prog);
+	mlx_scroll_hook(prog->mlx, &c3d_scrollhook, prog);
 	c3d_create_minimap(prog);
 	c3d_refresh_fov(prog);
 	mlx_loop(prog->mlx);

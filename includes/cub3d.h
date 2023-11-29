@@ -1,7 +1,7 @@
 #ifndef CUB3D_H
 # define CUB3D_H
-# define WIN_WIDTH 1280
-# define WIN_HEIGHT 720
+# define WIN_WIDTH 800
+# define WIN_HEIGHT 600
 # define SPD 0.025
 # define SENSIVITY 0.01
 # define WALL 0x888888FF
@@ -119,6 +119,8 @@ struct s_prog
 	int				binoculars; // bool
 	int				run; // 1 ou 2
 	double			last_time;
+	float			fov;
+	int				mouse_ctrl;
 	int32_t			mouse_x;
 	int32_t			mouse_y;
 	int32_t			new_mouse_x;
@@ -162,6 +164,8 @@ void		cub3d_init(t_prog *prog);
 void		graph_init(t_prog *prog);
 void		c3d_final_free(t_prog *prog);
 t_coord		c3d_get_player_pos(char **map);
+void		c3d_toggle_minimap(t_prog *prog);
+void		c3d_toggle_run(t_prog *prog);
 
 // Parsing
 void		c3d_commascheck(char *str);
@@ -203,5 +207,6 @@ int			c3d_mouse_rotate(int32_t mouse_x, t_prog *prog);
 void		c3d_keyhook(mlx_key_data_t keydata, void *param);
 void		c3d_mainhook(void *param);
 void 		c3d_mousehook(mouse_key_t button, action_t action, modifier_key_t mods, void *param);
+void		c3d_scrollhook(double xdelta, double ydelta, void *param);
 
 #endif

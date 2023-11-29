@@ -39,4 +39,6 @@ void	cub3d_init(t_prog *prog)
 	prog->run = 1;
 	prog->binoculars = 0;
 	prog->disp_minimap = 1;
+	prog->fov = FOV;
+	prog->mouse_ctrl = 0;
 }

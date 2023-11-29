@@ -159,7 +159,7 @@ void	c3d_raycast(t_prog *prog)
 	int		n;
 
 	n = -1;
-	camera_x = tan(FOV / 2);
+	camera_x = tan(prog->fov / 2);
 	camera_step = camera_x * 2 / WIN_WIDTH;
 	camera_x *= -1;
 	while (++n <= WIN_WIDTH)

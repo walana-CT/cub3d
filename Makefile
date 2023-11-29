@@ -52,8 +52,8 @@ FILES +=	binoculars.c\
 			line.c\
 			mapcast.c\
 			minimap.c\
-			move.c\
-			move2.c\
+			move_00.c\
+			move_01.c\
 			parsing_infos_00.c\
 			parsing_infos_01.c\
 			parsing_map_00.c\
@@ -61,6 +61,7 @@ FILES +=	binoculars.c\
 			parsing.c\
 			raycasting.c\
 			utils_00.c\
+			utils_01.c\
 
 SOURCES = $(addprefix $(SRC_DIR)/, $(FILES))
 OBJ= $(addprefix $(OBJ_DIR)/, $(FILES:.c=.o))
