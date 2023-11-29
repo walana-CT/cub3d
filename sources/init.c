@@ -4,7 +4,7 @@ void	graph_init(t_prog *prog)
 {
 	prog->mlx = mlx_init(prog->w_width, prog->w_height, "Loup Cailloux", true);
 	if (!prog->mlx)
-		exit(err_msg((char *)mlx_strerror(mlx_errno), 1));
+		exit(c3d_err_msg((char *)mlx_strerror(mlx_errno), 1));
 	prog->minimap_img = NULL;
 	prog->fov_img = NULL;
 	prog->view_img = NULL;

@@ -44,7 +44,6 @@ INCLUDE_DIR = includes
 #	Sources		#
 #---------------#
 FILES +=	binoculars.c\
-			collisions.c\
 		 	cub3d.c\
 			doors.c\
 			error.c\
@@ -52,14 +51,14 @@ FILES +=	binoculars.c\
 			init.c\
 			line.c\
 			mapcast.c\
-			minimap_static.c\
+			minimap.c\
 			move.c\
+			move2.c\
 			parsing_infos_00.c\
 			parsing_infos_01.c\
 			parsing_map_00.c\
 			parsing_map_01.c\
 			parsing.c\
-			player.c\
 			raycasting.c\
 			utils_00.c\
 

@@ -9,14 +9,11 @@ void	toggle_minimap(t_prog *prog)
 
 void	toggle_run(t_prog *prog)
 {
-	if (prog->run == 1)
-		prog->run = 2;
-	else if (prog->run == 2)
-		prog->run = 4;
-	else
+	if (prog->run == 4)
 		prog->run = 1;
+	else
+		prog->run *= 2;
 }
-
 
 void	c3d_keyhook(mlx_key_data_t keydata, void *param)
 {
@@ -24,10 +21,9 @@ void	c3d_keyhook(mlx_key_data_t keydata, void *param)
 
 	prog = (t_prog *) param;
 	if (keydata.key == MLX_KEY_ESCAPE)
-	{
 		return (mlx_close_window(prog->mlx));
-	}
-	if (keydata.key == MLX_KEY_TAB && keydata.action == MLX_PRESS && !prog->binoculars)
+	if (keydata.key == MLX_KEY_TAB && keydata.action == MLX_PRESS
+		&& !prog->binoculars)
 		toggle_minimap(prog);
 	if (keydata.key == MLX_KEY_SPACE && keydata.action == MLX_PRESS)
 		c3d_door_interact(prog);
@@ -35,7 +31,8 @@ void	c3d_keyhook(mlx_key_data_t keydata, void *param)
 		toggle_run(prog);
 }
 
-void c3d_mousehook(mouse_key_t button, action_t action, modifier_key_t mods, void *param)
+void	c3d_mousehook(mouse_key_t button, action_t action,
+	modifier_key_t mods, void *param)
 {
 	t_prog	*prog;
 
@@ -69,6 +66,5 @@ void	c3d_mainhook(void *param)
 		c3d_rotateplayer(SPD, prog);
 	if (prog->mouse_x != prog->new_mouse_x)
 		c3d_mouse_rotate(prog->mouse_x, prog);
-	if (c3d_refresh(prog))
-		mlx_terminate(prog->mlx);
+	c3d_refresh(prog);
 }

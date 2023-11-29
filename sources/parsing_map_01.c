@@ -1,12 +1,27 @@
 #include "cub3d.h"
 
 /**
+ * Sets the player direction depending on the startinf char given by the map
+*/
+void	c3d_set_player_dir(char c, t_prog *prog)
+{
+	if (c == 'E')
+		prog->player.dir = 0;
+	if (c == 'S')
+		prog->player.dir = M_PI_2;
+	if (c == 'W')
+		prog->player.dir = M_PI;
+	if (c == 'N')
+		prog->player.dir = -M_PI_2;
+}
+
+/**
  * @param list containg file. At this point only map should remain
  * @param prog ptr to the prog struct
  * allocate the map and copy content from the list
  * @return 0 if succes and 1 if fail 
  */
-int	c3d_create_map(t_list **file_lst, t_prog *prog)
+void	c3d_create_map(t_list **file_lst, t_prog *prog)
 {
 	t_list	*cur_elem;
 	int		n;
@@ -15,20 +30,19 @@ int	c3d_create_map(t_list **file_lst, t_prog *prog)
 	cur_elem = *file_lst;
 	prog->map = ft_calloc(prog->map_height + 2, sizeof(char *));
 	if (!prog->map)
-		return (1);
+		exit(c3d_err_msg(EF_FAT, 1));
 	while (n < prog->map_height && cur_elem)
 	{
 		prog->map[n] = ft_calloc(prog->map_width + 1, sizeof(char));
 		if (!prog->map[n])
-			return (1);
+			exit(c3d_err_msg(EF_FAT, 1));
 		ft_strlcpy(prog->map[n], cur_elem->content, prog->map_width + 1);
 		cur_elem = cur_elem->next;
 		n++;
 	}
 	prog->map[n] = ft_calloc(prog->map_width + 1, sizeof(char));
 	if (!prog->map[n])
-		return (1);
-	return (0);
+		exit(c3d_err_msg(EF_FAT, 1));
 }
 
 /**
@@ -99,7 +113,6 @@ int	c3d_is_map_closed(t_prog *prog)
 	map_cpy = c3d_map_dup(prog);
 	result = rec_map_closed(tempvect.x, tempvect.y, map_cpy);
 	prog->map[tempvect.y][tempvect.x] = '0';
-	//ft_printstrtab(map_cpy, "map_cpy");
 	c3d_cub_free_map(map_cpy);
 	prog->player.x = tempvect.x + 0.5;
 	prog->player.y = tempvect.y + 0.5;

@@ -18,16 +18,11 @@ void	check_invalid_args(int argc, char *argv[])
 	}
 }
 
-int	c3d_refresh(t_prog *prog)
+void	c3d_refresh(t_prog *prog)
 {
-	// prog->player_img->instances[0].x
-	// 	= prog->player.x * prog->size.mapscale - (prog->player.size_int / 2);
-	// prog->player_img->instances[0].y
-	// 	= prog->player.y * prog->size.mapscale - (prog->player.size_int / 2);
 	c3d_refresh_fov(prog);
 	c3d_refresh_view(prog);
 	c3d_raycast(prog);
-	return (0);
 }
 
 void	c3d_run(t_prog *prog)
@@ -35,15 +30,10 @@ void	c3d_run(t_prog *prog)
 	mlx_loop_hook(prog->mlx, &c3d_mainhook, prog);
 	mlx_key_hook(prog->mlx, &c3d_keyhook, prog);
 	mlx_mouse_hook(prog->mlx, &c3d_mousehook, prog);
-	if (c3d_create_minimap(prog))
-		exit(1);
-	// if (c3d_create_player(prog))
-	// 	exit(1);
-	if (c3d_refresh_fov(prog))
-		exit(1);
+	c3d_create_minimap(prog);
+	c3d_refresh_fov(prog);
 	mlx_loop(prog->mlx);
 	mlx_terminate(prog->mlx);
-	puts("See you");
 }
 
 int	main(int argc, char *argv[])
@@ -55,23 +45,7 @@ int	main(int argc, char *argv[])
 	c3d_parsing(--argc, ++argv, &prog);
 	graph_init(&prog);
 	c3d_run(&prog);
-	puts("CYA");
-	exit(0);
-	// return (0);
+	puts("See you");
+	c3d_final_free(&prog);
+	return (0);
 }
-
-
-// int	main(int argc, char *argv[])
-// {
-// 	t_prog	prog;
-
-// 	check_invalid_args(argc, argv);
-// 	cub3d_init(&prog);
-// 	if (c3d_parsing(--argc, ++argv, &prog))
-// 		return (c3d_final_free(&prog), 1);
-// 	if (graph_init(&prog) == 0)
-// 		c3d_run(&prog);
-// 	c3d_final_free(&prog);
-// 	puts("CYA");
-// 	return (0);
-// }

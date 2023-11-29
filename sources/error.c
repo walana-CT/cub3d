@@ -1,6 +1,6 @@
 #include "cub3d.h"
 
-int	err_msg(char *msg, int err)
+int	c3d_err_msg(char *msg, int err)
 {
 	ft_putstr_fd(ERR, 2);
 	ft_putstr_fd(msg, 2);

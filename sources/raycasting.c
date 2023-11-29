@@ -1,22 +1,18 @@
 #include <cub3d.h>
 
-uint32_t	get_pixel_color(mlx_texture_t *texture, float coeff_x, float coeff_y)
+static uint32_t	get_pixel_color(mlx_texture_t *texture, float c_x, float c_y)
 {
 	int		x;
 	int		y;
-	uint8_t	r;
-	uint8_t	g;
-	uint8_t	b;
-	uint8_t	a;
+	uint8_t	c[4];
 
-	x = coeff_x * texture->width;
-	y = coeff_y * texture->height;
-	r = texture->pixels[((x + (y * texture->width)) * 4) + 0];
-	g = texture->pixels[((x + (y * texture->width)) * 4) + 1];
-	b = texture->pixels[((x + (y * texture->width)) * 4) + 2];
-	a = texture->pixels[((x + (y * texture->width)) * 4) + 3];
-	return (r << 24 | g << 16 | b << 8 | a);
-
+	x = c_x * texture->width;
+	y = c_y * texture->height;
+	c[0] = texture->pixels[((x + (y * texture->width)) * 4) + 0];
+	c[1] = texture->pixels[((x + (y * texture->width)) * 4) + 1];
+	c[2] = texture->pixels[((x + (y * texture->width)) * 4) + 2];
+	c[3] = texture->pixels[((x + (y * texture->width)) * 4) + 3];
+	return (c[0] << 24 | c[1] << 16 | c[2] << 8 | c[3]);
 }
 
 void	disp_band(t_prog *prog, t_ray *ray, int x_pos)
