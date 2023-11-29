@@ -18,23 +18,22 @@ static uint32_t	get_pixel_color(mlx_texture_t *texture, float c_x, float c_y)
 void	disp_band(t_prog *prog, t_ray *ray, int x_pos)
 {
 	int			n;
-	int			wall_start;
-	int			wall_end;
+	int			wall[2];
 	int			h;
 	float		texture_y;
 	uint32_t	pixel_color;
 
 	n = -1;
 	h = (WIN_HEIGHT / ray->screen_dist);
-	wall_start = -h / 2 + WIN_HEIGHT / 2;
-	wall_end = h / 2 + WIN_HEIGHT / 2;
+	wall[0] = -h / 2 + WIN_HEIGHT / 2;
+	wall[1] = h / 2 + WIN_HEIGHT / 2;
 	while (++n < WIN_HEIGHT)
 	{
-		if (n < wall_start)
+		if (n < wall[0])
 			mlx_put_pixel(prog->view_img, x_pos, n, prog->c_color.color);
-		else if (n < wall_end)
+		else if (n < wall[1])
 		{
-			texture_y = (float)(n - wall_start) / (float)h;
+			texture_y = (float)(n - wall[0]) / (float)h;
 			if (ray->side == 0)
 			{
 				if (ray->dx > 0)
@@ -115,9 +114,8 @@ static void	casting(t_ray *ray, t_prog *prog, float r_dir)
 			if (ray->dx < 0)
 				ray->texture_x = fabs((int)ray->intersection.y - ray->intersection.y);
 			else
-				ray->texture_x = fabs(ray->intersection.y - (int)ray->intersection.y);				
+				ray->texture_x = fabs(ray->intersection.y - (int)ray->intersection.y);
 		}
-
 		else
 		{
 			ray->screen_dist = (ray->lenght.y - ray->d_step.y) * cos(r_dir);
@@ -126,18 +124,13 @@ static void	casting(t_ray *ray, t_prog *prog, float r_dir)
 			else
 				ray->texture_x = fabs(ray->intersection.x - (int)ray->intersection.x);
 		}
-
-		// if (prog->disp_minimap && !prog->binoculars)
-		// {
-			line = c3d_create_line(prog->player.x * prog->size.mapscale, \
-				prog->player.y * prog->size.mapscale, \
-				ray->intersection.x * prog->size.mapscale, \
-				ray->intersection.y * prog->size.mapscale);
-			c3d_draw_line(prog->fov_img, line, VERT);
-		// }
+		line = c3d_create_line(prog->player.x * prog->size.mapscale, \
+			prog->player.y * prog->size.mapscale, \
+			ray->intersection.x * prog->size.mapscale, \
+			ray->intersection.y * prog->size.mapscale);
+		c3d_draw_line(prog->fov_img, line, VERT);
 	}
 }
-
 
 void	c3d_cast_one(t_prog *prog, float p_dir, float r_dir, int x_pos)
 {
