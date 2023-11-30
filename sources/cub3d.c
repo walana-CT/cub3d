@@ -45,6 +45,7 @@ int	main(int argc, char *argv[])
 	cub3d_init(&prog);
 	c3d_parsing(--argc, ++argv, &prog);
 	graph_init(&prog);
+	printf("Press H for help\n");
 	c3d_run(&prog);
 	puts("See you");
 	c3d_final_free(&prog);

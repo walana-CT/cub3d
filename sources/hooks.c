@@ -22,6 +22,9 @@ void	c3d_keyhook(mlx_key_data_t keydata, void *param)
 		return (mlx_close_window(prog->mlx));
 	if (keydata.key == MLX_KEY_BACKSPACE)
 		prog->fov = FOV;
+	if ((keydata.key == MLX_KEY_F1 || keydata.key == MLX_KEY_H)
+		&& keydata.action == MLX_PRESS)
+		c3d_toggle_help(prog);
 	if (keydata.key == MLX_KEY_TAB && keydata.action == MLX_PRESS
 		&& !prog->binoculars)
 		c3d_toggle_minimap(prog);

@@ -3,7 +3,10 @@ FEATURES
 * faire une fenetre d'aide avec les controles ?
 
 * resume des features :
-	left click : inspect front element
+
+~ Help ~
+
+	left click : inspect front near element
 	right click : toggle mouse control
 	middle click : toggle binoculars
 	mouse scroll : change FOV

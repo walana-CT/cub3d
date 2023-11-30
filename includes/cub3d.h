@@ -1,7 +1,7 @@
 #ifndef CUB3D_H
 # define CUB3D_H
-# define WIN_WIDTH 800
-# define WIN_HEIGHT 600
+# define WIN_WIDTH 320
+# define WIN_HEIGHT 200
 # define SPD 0.025
 # define SENSIVITY 0.01
 # define WALL 0x888888FF
@@ -130,6 +130,7 @@ struct s_prog
 	mlx_image_t		*fov_img;
 	mlx_image_t		*view_img;
 	mlx_image_t		*binoculars_img;
+	mlx_image_t		*help_img;
 	t_texture_pack	textures;
 	t_color			f_color;
 	t_color			c_color;
@@ -166,6 +167,7 @@ void		c3d_final_free(t_prog *prog);
 t_coord		c3d_get_player_pos(char **map);
 void		c3d_toggle_minimap(t_prog *prog);
 void		c3d_toggle_run(t_prog *prog);
+void		c3d_toggle_help(t_prog *prog);
 
 // Parsing
 void		c3d_commascheck(char *str);

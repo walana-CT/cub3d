@@ -9,6 +9,7 @@ void	graph_init(t_prog *prog)
 	prog->fov_img = NULL;
 	prog->view_img = NULL;
 	prog->binoculars_img = NULL;
+	prog->help_img = NULL;
 	prog->last_time = mlx_get_time();
 	prog->mouse_x = 0;
 	prog->mouse_y = 0;
