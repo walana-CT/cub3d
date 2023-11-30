@@ -126,7 +126,7 @@ static void	casting(t_ray *ray, t_prog *prog, float r_dir)
 		{
 			ray->screen_dist = (ray->lenght.x - ray->d_step.x) * cos(r_dir);
 			if (ray->dx < 0)
-				ray->texture_x = fabs((int)ray->intersection.y - ray->intersection.y);
+				ray->texture_x = 1 - fabs((int)ray->intersection.y - ray->intersection.y);
 			else
 				ray->texture_x = fabs(ray->intersection.y - (int)ray->intersection.y);				
 		}
@@ -134,10 +134,10 @@ static void	casting(t_ray *ray, t_prog *prog, float r_dir)
 		else
 		{
 			ray->screen_dist = (ray->lenght.y - ray->d_step.y) * cos(r_dir);
-			if (ray->dx < 0)
+			if (ray->dy < 0)
 				ray->texture_x = fabs((int)ray->intersection.x - ray->intersection.x);
 			else
-				ray->texture_x = fabs(ray->intersection.x - (int)ray->intersection.x);
+				ray->texture_x = 1 - fabs(ray->intersection.x - (int)ray->intersection.x);
 		}
 
 		// if (prog->disp_minimap && !prog->binoculars)

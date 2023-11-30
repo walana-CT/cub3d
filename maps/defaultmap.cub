@@ -1,5 +1,5 @@
-C 150,150,0
-F 0,150,150
+C 71,69,48
+F 48,48,48
 
 NO ./textures/north01.png
 WE ./textures/west01.png
