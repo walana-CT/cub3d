@@ -44,7 +44,6 @@ INCLUDE_DIR = includes
 #	Sources		#
 #---------------#
 FILES +=	binoculars.c\
-			collisions.c\
 		 	cub3d.c\
 			doors.c\
 			error.c\
@@ -52,16 +51,17 @@ FILES +=	binoculars.c\
 			init.c\
 			line.c\
 			mapcast.c\
-			minimap_static.c\
-			move.c\
+			minimap.c\
+			move_00.c\
+			move_01.c\
 			parsing_infos_00.c\
 			parsing_infos_01.c\
 			parsing_map_00.c\
 			parsing_map_01.c\
 			parsing.c\
-			player.c\
 			raycasting.c\
 			utils_00.c\
+			utils_01.c\
 
 SOURCES = $(addprefix $(SRC_DIR)/, $(FILES))
 OBJ= $(addprefix $(OBJ_DIR)/, $(FILES:.c=.o))

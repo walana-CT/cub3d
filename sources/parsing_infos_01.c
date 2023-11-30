@@ -1,35 +1,37 @@
 #include "cub3d.h"
 
 // Map description starts when a line begins with either '1' or ' ' char
-int	is_map_desc(char *str)
+int	c3d_is_map_desc(char *str)
 {
 	return (*str == '1' || *str == ' ');
 }
 
-int	commascheck(char *str)
+void	c3d_commascheck(char *str)
 {
 	int	i;
 
 	i = 0;
-	while(*str)
+	while (*str)
 		if (*str++ == ',')
 			++i;
-	return (!(i == 2));
+	if (i != 2)
+		exit(c3d_err_msg(EF_COLOR, 1));
 }
 
-int	color_ok(t_color color)
+void	check_color(t_color color)
 {
 	if (ft_isuchar(color.col[0]) && ft_isuchar(color.col[1]) && \
 		ft_isuchar(color.col[2]) && ft_isuchar(color.col[3]))
-		return (1);
-	return (0);
+		return ;
+	exit(c3d_err_msg(EF_COLOR, 1));
 }
 
-int	c3d_convert_colors(t_prog *prog)
+void	c3d_convert_colors(t_prog *prog)
 {
-	prog->c_color.color = (prog->c_color.col[0] << 24) | (prog->c_color.col[1] << 16) | (prog->c_color.col[2] << 8) | 255;
-	prog->f_color.color = (prog->f_color.col[0] << 24) | (prog->f_color.col[1] << 16) | (prog->f_color.col[2] << 8) | 255;
-	return (0);
+	prog->c_color.color = (prog->c_color.col[0] << 24)
+		| (prog->c_color.col[1] << 16) | (prog->c_color.col[2] << 8) | 255;
+	prog->f_color.color = (prog->f_color.col[0] << 24)
+		| (prog->f_color.col[1] << 16) | (prog->f_color.col[2] << 8) | 255;
 }
 
 /**
@@ -38,14 +40,11 @@ int	c3d_convert_colors(t_prog *prog)
  * try to load textures with mlx ?
  * 
 */
-int	check_info(t_prog prog)
+void	c3d_check_info(t_prog prog)
 {
-	if (!color_ok(prog.c_color) || !color_ok(prog.f_color))
-		return (err_msg(EF_MISS, 2));
-	ft_printf("Loaded floor color \t%s\n", prog.f_color.fullcolor);
-	ft_printf("Loaded ceiling color \t%s\n", prog.c_color.fullcolor);
+	check_color(prog.c_color);
+	check_color(prog.f_color);
 	if (!prog.textures.n || !prog.textures.s || \
 		!prog.textures.e ||!prog.textures.w)
-		return (err_msg(EF_MISS, 2));
-	return (0);
+		exit(c3d_err_msg(EF_MISS, 2));
 }

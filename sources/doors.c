@@ -23,13 +23,13 @@ char	c3d_get_front_tile(t_prog *prog)
 	x = prog->player.x;
 	y = prog->player.y;
 	if (c3d_player_facing(prog->player.dir) == 'E')
-		return(prog->map[y][x + 1]);
+		return (prog->map[y][x + 1]);
 	else if (c3d_player_facing(prog->player.dir) == 'W')
-		return(prog->map[y][x -1]);
+		return (prog->map[y][x -1]);
 	else if (c3d_player_facing(prog->player.dir) == 'N')
-		return(prog->map[y - 1][x]);
+		return (prog->map[y - 1][x]);
 	else if (c3d_player_facing(prog->player.dir) == 'S')
-		return(prog->map[y + 1][x]);
+		return (prog->map[y + 1][x]);
 	return ('!');
 }
 

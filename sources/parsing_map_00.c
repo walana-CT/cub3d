@@ -1,21 +1,6 @@
 #include "cub3d.h"
 
 /**
- * Sets the player direction depending on the startinf char given by the map
-*/
-static void	set_player_dir(char c, t_prog *prog)
-{
-	if (c == 'E')
-		prog->player.dir = 0;
-	if (c == 'S')
-		prog->player.dir = M_PI_2;
-	if (c == 'W')
-		prog->player.dir = M_PI;
-	if (c == 'N')
-		prog->player.dir = -M_PI_2;
-}
-
-/**
  * @param str A line from the map
  * @return Number of char represing player in the line 
  */
@@ -29,7 +14,7 @@ static int	count_player_line(char *str, t_prog *prog)
 		if (*str == 'N' || *str == 'S'
 			|| *str == 'E' || *str == 'W')
 		{
-			set_player_dir(*str, prog);
+			c3d_set_player_dir(*str, prog);
 			result++;
 		}
 		str++;
@@ -44,12 +29,10 @@ static int	count_player_line(char *str, t_prog *prog)
  */
 static int	invalid_line(char *str)
 {
-	//printf("invalid line called on %s\n", str);
 	if (!str)
 		return (FALSE);
 	while (*str)
 	{
-		//printf("looping on %c\n", *str);
 		if (*str && !ft_is_in(*str, MAP_SYMBOLS) && *str != '\n' && *str != ' ')
 			return (TRUE);
 		str++;
@@ -91,7 +74,7 @@ static int	is_map_line(char *str)
  * browse trough the list to set map values and verify if it is valid
  * @return 0 if succes and 1 if fail 
  */
-static int	read_map(t_list **file_lst, t_prog *prog)
+static void	read_map(t_list **file_lst, t_prog *prog)
 {
 	t_list	*cur_elem;
 	int		player_nbr;
@@ -106,12 +89,11 @@ static int	read_map(t_list **file_lst, t_prog *prog)
 		cur_elem = cur_elem->next;
 	}
 	if (cur_elem && invalid_line(cur_elem->content))
-		return (1);
+		exit(c3d_err_msg(EF_WMAP, 1));
 	if (player_nbr != 1)
-		return (1);
+		exit(c3d_err_msg(EF_WMAP, 1));
 	if (cur_elem)
-		return (err_msg("Map data not at the end of file\n", 1));
-	return (0);
+		exit(c3d_err_msg(EF_UNEX, 1));
 }
 
 /**
@@ -120,21 +102,13 @@ static int	read_map(t_list **file_lst, t_prog *prog)
  * extract map from list and verify it is valid
  * @return 0 if succes and 1 if fail 
  */
-int	c3d_get_map(t_list **file_lst, t_prog *prog)
+void	c3d_get_map(t_list **file_lst, t_prog *prog)
 {
-
 	if (!file_lst)
-		return (1);
-	if (read_map(file_lst, prog))
-		return (err_msg(EF_WMAP, 1));
-	printf("\nmap dimensions :	x : %d	y : %d\n", prog->map_width, prog->map_height);
-	if (c3d_create_map(file_lst, prog))
-		return (err_msg(EF_WMAP, 1));
+		exit(c3d_err_msg(EF_FAT, 1));
+	read_map(file_lst, prog);
+	c3d_create_map(file_lst, prog);
 	c3d_clean_map(prog->map, prog);
-
 	if (!c3d_is_map_closed(prog))
-		return (err_msg(EF_MOPEN, 1));
-//	prog->map[prog->player.y][prog->player.x] = '0';
-	ft_printstrtab(prog->map, "prog map");
-	return (0);
+		exit(c3d_err_msg(EF_MOPEN, 1));
 }
