@@ -50,6 +50,10 @@ void	c3d_mousehook(mouse_key_t button, action_t action,
 	if (button == MLX_MOUSE_BUTTON_RIGHT && action == MLX_PRESS)
 	{
 		prog->mouse_ctrl = ((prog->mouse_ctrl + 1) % 2);
+		if (prog->mouse_ctrl)
+			mlx_set_cursor_mode(prog->mlx, MLX_MOUSE_DISABLED);
+		else
+			mlx_set_cursor_mode(prog->mlx, MLX_MOUSE_NORMAL);
 		mlx_get_mouse_pos(prog->mlx, &mouse_x, &mouse_y);
 		prog->new_mouse_x = mouse_x;
 	}

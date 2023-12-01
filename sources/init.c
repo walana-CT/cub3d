@@ -19,7 +19,6 @@ void	graph_init(t_prog *prog)
 	prog->size.mapscale = ft_min(400 / prog->map_height, 400 / prog->map_width);
 	prog->size.pl_scale = 0.25;
 	prog->player.size_int = 1;
-	mlx_set_cursor_mode(prog->mlx, MLX_MOUSE_DISABLED);
 }
 
 void	cub3d_init(t_prog *prog)
