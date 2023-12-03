@@ -1,7 +1,7 @@
 #ifndef	CUB3D_H
 # define CUB3D_H
-# define WIN_WIDTH 1280
-# define WIN_HEIGHT 720
+# define WIN_WIDTH 1920
+# define WIN_HEIGHT 1080
 # define SPD 0.05
 # define SENSIVITY 0.01
 # define WALL 0x888888FF
