@@ -11,6 +11,8 @@
 # define OP_DOOR 0x00FF00FF
 # define PLAYER 0xF455EAFF
 # define FOV 102
+# define DOG_RATIO_X 0.35
+# define DOG_RATIO_Y 0.35
 
 # define VERT 0x3568A688
 # define SKY 0x526FD2FF
@@ -106,6 +108,16 @@ struct s_color
 	char			*fullcolor;
 	unsigned char	col[4];
 	uint32_t		color;
+};
+
+struct s_dog
+{
+	mlx_texture*	textures[14];
+	int				size_x;
+	int				size_y;
+	int				pos_x;
+	int				pos_y;
+	mlx_image_t		image;
 };
 
 struct s_prog

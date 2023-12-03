@@ -19,6 +19,7 @@ void	graph_init(t_prog *prog)
 	prog->size.pl_scale = 0.25;
 	prog->player.size_int = 1;
 	mlx_set_cursor_mode(prog->mlx, MLX_MOUSE_DISABLED);
+	c3d_dog_init(prog);
 }
 
 void	cub3d_init(t_prog *prog)
