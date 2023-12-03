@@ -51,6 +51,7 @@ typedef struct s_vect2d			t_vect2d;
 typedef struct s_line			t_line;
 typedef struct s_ray			t_ray;
 typedef struct s_size			t_size;
+typedef struct s_dog			t_dog;
 
 struct s_size
 {
@@ -112,12 +113,12 @@ struct s_color
 
 struct s_dog
 {
-	mlx_texture*	textures[14];
+	mlx_texture		*textures[14];
 	int				size_x;
 	int				size_y;
 	int				pos_x;
 	int				pos_y;
-	mlx_image_t		image;
+	mlx_image_t		*image;
 };
 
 struct s_prog
@@ -148,6 +149,7 @@ struct s_prog
 	t_color			c_color;
 	t_player		player;
 	t_size			size;
+	t_dog			dog;
 };
 
 struct s_ray
