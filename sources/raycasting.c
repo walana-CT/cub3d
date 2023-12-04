@@ -1,6 +1,6 @@
 #include <cub3d.h>
 
-static uint32_t	get_pixel_color(mlx_texture_t *texture, float c_x, float c_y)
+uint32_t	c3d_get_pixel_color(mlx_texture_t *texture, float c_x, float c_y)
 {
 	int		x;
 	int		y;
@@ -35,20 +35,20 @@ void	disp_band(t_prog *prog, t_ray *ray, int x_pos)
 		{
 			texture_y = (float)(n - wall[0]) / (float)h;
 			if (ray->is_door)
-				pixel_color = get_pixel_color(prog->textures.d, ray->texture_x, texture_y);
+				pixel_color = c3d_get_pixel_color(prog->textures.d, ray->texture_x, texture_y);
 			else if (ray->side == 0)
 			{
 				if (ray->dx > 0)
-					pixel_color = get_pixel_color(prog->textures.w, ray->texture_x, texture_y);
+					pixel_color = c3d_get_pixel_color(prog->textures.w, ray->texture_x, texture_y);
 				else
-					pixel_color = get_pixel_color(prog->textures.e, ray->texture_x, texture_y);
+					pixel_color = c3d_get_pixel_color(prog->textures.e, ray->texture_x, texture_y);
 			}
 			else
 			{
 				if (ray->dy > 0)
-					pixel_color = get_pixel_color(prog->textures.s, ray->texture_x, texture_y);
+					pixel_color = c3d_get_pixel_color(prog->textures.s, ray->texture_x, texture_y);
 				else
-					pixel_color = get_pixel_color(prog->textures.n, ray->texture_x, texture_y);
+					pixel_color = c3d_get_pixel_color(prog->textures.n, ray->texture_x, texture_y);
 			}
 			mlx_put_pixel(prog->view_img, x_pos, n, pixel_color);
 		}

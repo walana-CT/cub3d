@@ -57,6 +57,7 @@ void	c3d_mainhook(void *param)
 	t_prog	*prog;
 
 	prog = (t_prog *) param;
+	prog->is_moving = 0;
 	if (prog->binoculars)
 		c3d_binoculars_anim(prog);
 	mlx_get_mouse_pos(prog->mlx, &prog->mouse_x, &prog->mouse_y);
