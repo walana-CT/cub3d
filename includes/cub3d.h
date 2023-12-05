@@ -231,5 +231,6 @@ void		c3d_scrollhook(double xdelta, double ydelta, void *param);
 void 		c3d_dog_init(t_prog *prog);
 void		c3d_dog_anim(t_prog *prog);
 void		c3d_draw_dog(t_prog *prog, int n);
+void		c3d_draw_img(t_prog *prog, int n)
 
 #endif

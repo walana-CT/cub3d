@@ -1,75 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dog.c                                              :+:      :+:    :+:   */
+/*   dog_00.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rficht <rficht@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 16:44:17 by rficht            #+#    #+#             */
-/*   Updated: 2023/12/05 10:49:24 by rficht           ###   ########.fr       */
+/*   Updated: 2023/12/05 11:47:57 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 
-int	dog_collision(t_prog *prog)
+
+
+void	init_textures(t_prog *prog)
 {
-	float	collision_x;
-	float	collision_y;
-
-	collision_x = prog->player.x + (cos(prog->player.dir) * 0.5);
-	collision_y = prog->player.y + (sin(prog->player.dir) * 0.5);
-	if (prog->map[(int) collision_y][(int) collision_x] == '1' || prog->map[(int) collision_y][(int) collision_x] == 'C')
-		return (TRUE);
-	else
-		return (FALSE);
-}
-
-
-
-void	c3d_dog_anim(t_prog *prog)
-{
-	static int		n;
-
-	if (!prog)
-	{
-		n = 0;
-		return ;
-	}
-	if (mlx_get_time() - prog->last_time < 0.1)
-		return ;
-	prog->last_time = mlx_get_time();
-	if (dog_collision(prog))
-	{
-		c3d_draw_dog(prog, 13);
-		return ;
-	}
-	if (prog->is_moving)
-	{
-		if (n < 12)
-			n++;
-		else
-			n = 0;
-	}
-	if (!prog->is_moving)
-	{
-		if (n == 0)
-			return ;
-		if (n < 6)
-			n = 12 - n;
-		else if (n < 11)
-			n++;
-		else
-			n = 0;
-	}
-	printf("calling draw dog %d \n", n);
-	c3d_draw_dog(prog, n);
-}
-
-void init_textures(t_prog* prog)
-{
-	int n;
+	int	n;
 
 	n = 0;
 	prog->dog.textures[0] = mlx_load_png("textures/dog01.png");
@@ -93,12 +41,30 @@ void init_textures(t_prog* prog)
 	}
 }
 
+void	c3d_draw_img(t_prog *prog, int n)
+{
+	uint32_t	color;
+	int			i;
+	int			j;
+
+	i = 0;
+	j = 0;
+	while (i < prog->dog.size_x)
+	{
+		while (j < prog->dog.size_y)
+		{
+			color = c3d_get_pixel_color(prog->dog.textures[n],
+					(float) i / prog->dog.size_x, (float) j / prog->dog.size_y);
+			mlx_put_pixel(prog->dog.image, i, j, color);
+			j++;
+		}
+		i++;
+		j = 0;
+	}
+}
 
 void	c3d_draw_dog(t_prog *prog, int n)
 {
-	int			i;
-	int			j;
-	uint32_t	color;
 	mlx_image_t	*old_img;
 	static int	last_pos;
 
@@ -110,27 +76,14 @@ void	c3d_draw_dog(t_prog *prog, int n)
 	if (n == last_pos)
 		return ;
 	last_pos = n;
-	i = 0;
-	j = 0;
 	old_img = prog->dog.image;
-	prog->dog.image = mlx_new_image(prog->mlx, prog->dog.size_x, prog->dog.size_y);
+	prog->dog.image = mlx_new_image
+		(prog->mlx, prog->dog.size_x, prog->dog.size_y);
 	if (!prog->dog.image)
-	{
-		printf("failed to create an image for %d\n", n);
 		exit(1);
-	}
-	while (i < prog->dog.size_x)
-	{
-		while (j < prog->dog.size_y)
-		{
-			color = c3d_get_pixel_color(prog->dog.textures[n], (float) i / prog->dog.size_x , (float) j / prog->dog.size_y);
-			mlx_put_pixel(prog->dog.image, i, j, color);
-			j++;
-		}
-		i++;
-		j = 0;
-	}
-	mlx_image_to_window(prog->mlx, prog->dog.image, prog->dog.pos_x, prog->dog.pos_y);
+	c3d_draw_img(prog, n);
+	mlx_image_to_window
+		(prog->mlx, prog->dog.image, prog->dog.pos_x, prog->dog.pos_y);
 	mlx_set_instance_depth(prog->dog.image->instances, 2);
 	if (old_img)
 		mlx_delete_image(prog->mlx, old_img);

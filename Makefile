@@ -45,7 +45,8 @@ INCLUDE_DIR = includes
 #---------------#
 FILES +=	binoculars.c\
 		 	cub3d.c\
-			dog.c\
+			dog_00.c\
+			dog_01.c\
 			doors.c\
 			error.c\
 			hooks.c\
