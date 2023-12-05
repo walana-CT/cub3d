@@ -11,6 +11,8 @@
 # define OP_DOOR 0x00FF00FF
 # define PLAYER 0xF455EAFF
 # define FOV 102
+# define DOG_RATIO_X 0.35
+# define DOG_RATIO_Y 0.35
 
 # define VERT 0x3568A688
 # define SKY 0x526FD2FF
@@ -49,6 +51,7 @@ typedef struct s_vect2d			t_vect2d;
 typedef struct s_line			t_line;
 typedef struct s_ray			t_ray;
 typedef struct s_size			t_size;
+typedef struct s_dog			t_dog;
 
 struct s_size
 {
@@ -108,6 +111,16 @@ struct s_color
 	uint32_t		color;
 };
 
+struct s_dog
+{
+	mlx_texture_t	*textures[14];
+	int				size_x;
+	int				size_y;
+	int				pos_x;
+	int				pos_y;
+	mlx_image_t		*image;
+};
+
 struct s_prog
 {
 	int				err;
@@ -119,6 +132,7 @@ struct s_prog
 	int				disp_minimap;	// bool
 	int				binoculars; // bool
 	int				run; // 1 ou 2
+	int				is_moving;
 	double			last_time;
 	float			fov;
 	int				mouse_ctrl;
@@ -136,6 +150,7 @@ struct s_prog
 	t_color			c_color;
 	t_player		player;
 	t_size			size;
+	t_dog			dog;
 };
 
 struct s_ray
@@ -194,6 +209,7 @@ void		c3d_refresh_view(t_prog *prog);
 void		c3d_cast_one(t_prog *prog, float p_dir, float r_dir, int x_pos);
 void		c3d_refresh(t_prog *prog);
 void		c3d_refresh_fov(t_prog *prog);
+uint32_t	c3d_get_pixel_color(mlx_texture_t *texture, float c_x, float c_y);
 
 // moving
 char		c3d_get_front_tile(t_prog *prog);
@@ -210,5 +226,10 @@ void		c3d_keyhook(mlx_key_data_t keydata, void *param);
 void		c3d_mainhook(void *param);
 void 		c3d_mousehook(mouse_key_t button, action_t action, modifier_key_t mods, void *param);
 void		c3d_scrollhook(double xdelta, double ydelta, void *param);
+
+//dog
+void 		c3d_dog_init(t_prog *prog);
+void		c3d_dog_anim(t_prog *prog);
+void		c3d_draw_dog(t_prog *prog, int n);
 
 #endif
