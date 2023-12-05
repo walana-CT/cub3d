@@ -14,4 +14,3 @@ void	c3d_toggle_run(t_prog *prog)
 	else
 		prog->run *= 2;
 }
-

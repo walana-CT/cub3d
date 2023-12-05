@@ -166,6 +166,7 @@ struct s_ray
 	float		dx;
 	float		dy;
 	float		texture_x;
+	float		texture_y;
 	float		wall_x;
 	int			has_collide;
 	int			side;
@@ -199,6 +200,7 @@ void		c3d_set_player_dir(char c, t_prog *prog);
 // drawing
 void		c3d_binoculars(t_prog *prog);
 void		c3d_binoculars_anim(t_prog *prog);
+void		c3d_casting(t_ray *ray, t_prog *prog, float r_dir);
 t_line		c3d_create_line(int a, int b, int c, int d);
 void		c3d_create_minimap(t_prog *prog);
 void		c3d_dispplayer(t_prog prog, t_player p);
@@ -206,7 +208,6 @@ void		c3d_draw_line(mlx_image_t *map_img, t_line line, uint32_t col);
 void		c3d_raycast(t_prog *prog);
 void		c3d_refresh_fov(t_prog *prog);
 void		c3d_refresh_view(t_prog *prog);
-void		c3d_cast_one(t_prog *prog, float p_dir, float r_dir, int x_pos);
 void		c3d_refresh(t_prog *prog);
 void		c3d_refresh_fov(t_prog *prog);
 uint32_t	c3d_get_pixel_color(mlx_texture_t *texture, float c_x, float c_y);
@@ -231,6 +232,6 @@ void		c3d_scrollhook(double xdelta, double ydelta, void *param);
 void 		c3d_dog_init(t_prog *prog);
 void		c3d_dog_anim(t_prog *prog);
 void		c3d_draw_dog(t_prog *prog, int n);
-void		c3d_draw_img(t_prog *prog, int n)
+void		c3d_draw_img(t_prog *prog, int n);
 
 #endif

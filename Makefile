@@ -61,7 +61,8 @@ FILES +=	binoculars.c\
 			parsing_map_00.c\
 			parsing_map_01.c\
 			parsing.c\
-			raycasting.c\
+			raycasting_00.c\
+			raycasting_01.c\
 			utils_00.c\
 			utils_01.c\
 

@@ -18,7 +18,7 @@ static int	dog_collision(t_prog *prog)
 static int	dog_anim(t_prog *prog)
 {
 	if (mlx_get_time() - prog->last_time < 0.1)
-		return ;
+		return (1);
 	prog->last_time = mlx_get_time();
 	if (dog_collision(prog))
 	{

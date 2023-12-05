@@ -6,14 +6,11 @@
 /*   By: rficht <rficht@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 16:44:17 by rficht            #+#    #+#             */
-/*   Updated: 2023/12/05 11:47:57 by rficht           ###   ########.fr       */
+/*   Updated: 2023/12/05 15:53:45 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-
-
 
 void	init_textures(t_prog *prog)
 {
