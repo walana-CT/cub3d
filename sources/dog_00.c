@@ -6,7 +6,7 @@
 /*   By: rficht <rficht@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 16:44:17 by rficht            #+#    #+#             */
-/*   Updated: 2023/12/05 15:53:45 by rficht           ###   ########.fr       */
+/*   Updated: 2023/12/05 16:23:20 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,6 @@ void	c3d_draw_dog(t_prog *prog, int n)
 	if (old_img)
 		mlx_delete_image(prog->mlx, old_img);
 }
-
 
 void	c3d_dog_init(t_prog *prog)
 {

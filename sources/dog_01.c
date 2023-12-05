@@ -1,4 +1,3 @@
-
 #include "cub3d.h"
 
 static int	dog_collision(t_prog *prog)
