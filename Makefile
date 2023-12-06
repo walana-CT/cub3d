@@ -44,6 +44,8 @@ INCLUDE_DIR = includes
 #	Sources		#
 #---------------#
 FILES +=	cub3d.c\
+			dog_00.c\
+			dog_01.c\
 			doors.c\
 			error.c\
 			hooks.c\
@@ -58,7 +60,8 @@ FILES +=	cub3d.c\
 			parsing_map_00.c\
 			parsing_map_01.c\
 			parsing.c\
-			raycasting.c\
+			raycasting_00.c\
+			raycasting_01.c\
 			utils_00.c\
 			utils_01.c\
 

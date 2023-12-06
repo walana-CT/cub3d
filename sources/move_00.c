@@ -25,6 +25,7 @@ int	c3d_moveplayer(float spd, t_prog *prog)
 	float	x;
 	float	y;
 
+	prog->is_moving = TRUE;
 	spd *= prog->run;
 	x = prog->player.x + spd * cos(prog->player.dir);
 	y = prog->player.y + spd * sin(prog->player.dir);
@@ -46,6 +47,7 @@ int	c3d_strafeplayer(float spd, t_prog *prog)
 	float	x;
 	float	y;
 
+	prog->is_moving = TRUE;
 	spd *= prog->run;
 	x = prog->player.x + spd * cos(prog->player.dir + M_PI_2);
 	y = prog->player.y + spd * sin(prog->player.dir + M_PI_2);

@@ -18,6 +18,8 @@ void	graph_init(t_prog *prog)
 	prog->size.mapscale = ft_min(400 / prog->map_height, 400 / prog->map_width);
 	prog->size.pl_scale = 0.25;
 	prog->player.size_int = 1;
+	mlx_set_cursor_mode(prog->mlx, MLX_MOUSE_DISABLED);
+	c3d_dog_init(prog);
 }
 
 void	cub3d_init(t_prog *prog)
@@ -37,6 +39,6 @@ void	cub3d_init(t_prog *prog)
 	prog->map_height = 0;
 	prog->run = 1;
 	prog->disp_minimap = 1;
-	prog->fov = FOV;
+	prog->fov = FOV * M_PI / 180;
 	prog->mouse_ctrl = 0;
 }

@@ -22,6 +22,7 @@ void	c3d_refresh(t_prog *prog)
 {
 	c3d_refresh_fov(prog);
 	c3d_refresh_view(prog);
+	c3d_dog_anim(prog);
 	c3d_raycast(prog);
 }
 

@@ -79,6 +79,7 @@ void	c3d_get_infos(t_list **file, t_prog *prog)
 		get_desc((*file)->content, prog);
 		ft_lstdeltop(file, free);
 	}
+	prog->textures.d = mlx_load_png("textures/door.png");
 	c3d_check_info(*prog);
 	c3d_convert_colors(prog);
 }

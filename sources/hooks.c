@@ -10,7 +10,7 @@ void	c3d_scrollhook(double xdelta, double ydelta, void *param)
 		prog->fov -= 0.1;
 	if (ydelta > 0 && prog->fov < 3.03)
 		prog->fov += 0.1;
-	printf("FOV now : %f\n", prog->fov * 180 / 3.14);
+	printf("FOV now : %f\n", prog->fov * 180 / M_PI);
 }
 
 void	c3d_keyhook(mlx_key_data_t keydata, void *param)
@@ -61,6 +61,7 @@ void	c3d_mainhook(void *param)
 	t_prog	*prog;
 
 	prog = (t_prog *) param;
+	prog->is_moving = 0;
 	mlx_get_mouse_pos(prog->mlx, &prog->mouse_x, &prog->mouse_y);
 	if (mlx_is_key_down(prog->mlx, MLX_KEY_W))
 		c3d_moveplayer(SPD, prog);
