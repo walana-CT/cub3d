@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   doors.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/06 12:44:31 by mdjemaa           #+#    #+#             */
+/*   Updated: 2023/12/06 12:44:32 by mdjemaa          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 char	c3d_player_facing(float dir)
@@ -23,13 +35,13 @@ char	c3d_get_front_tile(t_prog *prog)
 	x = prog->player.x;
 	y = prog->player.y;
 	if (c3d_player_facing(prog->player.dir) == 'E')
-		return(prog->map[y][x + 1]);
+		return (prog->map[y][x + 1]);
 	else if (c3d_player_facing(prog->player.dir) == 'W')
-		return(prog->map[y][x -1]);
+		return (prog->map[y][x -1]);
 	else if (c3d_player_facing(prog->player.dir) == 'N')
-		return(prog->map[y - 1][x]);
+		return (prog->map[y - 1][x]);
 	else if (c3d_player_facing(prog->player.dir) == 'S')
-		return(prog->map[y + 1][x]);
+		return (prog->map[y + 1][x]);
 	return ('!');
 }
 

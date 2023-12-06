@@ -32,7 +32,7 @@ FLAGS = -Wall -Wextra -Werror
 
 # General compilation flags
 CFLAG = $(FLAGS) $(INCLUDES) -g3
- 
+
 # Linking compilation flags
 #GFLAG = $(LIBMLX) -g3
 
@@ -43,25 +43,27 @@ INCLUDE_DIR = includes
 #---------------#
 #	Sources		#
 #---------------#
-FILES +=	binoculars.c\
-			collisions.c\
-		 	cub3d.c\
+FILES +=	cub3d.c\
+			dog_00.c\
+			dog_01.c\
 			doors.c\
 			error.c\
 			hooks.c\
 			init.c\
 			line.c\
 			mapcast.c\
-			minimap_static.c\
-			move.c\
+			minimap.c\
+			move_00.c\
+			move_01.c\
 			parsing_infos_00.c\
 			parsing_infos_01.c\
 			parsing_map_00.c\
 			parsing_map_01.c\
 			parsing.c\
-			player.c\
-			raycasting.c\
+			raycasting_00.c\
+			raycasting_01.c\
 			utils_00.c\
+			utils_01.c\
 
 SOURCES = $(addprefix $(SRC_DIR)/, $(FILES))
 OBJ= $(addprefix $(OBJ_DIR)/, $(FILES:.c=.o))
@@ -81,7 +83,6 @@ $(OBJ_DIR)/%.o : $(SRC_DIR)/%.c
 	@printf '$(GREEN)Compiling: $(RESET)$@\n'
 	@$(CC) $(CFLAG) -o $@ -c $<
 
-
 # create the program
 $(NAME): $(OBJ)
 	@printf '$(RED)Linking: $(RESET)$@\n'
@@ -99,6 +100,10 @@ fclean: clean
 
 # force to recompile everything
 re: fclean all
+
+debug: $(OBJ)
+	@printf '$(RED)Linking: $(RESET)$@\n'
+	@$(CC) $(CFLAG) -fsanitize=address $(GFLAG) -o $(NAME) $(OBJ) $(LIBS);
 
 #create the default directories
 dir: $(SRC_DIR) $(OBJ_DIR) $(INCLUDE_DIR)

@@ -1,11 +1,35 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils_00.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/06 12:45:28 by mdjemaa           #+#    #+#             */
+/*   Updated: 2023/12/06 12:45:29 by mdjemaa          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
+
+int	c3d_correct_pos(float x, float y, t_prog *prog)
+{
+	return (ft_is_in(prog->map[(int)(y + prog->size.pl_scale * 0.5)]
+		[(int)(x + prog->size.pl_scale * 0.5)], MAP_WALKABLE_SYMBOL) &&
+		ft_is_in(prog->map[(int)(y + prog->size.pl_scale * 0.5)]
+		[(int)(x - prog->size.pl_scale * 0.5)], MAP_WALKABLE_SYMBOL) &&
+		ft_is_in(prog->map[(int)(y - prog->size.pl_scale * 0.5)]
+		[(int)(x + prog->size.pl_scale * 0.5)], MAP_WALKABLE_SYMBOL) &&
+		ft_is_in(prog->map[(int)(y - prog->size.pl_scale * 0.5)]
+		[(int)(x - prog->size.pl_scale * 0.5)], MAP_WALKABLE_SYMBOL));
+}
 
 /**
  * @param map a map
  * allow to free a map and it's content
  * @return 0 To help setting map value
  */
-int	c3d_cub_free_map(char **map)
+void	c3d_cub_free_map(char **map)
 {
 	int	n;
 
@@ -16,18 +40,6 @@ int	c3d_cub_free_map(char **map)
 		n++;
 	}
 	free(map);
-	return (0);
-}
-
-/**
- * invert the state of a bool
- */
-void	c3d_bool_flipflop(int *val)
-{
-	if (*val == FALSE)
-		*val = TRUE;
-	if (*val == TRUE)
-		*val = FALSE;
 }
 
 /**
@@ -64,7 +76,7 @@ t_coord	c3d_get_player_pos(char **map)
 {
 	int			i;
 	int			j;
-	t_coord	result;
+	t_coord		result;
 
 	i = 0;
 	j = 0;

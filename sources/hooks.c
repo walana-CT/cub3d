@@ -1,10 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   hooks.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/06 12:44:36 by mdjemaa           #+#    #+#             */
+/*   Updated: 2023/12/06 12:44:37 by mdjemaa          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
-void	toggle_minimap(t_prog *prog)
+void	c3d_scrollhook(double xdelta, double ydelta, void *param)
 {
-	prog->disp_minimap = ((prog->disp_minimap + 1) % 2);
-	prog->minimap_img->enabled = prog->disp_minimap;
-	prog->fov_img->enabled = prog->disp_minimap;
+	t_prog	*prog;
+
+	(void) xdelta;
+	prog = (t_prog *) param;
+	if (ydelta < 0 && prog->fov > 0.11)
+		prog->fov -= 0.1;
+	if (ydelta > 0 && prog->fov < 3.03)
+		prog->fov += 0.1;
+	printf("FOV now : %f\n", prog->fov * 180 / M_PI);
 }
 
 void	c3d_keyhook(mlx_key_data_t keydata, void *param)
@@ -13,51 +31,63 @@ void	c3d_keyhook(mlx_key_data_t keydata, void *param)
 
 	prog = (t_prog *) param;
 	if (keydata.key == MLX_KEY_ESCAPE)
-	{
 		return (mlx_close_window(prog->mlx));
-	}
-	if (keydata.key == MLX_KEY_TAB && keydata.action == MLX_PRESS && !prog->binoculars)
-		toggle_minimap(prog);
+	if (keydata.key == MLX_KEY_BACKSPACE)
+		prog->fov = FOV;
+	if ((keydata.key == MLX_KEY_F1 || keydata.key == MLX_KEY_H)
+		&& keydata.action == MLX_PRESS)
+		c3d_toggle_help(prog);
+	if (keydata.key == MLX_KEY_TAB && keydata.action == MLX_PRESS)
+		c3d_toggle_minimap(prog);
 	if (keydata.key == MLX_KEY_SPACE && keydata.action == MLX_PRESS)
 		c3d_door_interact(prog);
+	if (keydata.key == MLX_KEY_LEFT_SHIFT && keydata.action == MLX_PRESS)
+		c3d_toggle_run(prog);
 }
 
-void c3d_mousehook(mouse_key_t button, action_t action, modifier_key_t mods, void *param)
+void	c3d_mousehook(mouse_key_t button, action_t action,
+	modifier_key_t mods, void *param)
 {
 	t_prog	*prog;
+	int		mouse_x;
+	int		mouse_y;
 
 	(void) mods;
 	prog = (t_prog *) param;
 	if (button == MLX_MOUSE_BUTTON_LEFT && action == MLX_PRESS)
 		printf("Now facing : %c\n", c3d_get_front_tile(prog));
-	if (button == MLX_MOUSE_BUTTON_MIDDLE && action == MLX_PRESS)
-		c3d_binoculars(prog);
+	if (button == MLX_MOUSE_BUTTON_RIGHT && action == MLX_PRESS)
+	{
+		prog->mouse_ctrl = ((prog->mouse_ctrl + 1) % 2);
+		if (prog->mouse_ctrl)
+			mlx_set_cursor_mode(prog->mlx, MLX_MOUSE_DISABLED);
+		else
+			mlx_set_cursor_mode(prog->mlx, MLX_MOUSE_NORMAL);
+		mlx_get_mouse_pos(prog->mlx, &mouse_x, &mouse_y);
+		prog->new_mouse_x = mouse_x;
+	}
 }
 
 void	c3d_mainhook(void *param)
 {
-	int		fast;
 	t_prog	*prog;
-	int		refresh;
 
 	prog = (t_prog *) param;
-	refresh = 0;
-	if (prog->binoculars)
-		c3d_binoculars_anim(prog);
+	prog->is_moving = 0;
 	mlx_get_mouse_pos(prog->mlx, &prog->mouse_x, &prog->mouse_y);
-	fast = 1;
-	if (mlx_is_key_down(prog->mlx, MLX_KEY_LEFT_SHIFT))
-		fast = 2;
 	if (mlx_is_key_down(prog->mlx, MLX_KEY_W))
-		refresh += c3d_moveplayer(SPD * fast, prog);
+		c3d_moveplayer(SPD, prog);
 	if (mlx_is_key_down(prog->mlx, MLX_KEY_S))
-		refresh += c3d_moveplayer(-SPD * fast, prog);
+		c3d_moveplayer(-SPD, prog);
 	if (mlx_is_key_down(prog->mlx, MLX_KEY_A))
-		refresh += c3d_strafeplayer(-SPD * fast, prog);
+		c3d_strafeplayer(-SPD, prog);
 	if (mlx_is_key_down(prog->mlx, MLX_KEY_D))
-		refresh += c3d_strafeplayer(SPD * fast, prog);
-	if (prog->mouse_x != prog->new_mouse_x)
-		refresh += c3d_rotateplayer(prog->mouse_x, prog);
-	if (refresh && c3d_refresh(prog))
-		mlx_terminate(prog->mlx);
+		c3d_strafeplayer(SPD, prog);
+	if (mlx_is_key_down(prog->mlx, MLX_KEY_LEFT))
+		c3d_rotateplayer(-SPD, prog);
+	if (mlx_is_key_down(prog->mlx, MLX_KEY_RIGHT))
+		c3d_rotateplayer(SPD, prog);
+	if (prog->mouse_ctrl && prog->mouse_x != prog->new_mouse_x)
+		c3d_mouse_rotate(prog->mouse_x, prog);
+	c3d_refresh(prog);
 }
