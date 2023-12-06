@@ -34,7 +34,7 @@ void	init_textures(t_prog *prog)
 	while (n < 14)
 	{
 		if (!prog->dog.textures[n++])
-			exit(1);
+			exit(c3d_err_msg((char *)mlx_strerror(mlx_errno), 1));
 	}
 }
 
@@ -77,7 +77,7 @@ void	c3d_draw_dog(t_prog *prog, int n)
 	prog->dog.image = mlx_new_image
 		(prog->mlx, prog->dog.size_x, prog->dog.size_y);
 	if (!prog->dog.image)
-		exit(1);
+		exit(c3d_err_msg((char *)mlx_strerror(mlx_errno), 1));
 	c3d_draw_img(prog, n);
 	mlx_image_to_window
 		(prog->mlx, prog->dog.image, prog->dog.pos_x, prog->dog.pos_y);

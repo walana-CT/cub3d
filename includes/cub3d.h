@@ -1,4 +1,16 @@
-#ifndef	CUB3D_H
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/06 12:37:08 by mdjemaa           #+#    #+#             */
+/*   Updated: 2023/12/06 12:39:16 by mdjemaa          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef CUB3D_H
 # define CUB3D_H
 # define WIN_WIDTH 1280
 # define WIN_HEIGHT 720
@@ -9,29 +21,22 @@
 # define WALK 0xBBBBBBFF
 # define DOOR 0xFF0000FF
 # define OP_DOOR 0x00FF00FF
-# define PLAYER 0xF455EAFF
 # define FOV 102
 # define DOG_RATIO_X 0.35
 # define DOG_RATIO_Y 0.35
 
 # define VERT 0x3568A688
-# define SKY 0x526FD2FF
-# define GROUND 0xC8b4A4FF
-# define NORTH_C 0xFB9902FF
-# define SOUTH_C 0x347C98FF
-# define EAST_C 0xC21460FF
-# define WEST_C 0xFCCC1AFF
 
 # define ERR "Error\n"
-# define EF_FAT "Fatal error\n"
-# define EF_BADDESC "Bad file description\n"
-# define EF_MISS "Missing data\n"
-# define EF_UNEX "Unexpected data\n"
-# define EF_WTEXTURE "Couldn't load texture\n"
-# define EF_2TEXTURE "Texture already loaded\n"
-# define EF_COLOR "Wrong color code. Format is [0-255],[0-255],[0-255]\n"
-# define EF_WMAP "Map not valid\n"
-# define EF_MOPEN "Map not closed\n"
+# define EF_FAT "Fatal error"
+# define EF_BADDESC "Bad file description"
+# define EF_MISS "Missing data"
+# define EF_UNEX "Unexpected data"
+# define EF_WTEXTURE "Couldn't load texture"
+# define EF_2TEXTURE "Texture already loaded"
+# define EF_COLOR "Wrong color code. Format is [0-255],[0-255],[0-255]"
+# define EF_WMAP "Map not valid"
+# define EF_MOPEN "Map not closed"
 
 # define MAP_SYMBOLS "01NSEWCO" // C = door, O = open door
 # define MAP_WALKABLE_SYMBOL "0NSEWO"
@@ -124,13 +129,13 @@ struct s_dog
 struct s_prog
 {
 	int				err;
-	int				w_height;	// window_height
-	int				w_width;	// window_width
+	int				w_height;
+	int				w_width;
 	char			**map;
-	int				map_height;		// max ?
-	int				map_width;		// max ?
-	int				disp_minimap;	// bool
-	int				run; // 1 ou 2
+	int				map_height;
+	int				map_width;
+	int				disp_minimap;
+	int				run;
 	int				is_moving;
 	double			last_time;
 	float			fov;
@@ -177,8 +182,8 @@ void		c3d_cub_free_map(char **map);
 void		c3d_create_map(t_list **file_lst, t_prog *prog);
 char		**c3d_map_dup(t_prog *prog);
 int			c3d_err_msg(char *msg, int err);
-void		cub3d_init(t_prog *prog);
-void		graph_init(t_prog *prog);
+void		c3d_init(t_prog *prog);
+void		c3d_graph_init(t_prog *prog);
 void		c3d_final_free(t_prog *prog);
 t_coord		c3d_get_player_pos(char **map);
 void		c3d_toggle_minimap(t_prog *prog);
@@ -225,11 +230,12 @@ int			c3d_mouse_rotate(int32_t mouse_x, t_prog *prog);
 // hook
 void		c3d_keyhook(mlx_key_data_t keydata, void *param);
 void		c3d_mainhook(void *param);
-void 		c3d_mousehook(mouse_key_t button, action_t action, modifier_key_t mods, void *param);
+void		c3d_mousehook(mouse_key_t button, action_t action,
+				modifier_key_t mods, void *param);
 void		c3d_scrollhook(double xdelta, double ydelta, void *param);
 
 //dog
-void 		c3d_dog_init(t_prog *prog);
+void		c3d_dog_init(t_prog *prog);
 void		c3d_dog_anim(t_prog *prog);
 void		c3d_draw_dog(t_prog *prog, int n);
 void		c3d_draw_img(t_prog *prog, int n);

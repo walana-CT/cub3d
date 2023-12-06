@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/06 12:44:39 by mdjemaa           #+#    #+#             */
+/*   Updated: 2023/12/06 12:44:40 by mdjemaa          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
-void	graph_init(t_prog *prog)
+void	c3d_graph_init(t_prog *prog)
 {
 	prog->mlx = mlx_init(prog->w_width, prog->w_height, "Loup Cailloux", true);
 	if (!prog->mlx)
@@ -22,7 +34,7 @@ void	graph_init(t_prog *prog)
 	c3d_dog_init(prog);
 }
 
-void	cub3d_init(t_prog *prog)
+void	c3d_init(t_prog *prog)
 {
 	prog->map = NULL;
 	prog->c_color.fullcolor = NULL;

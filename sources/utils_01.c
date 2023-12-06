@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils_01.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/06 12:45:31 by mdjemaa           #+#    #+#             */
+/*   Updated: 2023/12/06 12:45:32 by mdjemaa          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 void	c3d_toggle_minimap(t_prog *prog)
@@ -28,7 +40,9 @@ void	c3d_toggle_help(t_prog *prog)
 		if (!prog->help_img)
 			exit(c3d_err_msg(EF_FAT, 1));
 		mlx_delete_texture(help_text);
-		if (mlx_image_to_window(prog->mlx, prog->help_img, (prog->w_width - prog->help_img->width) / 2, (prog->w_height - prog->help_img->height) / 2) == -1)
+		if (mlx_image_to_window(prog->mlx, prog->help_img,
+				(prog->w_width - prog->help_img->width) / 2,
+				(prog->w_height - prog->help_img->height) / 2) == -1)
 			exit(c3d_err_msg(EF_FAT, 1));
 		mlx_set_instance_depth(prog->help_img->instances, 5);
 	}
