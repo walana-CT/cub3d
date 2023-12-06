@@ -43,8 +43,7 @@ INCLUDE_DIR = includes
 #---------------#
 #	Sources		#
 #---------------#
-FILES +=	binoculars.c\
-		 	cub3d.c\
+FILES +=	cub3d.c\
 			doors.c\
 			error.c\
 			hooks.c\

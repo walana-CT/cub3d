@@ -8,7 +8,6 @@ void	graph_init(t_prog *prog)
 	prog->minimap_img = NULL;
 	prog->fov_img = NULL;
 	prog->view_img = NULL;
-	prog->binoculars_img = NULL;
 	prog->help_img = NULL;
 	prog->last_time = mlx_get_time();
 	prog->mouse_x = 0;
@@ -37,7 +36,6 @@ void	cub3d_init(t_prog *prog)
 	prog->map_width = 0;
 	prog->map_height = 0;
 	prog->run = 1;
-	prog->binoculars = 0;
 	prog->disp_minimap = 1;
 	prog->fov = FOV;
 	prog->mouse_ctrl = 0;

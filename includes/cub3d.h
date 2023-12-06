@@ -116,7 +116,6 @@ struct s_prog
 	int				map_height;		// max ?
 	int				map_width;		// max ?
 	int				disp_minimap;	// bool
-	int				binoculars; // bool
 	int				run; // 1 ou 2
 	double			last_time;
 	float			fov;
@@ -129,7 +128,6 @@ struct s_prog
 	mlx_image_t		*minimap_img;
 	mlx_image_t		*fov_img;
 	mlx_image_t		*view_img;
-	mlx_image_t		*binoculars_img;
 	mlx_image_t		*help_img;
 	t_texture_pack	textures;
 	t_color			f_color;

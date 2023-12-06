@@ -25,8 +25,7 @@ void	c3d_keyhook(mlx_key_data_t keydata, void *param)
 	if ((keydata.key == MLX_KEY_F1 || keydata.key == MLX_KEY_H)
 		&& keydata.action == MLX_PRESS)
 		c3d_toggle_help(prog);
-	if (keydata.key == MLX_KEY_TAB && keydata.action == MLX_PRESS
-		&& !prog->binoculars)
+	if (keydata.key == MLX_KEY_TAB && keydata.action == MLX_PRESS)
 		c3d_toggle_minimap(prog);
 	if (keydata.key == MLX_KEY_SPACE && keydata.action == MLX_PRESS)
 		c3d_door_interact(prog);
@@ -45,8 +44,6 @@ void	c3d_mousehook(mouse_key_t button, action_t action,
 	prog = (t_prog *) param;
 	if (button == MLX_MOUSE_BUTTON_LEFT && action == MLX_PRESS)
 		printf("Now facing : %c\n", c3d_get_front_tile(prog));
-	if (button == MLX_MOUSE_BUTTON_MIDDLE && action == MLX_PRESS)
-		c3d_binoculars(prog);
 	if (button == MLX_MOUSE_BUTTON_RIGHT && action == MLX_PRESS)
 	{
 		prog->mouse_ctrl = ((prog->mouse_ctrl + 1) % 2);
@@ -64,8 +61,6 @@ void	c3d_mainhook(void *param)
 	t_prog	*prog;
 
 	prog = (t_prog *) param;
-	if (prog->binoculars)
-		c3d_binoculars_anim(prog);
 	mlx_get_mouse_pos(prog->mlx, &prog->mouse_x, &prog->mouse_y);
 	if (mlx_is_key_down(prog->mlx, MLX_KEY_W))
 		c3d_moveplayer(SPD, prog);

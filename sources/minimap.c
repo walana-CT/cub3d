@@ -47,8 +47,6 @@ void	c3d_create_minimap(t_prog *prog)
 		while (++x < prog->map_width)
 			draw_mapsquare(prog, x, y);
 	}
-	if (prog->binoculars)
-		prog->minimap_img->enabled = 0;
 	mlx_image_to_window(prog->mlx, prog->minimap_img, 0, 0);
 	mlx_set_instance_depth(prog->minimap_img->instances, 1);
 }
