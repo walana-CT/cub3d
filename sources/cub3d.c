@@ -6,7 +6,7 @@
 /*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 12:44:19 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/12/06 12:44:20 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/12/08 13:11:08 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	main(int argc, char *argv[])
 	c3d_init(&prog);
 	c3d_parsing(--argc, ++argv, &prog);
 	c3d_graph_init(&prog);
-	printf("Press H for help\n");
+	printf(RED"Press H for help\n"RESET);
 	c3d_run(&prog);
 	puts("See you");
 	c3d_final_free(&prog);

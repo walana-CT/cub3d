@@ -6,7 +6,7 @@
 /*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 12:45:00 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/12/06 12:45:01 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/12/08 12:50:55 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ void	c3d_commascheck(char *str)
 
 void	check_color(t_color color)
 {
+	if (!color.fullcolor)
+		exit(c3d_err_msg(EF_COLOR, 1));
 	if (ft_isuchar(color.col[0]) && ft_isuchar(color.col[1]) && \
 		ft_isuchar(color.col[2]) && ft_isuchar(color.col[3]))
 		return ;

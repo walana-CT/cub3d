@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dog_00.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rficht <rficht@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 16:44:17 by rficht            #+#    #+#             */
-/*   Updated: 2023/12/05 16:23:20 by rficht           ###   ########.fr       */
+/*   Updated: 2023/12/08 13:23:02 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void	c3d_draw_dog(t_prog *prog, int n)
 	c3d_draw_img(prog, n);
 	mlx_image_to_window
 		(prog->mlx, prog->dog.image, prog->dog.pos_x, prog->dog.pos_y);
-	mlx_set_instance_depth(prog->dog.image->instances, 2);
+	mlx_set_instance_depth(prog->dog.image->instances, 3);
 	if (old_img)
 		mlx_delete_image(prog->mlx, old_img);
 }

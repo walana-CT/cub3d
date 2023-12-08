@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rficht <rficht@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 12:44:39 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/12/08 10:52:26 by rficht           ###   ########.fr       */
+/*   Updated: 2023/12/08 12:57:16 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,7 @@ void	c3d_init(t_prog *prog)
 {
 	prog->map = NULL;
 	prog->c_color.fullcolor = NULL;
-	prog->c_color.color = 0;
 	prog->f_color.fullcolor = NULL;
-	prog->f_color.color = 0;
 	prog->w_height = WIN_HEIGHT;
 	prog->w_width = WIN_WIDTH;
 	prog->textures.e = NULL;
