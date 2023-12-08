@@ -13,14 +13,8 @@
 # define FOV 102
 # define DOG_RATIO_X 0.35
 # define DOG_RATIO_Y 0.35
-
 # define VERT 0x3568A688
-# define SKY 0x526FD2FF
-# define GROUND 0xC8b4A4FF
-# define NORTH_C 0xFB9902FF
-# define SOUTH_C 0x347C98FF
-# define EAST_C 0xC21460FF
-# define WEST_C 0xFCCC1AFF
+
 
 # define ERR "Error\n"
 # define EF_FAT "Fatal error\n"

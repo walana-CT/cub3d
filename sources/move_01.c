@@ -16,6 +16,7 @@ int	c3d_mouse_rotate(int32_t mouse_x, t_prog *prog)
 		prog->player.dir = 0;
 	if (prog->new_mouse_x != mouse_x)
 	{
+		prog->is_moving = TRUE;
 		prog->new_mouse_x = mouse_x;
 		return (1);
 	}
