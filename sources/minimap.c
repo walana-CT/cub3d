@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   minimap.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/06 12:44:48 by mdjemaa           #+#    #+#             */
+/*   Updated: 2023/12/06 12:44:49 by mdjemaa          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <cub3d.h>
 
 static void	c3d_drawsquare(t_prog prog, int x, int y, uint32_t col)
@@ -47,8 +59,6 @@ void	c3d_create_minimap(t_prog *prog)
 		while (++x < prog->map_width)
 			draw_mapsquare(prog, x, y);
 	}
-	if (prog->binoculars)
-		prog->minimap_img->enabled = 0;
 	mlx_image_to_window(prog->mlx, prog->minimap_img, 0, 0);
 	mlx_set_instance_depth(prog->minimap_img->instances, 1);
 }

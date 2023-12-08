@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub3d.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/06 12:44:19 by mdjemaa           #+#    #+#             */
+/*   Updated: 2023/12/06 12:44:20 by mdjemaa          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 int	is_valid_ext(char *file, char *ext)
@@ -43,9 +55,10 @@ int	main(int argc, char *argv[])
 	t_prog	prog;
 
 	check_invalid_args(argc, argv);
-	cub3d_init(&prog);
+	c3d_init(&prog);
 	c3d_parsing(--argc, ++argv, &prog);
-	graph_init(&prog);
+	c3d_graph_init(&prog);
+	printf("Press H for help\n");
 	c3d_run(&prog);
 	puts("See you");
 	c3d_final_free(&prog);

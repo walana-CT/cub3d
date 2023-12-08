@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   raycasting_00.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/06 12:45:22 by mdjemaa           #+#    #+#             */
+/*   Updated: 2023/12/06 12:45:23 by mdjemaa          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <cub3d.h>
 
 uint32_t	get_wall_color(t_prog *prog, t_ray *ray)
@@ -100,14 +112,12 @@ void	c3d_raycast(t_prog *prog)
 	float	camera_x;
 	float	camera_step;
 	int		n;
-	float	fov_deg;
 
-	fov_deg = FOV * (M_PI / 180);
 	n = -1;
-	camera_x = tan(fov_deg / 2);
+	camera_x = tan(prog->fov / 2);
 	camera_step = camera_x * 2 / WIN_WIDTH;
 	camera_x *= -1;
-	while (++n <= WIN_WIDTH)
+	while (++n < WIN_WIDTH)
 	{
 		cast_one(prog, prog->player.dir, atan(camera_x), n);
 		camera_x += camera_step;

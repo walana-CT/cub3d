@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/06 12:44:39 by mdjemaa           #+#    #+#             */
+/*   Updated: 2023/12/06 12:44:40 by mdjemaa          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
-void	graph_init(t_prog *prog)
+void	c3d_graph_init(t_prog *prog)
 {
 	prog->mlx = mlx_init(prog->w_width, prog->w_height, "Loup Cailloux", true);
 	if (!prog->mlx)
@@ -8,7 +20,7 @@ void	graph_init(t_prog *prog)
 	prog->minimap_img = NULL;
 	prog->fov_img = NULL;
 	prog->view_img = NULL;
-	prog->binoculars_img = NULL;
+	prog->help_img = NULL;
 	prog->last_time = mlx_get_time();
 	prog->mouse_x = 0;
 	prog->mouse_y = 0;
@@ -22,7 +34,7 @@ void	graph_init(t_prog *prog)
 	c3d_dog_init(prog);
 }
 
-void	cub3d_init(t_prog *prog)
+void	c3d_init(t_prog *prog)
 {
 	prog->map = NULL;
 	prog->c_color.fullcolor = NULL;
@@ -38,8 +50,7 @@ void	cub3d_init(t_prog *prog)
 	prog->map_width = 0;
 	prog->map_height = 0;
 	prog->run = 1;
-	prog->binoculars = 0;
 	prog->disp_minimap = 1;
-	prog->fov = FOV;
+	prog->fov = FOV * M_PI / 180;
 	prog->mouse_ctrl = 0;
 }

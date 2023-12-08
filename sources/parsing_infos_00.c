@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing_infos_00.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/06 12:44:57 by mdjemaa           #+#    #+#             */
+/*   Updated: 2023/12/06 12:44:58 by mdjemaa          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 static void	load_texture(mlx_texture_t **texture, char *file)
@@ -8,7 +20,6 @@ static void	load_texture(mlx_texture_t **texture, char *file)
 	*texture = mlx_load_png(file);
 	if (!*texture)
 		exit(c3d_err_msg((char *)mlx_strerror(mlx_errno), 1));
-	printf("Loaded texture file\t%s\n", file);
 }
 
 static void	null_str_if_empty(char **str)
@@ -42,7 +53,6 @@ static void	load_color(t_color *color, char *str)
 	}
 	color->col[3] = 255;
 	ft_freetab(coltab);
-	ft_printf("Loaded color \t%s\n", color->fullcolor);
 }
 
 /**
