@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rficht <rficht@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 12:44:39 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/12/06 12:44:40 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/12/08 10:52:26 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void	c3d_graph_init(t_prog *prog)
 {
-	prog->mlx = mlx_init(prog->w_width, prog->w_height, "Loup Cailloux", true);
+	prog->mlx = mlx_init(prog->w_width,
+			prog->w_height, "Promenade 3D : Chientown", true);
 	if (!prog->mlx)
 		exit(c3d_err_msg((char *)mlx_strerror(mlx_errno), 1));
 	prog->minimap_img = NULL;
