@@ -6,7 +6,7 @@
 /*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 12:44:31 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/12/06 12:44:32 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/12/11 15:41:51 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,13 +67,15 @@ void	c3d_door_interact(t_prog *prog)
 	if (c3d_get_front_tile(prog) == 'C')
 	{
 		c3d_set_front_tile(prog, 'O');
-		printf("Opening door\n");
+		prog->is_moving = TRUE;
 		c3d_create_minimap(prog);
+		c3d_refresh(prog);
 	}
 	else if (c3d_get_front_tile(prog) == 'O')
 	{
 		c3d_set_front_tile(prog, 'C');
-		printf("Closing door\n");
+		prog->is_moving = TRUE;
 		c3d_create_minimap(prog);
+		c3d_refresh(prog);
 	}
 }

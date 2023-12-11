@@ -6,7 +6,7 @@
 /*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 12:45:20 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/12/08 14:51:44 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/12/11 14:27:21 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	ft_file_to_lst(char *file, t_list **map_lst)
 
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
-		exit(c3d_err_msg("Couldn't open file\n", 1));
+		exit(c3d_err_msg("Couldn't open file", 1));
 	str = ft_get_next_line(fd);
 	while (str)
 	{
@@ -45,7 +45,7 @@ static void	ft_file_to_lst(char *file, t_list **map_lst)
 		str = ft_get_next_line(fd);
 	}
 	if (close(fd))
-		exit(c3d_err_msg("Couldn't close file\n", 1));
+		exit(c3d_err_msg("Couldn't close file", 1));
 }
 
 void	c3d_parsing(int argc, char *argv[], t_prog *prog)

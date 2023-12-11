@@ -6,7 +6,7 @@
 /*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 12:44:36 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/12/08 15:25:44 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/12/11 14:32:04 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	c3d_scrollhook(double xdelta, double ydelta, void *param)
 		prog->fov -= 0.1;
 	if (ydelta > 0 && prog->fov < 2.5)
 		prog->fov += 0.1;
-	printf("FOV now : %2.0f\n", prog->fov * 180 / M_PI);
 }
 
 void	c3d_keyhook(mlx_key_data_t keydata, void *param)
