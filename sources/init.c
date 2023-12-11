@@ -6,7 +6,7 @@
 /*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 12:44:39 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/12/08 12:57:16 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/12/11 18:10:26 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	c3d_graph_init(t_prog *prog)
 {
 	prog->mlx = mlx_init(prog->w_width,
-			prog->w_height, "Promenade 3D : Chientown", true);
+			prog->w_height, "Promenade 3D : Chientown", false);
 	if (!prog->mlx)
 		exit(c3d_err_msg((char *)mlx_strerror(mlx_errno), 1));
 	prog->minimap_img = NULL;
@@ -31,7 +31,7 @@ void	c3d_graph_init(t_prog *prog)
 	prog->size.mapscale = ft_min(400 / prog->map_height, 400 / prog->map_width);
 	prog->size.pl_scale = 0.25;
 	prog->player.size_int = 1;
-	mlx_set_cursor_mode(prog->mlx, MLX_MOUSE_DISABLED);
+	//mlx_set_cursor_mode(prog->mlx, MLX_MOUSE_DISABLED);
 	c3d_dog_init(prog);
 }
 
