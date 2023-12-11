@@ -6,7 +6,7 @@
 /*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 12:44:19 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/12/11 15:00:27 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/12/11 17:18:38 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	is_valid_ext(char *file, char *ext)
 void	check_invalid_args(int argc, char *argv[])
 {
 	if (argc != 2 || !is_valid_ext(*(++argv), ".cub"))
-		exit(c3d_err_msg("usage : ./cub3d [map.cub]",1));
+		exit(c3d_err_msg("usage : ./cub3d [map.cub]", 1));
 }
 
 void	c3d_refresh(t_prog *prog)
