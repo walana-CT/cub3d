@@ -6,7 +6,7 @@
 /*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 12:44:57 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/12/06 12:44:58 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/12/08 13:32:13 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 static void	load_texture(mlx_texture_t **texture, char *file)
 {
+	while (*file == ' ')
+		file++;
 	ft_strshortenby(file, 1);
 	if (*texture)
 		exit(c3d_err_msg(EF_2TEXTURE, 1));
@@ -35,10 +37,12 @@ static void	load_color(t_color *color, char *str)
 	int		i;
 	int		col;
 
-	null_str_if_empty(&str);
 	if (color->fullcolor)
 		exit(c3d_err_msg(EF_BADDESC, 1));
+	null_str_if_empty(&str);
 	c3d_commascheck(str);
+	while (*str == ' ')
+		str++;
 	color->fullcolor = ft_strdup(str);
 	coltab = ft_split(str, ',');
 	if (!coltab)
@@ -62,18 +66,20 @@ static void	get_desc(char *str, t_prog *prog)
 {
 	if (!str || *str == '\n')
 		return ;
-	if (ft_strnstr(str, "NO ", 3))
+	else if (ft_strnstr(str, "NO ", 3))
 		load_texture(&(prog->textures.n), str + 3);
-	if (ft_strnstr(str, "SO ", 3))
+	else if (ft_strnstr(str, "SO ", 3))
 		load_texture(&(prog->textures.s), str + 3);
-	if (ft_strnstr(str, "EA ", 3))
+	else if (ft_strnstr(str, "EA ", 3))
 		load_texture(&(prog->textures.e), str + 3);
-	if (ft_strnstr(str, "WE ", 3))
+	else if (ft_strnstr(str, "WE ", 3))
 		load_texture(&(prog->textures.w), str + 3);
-	if (ft_strnstr(str, "C ", 2))
+	else if (ft_strnstr(str, "C ", 2))
 		load_color(&(prog->c_color), str + 2);
-	if (ft_strnstr(str, "F ", 2))
+	else if (ft_strnstr(str, "F ", 2))
 		load_color(&(prog->f_color), str + 2);
+	else
+		exit(c3d_err_msg(EF_BADDESC, 1));
 }
 
 /**

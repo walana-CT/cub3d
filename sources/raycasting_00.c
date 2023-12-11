@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting_00.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rficht <rficht@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 12:45:22 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/12/06 12:45:23 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/12/08 10:57:38 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	disp_band(t_prog *prog, t_ray *ray, int x_pos)
 	uint32_t	pixel_color;
 
 	n = -1;
-	h = (WIN_HEIGHT / ray->screen_dist);
+	h = (WIN_HEIGHT / ray->screen_dist) * ((float)WIN_HEIGHT / WIN_WIDTH);
 	wall[0] = -h / 2 + WIN_HEIGHT / 2;
 	wall[1] = h / 2 + WIN_HEIGHT / 2;
 	while (++n < WIN_HEIGHT)

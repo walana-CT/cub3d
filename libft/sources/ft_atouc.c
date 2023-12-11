@@ -6,7 +6,7 @@
 /*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 14:34:06 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/08/04 13:50:35 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/12/11 14:49:36 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int	ft_atouc(const char *str)
 {
 	int	nb;
 
+	if (!str)
+		return (-1);
 	nb = 0;
 	while (nb <= 255 && *str)
 	{

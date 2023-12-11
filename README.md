@@ -1,9 +1,6 @@
 # Cub3d
 
-Loup-cailloux
-Johnny contre les nazis
-
-  
+promenade 3D : Chientown
 
 ## Parsing
 

@@ -6,7 +6,7 @@
 /*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 12:37:08 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/12/06 12:39:16 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/12/08 13:23:35 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@
 # define FOV 102
 # define DOG_RATIO_X 0.35
 # define DOG_RATIO_Y 0.35
-
 # define VERT 0x3568A688
 
 # define ERR "Error\n"

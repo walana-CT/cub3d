@@ -6,7 +6,7 @@
 /*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 12:44:29 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/12/06 12:44:30 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/12/11 15:48:07 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	c3d_dog_anim(t_prog *prog)
 		n = 0;
 	else if (prog->is_moving)
 		n++;
-	else if (!prog->is_moving)
+	else
 	{
 		if (n == 0)
 			return ;

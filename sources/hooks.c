@@ -6,7 +6,7 @@
 /*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 12:44:36 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/12/06 12:44:37 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/12/11 14:32:04 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,10 @@ void	c3d_scrollhook(double xdelta, double ydelta, void *param)
 
 	(void) xdelta;
 	prog = (t_prog *) param;
-	if (ydelta < 0 && prog->fov > 0.11)
+	if (ydelta < 0 && prog->fov > 0.5)
 		prog->fov -= 0.1;
-	if (ydelta > 0 && prog->fov < 3.03)
+	if (ydelta > 0 && prog->fov < 2.5)
 		prog->fov += 0.1;
-	printf("FOV now : %f\n", prog->fov * 180 / M_PI);
 }
 
 void	c3d_keyhook(mlx_key_data_t keydata, void *param)
@@ -33,7 +32,7 @@ void	c3d_keyhook(mlx_key_data_t keydata, void *param)
 	if (keydata.key == MLX_KEY_ESCAPE)
 		return (mlx_close_window(prog->mlx));
 	if (keydata.key == MLX_KEY_BACKSPACE)
-		prog->fov = FOV;
+		prog->fov = FOV * M_PI / 180;
 	if ((keydata.key == MLX_KEY_F1 || keydata.key == MLX_KEY_H)
 		&& keydata.action == MLX_PRESS)
 		c3d_toggle_help(prog);
