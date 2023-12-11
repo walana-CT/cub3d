@@ -78,6 +78,10 @@ all: dir libs $(NAME)
 libs:
 	@$(MAKE) -C ./libft
 
+mlx:
+	@cmake -S MLX42 -B MLX42/build
+	@cmake --build MLX42/build -j4
+
 # rule for compile .c -> .o
 $(OBJ_DIR)/%.o : $(SRC_DIR)/%.c
 	@printf '$(GREEN)Compiling: $(RESET)$@\n'
@@ -104,6 +108,8 @@ re: fclean all
 debug: $(OBJ)
 	@printf '$(RED)Linking: $(RESET)$@\n'
 	@$(CC) $(CFLAG) -fsanitize=address $(GFLAG) -o $(NAME) $(OBJ) $(LIBS);
+
+bonus: dir libs $(NAME)
 
 #create the default directories
 dir: $(SRC_DIR) $(OBJ_DIR) $(INCLUDE_DIR)
