@@ -6,7 +6,7 @@
 /*   By: rficht <rficht@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 12:44:29 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/12/12 10:49:52 by rficht           ###   ########.fr       */
+/*   Updated: 2023/12/12 10:56:58 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ static int	dog_collision(t_prog *prog)
 {
 	float	collision_x;
 	float	collision_y;
-
 
 	collision_x = prog->player.x + (cos(prog->player.dir) * 0.5);
 	collision_y = prog->player.y + (sin(prog->player.dir) * 0.5);
