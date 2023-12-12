@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rficht <rficht@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 12:44:39 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/12/08 12:57:16 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/12/12 10:38:50 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,5 @@ void	c3d_init(t_prog *prog)
 	prog->disp_minimap = 1;
 	prog->fov = FOV * M_PI / 180;
 	prog->mouse_ctrl = 0;
+	prog->is_moving = 0;
 }
