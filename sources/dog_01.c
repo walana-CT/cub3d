@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dog_01.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rficht <rficht@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 12:44:29 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/12/12 10:56:58 by rficht           ###   ########.fr       */
+/*   Updated: 2023/12/12 11:29:49 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static int	dog_anim(t_prog *prog, int *n)
 	prog->last_time = mlx_get_time();
 	if (dog_collision(prog))
 	{
-		*n = 5;
+		*n = 9;
 		c3d_draw_dog(prog, 13);
 		return (1);
 	}
