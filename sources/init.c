@@ -6,7 +6,7 @@
 /*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 12:44:39 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/12/12 11:37:53 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/12/12 11:40:14 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void	c3d_graph_init(t_prog *prog)
 	prog->size.mapscale = ft_min(400 / prog->map_height, 400 / prog->map_width);
 	prog->size.pl_scale = 0.25;
 	prog->player.size_int = 1;
-	//mlx_set_cursor_mode(prog->mlx, MLX_MOUSE_DISABLED);
 	c3d_dog_init(prog);
 }
 
