@@ -6,7 +6,7 @@
 /*   By: rficht <rficht@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 12:44:31 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/12/12 10:29:17 by rficht           ###   ########.fr       */
+/*   Updated: 2023/12/12 10:55:28 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,14 +67,12 @@ void	c3d_door_interact(t_prog *prog)
 	if (c3d_get_front_tile(prog) == 'C')
 	{
 		c3d_set_front_tile(prog, 'O');
-		prog->is_moving = TRUE;
 		c3d_create_minimap(prog);
 		c3d_refresh(prog);
 	}
 	else if (c3d_get_front_tile(prog) == 'O')
 	{
 		c3d_set_front_tile(prog, 'C');
-		prog->is_moving = TRUE;
 		c3d_create_minimap(prog);
 		c3d_refresh(prog);
 	}
