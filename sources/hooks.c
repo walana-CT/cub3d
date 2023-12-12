@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rficht <rficht@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 12:44:36 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/12/11 14:32:04 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/12/12 10:38:41 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ void	c3d_mainhook(void *param)
 	t_prog	*prog;
 
 	prog = (t_prog *) param;
-	prog->is_moving = 0;
 	mlx_get_mouse_pos(prog->mlx, &prog->mouse_x, &prog->mouse_y);
 	if (mlx_is_key_down(prog->mlx, MLX_KEY_W))
 		c3d_moveplayer(SPD, prog);

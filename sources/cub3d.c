@@ -6,7 +6,7 @@
 /*   By: mdjemaa <mdjemaa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 12:44:19 by mdjemaa           #+#    #+#             */
-/*   Updated: 2023/12/11 17:18:38 by mdjemaa          ###   ########.fr       */
+/*   Updated: 2023/12/12 11:37:45 by mdjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,9 @@ void	c3d_refresh(t_prog *prog)
 {
 	c3d_refresh_fov(prog);
 	c3d_refresh_view(prog);
-	c3d_dog_anim(prog);
 	c3d_raycast(prog);
+	c3d_dog_anim(prog);
+	prog->is_moving = FALSE;
 }
 
 void	c3d_run(t_prog *prog)
